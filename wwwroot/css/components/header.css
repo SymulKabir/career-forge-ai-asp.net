@@ -1,0 +1,324 @@
+/* =========================================================
+CareerForge AI — Home Header
+========================================================= */
+
+.home-header {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 50;
+}
+
+.home-header-container {
+max-width: 1280px;
+margin: 0 auto;
+padding: 20px 20px 0;
+}
+
+.home-navbar {
+height: 64px;
+padding: 0 24px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+
+background: rgba(255, 255, 255, 0.045);
+backdrop-filter: blur(18px);
+-webkit-backdrop-filter: blur(18px);
+
+border: 1px solid rgba(255, 255, 255, 0.08);
+border-radius: 16px;
+
+
+}
+
+/* Logo */
+
+.home-logo {
+display: flex;
+align-items: center;
+gap: 10px;
+
+
+color: white;
+text-decoration: none;
+
+
+}
+
+.home-logo-icon {
+width: 36px;
+height: 36px;
+
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 12px;
+
+background: linear-gradient(
+    135deg,
+    #8b5cf6,
+    #4f46e5
+);
+
+box-shadow: 0 10px 30px rgba(139, 92, 246, 0.25);
+
+
+}
+
+.home-logo-text {
+font-size: 18px;
+font-weight: 700;
+letter-spacing: -0.025em;
+}
+
+.home-logo-forge {
+color: #a78bfa;
+}
+
+.home-logo-ai {
+margin-left: 2px;
+
+
+color: #22d3ee;
+font-size: 10px;
+vertical-align: top;
+
+
+}
+
+/* Desktop Navigation */
+
+.home-nav-links {
+display: flex;
+align-items: center;
+gap: 32px;
+
+
+font-size: 14px;
+
+
+}
+
+.home-nav-link {
+position: relative;
+
+
+color: #cbd5e1;
+text-decoration: none;
+
+transition: color 0.3s ease;
+
+
+}
+
+.home-nav-link:hover {
+color: white;
+}
+
+.home-nav-link::after {
+content: "";
+
+
+position: absolute;
+left: 0;
+bottom: -7px;
+
+width: 0;
+height: 2px;
+
+border-radius: 999px;
+
+background: #8b5cf6;
+
+transition: width 0.3s ease;
+
+
+}
+
+.home-nav-link:hover::after {
+width: 100%;
+}
+
+/* Header Actions */
+
+.home-header-actions {
+display: flex;
+align-items: center;
+gap: 16px;
+}
+
+.home-signin-btn {
+border: 0;
+background: transparent;
+
+
+color: #cbd5e1;
+font-size: 14px;
+
+cursor: pointer;
+
+transition: color 0.3s ease;
+
+
+}
+
+.home-signin-btn:hover {
+color: white;
+}
+
+.home-get-started {
+padding: 10px 16px;
+
+
+border: 0;
+border-radius: 12px;
+
+background: white;
+color: #020617;
+
+font-size: 14px;
+font-weight: 600;
+
+cursor: pointer;
+
+transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+
+
+}
+
+.home-get-started:hover {
+background: #f1f5f9;
+transform: translateY(-1px);
+}
+
+/* Mobile Menu Button */
+
+.home-mobile-menu-btn {
+width: 40px;
+height: 40px;
+
+
+display: none;
+align-items: center;
+justify-content: center;
+
+border: 1px solid rgba(255, 255, 255, 0.08);
+border-radius: 12px;
+
+background: rgba(255, 255, 255, 0.045);
+
+color: white;
+
+cursor: pointer;
+
+
+}
+
+.home-mobile-menu-icon {
+font-size: 20px;
+line-height: 1;
+}
+
+/* Mobile Menu */
+
+.home-mobile-menu {
+display: none;
+
+
+margin-top: 8px;
+padding: 20px;
+
+border: 1px solid rgba(255, 255, 255, 0.08);
+border-radius: 16px;
+
+background: rgba(5, 8, 22, 0.85);
+
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+
+
+}
+
+.home-mobile-menu.active {
+display: block;
+}
+
+.home-mobile-menu-content {
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
+.home-mobile-link {
+color: #cbd5e1;
+text-decoration: none;
+font-size: 14px;
+
+
+transition: color 0.3s ease;
+
+
+}
+
+.home-mobile-link:hover {
+color: white;
+}
+
+.home-mobile-get-started {
+width: 100%;
+padding: 12px;
+
+
+border: 0;
+border-radius: 12px;
+
+background: white;
+color: #020617;
+
+font-weight: 600;
+cursor: pointer;
+
+
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+
+
+.home-header-container {
+    padding: 16px 16px 0;
+}
+
+.home-navbar {
+    padding: 0 16px;
+}
+
+.home-nav-links,
+.home-header-actions {
+    display: none;
+}
+
+.home-mobile-menu-btn {
+    display: flex;
+}
+
+
+}
+
+@media (min-width: 768px) {
+
+
+.home-mobile-menu {
+    display: none !important;
+}
+
+
+}

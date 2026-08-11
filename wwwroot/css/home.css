@@ -1,0 +1,113 @@
+
+
+ .hero-grid {
+     background-image:
+         linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+         linear-gradient(90deg,
+             rgba(255, 255, 255, 0.035) 1px,
+             transparent 1px);
+     background-size: 55px 55px;
+ }
+
+ .glass {
+     background: rgba(255, 255, 255, 0.045);
+     backdrop-filter: blur(18px);
+     -webkit-backdrop-filter: blur(18px);
+     border: 1px solid rgba(255, 255, 255, 0.08);
+ }
+
+ .glass-light {
+     background: rgba(255, 255, 255, 0.07);
+     backdrop-filter: blur(20px);
+     border: 1px solid rgba(255, 255, 255, 0.1);
+ }
+
+ .glow {
+     box-shadow:
+         0 0 80px rgba(99, 102, 241, 0.16),
+         0 0 160px rgba(139, 92, 246, 0.08);
+ }
+
+ .purple-glow {
+     box-shadow: 0 0 70px rgba(139, 92, 246, 0.25);
+ }
+
+ .cyan-glow {
+     box-shadow: 0 0 60px rgba(6, 182, 212, 0.18);
+ }
+
+ .resume-paper {
+     background: #ffffff;
+     color: #172033;
+ }
+
+ .resume-line {
+     height: 6px;
+     border-radius: 10px;
+     background: #e6e8ee;
+ }
+
+ .resume-line-dark {
+     height: 7px;
+     border-radius: 10px;
+     background: #252c3b;
+ }
+
+ .floating-card {
+     transition: transform 0.35s ease, box-shadow 0.35s ease;
+ }
+
+ .floating-card:hover {
+     transform: translateY(-7px);
+     box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+ }
+
+ .template-card {
+     transition: all 0.35s ease;
+ }
+
+ .template-card:hover {
+     transform: translateY(-8px);
+     border-color: rgba(139, 92, 246, 0.5);
+     box-shadow: 0 25px 70px rgba(79, 70, 229, 0.13);
+ }
+
+ .orb {
+     filter: blur(80px);
+     opacity: 0.3;
+ }
+
+ .nav-link {
+     position: relative;
+ }
+
+ .nav-link::after {
+     content: "";
+     position: absolute;
+     left: 0;
+     bottom: -7px;
+     width: 0;
+     height: 2px;
+     border-radius: 999px;
+     background: #8b5cf6;
+     transition: width 0.3s ease;
+ }
+
+ .nav-link:hover::after {
+     width: 100%;
+ }
+
+ .score-ring {
+     background: conic-gradient(#8b5cf6 0deg,
+             #6366f1 305deg,
+             rgba(255, 255, 255, 0.08) 305deg);
+ }
+
+ .hide-scrollbar::-webkit-scrollbar {
+     display: none;
+ }
+
+ .hide-scrollbar {
+     -ms-overflow-style: none;
+     scrollbar-width: none;
+ }

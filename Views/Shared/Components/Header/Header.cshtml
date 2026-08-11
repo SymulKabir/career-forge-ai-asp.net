@@ -1,0 +1,102 @@
+<link rel="stylesheet"
+      href="~/css/components/header.css"
+      asp-append-version="true" />
+
+<header class="career-header">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 pt-5">
+
+        <nav class="career-nav">
+
+            <!-- Logo -->
+            <a href="/" class="career-logo">
+
+                <div class="career-logo-icon">
+                    <!-- Your SVG -->
+                </div>
+
+                <span class="font-bold text-lg tracking-tight">
+                    Career<span class="text-violet-400">Forge</span>
+                    <span class="text-[10px] text-cyan-400 align-top ml-0.5">
+                        AI
+                    </span>
+                </span>
+
+            </a>
+
+            <!-- Navigation -->
+            <div class="hidden md:flex items-center gap-8 text-sm text-slate-300">
+
+                <a href="#features"
+                   class="nav-link hover:text-white transition">
+                    Features
+                </a>
+
+                <a href="#templates"
+                   class="nav-link hover:text-white transition">
+                    Templates
+                </a>
+
+                <a href="#how-it-works"
+                   class="nav-link hover:text-white transition">
+                    How it works
+                </a>
+
+                <a href="#pricing"
+                   class="nav-link hover:text-white transition">
+                    Pricing
+                </a>
+
+            </div>
+
+            <!-- Actions -->
+            <div class="hidden sm:flex items-center gap-4">
+
+                <button class="text-sm text-slate-300 hover:text-white transition">
+                    Sign in
+                </button>
+
+                <button class="px-4 py-2.5 rounded-xl bg-white
+                               text-slate-950 text-sm font-semibold
+                               hover:bg-slate-100 transition">
+                    Get Started
+                </button>
+
+            </div>
+
+            <!-- Mobile -->
+            <button id="mobileMenuBtn"
+                    class="md:hidden w-10 h-10 rounded-xl glass
+                           flex items-center justify-center">
+                ☰
+            </button>
+
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu"
+             class="hidden mt-2 glass rounded-2xl p-5 md:hidden">
+
+            <div class="flex flex-col gap-5 text-sm text-slate-300">
+
+                <a href="#features">Features</a>
+                <a href="#templates">Templates</a>
+                <a href="#how-it-works">How it works</a>
+                <a href="#pricing">Pricing</a>
+
+                <button class="w-full py-3 rounded-xl
+                               bg-white text-slate-950 font-semibold">
+                    Get Started
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<script src="~/js/components/header.js"
+        asp-append-version="true"></script>

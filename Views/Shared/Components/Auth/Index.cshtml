@@ -47,21 +47,19 @@
 
                 <!-- BRAND -->
                 <div class="text-center pt-2">
-                    <partial name="Components/Logo/Index" />
 
 
                     <div
-                        class="mx-auto w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-violet-500/20">
+                        class="mx-auto   flex items-center justify-center ">
 
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                             stroke-width="2">
-
-                            <path d="M12 3v18" />
-                            <path d="M5 8h14" />
-                            <path d="M7 8l-4 7h8L7 8Z" />
-                            <path d="M17 8l-4 7h8l-4-7Z" />
-
-                        </svg>
+                       
+                    <partial name="Components/Logo/Index"
+                        view-data='new ViewDataDictionary(ViewData)
+                        {
+                            ["LogoMode"] = "half",
+                            ["LogoSize"] = "w-12 h-12",
+                            ["IconSize"] = "w-6 h-6"
+                        }' />
 
                     </div>
 

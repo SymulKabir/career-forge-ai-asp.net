@@ -1,1168 +1,994 @@
-﻿<section class="relative min-h-screen overflow-hidden pt-36 pb-24 hero-grid">
+﻿@{
+    ViewData["Title"] = "CareerForge AI — Build a Resume That Gets Noticed";
+}
+<script src="~/js/pages/home.js" defer asp-append-version="true"></script> 
 
-    <!-- Background orbs -->
-    <div class="orb absolute w-[500px] h-[500px] bg-violet-600 rounded-full -top-40 -left-40"></div>
+<main>
+    <section class="relative min-h-screen overflow-hidden pt-36 pb-24 hero-grid">
+        <!-- BACKGROUND ORBS -->
 
-    <div class="orb absolute w-[450px] h-[450px] bg-cyan-500 rounded-full top-1/3 -right-48"></div>
+        <div id="orb1" class="orb w-[500px] h-[500px] bg-violet-300 rounded-full -top-40 -left-40"></div>
 
-    <div class="orb absolute w-[350px] h-[350px] bg-indigo-600 rounded-full bottom-0 left-1/3"></div>
+        <div id="orb2" class="orb w-[450px] h-[450px] bg-cyan-300 rounded-full top-1/3 -right-48"></div>
 
-    <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div id="orb3" class="orb w-[350px] h-[350px] bg-indigo-300 rounded-full bottom-0 left-1/3"></div>
 
-        <!-- Announcement -->
-        <div class="flex justify-center mb-8">
+        <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+            <!-- ANNOUNCEMENT -->
 
-            <div class="glass rounded-full px-4 py-2 flex items-center gap-2 text-xs sm:text-sm text-slate-300">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <div class="flex justify-center mb-8">
+                <div class="white-glass rounded-full px-4 py-2 flex items-center gap-2 text-xs sm:text-sm text-slate-600">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
 
-                AI-powered career platform
+                    AI-powered career platform
 
-                <span class="text-violet-400">→</span>
-            </div>
-
-        </div>
-
-        <!-- Hero text -->
-        <div class="max-w-4xl mx-auto text-center">
-
-            <h1 class="font-display text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight leading-[0.95]">
-                Build a career
-                <br />
-
-                <span class="gradient-text">
-                    worth getting noticed.
-                </span>
-            </h1>
-
-            <p class="mt-8 text-base sm:text-lg lg:text-xl text-slate-400 max-w-2xl mx-auto leading-8">
-                Create powerful resumes, CVs and cover letters with AI.
-                Optimize every application for ATS and tailor your profile
-                to the job you actually want.
-            </p>
-
-            <!-- CTA -->
-            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-
-                <button
-                    class="group px-7 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 font-semibold shadow-xl shadow-violet-600/25 hover:shadow-violet-600/40 hover:-translate-y-1 transition-all">
-                    Create My Resume
-
-                    <span class="inline-block ml-2 group-hover:translate-x-1 transition">
-                        →
-                    </span>
-                </button>
-
-                <button class="px-7 py-4 rounded-2xl glass font-semibold text-slate-200 hover:bg-white/10 transition">
-                    Explore Templates
-                </button>
-
-            </div>
-
-            <div class="mt-6 flex justify-center items-center gap-4 text-xs text-slate-500">
-                <span>✓ No credit card required</span>
-                <span>•</span>
-                <span>Free to start</span>
-            </div>
-
-        </div>
-
-
-        <!-- Hero Product Preview -->
-        <div class="relative max-w-6xl mx-auto mt-20">
-
-            <!-- floating ATS card -->
-            <div
-                class="floating-card absolute -left-2 lg:-left-16 top-16 z-20 glass rounded-2xl p-4 w-52 hidden sm:block animate-float">
-
-                <div class="flex items-center justify-between">
-                    <span class="text-xs text-slate-400">
-                        ATS Compatibility
-                    </span>
-
-                    <span class="text-emerald-400 text-xs">
-                        Excellent
-                    </span>
-                </div>
-
-                <div class="flex items-center gap-3 mt-4">
-
-                    <div class="score-ring w-14 h-14 rounded-full p-1">
-                        <div class="w-full h-full rounded-full bg-[#0a0e1d] flex items-center justify-center">
-                            <span class="text-sm font-bold">
-                                92
-                            </span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="text-sm font-semibold">
-                            Great match
-                        </div>
-
-                        <div class="text-[10px] text-slate-500 mt-1">
-                            8 keywords found
-                        </div>
-                    </div>
-
+                    <span class="text-violet-600"> → </span>
                 </div>
             </div>
 
+            <!-- HERO TEXT -->
 
-            <!-- AI card -->
-            <div
-                class="floating-card absolute -right-2 lg:-right-12 top-40 z-20 glass rounded-2xl p-4 w-60 hidden sm:block animate-float-slow">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <h1
+                    class="font-display text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight leading-[0.95] text-slate-950">
+                    Build a career
 
-                <div class="flex gap-3">
+                    <br />
 
-                    <div class="w-9 h-9 rounded-xl bg-violet-500/15 text-violet-400 flex items-center justify-center">
-                        ✦
-                    </div>
+                    <span class="gradient-text"> worth getting noticed. </span>
+                </h1>
 
-                    <div>
-                        <p class="text-xs text-slate-400">
-                            AI suggestion
-                        </p>
+                <p class="mt-8 text-base sm:text-lg lg:text-xl text-slate-500 max-w-2xl mx-auto leading-8">
+                    Create powerful resumes, CVs and cover letters with AI. Optimize
+                    every application for ATS and tailor your profile to the job you
+                    actually want.
+                </p>
 
-                        <p class="text-sm font-medium mt-1">
-                            Make your experience more impactful.
-                        </p>
-                    </div>
+                <!-- CTA -->
 
+                <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                    <button class="primary-button group px-7 py-4 rounded-2xl text-white font-semibold">
+                        Create My Resume
+
+                        <span class="inline-block ml-2 group-hover:translate-x-1 transition">
+                            →
+                        </span>
+                    </button>
+
+                    <button
+                        class="px-7 py-4 rounded-2xl bg-white border border-slate-200 font-semibold text-slate-700 hover:border-violet-300 hover:text-violet-600 transition">
+                        Explore Templates
+                    </button>
                 </div>
 
-                <button class="w-full mt-4 py-2 rounded-lg bg-violet-500/10 text-violet-300 text-xs font-semibold">
-                    Enhance with AI →
-                </button>
+                <div class="mt-6 flex justify-center items-center gap-4 text-xs text-slate-400">
+                    <span> ✓ No credit card required </span>
 
+                    <span> • </span>
+
+                    <span> Free to start </span>
+                </div>
             </div>
 
+            <!-- =====================================================
+             PRODUCT PREVIEW
+        ====================================================== -->
 
-            <!-- Main editor -->
-            <div class="relative glass rounded-[28px] p-2 sm:p-3 glow overflow-hidden">
+            <div class="relative max-w-6xl mx-auto mt-20 reveal">
+                <!-- ATS CARD -->
 
-                <!-- Browser top -->
-                <div class="h-10 px-3 flex items-center gap-2 border-b border-white/5">
-                    <span class="w-2.5 h-2.5 rounded-full bg-red-400/70"></span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/70"></span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-green-400/70"></span>
+                <div
+                    class="floating-card absolute -left-2 lg:-left-16 top-16 z-20 white-glass rounded-2xl p-4 w-52 hidden sm:block animate-float">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-slate-500"> ATS Compatibility </span>
 
-                    <div class="hidden sm:block mx-auto px-8 py-1 rounded-lg bg-white/5 text-[10px] text-slate-600">
-                        app.careerforge.ai/editor
+                        <span class="text-emerald-500 text-xs"> Excellent </span>
+                    </div>
+
+                    <div class="flex items-center gap-3 mt-4">
+                        <div class="score-ring w-14 h-14 rounded-full p-1">
+                            <div class="w-full h-full rounded-full bg-white flex items-center justify-center">
+                                <span class="text-sm font-bold text-slate-900"> 92 </span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="text-sm font-semibold text-slate-800">
+                                Great match
+                            </div>
+
+                            <div class="text-[10px] text-slate-400 mt-1">
+                                8 keywords found
+                            </div>
+                        </div>
                     </div>
                 </div>
 
+                <!-- AI CARD -->
 
-                <div class="grid lg:grid-cols-[220px_1fr] min-h-[550px]">
-
-                    <!-- Sidebar -->
-                    <aside class="hidden lg:block border-r border-white/5 p-5">
-
-                        <div class="text-[10px] uppercase tracking-widest text-slate-600 mb-5">
-                            Resume
+                <div
+                    class="floating-card absolute -right-2 lg:-right-12 top-40 z-20 white-glass rounded-2xl p-4 w-60 hidden sm:block animate-float-slow">
+                    <div class="flex gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-violet-100 text-violet-600 flex items-center justify-center">
+                            ✦
                         </div>
 
-                        <div class="space-y-1">
+                        <div>
+                            <p class="text-xs text-slate-400">AI suggestion</p>
 
-                            <div class="px-3 py-2.5 rounded-xl bg-violet-500/10 text-violet-300 text-xs font-medium">
-                                ✦ Personal Info
-                            </div>
-
-                            <div class="px-3 py-2.5 text-slate-500 text-xs">
-                                Experience
-                            </div>
-
-                            <div class="px-3 py-2.5 text-slate-500 text-xs">
-                                Education
-                            </div>
-
-                            <div class="px-3 py-2.5 text-slate-500 text-xs">
-                                Skills
-                            </div>
-
-                            <div class="px-3 py-2.5 text-slate-500 text-xs">
-                                Projects
-                            </div>
-
+                            <p class="text-sm font-medium mt-1 text-slate-800">
+                                Make your experience more impactful.
+                            </p>
                         </div>
+                    </div>
 
-                        <div class="mt-10">
-                            <div class="text-[10px] uppercase tracking-widest text-slate-600 mb-4">
-                                Template
-                            </div>
+                    <button class="w-full mt-4 py-2 rounded-lg bg-violet-50 text-violet-600 text-xs font-semibold">
+                        Enhance with AI →
+                    </button>
+                </div>
 
-                            <div class="rounded-xl border border-violet-500/30 p-2 bg-violet-500/5">
-                                <div class="h-20 rounded-lg bg-white/5"></div>
+                <!-- MAIN EDITOR -->
 
-                                <p class="text-[10px] text-center mt-2 text-slate-400">
-                                    Modern Pro
-                                </p>
-                            </div>
-                        </div>
+                <div class="relative white-glass rounded-[28px] p-2 sm:p-3 overflow-hidden">
+                    <!-- BROWSER TOP -->
 
-                    </aside>
+                    <div class="h-10 px-3 flex items-center gap-2 border-b border-slate-200">
+                        <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
 
+                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
 
-                    <!-- Preview -->
-                    <div class="relative bg-[#080b18] flex items-center justify-center p-5 sm:p-10">
+                        <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
 
                         <div
-                            class="resume-paper w-full max-w-[570px] aspect-[1/1.414] rounded-sm shadow-2xl p-7 sm:p-10">
+                            class="hidden sm:block mx-auto px-8 py-1 rounded-lg bg-slate-100 text-[10px] text-slate-400">
+                            app.careerforge.ai/editor
+                        </div>
+                    </div>
 
-                            <!-- Resume Header -->
-                            <div class="flex justify-between">
+                    <div class="grid lg:grid-cols-[220px_1fr] min-h-[550px]">
+                        <!-- SIDEBAR -->
 
-                                <div>
-                                    <div class="text-xl sm:text-2xl font-bold">
-                                        Alex Morgan
-                                    </div>
-
-                                    <div class="text-[8px] sm:text-[9px] text-slate-500 mt-1">
-                                        Senior Software Engineer
-                                    </div>
-                                </div>
-
-                                <div class="text-right text-[7px] sm:text-[8px] text-slate-400">
-                                    <div>alex@email.com</div>
-                                    <div>+1 234 567 890</div>
-                                    <div>New York, USA</div>
-                                </div>
-
+                        <aside class="hidden lg:block border-r border-slate-200 p-5">
+                            <div class="text-[10px] uppercase tracking-widest text-slate-400 mb-5">
+                                Resume
                             </div>
 
-                            <div class="h-px bg-slate-200 my-5"></div>
-
-
-                            <!-- Summary -->
-                            <div>
-                                <div class="text-[8px] font-bold uppercase tracking-widest text-violet-600 mb-2">
-                                    Profile
+                            <div class="space-y-1">
+                                <div class="px-3 py-2.5 rounded-xl bg-violet-50 text-violet-600 text-xs font-medium">
+                                    ✦ Personal Info
                                 </div>
 
-                                <div class="space-y-1.5">
-                                    <div class="resume-line w-full"></div>
-                                    <div class="resume-line w-[95%]"></div>
-                                    <div class="resume-line w-[78%]"></div>
-                                </div>
-                            </div>
-
-
-                            <!-- Experience -->
-                            <div class="mt-5">
-
-                                <div class="text-[8px] font-bold uppercase tracking-widest text-violet-600 mb-3">
+                                <div class="px-3 py-2.5 text-slate-400 text-xs">
                                     Experience
                                 </div>
 
+                                <div class="px-3 py-2.5 text-slate-400 text-xs">
+                                    Education
+                                </div>
+
+                                <div class="px-3 py-2.5 text-slate-400 text-xs">Skills</div>
+
+                                <div class="px-3 py-2.5 text-slate-400 text-xs">
+                                    Projects
+                                </div>
+                            </div>
+
+                            <div class="mt-10">
+                                <div class="text-[10px] uppercase tracking-widest text-slate-400 mb-4">
+                                    Template
+                                </div>
+
+                                <div class="rounded-xl border border-violet-200 p-2 bg-violet-50">
+                                    <div class="h-20 rounded-lg bg-white border border-slate-200"></div>
+
+                                    <p class="text-[10px] text-center mt-2 text-slate-500">
+                                        Modern Pro
+                                    </p>
+                                </div>
+                            </div>
+                        </aside>
+
+                        <!-- PREVIEW -->
+
+                        <div class="relative bg-slate-100 flex items-center justify-center p-5 sm:p-10">
+                            <div class="resume-paper w-full max-w-[570px] aspect-[1/1.414] rounded-sm p-7 sm:p-10">
+                                <!-- RESUME HEADER -->
+
                                 <div class="flex justify-between">
                                     <div>
-                                        <div class="text-[9px] font-bold">
+                                        <div class="text-xl sm:text-2xl font-bold">
+                                            Alex Morgan
+                                        </div>
+
+                                        <div class="text-[8px] sm:text-[9px] text-slate-500 mt-1">
                                             Senior Software Engineer
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right text-[7px] sm:text-[8px] text-slate-400">
+                                        <div>alex@email.com</div>
+
+                                        <div>+1 234 567 890</div>
+
+                                        <div>New York, USA</div>
+                                    </div>
+                                </div>
+
+                                <div class="h-px bg-slate-200 my-5"></div>
+
+                                <!-- PROFILE -->
+
+                                <div>
+                                    <div class="text-[8px] font-bold uppercase tracking-widest text-violet-600 mb-2">
+                                        Profile
+                                    </div>
+
+                                    <div class="space-y-1.5">
+                                        <div class="resume-line w-full"></div>
+
+                                        <div class="resume-line w-[95%]"></div>
+
+                                        <div class="resume-line w-[78%]"></div>
+                                    </div>
+                                </div>
+
+                                <!-- EXPERIENCE -->
+
+                                <div class="mt-5">
+                                    <div class="text-[8px] font-bold uppercase tracking-widest text-violet-600 mb-3">
+                                        Experience
+                                    </div>
+
+                                    <div class="flex justify-between">
+                                        <div>
+                                            <div class="text-[9px] font-bold">
+                                                Senior Software Engineer
+                                            </div>
+
+                                            <div class="text-[7px] text-slate-400">
+                                                Tech Company · New York
+                                            </div>
                                         </div>
 
                                         <div class="text-[7px] text-slate-400">
-                                            Tech Company · New York
+                                            2022 — Present
                                         </div>
                                     </div>
 
-                                    <div class="text-[7px] text-slate-400">
-                                        2022 — Present
+                                    <div class="space-y-1.5 mt-2">
+                                        <div class="resume-line w-full"></div>
+
+                                        <div class="resume-line w-[96%]"></div>
+
+                                        <div class="resume-line w-[91%]"></div>
                                     </div>
                                 </div>
 
-                                <div class="space-y-1.5 mt-2">
-                                    <div class="resume-line w-full"></div>
-                                    <div class="resume-line w-[96%]"></div>
-                                    <div class="resume-line w-[91%]"></div>
+                                <!-- SKILLS -->
+
+                                <div class="mt-6">
+                                    <div class="text-[8px] font-bold uppercase tracking-widest text-violet-600 mb-3">
+                                        Skills
+                                    </div>
+
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-2 py-1 bg-violet-50 text-violet-600 text-[7px] rounded">
+                                            C#
+                                        </span>
+
+                                        <span class="px-2 py-1 bg-violet-50 text-violet-600 text-[7px] rounded">
+                                            ASP.NET Core
+                                        </span>
+
+                                        <span class="px-2 py-1 bg-violet-50 text-violet-600 text-[7px] rounded">
+                                            React
+                                        </span>
+
+                                        <span class="px-2 py-1 bg-violet-50 text-violet-600 text-[7px] rounded">
+                                            PostgreSQL
+                                        </span>
+
+                                        <span class="px-2 py-1 bg-violet-50 text-violet-600 text-[7px] rounded">
+                                            Docker
+                                        </span>
+                                    </div>
                                 </div>
 
+                                <!-- PROJECT -->
+
+                                <div class="mt-6">
+                                    <div class="text-[8px] font-bold uppercase tracking-widest text-violet-600 mb-3">
+                                        Projects
+                                    </div>
+
+                                    <div class="space-y-2">
+                                        <div class="resume-line w-full"></div>
+
+                                        <div class="resume-line w-[84%]"></div>
+                                    </div>
+                                </div>
                             </div>
-
-
-                            <!-- Skills -->
-                            <div class="mt-6">
-
-                                <div class="text-[8px] font-bold uppercase tracking-widest text-violet-600 mb-3">
-                                    Skills
-                                </div>
-
-                                <div class="flex flex-wrap gap-2">
-
-                                    <span class="px-2 py-1 bg-violet-50 text-violet-600 text-[7px] rounded">
-                                        C#
-                                    </span>
-
-                                    <span class="px-2 py-1 bg-violet-50 text-violet-600 text-[7px] rounded">
-                                        ASP.NET Core
-                                    </span>
-
-                                    <span class="px-2 py-1 bg-violet-50 text-violet-600 text-[7px] rounded">
-                                        React
-                                    </span>
-
-                                    <span class="px-2 py-1 bg-violet-50 text-violet-600 text-[7px] rounded">
-                                        PostgreSQL
-                                    </span>
-
-                                    <span class="px-2 py-1 bg-violet-50 text-violet-600 text-[7px] rounded">
-                                        Docker
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-
-                            <!-- Projects -->
-                            <div class="mt-6">
-
-                                <div class="text-[8px] font-bold uppercase tracking-widest text-violet-600 mb-3">
-                                    Projects
-                                </div>
-
-                                <div class="space-y-2">
-                                    <div class="resume-line w-full"></div>
-                                    <div class="resume-line w-[84%]"></div>
-                                </div>
-
-                            </div>
-
                         </div>
-
                     </div>
-
                 </div>
             </div>
-
         </div>
+    </section>
 
-    </div>
-</section>
+    <!-- =========================================================
+     TRUST STRIP
+========================================================== -->
 
-
-<!-- =========================================================
-             TRUST STRIP
-        ========================================================== -->
-
-<section class="border-y border-white/5 bg-white/[0.015] overflow-hidden">
-
-    <div class="py-7">
-
-        <p class="text-center text-xs uppercase tracking-[0.25em] text-slate-600 mb-6">
-            Built for modern job seekers
-        </p>
-
-        <div class="flex overflow-hidden">
-
-            <div class="flex gap-16 min-w-max animate-marquee text-slate-500 font-semibold text-sm">
-
-                <span>SOFTWARE ENGINEERS</span>
-                <span>DESIGNERS</span>
-                <span>MARKETERS</span>
-                <span>STUDENTS</span>
-                <span>PRODUCT MANAGERS</span>
-                <span>DATA ANALYSTS</span>
-                <span>GRADUATES</span>
-                <span>DEVELOPERS</span>
-
-                <span>SOFTWARE ENGINEERS</span>
-                <span>DESIGNERS</span>
-                <span>MARKETERS</span>
-                <span>STUDENTS</span>
-                <span>PRODUCT MANAGERS</span>
-                <span>DATA ANALYSTS</span>
-                <span>GRADUATES</span>
-                <span>DEVELOPERS</span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-             FEATURES
-        ========================================================== -->
-
-<section id="features" class="py-28">
-
-    <div class="max-w-7xl mx-auto px-5 lg:px-8">
-
-        <div class="max-w-2xl">
-
-            <div class="text-violet-400 text-sm font-semibold mb-4">
-                POWERFUL BY DESIGN
-            </div>
-
-            <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight">
-                Everything you need to
-                <span class="text-slate-500">
-                    get hired.
-                </span>
-            </h2>
-
-            <p class="mt-5 text-slate-400 leading-7">
-                One intelligent platform for building, optimizing and
-                managing every part of your job application.
+    <section class="border-y border-slate-200 bg-white overflow-hidden">
+        <div class="py-7">
+            <p class="text-center text-xs uppercase tracking-[0.25em] text-slate-400 mb-6">
+                Built for modern job seekers
             </p>
 
+            <div class="flex overflow-hidden">
+                <div class="flex gap-16 min-w-max animate-marquee text-slate-400 font-semibold text-sm">
+                    <span>SOFTWARE ENGINEERS</span>
+                    <span>DESIGNERS</span>
+                    <span>MARKETERS</span>
+                    <span>STUDENTS</span>
+                    <span>PRODUCT MANAGERS</span>
+                    <span>DATA ANALYSTS</span>
+                    <span>GRADUATES</span>
+                    <span>DEVELOPERS</span>
+
+                    <span>SOFTWARE ENGINEERS</span>
+                    <span>DESIGNERS</span>
+                    <span>MARKETERS</span>
+                    <span>STUDENTS</span>
+                    <span>PRODUCT MANAGERS</span>
+                    <span>DATA ANALYSTS</span>
+                    <span>GRADUATES</span>
+                    <span>DEVELOPERS</span>
+                </div>
+            </div>
         </div>
+    </section>
 
+    <!-- =========================================================
+     FEATURES
+========================================================== -->
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
-
-            <!-- Feature -->
-            <div class="floating-card glass rounded-3xl p-7">
-
-                <div
-                    class="w-12 h-12 rounded-2xl bg-violet-500/10 text-violet-400 flex items-center justify-center text-xl">
-                    ✦
+    <section id="features" class="py-28">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <div class="max-w-2xl reveal">
+                <div class="text-violet-600 text-sm font-semibold mb-4">
+                    POWERFUL BY DESIGN
                 </div>
 
-                <h3 class="mt-6 text-lg font-semibold">
-                    AI Resume Builder
-                </h3>
+                <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-950">
+                    Everything you need to
 
-                <p class="mt-3 text-sm text-slate-400 leading-6">
-                    Turn your experience into powerful, professional
-                    resume content without starting from scratch.
-                </p>
-
-            </div>
-
-
-            <!-- Feature -->
-            <div class="floating-card glass rounded-3xl p-7">
-
-                <div
-                    class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl">
-                    ◉
-                </div>
-
-                <h3 class="mt-6 text-lg font-semibold">
-                    ATS Compatibility
-                </h3>
-
-                <p class="mt-3 text-sm text-slate-400 leading-6">
-                    Analyze your resume structure, keywords and
-                    formatting before submitting your application.
-                </p>
-
-            </div>
-
-
-            <!-- Feature -->
-            <div class="floating-card glass rounded-3xl p-7">
-
-                <div
-                    class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl">
-                    ◎
-                </div>
-
-                <h3 class="mt-6 text-lg font-semibold">
-                    Job Tailoring
-                </h3>
-
-                <p class="mt-3 text-sm text-slate-400 leading-6">
-                    Paste a job description and generate a tailored
-                    version using your real career information.
-                </p>
-
-            </div>
-
-
-            <!-- Feature -->
-            <div class="floating-card glass rounded-3xl p-7">
-
-                <div
-                    class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl">
-                    ✓
-                </div>
-
-                <h3 class="mt-6 text-lg font-semibold">
-                    Career Profile
-                </h3>
-
-                <p class="mt-3 text-sm text-slate-400 leading-6">
-                    Store your experience, education, projects and
-                    skills once and reuse them everywhere.
-                </p>
-
-            </div>
-
-
-            <!-- Feature -->
-            <div class="floating-card glass rounded-3xl p-7">
-
-                <div
-                    class="w-12 h-12 rounded-2xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-xl">
-                    ✎
-                </div>
-
-                <h3 class="mt-6 text-lg font-semibold">
-                    Cover Letter AI
-                </h3>
-
-                <p class="mt-3 text-sm text-slate-400 leading-6">
-                    Generate relevant, personalized cover letters
-                    based on your profile and target role.
-                </p>
-
-            </div>
-
-
-            <!-- Feature -->
-            <div class="floating-card glass rounded-3xl p-7">
-
-                <div
-                    class="w-12 h-12 rounded-2xl bg-orange-500/10 text-orange-400 flex items-center justify-center text-xl">
-                    ◇
-                </div>
-
-                <h3 class="mt-6 text-lg font-semibold">
-                    Global Templates
-                </h3>
-
-                <p class="mt-3 text-sm text-slate-400 leading-6">
-                    Create documents for different industries, career
-                    levels and international job markets.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-             HOW IT WORKS
-        ========================================================== -->
-
-<section id="how-it-works" class="py-28 bg-white/[0.015] border-y border-white/5">
-
-    <div class="max-w-7xl mx-auto px-5 lg:px-8">
-
-        <div class="text-center max-w-2xl mx-auto">
-
-            <div class="text-cyan-400 text-sm font-semibold">
-                SIMPLE PROCESS
-            </div>
-
-            <h2 class="font-display text-4xl sm:text-5xl font-bold mt-4">
-                From blank page to
-                <span class="gradient-text">
-                    job-ready.
-                </span>
-            </h2>
-
-        </div>
-
-
-        <div class="grid md:grid-cols-3 gap-8 mt-16">
-
-            <div class="relative text-center">
-
-                <div
-                    class="mx-auto w-16 h-16 rounded-2xl glass flex items-center justify-center text-2xl font-bold text-violet-400">
-                    01
-                </div>
-
-                <h3 class="mt-6 text-xl font-semibold">
-                    Build your profile
-                </h3>
-
-                <p class="mt-3 text-sm text-slate-400 leading-6">
-                    Add your experience, education, skills, projects
-                    and achievements once.
-                </p>
-
-            </div>
-
-
-            <div class="relative text-center">
-
-                <div
-                    class="mx-auto w-16 h-16 rounded-2xl glass flex items-center justify-center text-2xl font-bold text-indigo-400">
-                    02
-                </div>
-
-                <h3 class="mt-6 text-xl font-semibold">
-                    Let AI optimize it
-                </h3>
-
-                <p class="mt-3 text-sm text-slate-400 leading-6">
-                    Improve your content, analyze keywords and tailor
-                    your resume to specific jobs.
-                </p>
-
-            </div>
-
-
-            <div class="relative text-center">
-
-                <div
-                    class="mx-auto w-16 h-16 rounded-2xl glass flex items-center justify-center text-2xl font-bold text-cyan-400">
-                    03
-                </div>
-
-                <h3 class="mt-6 text-xl font-semibold">
-                    Apply with confidence
-                </h3>
-
-                <p class="mt-3 text-sm text-slate-400 leading-6">
-                    Export a polished document and track your job
-                    applications from one place.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-             TEMPLATES
-        ========================================================== -->
-
-<section id="templates" class="py-28">
-
-    <div class="max-w-7xl mx-auto px-5 lg:px-8">
-
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-
-            <div>
-
-                <div class="text-violet-400 text-sm font-semibold">
-                    DESIGNED TO STAND OUT
-                </div>
-
-                <h2 class="font-display text-4xl sm:text-5xl font-bold mt-4">
-                    Templates that look
-                    <span class="text-slate-500">
-                        professional.
-                    </span>
+                    <span class="text-slate-400"> get hired. </span>
                 </h2>
 
-            </div>
-
-            <button class="text-sm text-violet-400 hover:text-violet-300">
-                View all templates →
-            </button>
-
-        </div>
-
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
-
-            <!-- Template -->
-            <div class="template-card glass rounded-3xl p-4">
-
-                <div class="resume-paper rounded-2xl p-5 aspect-[1/1.3]">
-
-                    <div class="text-lg font-bold">
-                        Alex Morgan
-                    </div>
-
-                    <div class="text-[7px] text-slate-400 mt-1">
-                        Product Designer
-                    </div>
-
-                    <div class="h-px bg-slate-200 my-4"></div>
-
-                    <div class="resume-line-dark w-1/3"></div>
-
-                    <div class="space-y-1.5 mt-3">
-                        <div class="resume-line w-full"></div>
-                        <div class="resume-line w-[90%]"></div>
-                        <div class="resume-line w-[80%]"></div>
-                    </div>
-
-                    <div class="resume-line-dark w-1/4 mt-6"></div>
-
-                    <div class="space-y-1.5 mt-3">
-                        <div class="resume-line w-full"></div>
-                        <div class="resume-line w-[94%]"></div>
-                        <div class="resume-line w-[75%]"></div>
-                    </div>
-
-                </div>
-
-                <div class="p-2">
-                    <div class="font-medium text-sm">
-                        Minimal Pro
-                    </div>
-
-                    <div class="text-xs text-slate-500 mt-1">
-                        ATS Friendly
-                    </div>
-                </div>
-
-            </div>
-
-
-            <!-- Template -->
-            <div class="template-card glass rounded-3xl p-4">
-
-                <div class="resume-paper rounded-2xl p-5 aspect-[1/1.3]">
-
-                    <div class="flex gap-3">
-
-                        <div class="w-10 h-10 rounded-full bg-violet-100"></div>
-
-                        <div>
-                            <div class="text-sm font-bold">
-                                Jordan Lee
-                            </div>
-
-                            <div class="text-[7px] text-slate-400">
-                                Software Engineer
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="resume-line-dark w-1/3 mt-5"></div>
-
-                    <div class="space-y-1.5 mt-3">
-                        <div class="resume-line w-full"></div>
-                        <div class="resume-line w-[88%]"></div>
-                        <div class="resume-line w-[72%]"></div>
-                    </div>
-
-                    <div class="resume-line-dark w-1/4 mt-6"></div>
-
-                    <div class="space-y-1.5 mt-3">
-                        <div class="resume-line w-full"></div>
-                        <div class="resume-line w-[92%]"></div>
-                    </div>
-
-                </div>
-
-                <div class="p-2">
-                    <div class="font-medium text-sm">
-                        Modern Executive
-                    </div>
-
-                    <div class="text-xs text-slate-500 mt-1">
-                        Professional
-                    </div>
-                </div>
-
-            </div>
-
-
-            <!-- Template -->
-            <div class="template-card glass rounded-3xl p-4">
-
-                <div class="resume-paper rounded-2xl p-5 aspect-[1/1.3]">
-
-                    <div class="text-center">
-
-                        <div class="text-lg font-bold">
-                            Sarah Wilson
-                        </div>
-
-                        <div class="text-[7px] text-violet-600">
-                            Marketing Specialist
-                        </div>
-
-                    </div>
-
-                    <div class="h-px bg-violet-200 my-4"></div>
-
-                    <div class="resume-line-dark w-1/3 mx-auto"></div>
-
-                    <div class="space-y-1.5 mt-3">
-                        <div class="resume-line w-full"></div>
-                        <div class="resume-line w-[85%] mx-auto"></div>
-                        <div class="resume-line w-[70%] mx-auto"></div>
-                    </div>
-
-                    <div class="resume-line-dark w-1/4 mt-6"></div>
-
-                    <div class="space-y-1.5 mt-3">
-                        <div class="resume-line w-full"></div>
-                        <div class="resume-line w-[90%]"></div>
-                    </div>
-
-                </div>
-
-                <div class="p-2">
-                    <div class="font-medium text-sm">
-                        Creative
-                    </div>
-
-                    <div class="text-xs text-slate-500 mt-1">
-                        Modern
-                    </div>
-                </div>
-
-            </div>
-
-
-            <!-- Template -->
-            <div class="template-card glass rounded-3xl p-4">
-
-                <div class="resume-paper rounded-2xl p-5 aspect-[1/1.3]">
-
-                    <div class="grid grid-cols-[65px_1fr] gap-4">
-
-                        <div>
-
-                            <div class="h-20 bg-slate-900 rounded"></div>
-
-                            <div class="resume-line-dark w-full mt-5"></div>
-
-                            <div class="space-y-1.5 mt-3">
-                                <div class="resume-line w-full"></div>
-                                <div class="resume-line w-[80%]"></div>
-                            </div>
-
-                        </div>
-
-                        <div>
-
-                            <div class="text-sm font-bold">
-                                Michael Chen
-                            </div>
-
-                            <div class="text-[7px] text-slate-400">
-                                Business Analyst
-                            </div>
-
-                            <div class="resume-line-dark w-1/2 mt-6"></div>
-
-                            <div class="space-y-1.5 mt-3">
-                                <div class="resume-line w-full"></div>
-                                <div class="resume-line w-[92%]"></div>
-                                <div class="resume-line w-[75%]"></div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="p-2">
-                    <div class="font-medium text-sm">
-                        European Pro
-                    </div>
-
-                    <div class="text-xs text-slate-500 mt-1">
-                        International
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-             ATS SECTION
-        ========================================================== -->
-
-<section class="py-28">
-
-    <div class="max-w-7xl mx-auto px-5 lg:px-8">
-
-        <div class="relative overflow-hidden rounded-[32px] glass p-8 sm:p-12 lg:p-16">
-
-            <div class="absolute w-96 h-96 bg-violet-600/20 rounded-full blur-[100px] -right-20 -top-40"></div>
-
-            <div class="relative grid lg:grid-cols-2 gap-14 items-center">
-
-                <div>
-
-                    <div class="text-violet-400 text-sm font-semibold">
-                        SMART OPTIMIZATION
-                    </div>
-
-                    <h2 class="font-display text-4xl sm:text-5xl font-bold mt-5 leading-tight">
-                        Know exactly how your
-                        resume performs.
-                    </h2>
-
-                    <p class="mt-6 text-slate-400 leading-7 max-w-xl">
-                        Analyze your resume against a target job.
-                        Discover missing keywords, improve weak
-                        sections and make your application more
-                        machine-readable.
-                    </p>
-
-                    <button
-                        class="mt-8 px-6 py-3.5 rounded-xl bg-white text-slate-950 text-sm font-semibold hover:bg-slate-100 transition">
-                        Check My Resume
-                    </button>
-
-                </div>
-
-
-                <!-- Score UI -->
-                <div class="glass-light rounded-3xl p-6 sm:p-8">
-
-                    <div class="flex items-center justify-between">
-
-                        <div>
-                            <div class="text-sm font-medium">
-                                Resume Analysis
-                            </div>
-
-                            <div class="text-xs text-slate-500 mt-1">
-                                Software Engineer · New York
-                            </div>
-                        </div>
-
-                        <div class="text-emerald-400 text-xs">
-                            Excellent
-                        </div>
-
-                    </div>
-
-
-                    <div class="flex items-center gap-6 mt-8">
-
-                        <div class="score-ring w-28 h-28 rounded-full p-2">
-
-                            <div
-                                class="w-full h-full rounded-full bg-[#0b0f20] flex flex-col items-center justify-center">
-                                <span id="atsScore" class="text-3xl font-bold">
-                                    0
-                                </span>
-
-                                <span class="text-[10px] text-slate-500">
-                                    / 100
-                                </span>
-                            </div>
-
-                        </div>
-
-
-                        <div class="flex-1 space-y-4">
-
-                            <div>
-                                <div class="flex justify-between text-xs mb-2">
-                                    <span class="text-slate-400">
-                                        Keywords
-                                    </span>
-
-                                    <span class="text-white">
-                                        94%
-                                    </span>
-                                </div>
-
-                                <div class="h-1.5 rounded-full bg-white/5">
-                                    <div class="h-full w-[94%] rounded-full bg-violet-500"></div>
-                                </div>
-                            </div>
-
-
-                            <div>
-                                <div class="flex justify-between text-xs mb-2">
-                                    <span class="text-slate-400">
-                                        Formatting
-                                    </span>
-
-                                    <span class="text-white">
-                                        96%
-                                    </span>
-                                </div>
-
-                                <div class="h-1.5 rounded-full bg-white/5">
-                                    <div class="h-full w-[96%] rounded-full bg-indigo-500"></div>
-                                </div>
-                            </div>
-
-
-                            <div>
-                                <div class="flex justify-between text-xs mb-2">
-                                    <span class="text-slate-400">
-                                        Content
-                                    </span>
-
-                                    <span class="text-white">
-                                        89%
-                                    </span>
-                                </div>
-
-                                <div class="h-1.5 rounded-full bg-white/5">
-                                    <div class="h-full w-[89%] rounded-full bg-cyan-500"></div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="grid grid-cols-2 gap-3 mt-8">
-
-                        <div class="rounded-xl bg-emerald-500/5 border border-emerald-500/10 p-3">
-                            <div class="text-emerald-400 text-sm">
-                                ✓ 18
-                            </div>
-
-                            <div class="text-[10px] text-slate-500 mt-1">
-                                Strong keywords
-                            </div>
-                        </div>
-
-                        <div class="rounded-xl bg-orange-500/5 border border-orange-500/10 p-3">
-                            <div class="text-orange-400 text-sm">
-                                ! 3
-                            </div>
-
-                            <div class="text-[10px] text-slate-500 mt-1">
-                                Suggestions
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-             PRICING
-        ========================================================== -->
-
-<section id="pricing" class="py-28 bg-white/[0.015] border-y border-white/5">
-
-    <div class="max-w-7xl mx-auto px-5 lg:px-8">
-
-        <div class="text-center max-w-2xl mx-auto">
-
-            <div class="text-cyan-400 text-sm font-semibold">
-                SIMPLE PRICING
-            </div>
-
-            <h2 class="font-display text-4xl sm:text-5xl font-bold mt-4">
-                Start free.
-                <span class="gradient-text">
-                    Upgrade when ready.
-                </span>
-            </h2>
-
-            <p class="text-slate-400 mt-5">
-                Build your first resume for free. Upgrade when you need
-                more power.
-            </p>
-
-        </div>
-
-
-        <div class="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto mt-14">
-
-            <!-- Free -->
-            <div class="glass rounded-3xl p-8">
-
-                <div class="text-sm text-slate-400">
-                    Free
-                </div>
-
-                <div class="text-4xl font-bold mt-3">
-                    $0
-                </div>
-
-                <p class="text-sm text-slate-500 mt-2">
-                    Perfect for getting started.
+                <p class="mt-5 text-slate-500 leading-7">
+                    One intelligent platform for building, optimizing and managing
+                    every part of your job application.
                 </p>
-
-                <div class="h-px bg-white/5 my-7"></div>
-
-                <ul class="space-y-4 text-sm text-slate-300">
-
-                    <li>✓ 1 career profile</li>
-                    <li>✓ Basic templates</li>
-                    <li>✓ Limited AI enhancements</li>
-                    <li>✓ ATS analysis</li>
-                    <li>✓ PDF export</li>
-
-                </ul>
-
-                <button class="w-full mt-8 py-3.5 rounded-xl glass font-semibold hover:bg-white/10 transition">
-                    Get Started
-                </button>
-
             </div>
 
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
+                <!-- FEATURE 1 -->
 
-            <!-- Pro -->
-            <div class="relative rounded-3xl p-[1px] bg-gradient-to-br from-violet-500 via-indigo-500 to-cyan-500">
+                <div class="floating-card reveal bg-white rounded-3xl p-7 border border-slate-200">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-violet-50 text-violet-600 flex items-center justify-center text-xl">
+                        ✦
+                    </div>
 
-                <div class="bg-[#080b18] rounded-[23px] p-8 h-full">
+                    <h3 class="mt-6 text-lg font-semibold text-slate-900">
+                        AI Resume Builder
+                    </h3>
 
-                    <div class="flex items-center justify-between">
+                    <p class="mt-3 text-sm text-slate-500 leading-6">
+                        Turn your experience into powerful, professional resume content
+                        without starting from scratch.
+                    </p>
+                </div>
 
-                        <div class="text-sm text-violet-400">
-                            Pro
+                <!-- FEATURE 2 -->
+
+                <div class="floating-card reveal bg-white rounded-3xl p-7 border border-slate-200">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center text-xl">
+                        ◉
+                    </div>
+
+                    <h3 class="mt-6 text-lg font-semibold text-slate-900">
+                        ATS Compatibility
+                    </h3>
+
+                    <p class="mt-3 text-sm text-slate-500 leading-6">
+                        Analyze your resume structure, keywords and formatting before
+                        submitting your application.
+                    </p>
+                </div>
+
+                <!-- FEATURE 3 -->
+
+                <div class="floating-card reveal bg-white rounded-3xl p-7 border border-slate-200">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl">
+                        ◎
+                    </div>
+
+                    <h3 class="mt-6 text-lg font-semibold text-slate-900">
+                        Job Tailoring
+                    </h3>
+
+                    <p class="mt-3 text-sm text-slate-500 leading-6">
+                        Paste a job description and generate a tailored version using
+                        your real career information.
+                    </p>
+                </div>
+
+                <!-- FEATURE 4 -->
+
+                <div class="floating-card reveal bg-white rounded-3xl p-7 border border-slate-200">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl">
+                        ✓
+                    </div>
+
+                    <h3 class="mt-6 text-lg font-semibold text-slate-900">
+                        Career Profile
+                    </h3>
+
+                    <p class="mt-3 text-sm text-slate-500 leading-6">
+                        Store your experience, education, projects and skills once and
+                        reuse them everywhere.
+                    </p>
+                </div>
+
+                <!-- FEATURE 5 -->
+
+                <div class="floating-card reveal bg-white rounded-3xl p-7 border border-slate-200">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center text-xl">
+                        ✎
+                    </div>
+
+                    <h3 class="mt-6 text-lg font-semibold text-slate-900">
+                        Cover Letter AI
+                    </h3>
+
+                    <p class="mt-3 text-sm text-slate-500 leading-6">
+                        Generate relevant, personalized cover letters based on your
+                        profile and target role.
+                    </p>
+                </div>
+
+                <!-- FEATURE 6 -->
+
+                <div class="floating-card reveal bg-white rounded-3xl p-7 border border-slate-200">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center text-xl">
+                        ◇
+                    </div>
+
+                    <h3 class="mt-6 text-lg font-semibold text-slate-900">
+                        Global Templates
+                    </h3>
+
+                    <p class="mt-3 text-sm text-slate-500 leading-6">
+                        Create documents for different industries, career levels and
+                        international job markets.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+     HOW IT WORKS
+========================================================== -->
+
+    <section id="how-it-works" class="py-28 bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto reveal">
+                <div class="text-cyan-600 text-sm font-semibold">
+                    SIMPLE PROCESS
+                </div>
+
+                <h2 class="font-display text-4xl sm:text-5xl font-bold mt-4 text-slate-950">
+                    From blank page to
+
+                    <span class="gradient-text"> job-ready. </span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mt-16">
+                <div class="text-center reveal">
+                    <div
+                        class="mx-auto w-16 h-16 rounded-2xl bg-violet-50 border border-violet-100 flex items-center justify-center text-2xl font-bold text-violet-600">
+                        01
+                    </div>
+
+                    <h3 class="mt-6 text-xl font-semibold text-slate-900">
+                        Build your profile
+                    </h3>
+
+                    <p class="mt-3 text-sm text-slate-500 leading-6">
+                        Add your experience, education, skills, projects and
+                        achievements once.
+                    </p>
+                </div>
+
+                <div class="text-center reveal">
+                    <div
+                        class="mx-auto w-16 h-16 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-2xl font-bold text-indigo-600">
+                        02
+                    </div>
+
+                    <h3 class="mt-6 text-xl font-semibold text-slate-900">
+                        Let AI optimize it
+                    </h3>
+
+                    <p class="mt-3 text-sm text-slate-500 leading-6">
+                        Improve your content, analyze keywords and tailor your resume to
+                        specific jobs.
+                    </p>
+                </div>
+
+                <div class="text-center reveal">
+                    <div
+                        class="mx-auto w-16 h-16 rounded-2xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-2xl font-bold text-cyan-600">
+                        03
+                    </div>
+
+                    <h3 class="mt-6 text-xl font-semibold text-slate-900">
+                        Apply with confidence
+                    </h3>
+
+                    <p class="mt-3 text-sm text-slate-500 leading-6">
+                        Export a polished document and track your job applications from
+                        one place.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+     TEMPLATES
+========================================================== -->
+
+    <section id="templates" class="py-28">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 reveal">
+                <div>
+                    <div class="text-violet-600 text-sm font-semibold">
+                        DESIGNED TO STAND OUT
+                    </div>
+
+                    <h2 class="font-display text-4xl sm:text-5xl font-bold mt-4 text-slate-950">
+                        Templates that look
+
+                        <span class="text-slate-400"> professional. </span>
+                    </h2>
+                </div>
+
+                <button class="text-sm text-violet-600 hover:text-violet-800">
+                    View all templates →
+                </button>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
+                <!-- TEMPLATE 1 -->
+
+                <div class="template-card reveal bg-white rounded-3xl p-4 border border-slate-200">
+                    <div class="resume-paper rounded-2xl p-5 aspect-[1/1.3]">
+                        <div class="text-lg font-bold">Alex Morgan</div>
+
+                        <div class="text-[7px] text-slate-400 mt-1">
+                            Product Designer
                         </div>
 
-                        <span class="px-2.5 py-1 rounded-full bg-violet-500/10 text-violet-300 text-[10px]">
-                            MOST POPULAR
-                        </span>
+                        <div class="h-px bg-slate-200 my-4"></div>
 
+                        <div class="resume-line-dark w-1/3"></div>
+
+                        <div class="space-y-1.5 mt-3">
+                            <div class="resume-line w-full"></div>
+                            <div class="resume-line w-[90%]"></div>
+                            <div class="resume-line w-[80%]"></div>
+                        </div>
+
+                        <div class="resume-line-dark w-1/4 mt-6"></div>
+
+                        <div class="space-y-1.5 mt-3">
+                            <div class="resume-line w-full"></div>
+                            <div class="resume-line w-[94%]"></div>
+                            <div class="resume-line w-[75%]"></div>
+                        </div>
                     </div>
 
-                    <div class="text-4xl font-bold mt-3">
-                        $12
-                        <span class="text-sm text-slate-500 font-normal">
-                            / month
-                        </span>
+                    <div class="p-2">
+                        <div class="font-medium text-sm text-slate-800">
+                            Minimal Pro
+                        </div>
+
+                        <div class="text-xs text-slate-400 mt-1">ATS Friendly</div>
+                    </div>
+                </div>
+
+                <!-- TEMPLATE 2 -->
+
+                <div class="template-card reveal bg-white rounded-3xl p-4 border border-slate-200">
+                    <div class="resume-paper rounded-2xl p-5 aspect-[1/1.3]">
+                        <div class="flex gap-3">
+                            <div class="w-10 h-10 rounded-full bg-violet-100"></div>
+
+                            <div>
+                                <div class="text-sm font-bold">Jordan Lee</div>
+
+                                <div class="text-[7px] text-slate-400">
+                                    Software Engineer
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="resume-line-dark w-1/3 mt-5"></div>
+
+                        <div class="space-y-1.5 mt-3">
+                            <div class="resume-line w-full"></div>
+                            <div class="resume-line w-[88%]"></div>
+                            <div class="resume-line w-[72%]"></div>
+                        </div>
+
+                        <div class="resume-line-dark w-1/4 mt-6"></div>
+
+                        <div class="space-y-1.5 mt-3">
+                            <div class="resume-line w-full"></div>
+                            <div class="resume-line w-[92%]"></div>
+                        </div>
                     </div>
 
-                    <p class="text-sm text-slate-500 mt-2">
-                        Everything you need to apply smarter.
+                    <div class="p-2">
+                        <div class="font-medium text-sm text-slate-800">
+                            Modern Executive
+                        </div>
+
+                        <div class="text-xs text-slate-400 mt-1">Professional</div>
+                    </div>
+                </div>
+
+                <!-- TEMPLATE 3 -->
+
+                <div class="template-card reveal bg-white rounded-3xl p-4 border border-slate-200">
+                    <div class="resume-paper rounded-2xl p-5 aspect-[1/1.3]">
+                        <div class="text-center">
+                            <div class="text-lg font-bold">Sarah Wilson</div>
+
+                            <div class="text-[7px] text-violet-600">
+                                Marketing Specialist
+                            </div>
+                        </div>
+
+                        <div class="h-px bg-violet-200 my-4"></div>
+
+                        <div class="resume-line-dark w-1/3 mx-auto"></div>
+
+                        <div class="space-y-1.5 mt-3">
+                            <div class="resume-line w-full"></div>
+                            <div class="resume-line w-[85%] mx-auto"></div>
+                            <div class="resume-line w-[70%] mx-auto"></div>
+                        </div>
+
+                        <div class="resume-line-dark w-1/4 mt-6"></div>
+
+                        <div class="space-y-1.5 mt-3">
+                            <div class="resume-line w-full"></div>
+                            <div class="resume-line w-[90%]"></div>
+                        </div>
+                    </div>
+
+                    <div class="p-2">
+                        <div class="font-medium text-sm text-slate-800">Creative</div>
+
+                        <div class="text-xs text-slate-400 mt-1">Modern</div>
+                    </div>
+                </div>
+
+                <!-- TEMPLATE 4 -->
+
+                <div class="template-card reveal bg-white rounded-3xl p-4 border border-slate-200">
+                    <div class="resume-paper rounded-2xl p-5 aspect-[1/1.3]">
+                        <div class="grid grid-cols-[65px_1fr] gap-4">
+                            <div>
+                                <div class="h-20 bg-slate-900 rounded"></div>
+
+                                <div class="resume-line-dark w-full mt-5"></div>
+
+                                <div class="space-y-1.5 mt-3">
+                                    <div class="resume-line w-full"></div>
+                                    <div class="resume-line w-[80%]"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="text-sm font-bold">Michael Chen</div>
+
+                                <div class="text-[7px] text-slate-400">
+                                    Business Analyst
+                                </div>
+
+                                <div class="resume-line-dark w-1/2 mt-6"></div>
+
+                                <div class="space-y-1.5 mt-3">
+                                    <div class="resume-line w-full"></div>
+                                    <div class="resume-line w-[92%]"></div>
+                                    <div class="resume-line w-[75%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-2">
+                        <div class="font-medium text-sm text-slate-800">
+                            European Pro
+                        </div>
+
+                        <div class="text-xs text-slate-400 mt-1">International</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+     ATS SECTION
+========================================================== -->
+
+    <section class="py-28">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <div
+                class="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-violet-50 via-white to-cyan-50 border border-slate-200 p-8 sm:p-12 lg:p-16 reveal">
+                <div class="absolute w-96 h-96 bg-violet-300/30 rounded-full blur-[100px] -right-20 -top-40"></div>
+
+                <div class="relative grid lg:grid-cols-2 gap-14 items-center">
+                    <div>
+                        <div class="text-violet-600 text-sm font-semibold">
+                            SMART OPTIMIZATION
+                        </div>
+
+                        <h2 class="font-display text-4xl sm:text-5xl font-bold mt-5 leading-tight text-slate-950">
+                            Know exactly how your resume performs.
+                        </h2>
+
+                        <p class="mt-6 text-slate-500 leading-7 max-w-xl">
+                            Analyze your resume against a target job. Discover missing
+                            keywords, improve weak sections and make your application more
+                            machine-readable.
+                        </p>
+
+                        <button class="primary-button mt-8 px-6 py-3.5 rounded-xl text-white text-sm font-semibold">
+                            Check My Resume
+                        </button>
+                    </div>
+
+                    <!-- SCORE UI -->
+
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="text-sm font-medium text-slate-800">
+                                    Resume Analysis
+                                </div>
+
+                                <div class="text-xs text-slate-400 mt-1">
+                                    Software Engineer · New York
+                                </div>
+                            </div>
+
+                            <div class="text-emerald-500 text-xs">Excellent</div>
+                        </div>
+
+                        <div class="flex items-center gap-6 mt-8">
+                            <div class="score-ring w-28 h-28 rounded-full p-2">
+                                <div
+                                    class="w-full h-full rounded-full bg-white flex flex-col items-center justify-center">
+                                    <span id="atsScore" class="text-3xl font-bold text-slate-900">
+                                        0
+                                    </span>
+
+                                    <span class="text-[10px] text-slate-400"> / 100 </span>
+                                </div>
+                            </div>
+
+                            <div class="flex-1 space-y-4">
+                                <div>
+                                    <div class="flex justify-between text-xs mb-2">
+                                        <span class="text-slate-500"> Keywords </span>
+
+                                        <span class="text-slate-800"> 94% </span>
+                                    </div>
+
+                                    <div class="h-1.5 rounded-full bg-slate-100">
+                                        <div class="h-full w-[94%] rounded-full bg-violet-500"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-xs mb-2">
+                                        <span class="text-slate-500"> Formatting </span>
+
+                                        <span class="text-slate-800"> 96% </span>
+                                    </div>
+
+                                    <div class="h-1.5 rounded-full bg-slate-100">
+                                        <div class="h-full w-[96%] rounded-full bg-indigo-500"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-xs mb-2">
+                                        <span class="text-slate-500"> Content </span>
+
+                                        <span class="text-slate-800"> 89% </span>
+                                    </div>
+
+                                    <div class="h-1.5 rounded-full bg-slate-100">
+                                        <div class="h-full w-[89%] rounded-full bg-cyan-500"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 mt-8">
+                            <div class="rounded-xl bg-emerald-50 border border-emerald-100 p-3">
+                                <div class="text-emerald-600 text-sm">✓ 18</div>
+
+                                <div class="text-[10px] text-slate-400 mt-1">
+                                    Strong keywords
+                                </div>
+                            </div>
+
+                            <div class="rounded-xl bg-orange-50 border border-orange-100 p-3">
+                                <div class="text-orange-600 text-sm">! 3</div>
+
+                                <div class="text-[10px] text-slate-400 mt-1">
+                                    Suggestions
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+     PRICING
+========================================================== -->
+
+    <section id="pricing" class="py-28 bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto reveal">
+                <div class="text-cyan-600 text-sm font-semibold">
+                    SIMPLE PRICING
+                </div>
+
+                <h2 class="font-display text-4xl sm:text-5xl font-bold mt-4 text-slate-950">
+                    Start free.
+
+                    <span class="gradient-text"> Upgrade when ready. </span>
+                </h2>
+
+                <p class="text-slate-500 mt-5">
+                    Build your first resume for free. Upgrade when you need more
+                    power.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto mt-14">
+                <!-- FREE -->
+
+                <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm reveal">
+                    <div class="text-sm text-slate-500">Free</div>
+
+                    <div class="text-4xl font-bold mt-3 text-slate-950">$0</div>
+
+                    <p class="text-sm text-slate-400 mt-2">
+                        Perfect for getting started.
                     </p>
 
-                    <div class="h-px bg-white/5 my-7"></div>
+                    <div class="h-px bg-slate-200 my-7"></div>
 
-                    <ul class="space-y-4 text-sm text-slate-300">
-
-                        <li>✓ Unlimited resumes</li>
-                        <li>✓ Premium templates</li>
-                        <li>✓ AI resume enhancement</li>
-                        <li>✓ Advanced ATS analysis</li>
-                        <li>✓ Job-specific tailoring</li>
-                        <li>✓ Cover letter generator</li>
-                        <li>✓ DOCX + PDF export</li>
-
+                    <ul class="space-y-4 text-sm text-slate-600">
+                        <li>✓ 1 career profile</li>
+                        <li>✓ Basic templates</li>
+                        <li>✓ Limited AI enhancements</li>
+                        <li>✓ ATS analysis</li>
+                        <li>✓ PDF export</li>
                     </ul>
 
                     <button
-                        class="w-full mt-8 py-3.5 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 font-semibold shadow-lg shadow-violet-600/20 hover:shadow-violet-600/40 transition">
-                        Start Pro
+                        class="w-full mt-8 py-3.5 rounded-xl bg-slate-100 text-slate-800 font-semibold hover:bg-slate-200 transition">
+                        Get Started
                     </button>
-
                 </div>
 
+                <!-- PRO -->
+
+                <div
+                    class="relative rounded-3xl p-[1px] bg-gradient-to-br from-violet-500 via-indigo-500 to-cyan-500 reveal">
+                    <div class="bg-white rounded-[23px] p-8 h-full">
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-violet-600 font-semibold">Pro</div>
+
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-violet-50 text-violet-600 text-[10px] font-semibold">
+                                MOST POPULAR
+                            </span>
+                        </div>
+
+                        <div class="text-4xl font-bold mt-3 text-slate-950">
+                            $12
+
+                            <span class="text-sm text-slate-400 font-normal">
+                                / month
+                            </span>
+                        </div>
+
+                        <p class="text-sm text-slate-400 mt-2">
+                            Everything you need to apply smarter.
+                        </p>
+
+                        <div class="h-px bg-slate-200 my-7"></div>
+
+                        <ul class="space-y-4 text-sm text-slate-600">
+                            <li>✓ Unlimited resumes</li>
+                            <li>✓ Premium templates</li>
+                            <li>✓ AI resume enhancement</li>
+                            <li>✓ Advanced ATS analysis</li>
+                            <li>✓ Job-specific tailoring</li>
+                            <li>✓ Cover letter generator</li>
+                            <li>✓ DOCX + PDF export</li>
+                        </ul>
+
+                        <button class="primary-button w-full mt-8 py-3.5 rounded-xl text-white font-semibold">
+                            Start Pro
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+     FINAL CTA
+========================================================== -->
+
+    <section class="py-32">
+        <div class="max-w-4xl mx-auto px-5 text-center reveal">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-xs text-slate-500 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-violet-500 animate-pulse"></span>
+
+                Your next opportunity starts here.
             </div>
 
+            <h2 class="font-display text-5xl sm:text-6xl font-bold mt-8 tracking-tight text-slate-950">
+                Your experience is
+
+                <span class="gradient-text"> worth showcasing. </span>
+            </h2>
+
+            <p class="mt-6 text-slate-500 max-w-xl mx-auto leading-7">
+                Build a professional career profile and create applications that are
+                tailored for the opportunities you want.
+            </p>
+
+            <button class="primary-button mt-9 px-8 py-4 rounded-2xl text-white font-semibold">
+                Create Your Free Resume →
+            </button>
         </div>
+    </section>
+</main>
 
-    </div>
-
-</section>
-
- 

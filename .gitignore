@@ -150,4 +150,5 @@ docker-compose.override.yml
 artifacts/
 TestResults/
 Generated/
+node_modules
 ```

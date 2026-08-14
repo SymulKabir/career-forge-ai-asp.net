@@ -2,7 +2,11 @@
 <html lang="en">
 
 <head>
-
+    <title>CareerForge AI — Build a Resume That Gets Noticed</title>
+<meta
+            name="keywords"
+            content="AI resume builder, CV builder, ATS resume checker, cover letter generator, resume templates"
+        />
     <meta charset="utf-8" />
 
     <meta name="viewport"
@@ -20,23 +24,27 @@
           href="~/css/site.css"
           asp-append-version="true" />
 
+      <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    />
     @await RenderSectionAsync("Styles", required: false)
 
 </head>
 
-<body>
+<body class="text-white antialiased">
 
-    <partial name="Components/Header/Header" />
+    <partial name="Components/Header/Index" />
 
     <main>
         @RenderBody()
     </main>
-
+    <partial name="Components/Footer/Index" />
     <script src="~/js/site.js"
             asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
-
+    
 </body>
 
 </html>

@@ -1,16 +1,23 @@
 {
-  "name": "careerforgeai",
+  "name": "career-forge-ai-asp.net",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SymulKabir/career-forge-ai-asp.net.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "@tailwindcss/cli": "^4.3.3",
-    "tailwindcss": "^4.3.3"
+  "bugs": {
+    "url": "https://github.com/SymulKabir/career-forge-ai-asp.net/issues"
+  },
+  "homepage": "https://github.com/SymulKabir/career-forge-ai-asp.net#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
   }
 }

@@ -49,19 +49,17 @@
                 <div class="text-center pt-2">
 
 
-                    <div
-                        class="mx-auto   flex items-center justify-center ">
+                    <div class="mx-auto   flex items-center justify-center ">
 
                        
-                    <partial name="Components/Logo/Index"
-                        view-data='new ViewDataDictionary(ViewData)
-                        {
-                            ["LogoMode"] = "half",
-                            ["LogoSize"] = "w-12 h-12",
-                            ["IconSize"] = "w-6 h-6"
-                        }' />
+                        <partial name="Components/Logo/Index" view-data='new ViewDataDictionary(ViewData)
+                                 {
+                                     ["LogoMode"] = "half",
+                                     ["LogoSize"] = "w-12 h-12",
+                                     ["IconSize"] = "w-6 h-6"
+                                 }' />
 
-                    </div>
+</div>
 
 
                     <h2 id="authTitle"
@@ -150,8 +148,13 @@
 
 
                 <!-- FORM -->
-                <form id="authForm" class="space-y-4">
-
+                <form 
+                    id="authForm" 
+                    class="space-y-4"
+                    method="post"
+                    action="/Auth/Login"
+                >
+                    @Html.AntiForgeryToken()
                     <!-- NAME -->
                     <div id="nameField" class="auth-field hidden">
 
@@ -163,7 +166,7 @@
 
                         <div class="relative">
 
-                            <input id="authName" type="text" autocomplete="name" placeholder="John Doe"
+                            <input name="Name" id="authName" type="text" autocomplete="name" placeholder="John Doe"
                                    class="auth-input pl-11" />
 
                             <svg class="auth-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -190,8 +193,8 @@
 
                         <div class="relative">
 
-                            <input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com"
-                                   required class="auth-input pl-11" />
+                            <input name="Email" id="authEmail" type="email" autocomplete="email"
+                                   placeholder="you@example.com" required class="auth-input pl-11" />
 
                             <svg class="auth-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
                                  stroke="currentColor" stroke-width="2">
@@ -229,7 +232,7 @@
 
                         <div class="relative">
 
-                            <input id="authPassword" type="password" autocomplete="current-password"
+                            <input name="Password" id="authPassword" type="password" autocomplete="current-password"
                                    placeholder="••••••••" required class="auth-input pl-11 pr-12" />
 
                             <svg class="auth-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"

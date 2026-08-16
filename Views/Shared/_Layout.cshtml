@@ -1,38 +1,37 @@
-﻿<!DOCTYPE html>
+﻿@using CareerForgeAI.ViewModels.Auth
+
+<!DOCTYPE html>
 <html lang="en">
 
-<head> 
-<meta
-            name="keywords"
-            content="AI resume builder, CV builder, ATS resume checker, cover letter generator, resume templates"
-        />
+<head>
+    <meta name="keywords"
+          content="AI resume builder, CV builder, ATS resume checker, cover letter generator, resume templates" />
     <meta charset="utf-8" />
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>
         @ViewData[index: "Title"]
     </title>
 
 
-    <link rel="stylesheet"
-          href="~/css/tailwind.css"
-          asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/tailwind.css" asp-append-version="true" />
 
-    <link rel="stylesheet"
-          href="~/css/site.css"
-          asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
-      <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    /> 
+    <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
 
     @* This CDN will support in development time *@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="~/js/site.js" defer asp-append-version="true"></script>
-   
+    @* Toastify JS *@
+    <link rel="stylesheet" href="~/css/utils/toast.css" asp-append-version="true" />
+
+    <script src="~/js/utils/toast.js" asp-append-version="true">
+    </script>
+
     @await RenderSectionAsync("Styles", required: false)
 
 </head>
@@ -40,13 +39,13 @@
 <body class="antialiased">
 
     <partial name="Components/Header/Index" />
- 
-    @RenderBody() 
-    <partial name="Components/Auth/Index" />
+
+    @RenderBody()
+    <partial name="Components/Auth/Index" model="new RegisterViewModel()" />
     <partial name="Components/Footer/Index" />
 
     @await RenderSectionAsync("Scripts", required: false)
-    
+
 </body>
 
 </html>

@@ -11,17 +11,23 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         entity.HasKey(u => u.Id);
 
         entity.HasIndex(u => u.Email)
-              .IsUnique();
+            .IsUnique();
 
         entity.Property(u => u.Name)
-              .HasMaxLength(100)
-              .IsRequired();
+            .HasMaxLength(100)
+            .IsRequired();
 
         entity.Property(u => u.Email)
-              .HasMaxLength(255)
-              .IsRequired();
+            .HasMaxLength(255)
+            .IsRequired();
 
         entity.Property(u => u.PasswordHash)
-              .IsRequired();
+            .IsRequired();
+
+        entity.Property(u => u.CreatedAt)
+            .IsRequired();
+
+        entity.Property(u => u.UpdatedAt)
+            .IsRequired(false);
     }
 }

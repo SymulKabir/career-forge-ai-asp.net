@@ -11,12 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>
-        @ViewData[index: "Title"]
+        @(ViewData[index: "Title"] ?? "CareerForge AI — Your career, forged by AI")
     </title>
 
-
     <link rel="stylesheet" href="~/css/tailwind.css" asp-append-version="true" />
-
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
     <link
@@ -26,9 +24,8 @@
     @* This CDN will support in development time *@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="~/js/site.js" defer asp-append-version="true"></script>
-    @* Toastify JS *@
+    @* Toast *@
     <link rel="stylesheet" href="~/css/utils/toast.css" asp-append-version="true" />
-
     <script src="~/js/utils/toast.js" asp-append-version="true">
     </script>
 
@@ -37,13 +34,8 @@
 </head>
 
 <body class="antialiased">
-
-    <partial name="Components/Header/Index" />
-
     @RenderBody()
     <partial name="Components/Auth/Index" model="new RegisterViewModel()" />
-    <partial name="Components/Footer/Index" />
-
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>

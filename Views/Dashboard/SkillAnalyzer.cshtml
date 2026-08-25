@@ -1,0 +1,1451 @@
+
+        <div
+          class="mx-auto max-w-[1500px] space-y-6 px-4 py-6 sm:px-6 lg:px-8 lg:py-8"
+        >
+
+          <!-- ================================================= -->
+          <!-- PAGE HEADER -->
+          <!-- ================================================= -->
+
+          <section
+            class="relative overflow-hidden rounded-3xl border border-violet-100 bg-gradient-to-br from-violet-50 via-white to-blue-50 p-6 shadow-soft sm:p-8"
+          >
+
+            <div
+              class="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-violet-200/30 blur-3xl"
+            ></div>
+
+            <div
+              class="absolute -bottom-24 right-20 h-48 w-48 rounded-full bg-blue-200/30 blur-3xl"
+            ></div>
+
+            <div class="relative">
+
+              <div
+                class="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white/80 px-3 py-1.5 text-[11px] font-semibold text-violet-600"
+              >
+                ✦ AI-powered skill intelligence
+              </div>
+
+              <div
+                class="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
+              >
+
+                <div>
+                  <h1
+                    class="text-2xl font-extrabold tracking-tight sm:text-3xl"
+                  >
+                    Skill Analyzer
+                  </h1>
+
+                  <p
+                    class="mt-2 max-w-2xl text-sm leading-6 text-slate-500 sm:text-base"
+                  >
+                    Understand where your skills stand, identify career gaps,
+                    and discover which capabilities can make you more
+                    competitive in your target role.
+                  </p>
+                </div>
+
+                <button
+                  id="analyzeButton"
+                  class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-violet-200 transition hover:-translate-y-0.5"
+                >
+                  <span>Run AI Analysis</span>
+
+                  <svg
+                    class="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </button>
+
+              </div>
+
+            </div>
+          </section>
+
+
+          <!-- ================================================= -->
+          <!-- TARGET ROLE -->
+          <!-- ================================================= -->
+
+          <section
+            class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card sm:p-6"
+          >
+
+            <div
+              class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between"
+            >
+
+              <div>
+                <h2 class="text-base font-bold">
+                  Analyze your career target
+                </h2>
+
+                <p class="mt-1 text-xs text-slate-400">
+                  Skill recommendations are calculated against your target
+                  position.
+                </p>
+              </div>
+
+              <div class="flex flex-col gap-3 sm:flex-row">
+
+                <div>
+                  <label
+                    class="mb-1.5 block text-[10px] font-bold uppercase tracking-wider text-slate-400"
+                  >
+                    Target role
+                  </label>
+
+                  <select
+                    id="targetRole"
+                    class="h-11 min-w-[220px] rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-semibold text-slate-700 outline-none focus:border-violet-300 focus:ring-4 focus:ring-violet-100"
+                  >
+                    <option>Senior Full Stack Developer</option>
+                    <option>Frontend Engineer</option>
+                    <option>Backend Engineer</option>
+                    <option>DevOps Engineer</option>
+                    <option>Software Engineer</option>
+                    <option>Engineering Manager</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label
+                    class="mb-1.5 block text-[10px] font-bold uppercase tracking-wider text-slate-400"
+                  >
+                    Experience
+                  </label>
+
+                  <select
+                    class="h-11 min-w-[160px] rounded-xl border border-slate-200 bg-slate-50 px-4 text-sm font-semibold text-slate-700 outline-none focus:border-violet-300 focus:ring-4 focus:ring-violet-100"
+                  >
+                    <option>5+ years</option>
+                    <option>3–5 years</option>
+                    <option>1–3 years</option>
+                    <option>Entry level</option>
+                  </select>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+
+          <!-- ================================================= -->
+          <!-- OVERVIEW -->
+          <!-- ================================================= -->
+
+          <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+
+            <!-- Overall -->
+            <div
+              class="card-hover rounded-2xl border border-slate-200 bg-white p-5 shadow-card"
+            >
+
+              <div class="flex items-center justify-between">
+
+                <div>
+                  <div class="text-xs font-medium text-slate-400">
+                    Overall skill score
+                  </div>
+
+                  <div class="mt-2 text-3xl font-extrabold">
+                    78
+                    <span class="text-sm font-medium text-slate-400">
+                      /100
+                    </span>
+                  </div>
+                </div>
+
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-50 text-violet-600"
+                >
+                  ✦
+                </div>
+
+              </div>
+
+              <div class="mt-4 h-2 overflow-hidden rounded-full bg-slate-100">
+                <div
+                  class="skill-bar h-full w-[78%] rounded-full bg-gradient-to-r from-violet-600 to-indigo-500"
+                ></div>
+              </div>
+
+              <div class="mt-3 text-xs font-semibold text-emerald-600">
+                Strong candidate
+              </div>
+
+            </div>
+
+
+            <!-- Strong -->
+            <div
+              class="card-hover rounded-2xl border border-slate-200 bg-white p-5 shadow-card"
+            >
+
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-xs font-medium text-slate-400">
+                    Strong skills
+                  </div>
+
+                  <div class="mt-2 text-3xl font-extrabold">
+                    12
+                  </div>
+                </div>
+
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600"
+                >
+                  ✓
+                </div>
+              </div>
+
+              <p class="mt-4 text-xs text-slate-400">
+                Skills above 75% proficiency
+              </p>
+
+            </div>
+
+
+            <!-- Gaps -->
+            <div
+              class="card-hover rounded-2xl border border-slate-200 bg-white p-5 shadow-card"
+            >
+
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-xs font-medium text-slate-400">
+                    Skill gaps
+                  </div>
+
+                  <div class="mt-2 text-3xl font-extrabold">
+                    4
+                  </div>
+                </div>
+
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-50 text-orange-500"
+                >
+                  !
+                </div>
+              </div>
+
+              <p class="mt-4 text-xs text-orange-600">
+                2 high-priority gaps
+              </p>
+
+            </div>
+
+
+            <!-- Market -->
+            <div
+              class="card-hover rounded-2xl border border-slate-200 bg-white p-5 shadow-card"
+            >
+
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-xs font-medium text-slate-400">
+                    Market readiness
+                  </div>
+
+                  <div class="mt-2 text-3xl font-extrabold">
+                    84%
+                  </div>
+                </div>
+
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600"
+                >
+                  ↗
+                </div>
+              </div>
+
+              <p class="mt-4 text-xs font-semibold text-emerald-600">
+                Above average
+              </p>
+
+            </div>
+
+          </section>
+
+
+          <!-- ================================================= -->
+          <!-- MAIN ANALYSIS -->
+          <!-- ================================================= -->
+
+          <section class="grid gap-6 xl:grid-cols-[1.25fr_0.75fr]">
+
+
+            <!-- ================================================= -->
+            <!-- YOUR SKILLS -->
+            <!-- ================================================= -->
+
+            <div
+              class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card sm:p-6"
+            >
+
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+
+                <div>
+                  <h2 class="text-base font-bold">
+                    Your skills
+                  </h2>
+
+                  <p class="mt-1 text-xs text-slate-400">
+                    Current proficiency based on your profile and resume.
+                  </p>
+                </div>
+
+                <button
+                  id="addSkillButton"
+                  class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-bold text-slate-600 transition hover:border-violet-200 hover:bg-violet-50 hover:text-violet-600"
+                >
+                  <span class="text-base">+</span>
+                  Add skill
+                </button>
+
+              </div>
+
+
+              <!-- Search -->
+              <div class="relative mt-5">
+
+                <svg
+                  class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path stroke-linecap="round" d="m20 20-4-4" />
+                </svg>
+
+                <input
+                  id="skillSearch"
+                  type="text"
+                  placeholder="Search your skills..."
+                  class="h-11 w-full rounded-xl border border-slate-200 bg-slate-50 pl-11 pr-4 text-sm outline-none focus:border-violet-300 focus:bg-white focus:ring-4 focus:ring-violet-100"
+                />
+
+              </div>
+
+
+              <!-- Categories -->
+              <div class="mt-5 flex gap-2 overflow-x-auto pb-1">
+
+                <button
+                  class="skill-filter shrink-0 rounded-lg bg-violet-600 px-3 py-2 text-[11px] font-bold text-white"
+                  data-category="all"
+                >
+                  All skills
+                </button>
+
+                <button
+                  class="skill-filter shrink-0 rounded-lg bg-slate-50 px-3 py-2 text-[11px] font-semibold text-slate-500"
+                  data-category="frontend"
+                >
+                  Frontend
+                </button>
+
+                <button
+                  class="skill-filter shrink-0 rounded-lg bg-slate-50 px-3 py-2 text-[11px] font-semibold text-slate-500"
+                  data-category="backend"
+                >
+                  Backend
+                </button>
+
+                <button
+                  class="skill-filter shrink-0 rounded-lg bg-slate-50 px-3 py-2 text-[11px] font-semibold text-slate-500"
+                  data-category="devops"
+                >
+                  DevOps
+                </button>
+
+                <button
+                  class="skill-filter shrink-0 rounded-lg bg-slate-50 px-3 py-2 text-[11px] font-semibold text-slate-500"
+                  data-category="database"
+                >
+                  Database
+                </button>
+
+              </div>
+
+
+              <!-- Skills -->
+              <div id="skillsList" class="mt-6 space-y-5">
+
+
+                <!-- TypeScript -->
+                <div
+                  class="skill-item"
+                  data-category="frontend"
+                  data-name="typescript"
+                >
+
+                  <div class="flex items-center justify-between gap-4">
+
+                    <div class="flex min-w-0 items-center gap-3">
+
+                      <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-xs font-extrabold text-blue-600"
+                      >
+                        TS
+                      </div>
+
+                      <div>
+                        <div class="text-sm font-bold">
+                          TypeScript
+                        </div>
+
+                        <div class="mt-0.5 text-[10px] text-slate-400">
+                          Frontend · Backend
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="text-right">
+                      <div class="text-xs font-bold text-slate-700">
+                        90%
+                      </div>
+
+                      <div class="text-[10px] font-medium text-emerald-600">
+                        Expert
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
+                    <div class="skill-bar h-full w-[90%] rounded-full bg-blue-500"></div>
+                  </div>
+
+                </div>
+
+
+                <!-- React -->
+                <div
+                  class="skill-item"
+                  data-category="frontend"
+                  data-name="react"
+                >
+
+                  <div class="flex items-center justify-between gap-4">
+
+                    <div class="flex min-w-0 items-center gap-3">
+
+                      <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyan-50 text-xs font-extrabold text-cyan-600"
+                      >
+                        ⚛
+                      </div>
+
+                      <div>
+                        <div class="text-sm font-bold">
+                          React.js
+                        </div>
+
+                        <div class="mt-0.5 text-[10px] text-slate-400">
+                          Frontend
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="text-right">
+                      <div class="text-xs font-bold text-slate-700">
+                        88%
+                      </div>
+
+                      <div class="text-[10px] font-medium text-emerald-600">
+                        Expert
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
+                    <div class="skill-bar h-full w-[88%] rounded-full bg-cyan-500"></div>
+                  </div>
+
+                </div>
+
+
+                <!-- Next -->
+                <div
+                  class="skill-item"
+                  data-category="frontend"
+                  data-name="nextjs"
+                >
+
+                  <div class="flex items-center justify-between gap-4">
+
+                    <div class="flex min-w-0 items-center gap-3">
+
+                      <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-xs font-extrabold text-slate-700"
+                      >
+                        N
+                      </div>
+
+                      <div>
+                        <div class="text-sm font-bold">
+                          Next.js
+                        </div>
+
+                        <div class="mt-0.5 text-[10px] text-slate-400">
+                          Frontend · Full Stack
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="text-right">
+                      <div class="text-xs font-bold text-slate-700">
+                        86%
+                      </div>
+
+                      <div class="text-[10px] font-medium text-emerald-600">
+                        Advanced
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
+                    <div class="skill-bar h-full w-[86%] rounded-full bg-slate-700"></div>
+                  </div>
+
+                </div>
+
+
+                <!-- Node -->
+                <div
+                  class="skill-item"
+                  data-category="backend"
+                  data-name="node"
+                >
+
+                  <div class="flex items-center justify-between gap-4">
+
+                    <div class="flex min-w-0 items-center gap-3">
+
+                      <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-50 text-xs font-extrabold text-green-600"
+                      >
+                        JS
+                      </div>
+
+                      <div>
+                        <div class="text-sm font-bold">
+                          Node.js
+                        </div>
+
+                        <div class="mt-0.5 text-[10px] text-slate-400">
+                          Backend
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="text-right">
+                      <div class="text-xs font-bold text-slate-700">
+                        84%
+                      </div>
+
+                      <div class="text-[10px] font-medium text-emerald-600">
+                        Advanced
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
+                    <div class="skill-bar h-full w-[84%] rounded-full bg-green-500"></div>
+                  </div>
+
+                </div>
+
+
+                <!-- Docker -->
+                <div
+                  class="skill-item"
+                  data-category="devops"
+                  data-name="docker"
+                >
+
+                  <div class="flex items-center justify-between gap-4">
+
+                    <div class="flex min-w-0 items-center gap-3">
+
+                      <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-xs font-extrabold text-blue-600"
+                      >
+                        ◈
+                      </div>
+
+                      <div>
+                        <div class="text-sm font-bold">
+                          Docker
+                        </div>
+
+                        <div class="mt-0.5 text-[10px] text-slate-400">
+                          DevOps
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="text-right">
+                      <div class="text-xs font-bold text-slate-700">
+                        76%
+                      </div>
+
+                      <div class="text-[10px] font-medium text-blue-600">
+                        Advanced
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
+                    <div class="skill-bar h-full w-[76%] rounded-full bg-blue-500"></div>
+                  </div>
+
+                </div>
+
+
+                <!-- Kubernetes -->
+                <div
+                  class="skill-item"
+                  data-category="devops"
+                  data-name="kubernetes"
+                >
+
+                  <div class="flex items-center justify-between gap-4">
+
+                    <div class="flex min-w-0 items-center gap-3">
+
+                      <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-xs font-extrabold text-violet-600"
+                      >
+                        K8s
+                      </div>
+
+                      <div>
+                        <div class="text-sm font-bold">
+                          Kubernetes
+                        </div>
+
+                        <div class="mt-0.5 text-[10px] text-slate-400">
+                          DevOps
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="text-right">
+                      <div class="text-xs font-bold text-slate-700">
+                        70%
+                      </div>
+
+                      <div class="text-[10px] font-medium text-blue-600">
+                        Intermediate
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
+                    <div class="skill-bar h-full w-[70%] rounded-full bg-violet-500"></div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <button
+                class="mt-6 w-full rounded-xl border border-dashed border-slate-200 py-3 text-xs font-semibold text-slate-400 transition hover:border-violet-300 hover:bg-violet-50 hover:text-violet-600"
+              >
+                + Show all 18 skills
+              </button>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- SKILL GAP -->
+            <!-- ================================================= -->
+
+            <div
+              class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card sm:p-6"
+            >
+
+              <div>
+                <h2 class="text-base font-bold">
+                  Skill gap analysis
+                </h2>
+
+                <p class="mt-1 text-xs leading-5 text-slate-400">
+                  Skills that could improve your chances for the selected role.
+                </p>
+              </div>
+
+
+              <!-- Gap 1 -->
+              <div
+                class="mt-6 rounded-2xl border border-red-100 bg-red-50/50 p-4"
+              >
+
+                <div class="flex items-start justify-between gap-3">
+
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-sm font-bold">
+                        AWS
+                      </h3>
+
+                      <span
+                        class="rounded-full bg-red-100 px-2 py-1 text-[9px] font-bold text-red-600"
+                      >
+                        High priority
+                      </span>
+                    </div>
+
+                    <p class="mt-1 text-[11px] text-slate-400">
+                      Cloud infrastructure
+                    </p>
+                  </div>
+
+                  <div class="text-right">
+                    <div class="text-xs font-bold">
+                      42%
+                    </div>
+
+                    <div class="text-[9px] text-slate-400">
+                      Target: 80%
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="mt-3 h-2 rounded-full bg-white">
+                  <div class="h-full w-[42%] rounded-full bg-red-400"></div>
+                </div>
+
+                <div class="mt-3 flex items-center justify-between">
+
+                  <span class="text-[10px] font-medium text-red-600">
+                    38% gap
+                  </span>
+
+                  <button
+                    class="text-[10px] font-bold text-violet-600 hover:underline"
+                  >
+                    View roadmap →
+                  </button>
+
+                </div>
+
+              </div>
+
+
+              <!-- Gap 2 -->
+              <div
+                class="mt-3 rounded-2xl border border-orange-100 bg-orange-50/50 p-4"
+              >
+
+                <div class="flex items-start justify-between gap-3">
+
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-sm font-bold">
+                        System Design
+                      </h3>
+
+                      <span
+                        class="rounded-full bg-orange-100 px-2 py-1 text-[9px] font-bold text-orange-600"
+                      >
+                        Important
+                      </span>
+                    </div>
+
+                    <p class="mt-1 text-[11px] text-slate-400">
+                      Architecture & scalability
+                    </p>
+                  </div>
+
+                  <div class="text-right">
+                    <div class="text-xs font-bold">
+                      55%
+                    </div>
+
+                    <div class="text-[9px] text-slate-400">
+                      Target: 85%
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="mt-3 h-2 rounded-full bg-white">
+                  <div class="h-full w-[55%] rounded-full bg-orange-400"></div>
+                </div>
+
+                <div class="mt-3 flex items-center justify-between">
+
+                  <span class="text-[10px] font-medium text-orange-600">
+                    30% gap
+                  </span>
+
+                  <button
+                    class="text-[10px] font-bold text-violet-600 hover:underline"
+                  >
+                    View roadmap →
+                  </button>
+
+                </div>
+
+              </div>
+
+
+              <!-- Gap 3 -->
+              <div
+                class="mt-3 rounded-2xl border border-amber-100 bg-amber-50/50 p-4"
+              >
+
+                <div class="flex items-start justify-between gap-3">
+
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <h3 class="text-sm font-bold">
+                        GraphQL
+                      </h3>
+
+                      <span
+                        class="rounded-full bg-amber-100 px-2 py-1 text-[9px] font-bold text-amber-600"
+                      >
+                        Recommended
+                      </span>
+                    </div>
+
+                    <p class="mt-1 text-[11px] text-slate-400">
+                      API development
+                    </p>
+                  </div>
+
+                  <div class="text-right">
+                    <div class="text-xs font-bold">
+                      35%
+                    </div>
+
+                    <div class="text-[9px] text-slate-400">
+                      Target: 65%
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="mt-3 h-2 rounded-full bg-white">
+                  <div class="h-full w-[35%] rounded-full bg-amber-400"></div>
+                </div>
+
+                <div class="mt-3 flex items-center justify-between">
+
+                  <span class="text-[10px] font-medium text-amber-600">
+                    30% gap
+                  </span>
+
+                  <button
+                    class="text-[10px] font-bold text-violet-600 hover:underline"
+                  >
+                    Learn skill →
+                  </button>
+
+                </div>
+
+              </div>
+
+
+              <!-- AI suggestion -->
+              <div
+                class="mt-5 rounded-2xl bg-gradient-to-br from-violet-50 to-blue-50 p-4"
+              >
+
+                <div class="flex gap-3">
+
+                  <div
+                    class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-violet-600 shadow-sm"
+                  >
+                    ✦
+                  </div>
+
+                  <div>
+                    <div class="text-xs font-bold text-slate-800">
+                      AI recommendation
+                    </div>
+
+                    <p class="mt-1 text-[11px] leading-5 text-slate-500">
+                      Focus on AWS and System Design first. Together, these
+                      skills could increase your target-role match by an
+                      estimated 9–14%.
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- ================================================= -->
+          <!-- MARKET DEMAND -->
+          <!-- ================================================= -->
+
+          <section class="grid gap-6 lg:grid-cols-[1fr_1fr]">
+
+            <!-- Market demand -->
+            <div
+              class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card sm:p-6"
+            >
+
+              <div class="flex items-center justify-between">
+
+                <div>
+                  <h2 class="text-base font-bold">
+                    Market demand
+                  </h2>
+
+                  <p class="mt-1 text-xs text-slate-400">
+                    How valuable your skills are in current job postings.
+                  </p>
+                </div>
+
+                <span
+                  class="rounded-full bg-emerald-50 px-3 py-1.5 text-[10px] font-bold text-emerald-600"
+                >
+                  Updated recently
+                </span>
+
+              </div>
+
+
+              <div class="mt-6 space-y-5">
+
+                <!-- Skill -->
+                <div>
+
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-semibold">
+                      TypeScript
+                    </span>
+
+                    <span class="text-[10px] font-bold text-emerald-600">
+                      Very High
+                    </span>
+                  </div>
+
+                  <div class="mt-2 h-2 rounded-full bg-slate-100">
+                    <div class="h-full w-[94%] rounded-full bg-emerald-500"></div>
+                  </div>
+
+                </div>
+
+
+                <div>
+
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-semibold">
+                      React.js
+                    </span>
+
+                    <span class="text-[10px] font-bold text-emerald-600">
+                      Very High
+                    </span>
+                  </div>
+
+                  <div class="mt-2 h-2 rounded-full bg-slate-100">
+                    <div class="h-full w-[92%] rounded-full bg-emerald-500"></div>
+                  </div>
+
+                </div>
+
+
+                <div>
+
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-semibold">
+                      Node.js
+                    </span>
+
+                    <span class="text-[10px] font-bold text-blue-600">
+                      High
+                    </span>
+                  </div>
+
+                  <div class="mt-2 h-2 rounded-full bg-slate-100">
+                    <div class="h-full w-[82%] rounded-full bg-blue-500"></div>
+                  </div>
+
+                </div>
+
+
+                <div>
+
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-semibold">
+                      Kubernetes
+                    </span>
+
+                    <span class="text-[10px] font-bold text-blue-600">
+                      High
+                    </span>
+                  </div>
+
+                  <div class="mt-2 h-2 rounded-full bg-slate-100">
+                    <div class="h-full w-[76%] rounded-full bg-blue-500"></div>
+                  </div>
+
+                </div>
+
+
+                <div>
+
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-semibold">
+                      AWS
+                    </span>
+
+                    <span class="text-[10px] font-bold text-violet-600">
+                      Growing
+                    </span>
+                  </div>
+
+                  <div class="mt-2 h-2 rounded-full bg-slate-100">
+                    <div class="h-full w-[71%] rounded-full bg-violet-500"></div>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- Recommended skills -->
+            <div
+              class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card sm:p-6"
+            >
+
+              <div>
+                <h2 class="text-base font-bold">
+                  Skills worth learning
+                </h2>
+
+                <p class="mt-1 text-xs text-slate-400">
+                  AI-selected skills based on your target role.
+                </p>
+              </div>
+
+
+              <div class="mt-5 grid gap-3 sm:grid-cols-2">
+
+                <!-- Skill -->
+                <div
+                  class="skill-chip rounded-2xl border border-slate-200 p-4"
+                >
+
+                  <div class="flex items-center justify-between">
+
+                    <div
+                      class="flex h-9 w-9 items-center justify-center rounded-lg bg-orange-50 text-xs font-bold text-orange-600"
+                    >
+                      AWS
+                    </div>
+
+                    <span
+                      class="rounded-full bg-red-50 px-2 py-1 text-[9px] font-bold text-red-600"
+                    >
+                      High
+                    </span>
+
+                  </div>
+
+                  <h3 class="mt-3 text-sm font-bold">
+                    AWS
+                  </h3>
+
+                  <p class="mt-1 text-[10px] leading-4 text-slate-400">
+                    Cloud infrastructure and deployment
+                  </p>
+
+                  <div class="mt-3 text-[10px] font-semibold text-violet-600">
+                    +8% career impact
+                  </div>
+
+                </div>
+
+
+                <!-- Skill -->
+                <div
+                  class="skill-chip rounded-2xl border border-slate-200 p-4"
+                >
+
+                  <div class="flex items-center justify-between">
+
+                    <div
+                      class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-xs font-bold text-blue-600"
+                    >
+                      SD
+                    </div>
+
+                    <span
+                      class="rounded-full bg-red-50 px-2 py-1 text-[9px] font-bold text-red-600"
+                    >
+                      High
+                    </span>
+
+                  </div>
+
+                  <h3 class="mt-3 text-sm font-bold">
+                    System Design
+                  </h3>
+
+                  <p class="mt-1 text-[10px] leading-4 text-slate-400">
+                    Architecture, scalability and distributed systems
+                  </p>
+
+                  <div class="mt-3 text-[10px] font-semibold text-violet-600">
+                    +7% career impact
+                  </div>
+
+                </div>
+
+
+                <!-- Skill -->
+                <div
+                  class="skill-chip rounded-2xl border border-slate-200 p-4"
+                >
+
+                  <div class="flex items-center justify-between">
+
+                    <div
+                      class="flex h-9 w-9 items-center justify-center rounded-lg bg-pink-50 text-xs font-bold text-pink-600"
+                    >
+                      GQL
+                    </div>
+
+                    <span
+                      class="rounded-full bg-amber-50 px-2 py-1 text-[9px] font-bold text-amber-600"
+                    >
+                      Medium
+                    </span>
+
+                  </div>
+
+                  <h3 class="mt-3 text-sm font-bold">
+                    GraphQL
+                  </h3>
+
+                  <p class="mt-1 text-[10px] leading-4 text-slate-400">
+                    Modern API architecture
+                  </p>
+
+                  <div class="mt-3 text-[10px] font-semibold text-violet-600">
+                    +4% career impact
+                  </div>
+
+                </div>
+
+
+                <!-- Skill -->
+                <div
+                  class="skill-chip rounded-2xl border border-slate-200 p-4"
+                >
+
+                  <div class="flex items-center justify-between">
+
+                    <div
+                      class="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-xs font-bold text-emerald-600"
+                    >
+                      PY
+                    </div>
+
+                    <span
+                      class="rounded-full bg-amber-50 px-2 py-1 text-[9px] font-bold text-amber-600"
+                    >
+                      Medium
+                    </span>
+
+                  </div>
+
+                  <h3 class="mt-3 text-sm font-bold">
+                    Python
+                  </h3>
+
+                  <p class="mt-1 text-[10px] leading-4 text-slate-400">
+                    AI, automation and backend development
+                  </p>
+
+                  <div class="mt-3 text-[10px] font-semibold text-violet-600">
+                    +3% career impact
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- ================================================= -->
+          <!-- LEARNING ROADMAP -->
+          <!-- ================================================= -->
+
+          <section
+            class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card sm:p-6"
+          >
+
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+
+              <div>
+                <h2 class="text-base font-bold">
+                  Your skill improvement roadmap
+                </h2>
+
+                <p class="mt-1 text-xs text-slate-400">
+                  A practical sequence for closing your highest-value skill gaps.
+                </p>
+              </div>
+
+              <button
+                class="rounded-xl bg-violet-50 px-4 py-2.5 text-xs font-bold text-violet-600 transition hover:bg-violet-600 hover:text-white"
+              >
+                Open full roadmap →
+              </button>
+
+            </div>
+
+
+            <div class="mt-8 grid gap-4 md:grid-cols-3">
+
+              <!-- Phase 1 -->
+              <div
+                class="relative rounded-2xl border border-red-100 bg-red-50/40 p-5"
+              >
+
+                <div class="flex items-center justify-between">
+
+                  <span
+                    class="rounded-full bg-red-100 px-3 py-1 text-[10px] font-bold text-red-600"
+                  >
+                    Phase 01
+                  </span>
+
+                  <span class="text-[10px] font-semibold text-slate-400">
+                    2–4 weeks
+                  </span>
+
+                </div>
+
+                <h3 class="mt-4 text-sm font-bold">
+                  Build cloud fundamentals
+                </h3>
+
+                <p class="mt-2 text-xs leading-5 text-slate-400">
+                  Strengthen your understanding of AWS core services and
+                  production deployment.
+                </p>
+
+                <div class="mt-5 space-y-2">
+
+                  <div class="flex items-center gap-2 text-xs font-medium">
+                    <span class="text-emerald-500">✓</span>
+                    AWS fundamentals
+                  </div>
+
+                  <div class="flex items-center gap-2 text-xs font-medium">
+                    <span class="text-slate-300">○</span>
+                    IAM & security
+                  </div>
+
+                  <div class="flex items-center gap-2 text-xs font-medium">
+                    <span class="text-slate-300">○</span>
+                    EC2 & networking
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- Phase 2 -->
+              <div
+                class="relative rounded-2xl border border-orange-100 bg-orange-50/40 p-5"
+              >
+
+                <div class="flex items-center justify-between">
+
+                  <span
+                    class="rounded-full bg-orange-100 px-3 py-1 text-[10px] font-bold text-orange-600"
+                  >
+                    Phase 02
+                  </span>
+
+                  <span class="text-[10px] font-semibold text-slate-400">
+                    3–5 weeks
+                  </span>
+
+                </div>
+
+                <h3 class="mt-4 text-sm font-bold">
+                  Master system design
+                </h3>
+
+                <p class="mt-2 text-xs leading-5 text-slate-400">
+                  Learn to design scalable systems and explain architectural
+                  trade-offs in interviews.
+                </p>
+
+                <div class="mt-5 space-y-2">
+
+                  <div class="flex items-center gap-2 text-xs font-medium">
+                    <span class="text-slate-300">○</span>
+                    Scalability
+                  </div>
+
+                  <div class="flex items-center gap-2 text-xs font-medium">
+                    <span class="text-slate-300">○</span>
+                    Caching
+                  </div>
+
+                  <div class="flex items-center gap-2 text-xs font-medium">
+                    <span class="text-slate-300">○</span>
+                    Distributed systems
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- Phase 3 -->
+              <div
+                class="relative rounded-2xl border border-violet-100 bg-violet-50/40 p-5"
+              >
+
+                <div class="flex items-center justify-between">
+
+                  <span
+                    class="rounded-full bg-violet-100 px-3 py-1 text-[10px] font-bold text-violet-600"
+                  >
+                    Phase 03
+                  </span>
+
+                  <span class="text-[10px] font-semibold text-slate-400">
+                    2–3 weeks
+                  </span>
+
+                </div>
+
+                <h3 class="mt-4 text-sm font-bold">
+                  Expand your API stack
+                </h3>
+
+                <p class="mt-2 text-xs leading-5 text-slate-400">
+                  Add GraphQL and advanced API architecture to your existing
+                  backend experience.
+                </p>
+
+                <div class="mt-5 space-y-2">
+
+                  <div class="flex items-center gap-2 text-xs font-medium">
+                    <span class="text-slate-300">○</span>
+                    GraphQL schema
+                  </div>
+
+                  <div class="flex items-center gap-2 text-xs font-medium">
+                    <span class="text-slate-300">○</span>
+                    Resolvers
+                  </div>
+
+                  <div class="flex items-center gap-2 text-xs font-medium">
+                    <span class="text-slate-300">○</span>
+                    API security
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- ================================================= -->
+          <!-- AI INSIGHT -->
+          <!-- ================================================= -->
+
+          <section
+            class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-violet-700 via-indigo-700 to-blue-700 p-6 text-white shadow-lg shadow-violet-200 sm:p-8"
+          >
+
+            <div
+              class="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-3xl"
+            ></div>
+
+            <div
+              class="absolute -bottom-20 -left-10 h-52 w-52 rounded-full bg-blue-400/20 blur-3xl"
+            ></div>
+
+            <div
+              class="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between"
+            >
+
+              <div class="max-w-3xl">
+
+                <div
+                  class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-violet-200"
+                >
+                  <span class="text-lg">✦</span>
+                  CareerForge AI insight
+                </div>
+
+                <h2 class="mt-4 text-xl font-extrabold sm:text-2xl">
+                  You have a strong full-stack foundation.
+                </h2>
+
+                <p class="mt-3 text-sm leading-6 text-violet-100">
+                  Your frontend and backend capabilities are already
+                  competitive. The biggest opportunity is to strengthen cloud
+                  architecture and system design. These skills can help you
+                  qualify for more senior-level positions.
+                </p>
+
+              </div>
+
+              <button
+                class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-xs font-bold text-violet-700 shadow-lg transition hover:-translate-y-0.5"
+              >
+                Create learning plan
+                <span>→</span>
+              </button>
+
+            </div>
+
+          </section>
+
+        </div>

@@ -1,0 +1,1529 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CareerForge AI — Cover Letter AI</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+
+            colors: {
+              primary: {
+                50: "#f5f3ff",
+                100: "#ede9fe",
+                200: "#ddd6fe",
+                300: "#c4b5fd",
+                400: "#a78bfa",
+                500: "#8b5cf6",
+                600: "#7c3aed",
+                700: "#6d28d9",
+              },
+            },
+
+            boxShadow: {
+              soft: "0 10px 40px rgba(15, 23, 42, 0.06)",
+              card: "0 8px 30px rgba(15, 23, 42, 0.05)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #ddd6fe transparent;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background:
+          radial-gradient(
+            circle at 10% 0%,
+            rgba(139, 92, 246, 0.06),
+            transparent 25%
+          ),
+          #f8fafc;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, #7c3aed, #2563eb);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .card-hover {
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          border-color 0.25s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+      }
+
+      .nav-item {
+        transition: all 0.2s ease;
+      }
+
+      .nav-item:hover {
+        background: #f5f3ff;
+        color: #6d28d9;
+      }
+
+      .nav-item.active {
+        color: white;
+        background: linear-gradient(135deg, #7c3aed, #4f46e5);
+        box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
+      }
+
+      .mobile-nav-item.active {
+        color: #7c3aed;
+      }
+
+      .paper {
+        min-height: 680px;
+      }
+
+      @media (max-width: 767px) {
+        .mobile-safe-area {
+          padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .paper {
+          min-height: 550px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen text-slate-900">
+    <div class="min-h-screen">
+
+      <!-- ===================================================== -->
+      <!-- DESKTOP SIDEBAR -->
+      <!-- ===================================================== -->
+
+      <aside
+        class="fixed inset-y-0 left-0 z-40 hidden w-[250px] border-r border-slate-200/80 bg-white/90 backdrop-blur-xl md:flex md:flex-col"
+      >
+        <!-- Logo -->
+        <div class="flex h-[82px] items-center px-6">
+          <a href="#" class="flex items-center gap-3">
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 text-white shadow-lg shadow-violet-200"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 3v3m0 12v3m9-9h-3M6 12H3m15.364-6.364-2.121 2.121M7.757 16.243l-2.121 2.121m12.728 0-2.121-2.121M7.757 7.757 5.636 5.636"
+                />
+                <circle cx="12" cy="12" r="4" />
+              </svg>
+            </div>
+
+            <div>
+              <div class="text-[17px] font-extrabold tracking-tight">
+                CareerForge
+                <span class="text-violet-600">AI</span>
+              </div>
+
+              <div
+                class="text-[9px] font-medium uppercase tracking-widest text-slate-400"
+              >
+                Your career, forged by AI
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 space-y-1 overflow-y-auto px-4 py-5">
+
+          <div
+            class="mb-3 px-3 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400"
+          >
+            Workspace
+          </div>
+
+          <!-- Dashboard -->
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10Z"
+              />
+            </svg>
+            Dashboard
+          </a>
+
+          <!-- Resume -->
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
+              />
+              <path stroke-linecap="round" d="M14 3v5h5M8 13h8M8 17h6" />
+            </svg>
+            My Resume
+          </a>
+
+          <!-- ATS -->
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="8" />
+              <circle cx="12" cy="12" r="4" />
+              <path
+                stroke-linecap="round"
+                d="M12 4v2M20 12h-2M12 18v2M6 12H4"
+              />
+            </svg>
+            ATS Checker
+          </a>
+
+          <!-- Cover Letter ACTIVE -->
+          <a
+            href="#"
+            class="nav-item active flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5 4h14v16H5z"
+              />
+              <path stroke-linecap="round" d="M8 8h8M8 12h5" />
+              <path stroke-linecap="round" d="m15 16 1.5 1.5L20 14" />
+            </svg>
+            Cover Letter AI
+          </a>
+
+          <!-- Job Matcher -->
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="9" cy="8" r="3" />
+              <circle cx="17" cy="16" r="3" />
+              <path stroke-linecap="round" d="M11.5 10.5 14.5 13.5" />
+            </svg>
+            Job Matcher
+          </a>
+
+          <!-- AI Interview -->
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <rect x="3" y="5" width="18" height="14" rx="3" />
+              <path
+                stroke-linecap="round"
+                d="M8 10h.01M12 10h.01M16 10h.01M8 14h8"
+              />
+            </svg>
+            AI Interview
+          </a>
+
+          <!-- Career Roadmap -->
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" d="M4 19c4-7 8-7 12-14" />
+              <circle cx="4" cy="19" r="2" />
+              <circle cx="16" cy="5" r="2" />
+              <path stroke-linecap="round" d="m15 17 2 2 3-4" />
+            </svg>
+            Career Roadmap
+          </a>
+
+          <!-- Skills -->
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m12 3 2.3 5.2L20 9l-4 4 1 5.7-5-2.7-5 2.7 1-5.7-4-4 5.7-.8L12 3Z"
+              />
+            </svg>
+            Skill Analyzer
+          </a>
+
+          <div class="my-5 border-t border-slate-100"></div>
+
+          <!-- Saved Jobs -->
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 4h12v17l-6-3-6 3V4Z"
+              />
+            </svg>
+            Saved Jobs
+          </a>
+
+          <!-- Applications -->
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <rect x="4" y="3" width="16" height="18" rx="2" />
+              <path stroke-linecap="round" d="M8 8h8M8 12h8M8 16h5" />
+            </svg>
+            Applications
+          </a>
+
+          <!-- Profile -->
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="8" r="3" />
+              <path
+                stroke-linecap="round"
+                d="M5 20c.7-3.5 3-5 7-5s6.3 1.5 7 5"
+              />
+            </svg>
+            Profile
+          </a>
+
+          <!-- Settings -->
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="3" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V20h-2.6v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1-1.8-1.8.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H4v-2.6h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1 1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6V4h2.6v.1a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.1v2.6h-.1a1.7 1.7 0 0 0-1.6 1Z"
+              />
+            </svg>
+            Settings
+          </a>
+        </nav>
+
+        <!-- Sidebar Bottom -->
+        <div class="space-y-3 p-4">
+
+          <div
+            class="overflow-hidden rounded-2xl bg-gradient-to-br from-violet-50 via-indigo-50 to-blue-50 p-4 text-center"
+          >
+            <div
+              class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-violet-600 shadow-sm"
+            >
+              ✦
+            </div>
+
+            <h3 class="text-sm font-bold text-slate-800">
+              Upgrade to Pro
+            </h3>
+
+            <p class="mt-1 text-[11px] leading-5 text-slate-500">
+              Unlock unlimited AI-generated cover letters.
+            </p>
+
+            <button
+              class="mt-3 w-full rounded-xl bg-white px-3 py-2 text-xs font-bold text-violet-600 shadow-sm transition hover:bg-violet-600 hover:text-white"
+            >
+              Upgrade Now →
+            </button>
+          </div>
+
+          <button
+            class="flex w-full items-center gap-3 rounded-xl bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-600 transition hover:bg-red-50 hover:text-red-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" d="M10 17l5-5-5-5M15 12H3" />
+              <path stroke-linecap="round" d="M21 19V5a2 2 0 0 0-2-2h-6" />
+            </svg>
+            Logout
+          </button>
+        </div>
+      </aside>
+
+
+      <!-- ===================================================== -->
+      <!-- MAIN -->
+      <!-- ===================================================== -->
+
+      <main class="md:ml-[250px]">
+
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <header
+          class="sticky top-0 z-30 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl"
+        >
+          <div
+            class="flex h-[72px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
+          >
+
+            <!-- Mobile Logo -->
+            <div class="flex items-center gap-2 md:hidden">
+              <div
+                class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 text-white"
+              >
+                ✦
+              </div>
+
+              <span class="text-sm font-extrabold">
+                CareerForge
+                <span class="text-violet-600">AI</span>
+              </span>
+            </div>
+
+            <!-- Search -->
+            <div class="hidden max-w-xl flex-1 md:block">
+              <div class="relative">
+                <svg
+                  class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path stroke-linecap="round" d="m20 20-4-4" />
+                </svg>
+
+                <input
+                  type="text"
+                  placeholder="Search tools, jobs, or resources..."
+                  class="h-11 w-full rounded-2xl border border-slate-200 bg-slate-50 pl-11 pr-16 text-sm outline-none transition placeholder:text-slate-400 focus:border-violet-300 focus:bg-white focus:ring-4 focus:ring-violet-100"
+                />
+
+                <span
+                  class="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg bg-white px-2 py-1 text-[10px] font-semibold text-slate-400 shadow-sm"
+                >
+                  ⌘K
+                </span>
+              </div>
+            </div>
+
+            <!-- Header Right -->
+            <div class="flex items-center gap-3">
+
+              <!-- Notification -->
+              <button
+                class="relative flex h-10 w-10 items-center justify-center rounded-xl text-slate-500 transition hover:bg-slate-100"
+              >
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
+                  />
+                  <path stroke-linecap="round" d="M10 21h4" />
+                </svg>
+
+                <span
+                  class="absolute right-1 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-500 px-1 text-[8px] font-bold text-white"
+                >
+                  3
+                </span>
+              </button>
+
+              <!-- User -->
+              <button
+                class="flex items-center gap-2 rounded-xl p-1.5 transition hover:bg-slate-50"
+              >
+                <div
+                  class="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-blue-500 text-sm font-bold text-white ring-2 ring-white"
+                >
+                  SP
+                </div>
+
+                <div class="hidden text-left lg:block">
+                  <div class="text-xs font-bold text-slate-800">
+                    Saimon Pranta
+                  </div>
+
+                  <div
+                    class="flex items-center gap-1 text-[10px] text-slate-400"
+                  >
+                    <span class="text-amber-500">◆</span>
+                    Free Plan
+                  </div>
+                </div>
+
+                <svg
+                  class="hidden h-4 w-4 text-slate-400 lg:block"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m6 9 6 6 6-6"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </header>
+
+
+        <!-- ================================================= -->
+        <!-- PAGE CONTENT -->
+        <!-- ================================================= -->
+
+        <div
+          class="mx-auto max-w-[1500px] space-y-6 px-4 py-6 sm:px-6 lg:px-8 lg:py-8"
+        >
+
+          <!-- =============================================== -->
+          <!-- PAGE HERO -->
+          <!-- =============================================== -->
+
+          <section
+            class="relative overflow-hidden rounded-3xl border border-violet-100 bg-gradient-to-br from-violet-50 via-white to-blue-50 p-6 shadow-soft sm:p-8"
+          >
+            <div
+              class="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-violet-200/30 blur-3xl"
+            ></div>
+
+            <div
+              class="absolute -bottom-24 right-20 h-48 w-48 rounded-full bg-blue-200/30 blur-3xl"
+            ></div>
+
+            <div class="relative">
+
+              <div
+                class="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white/80 px-3 py-1.5 text-[11px] font-semibold text-violet-600"
+              >
+                ✦ AI-powered writing assistant
+              </div>
+
+              <div
+                class="mt-4 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between"
+              >
+                <div>
+                  <h1
+                    class="text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl"
+                  >
+                    Create a winning
+                    <span class="gradient-text">cover letter</span>
+                  </h1>
+
+                  <p
+                    class="mt-3 max-w-2xl text-sm leading-6 text-slate-500 sm:text-base"
+                  >
+                    Tell us about the job and your experience. CareerForge AI
+                    will create a personalized cover letter tailored to the
+                    role.
+                  </p>
+                </div>
+
+                <div
+                  class="flex shrink-0 items-center gap-3 rounded-2xl border border-white bg-white/80 px-4 py-3 shadow-card"
+                >
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-50 text-violet-600"
+                  >
+                    ✦
+                  </div>
+
+                  <div>
+                    <div class="text-xs font-bold text-slate-800">
+                      12 letters generated
+                    </div>
+
+                    <div class="mt-0.5 text-[10px] text-slate-400">
+                      3 this week
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+
+          <!-- =============================================== -->
+          <!-- MAIN WORKSPACE -->
+          <!-- =============================================== -->
+
+          <section
+            class="grid gap-6 xl:grid-cols-[430px_minmax(0,1fr)]"
+          >
+
+            <!-- ============================================= -->
+            <!-- LEFT: GENERATOR FORM -->
+            <!-- ============================================= -->
+
+            <div
+              class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card sm:p-6"
+            >
+
+              <div>
+                <h2 class="text-base font-bold">
+                  Cover letter details
+                </h2>
+
+                <p class="mt-1 text-xs leading-5 text-slate-400">
+                  Add the job information and choose how you want your letter
+                  to sound.
+                </p>
+              </div>
+
+
+              <!-- Resume -->
+              <div class="mt-6">
+                <label
+                  class="mb-2 block text-xs font-bold text-slate-700"
+                >
+                  Use resume
+                </label>
+
+                <button
+                  class="flex w-full items-center justify-between rounded-xl border border-violet-200 bg-violet-50/50 p-3 text-left transition hover:border-violet-300"
+                >
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="flex h-10 w-10 items-center justify-center rounded-lg bg-white text-violet-600 shadow-sm"
+                    >
+                      <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
+                        />
+                        <path d="M14 3v5h5" />
+                      </svg>
+                    </div>
+
+                    <div>
+                      <div class="text-xs font-bold text-slate-800">
+                        Senior Full Stack Developer
+                      </div>
+
+                      <div class="mt-0.5 text-[10px] text-slate-400">
+                        Updated today
+                      </div>
+                    </div>
+                  </div>
+
+                  <svg
+                    class="h-4 w-4 text-slate-400"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+              </div>
+
+
+              <!-- Job Title -->
+              <div class="mt-5">
+                <label
+                  class="mb-2 block text-xs font-bold text-slate-700"
+                >
+                  Job title
+                  <span class="text-red-500">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  value="Senior Full Stack Developer"
+                  placeholder="e.g. Senior Software Engineer"
+                  class="h-11 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-violet-300 focus:bg-white focus:ring-4 focus:ring-violet-100"
+                />
+              </div>
+
+
+              <!-- Company -->
+              <div class="mt-5">
+                <label
+                  class="mb-2 block text-xs font-bold text-slate-700"
+                >
+                  Company
+                  <span class="text-red-500">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  value="Google"
+                  placeholder="e.g. Google"
+                  class="h-11 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-violet-300 focus:bg-white focus:ring-4 focus:ring-violet-100"
+                />
+              </div>
+
+
+              <!-- Job Description -->
+              <div class="mt-5">
+                <div class="mb-2 flex items-center justify-between">
+                  <label
+                    class="text-xs font-bold text-slate-700"
+                  >
+                    Job description
+                    <span class="text-red-500">*</span>
+                  </label>
+
+                  <span class="text-[10px] text-slate-400">
+                    Paste from job posting
+                  </span>
+                </div>
+
+                <textarea
+                  rows="6"
+                  placeholder="Paste the job description here..."
+                  class="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs leading-5 outline-none transition placeholder:text-slate-400 focus:border-violet-300 focus:bg-white focus:ring-4 focus:ring-violet-100"
+                >We are looking for a Senior Full Stack Developer to build scalable web applications using React, TypeScript, Node.js and cloud technologies. Experience with modern software architecture, APIs, databases and DevOps is preferred.</textarea>
+
+                <div class="mt-2 flex justify-end">
+                  <button
+                    class="text-[10px] font-semibold text-violet-600 hover:text-violet-700"
+                  >
+                    ✨ Extract requirements with AI
+                  </button>
+                </div>
+              </div>
+
+
+              <!-- Tone -->
+              <div class="mt-5">
+                <label
+                  class="mb-2 block text-xs font-bold text-slate-700"
+                >
+                  Writing tone
+                </label>
+
+                <div class="grid grid-cols-3 gap-2">
+
+                  <button
+                    class="rounded-xl border border-violet-300 bg-violet-50 px-2 py-3 text-center"
+                  >
+                    <div class="text-xs font-bold text-violet-700">
+                      Professional
+                    </div>
+
+                    <div class="mt-1 text-[9px] text-violet-500">
+                      Recommended
+                    </div>
+                  </button>
+
+                  <button
+                    class="rounded-xl border border-slate-200 bg-white px-2 py-3 text-center transition hover:border-violet-200"
+                  >
+                    <div class="text-xs font-semibold text-slate-600">
+                      Confident
+                    </div>
+
+                    <div class="mt-1 text-[9px] text-slate-400">
+                      Direct & strong
+                    </div>
+                  </button>
+
+                  <button
+                    class="rounded-xl border border-slate-200 bg-white px-2 py-3 text-center transition hover:border-violet-200"
+                  >
+                    <div class="text-xs font-semibold text-slate-600">
+                      Friendly
+                    </div>
+
+                    <div class="mt-1 text-[9px] text-slate-400">
+                      Warm & human
+                    </div>
+                  </button>
+
+                </div>
+              </div>
+
+
+              <!-- Length -->
+              <div class="mt-5">
+                <label
+                  class="mb-2 block text-xs font-bold text-slate-700"
+                >
+                  Letter length
+                </label>
+
+                <div class="flex rounded-xl bg-slate-100 p-1">
+
+                  <button
+                    class="flex-1 rounded-lg bg-white px-3 py-2 text-[11px] font-bold text-violet-600 shadow-sm"
+                  >
+                    Concise
+                  </button>
+
+                  <button
+                    class="flex-1 rounded-lg px-3 py-2 text-[11px] font-semibold text-slate-500"
+                  >
+                    Standard
+                  </button>
+
+                  <button
+                    class="flex-1 rounded-lg px-3 py-2 text-[11px] font-semibold text-slate-500"
+                  >
+                    Detailed
+                  </button>
+
+                </div>
+              </div>
+
+
+              <!-- Generate -->
+              <button
+                class="mt-7 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-5 py-3.5 text-sm font-bold text-white shadow-lg shadow-violet-200 transition hover:-translate-y-0.5"
+              >
+                <span>✦</span>
+
+                Generate Cover Letter
+
+                <svg
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </button>
+
+              <p class="mt-3 text-center text-[10px] text-slate-400">
+                AI-generated content can be edited before use.
+              </p>
+
+            </div>
+
+
+            <!-- ============================================= -->
+            <!-- RIGHT: PREVIEW -->
+            <!-- ============================================= -->
+
+            <div
+              class="min-w-0 rounded-2xl border border-slate-200 bg-slate-100/70 p-4 shadow-card sm:p-6"
+            >
+
+              <!-- Preview Header -->
+              <div
+                class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h2 class="text-base font-bold">
+                      Cover letter preview
+                    </h2>
+
+                    <span
+                      class="rounded-full bg-emerald-50 px-2 py-1 text-[9px] font-bold text-emerald-600"
+                    >
+                      AI Generated
+                    </span>
+                  </div>
+
+                  <p class="mt-1 text-xs text-slate-400">
+                    Review and customize your letter before sending.
+                  </p>
+                </div>
+
+                <div class="flex items-center gap-2">
+
+                  <button
+                    class="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-600 transition hover:border-violet-200 hover:text-violet-600"
+                  >
+                    <svg
+                      class="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        d="M8 8h12v12H8zM4 16H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v1"
+                      />
+                    </svg>
+                    Copy
+                  </button>
+
+                  <button
+                    class="flex items-center gap-2 rounded-xl bg-violet-600 px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-violet-700"
+                  >
+                    <svg
+                      class="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        d="M12 3v12m0 0 4-4m-4 4-4-4"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        d="M5 20h14"
+                      />
+                    </svg>
+                    Download
+                  </button>
+
+                </div>
+              </div>
+
+
+              <!-- Paper -->
+              <div class="flex justify-center">
+
+                <div
+                  class="paper w-full max-w-[760px] rounded-sm bg-white p-8 shadow-[0_10px_40px_rgba(15,23,42,0.10)] sm:p-12"
+                >
+
+                  <!-- Letter Header -->
+                  <div
+                    class="flex flex-col gap-5 border-b border-slate-100 pb-7 sm:flex-row sm:items-start sm:justify-between"
+                  >
+
+                    <div>
+                      <h3 class="text-xl font-extrabold tracking-tight">
+                        Saimon Pranta
+                      </h3>
+
+                      <p class="mt-2 text-[11px] leading-5 text-slate-400">
+                        Dhaka, Bangladesh<br />
+                        saimonpranta@gmail.com<br />
+                        +880 1881 476432
+                      </p>
+                    </div>
+
+                    <div class="text-left sm:text-right">
+                      <div class="text-xs font-bold text-slate-700">
+                        August 25, 2026
+                      </div>
+
+                      <div class="mt-3 text-xs font-semibold text-slate-700">
+                        Hiring Team
+                      </div>
+
+                      <div class="mt-1 text-[11px] text-slate-400">
+                        Google
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                  <!-- Letter Content -->
+                  <div
+                    class="mt-8 space-y-5 text-[12px] leading-6 text-slate-600"
+                  >
+
+                    <div>
+                      Dear Hiring Team,
+                    </div>
+
+                    <p>
+                      I am excited to apply for the
+                      <strong class="font-bold text-slate-800">
+                        Senior Full Stack Developer
+                      </strong>
+                      position at Google. With more than five years of
+                      professional experience building modern web applications,
+                      I bring hands-on expertise across frontend development,
+                      backend systems, cloud infrastructure, and scalable
+                      application architecture.
+                    </p>
+
+                    <p>
+                      My experience with
+                      <strong class="font-bold text-slate-800">
+                        React, Next.js, TypeScript, Node.js, Docker, AWS,
+                        and Kubernetes
+                      </strong>
+                      has allowed me to build and maintain production-ready
+                      applications while focusing on performance,
+                      maintainability, and user experience. I particularly
+                      enjoy solving complex technical problems and turning
+                      product requirements into reliable software.
+                    </p>
+
+                    <p>
+                      I believe my combination of full-stack development
+                      experience and strong interest in modern cloud and
+                      DevOps practices would allow me to contribute effectively
+                      to your engineering team. I would welcome the opportunity
+                      to discuss how my background and experience could support
+                      Google's products and engineering goals.
+                    </p>
+
+                    <p>
+                      Thank you for considering my application. I look forward
+                      to the opportunity to speak with you.
+                    </p>
+
+                    <div class="pt-2">
+                      <div>Kind regards,</div>
+
+                      <div
+                        class="mt-4 text-sm font-bold text-slate-800"
+                      >
+                        Saimon Pranta
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- AI Suggestions -->
+              <div
+                class="mx-auto mt-5 max-w-[760px] rounded-2xl border border-violet-100 bg-gradient-to-r from-violet-50 to-blue-50 p-4"
+              >
+
+                <div class="flex gap-3">
+
+                  <div
+                    class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-violet-600 shadow-sm"
+                  >
+                    ✦
+                  </div>
+
+                  <div class="min-w-0">
+
+                    <div class="text-xs font-bold text-slate-800">
+                      AI improvement suggestions
+                    </div>
+
+                    <p class="mt-1 text-[11px] leading-5 text-slate-500">
+                      Your letter is strong. Adding one specific achievement
+                      related to the company's requirements could make it more
+                      compelling.
+                    </p>
+
+                    <button
+                      class="mt-2 text-[10px] font-bold text-violet-600 hover:text-violet-700"
+                    >
+                      Improve with AI →
+                    </button>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =============================================== -->
+          <!-- RECENT COVER LETTERS -->
+          <!-- =============================================== -->
+
+          <section
+            class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card sm:p-6"
+          >
+
+            <div class="flex items-center justify-between">
+
+              <div>
+                <h2 class="text-base font-bold">
+                  Recent cover letters
+                </h2>
+
+                <p class="mt-1 text-xs text-slate-400">
+                  Your previously generated letters
+                </p>
+              </div>
+
+              <button
+                class="rounded-lg bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-violet-50 hover:text-violet-600"
+              >
+                View all
+              </button>
+
+            </div>
+
+
+            <div
+              class="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3"
+            >
+
+              <!-- Card -->
+              <div
+                class="card-hover rounded-2xl border border-slate-200 bg-white p-4"
+              >
+
+                <div class="flex items-start justify-between">
+
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-sm font-extrabold text-blue-600"
+                  >
+                    G
+                  </div>
+
+                  <button class="text-slate-300 hover:text-slate-600">
+                    •••
+                  </button>
+
+                </div>
+
+                <div class="mt-4">
+                  <h3 class="truncate text-sm font-bold">
+                    Senior Full Stack Developer
+                  </h3>
+
+                  <p class="mt-1 text-xs text-slate-400">
+                    Google
+                  </p>
+                </div>
+
+                <div
+                  class="mt-4 flex items-center justify-between"
+                >
+                  <span
+                    class="rounded-full bg-emerald-50 px-2 py-1 text-[10px] font-bold text-emerald-600"
+                  >
+                    Generated
+                  </span>
+
+                  <span class="text-[10px] text-slate-400">
+                    Today
+                  </span>
+                </div>
+
+                <button
+                  class="mt-4 w-full rounded-xl bg-slate-50 py-2.5 text-xs font-bold text-slate-600 transition hover:bg-violet-50 hover:text-violet-600"
+                >
+                  Open Letter
+                </button>
+
+              </div>
+
+
+              <!-- Card -->
+              <div
+                class="card-hover rounded-2xl border border-slate-200 bg-white p-4"
+              >
+
+                <div class="flex items-start justify-between">
+
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-sm font-extrabold text-blue-600"
+                  >
+                    M
+                  </div>
+
+                  <button class="text-slate-300 hover:text-slate-600">
+                    •••
+                  </button>
+
+                </div>
+
+                <div class="mt-4">
+                  <h3 class="truncate text-sm font-bold">
+                    React Developer
+                  </h3>
+
+                  <p class="mt-1 text-xs text-slate-400">
+                    Microsoft
+                  </p>
+                </div>
+
+                <div
+                  class="mt-4 flex items-center justify-between"
+                >
+                  <span
+                    class="rounded-full bg-violet-50 px-2 py-1 text-[10px] font-bold text-violet-600"
+                  >
+                    Saved
+                  </span>
+
+                  <span class="text-[10px] text-slate-400">
+                    Yesterday
+                  </span>
+                </div>
+
+                <button
+                  class="mt-4 w-full rounded-xl bg-slate-50 py-2.5 text-xs font-bold text-slate-600 transition hover:bg-violet-50 hover:text-violet-600"
+                >
+                  Open Letter
+                </button>
+
+              </div>
+
+
+              <!-- Card -->
+              <div
+                class="card-hover rounded-2xl border border-slate-200 bg-white p-4"
+              >
+
+                <div class="flex items-start justify-between">
+
+                  <div
+                    class="flex h-10 w-10 items-center justify-center rounded-xl bg-green-50 text-sm font-extrabold text-green-600"
+                  >
+                    S
+                  </div>
+
+                  <button class="text-slate-300 hover:text-slate-600">
+                    •••
+                  </button>
+
+                </div>
+
+                <div class="mt-4">
+                  <h3 class="truncate text-sm font-bold">
+                    Frontend Engineer
+                  </h3>
+
+                  <p class="mt-1 text-xs text-slate-400">
+                    Shopify
+                  </p>
+                </div>
+
+                <div
+                  class="mt-4 flex items-center justify-between"
+                >
+                  <span
+                    class="rounded-full bg-orange-50 px-2 py-1 text-[10px] font-bold text-orange-600"
+                  >
+                    Edited
+                  </span>
+
+                  <span class="text-[10px] text-slate-400">
+                    Aug 22
+                  </span>
+                </div>
+
+                <button
+                  class="mt-4 w-full rounded-xl bg-slate-50 py-2.5 text-xs font-bold text-slate-600 transition hover:bg-violet-50 hover:text-violet-600"
+                >
+                  Open Letter
+                </button>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =============================================== -->
+          <!-- TIPS -->
+          <!-- =============================================== -->
+
+          <section
+            class="grid gap-4 md:grid-cols-3"
+          >
+
+            <div
+              class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card"
+            >
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-50 text-violet-600"
+              >
+                01
+              </div>
+
+              <h3 class="mt-4 text-sm font-bold">
+                Match the job
+              </h3>
+
+              <p class="mt-1 text-xs leading-5 text-slate-400">
+                Include skills and keywords that appear in the job
+                description.
+              </p>
+            </div>
+
+
+            <div
+              class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card"
+            >
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600"
+              >
+                02
+              </div>
+
+              <h3 class="mt-4 text-sm font-bold">
+                Show impact
+              </h3>
+
+              <p class="mt-1 text-xs leading-5 text-slate-400">
+                Highlight measurable achievements instead of simply listing
+                responsibilities.
+              </p>
+            </div>
+
+
+            <div
+              class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card"
+            >
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600"
+              >
+                03
+              </div>
+
+              <h3 class="mt-4 text-sm font-bold">
+                Keep it human
+              </h3>
+
+              <p class="mt-1 text-xs leading-5 text-slate-400">
+                AI creates the first draft. Always personalize it before
+                submitting your application.
+              </p>
+            </div>
+
+          </section>
+
+        </div>
+      </main>
+
+
+      <!-- ===================================================== -->
+      <!-- MOBILE BOTTOM NAVIGATION -->
+      <!-- ===================================================== -->
+
+      <nav
+        class="mobile-safe-area fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white/95 px-3 py-2 shadow-[0_-10px_30px_rgba(15,23,42,0.08)] backdrop-blur-xl md:hidden"
+      >
+        <div class="mx-auto flex max-w-md items-center justify-around">
+
+          <!-- Home -->
+          <a
+            href="#"
+            class="mobile-nav-item flex min-w-[55px] flex-col items-center gap-1 py-1 text-[9px] font-semibold text-slate-400"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10Z"
+              />
+            </svg>
+            Home
+          </a>
+
+          <!-- Resume -->
+          <a
+            href="#"
+            class="mobile-nav-item flex min-w-[55px] flex-col items-center gap-1 py-1 text-[9px] font-semibold text-slate-400"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+              <path d="M14 3v5h5" />
+            </svg>
+            Resume
+          </a>
+
+          <!-- Create -->
+          <button
+            class="-mt-7 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-2xl font-light text-white shadow-xl shadow-violet-300"
+          >
+            +
+          </button>
+
+          <!-- Jobs -->
+          <a
+            href="#"
+            class="mobile-nav-item flex min-w-[55px] flex-col items-center gap-1 py-1 text-[9px] font-semibold text-slate-400"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <rect x="3" y="7" width="18" height="13" rx="2" />
+              <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+            </svg>
+            Jobs
+          </a>
+
+          <!-- Profile -->
+          <a
+            href="#"
+            class="mobile-nav-item flex min-w-[55px] flex-col items-center gap-1 py-1 text-[9px] font-semibold text-slate-400"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="8" r="3" />
+              <path d="M5 20c.7-3.5 3-5 7-5s6.3 1.5 7 5" />
+            </svg>
+            Profile
+          </a>
+
+        </div>
+      </nav>
+
+    </div>
+  </body>
+</html>

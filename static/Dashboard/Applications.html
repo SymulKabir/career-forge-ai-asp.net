@@ -1,0 +1,2861 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CareerForge AI — Applications</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+
+            colors: {
+              primary: {
+                50: "#f5f3ff",
+                100: "#ede9fe",
+                200: "#ddd6fe",
+                300: "#c4b5fd",
+                400: "#a78bfa",
+                500: "#8b5cf6",
+                600: "#7c3aed",
+                700: "#6d28d9",
+              },
+            },
+
+            boxShadow: {
+              soft: "0 10px 40px rgba(15, 23, 42, 0.06)",
+              card: "0 8px 30px rgba(15, 23, 42, 0.05)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #ddd6fe transparent;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+
+        background:
+          radial-gradient(
+            circle at 10% 0%,
+            rgba(139, 92, 246, 0.06),
+            transparent 25%
+          ),
+          #f8fafc;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, #7c3aed, #2563eb);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .card-hover {
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          border-color 0.25s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+      }
+
+      .nav-item {
+        transition: all 0.2s ease;
+      }
+
+      .nav-item:hover {
+        background: #f5f3ff;
+        color: #6d28d9;
+      }
+
+      .nav-item.active {
+        color: white;
+        background: linear-gradient(135deg, #7c3aed, #4f46e5);
+        box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
+      }
+
+      .mobile-nav-item.active {
+        color: #7c3aed;
+      }
+
+      .modal-backdrop {
+        background: rgba(15, 23, 42, 0.45);
+        backdrop-filter: blur(5px);
+      }
+
+      .modal-enter {
+        animation: modalEnter 0.2s ease-out;
+      }
+
+      @keyframes modalEnter {
+        from {
+          opacity: 0;
+          transform: translateY(10px) scale(0.98);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @media (max-width: 767px) {
+        .mobile-safe-area {
+          padding-bottom: env(safe-area-inset-bottom);
+        }
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen text-slate-900">
+    <div class="min-h-screen">
+
+      <!-- ===================================================== -->
+      <!-- DESKTOP SIDEBAR -->
+      <!-- ===================================================== -->
+
+      <aside
+        class="fixed inset-y-0 left-0 z-40 hidden w-[250px] border-r border-slate-200/80 bg-white/90 backdrop-blur-xl md:flex md:flex-col"
+      >
+        <!-- Logo -->
+
+        <div class="flex h-[82px] items-center px-6">
+          <a href="#" class="flex items-center gap-3">
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 text-white shadow-lg shadow-violet-200"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  d="M12 3v3m0 12v3m9-9h-3M6 12H3m15.364-6.364-2.121 2.121M7.757 16.243l-2.121 2.121m12.728 0-2.121-2.121M7.757 7.757 5.636 5.636"
+                />
+                <circle cx="12" cy="12" r="4" />
+              </svg>
+            </div>
+
+            <div>
+              <div class="text-[17px] font-extrabold tracking-tight">
+                CareerForge
+                <span class="text-violet-600">AI</span>
+              </div>
+
+              <div
+                class="text-[9px] font-medium uppercase tracking-widest text-slate-400"
+              >
+                Your career, forged by AI
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Navigation -->
+
+        <nav class="flex-1 space-y-1 overflow-y-auto px-4 py-5">
+
+          <div
+            class="mb-3 px-3 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400"
+          >
+            Workspace
+          </div>
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10Z" />
+            </svg>
+            Dashboard
+          </a>
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+              <path d="M14 3v5h5M8 13h8M8 17h6" />
+            </svg>
+            My Resume
+          </a>
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="8" />
+              <circle cx="12" cy="12" r="4" />
+            </svg>
+            ATS Checker
+          </a>
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path d="M5 4h14v16H5z" />
+              <path d="M8 8h8M8 12h5M15 16l1.5 1.5L20 14" />
+            </svg>
+            Cover Letter AI
+          </a>
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="9" cy="8" r="3" />
+              <circle cx="17" cy="16" r="3" />
+              <path d="M11.5 10.5 14.5 13.5" />
+            </svg>
+            Job Matcher
+          </a>
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <rect x="3" y="5" width="18" height="14" rx="3" />
+              <path d="M8 10h.01M12 10h.01M16 10h.01M8 14h8" />
+            </svg>
+            AI Interview
+          </a>
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path d="M4 19c4-7 8-7 12-14" />
+              <circle cx="4" cy="19" r="2" />
+              <circle cx="16" cy="5" r="2" />
+              <path d="m15 17 2 2 3-4" />
+            </svg>
+            Career Roadmap
+          </a>
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path d="m12 3 2.3 5.2L20 9l-4 4 1 5.7-5-2.7-5 2.7 1-5.7-4-4 5.7-.8L12 3Z" />
+            </svg>
+            Skill Analyzer
+          </a>
+
+          <div class="my-5 border-t border-slate-100"></div>
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path d="M6 4h12v17l-6-3-6 3V4Z" />
+            </svg>
+            Saved Jobs
+          </a>
+
+          <!-- ACTIVE -->
+
+          <a
+            href="#"
+            class="nav-item active flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <rect x="4" y="3" width="16" height="18" rx="2" />
+              <path d="M8 8h8M8 12h8M8 16h5" />
+            </svg>
+            Applications
+          </a>
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="8" r="3" />
+              <path d="M5 20c.7-3.5 3-5 7-5s6.3 1.5 7 5" />
+            </svg>
+            Profile
+          </a>
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="3" />
+              <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V20h-2.6v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1-1.8-1.8.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H4v-2.6h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1 1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6V4h2.6v.1a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.1v2.6h-.1a1.7 1.7 0 0 0-1.6 1Z" />
+            </svg>
+            Settings
+          </a>
+        </nav>
+
+        <!-- Upgrade -->
+
+        <div class="space-y-3 p-4">
+
+          <div
+            class="overflow-hidden rounded-2xl bg-gradient-to-br from-violet-50 via-indigo-50 to-blue-50 p-4 text-center"
+          >
+            <div
+              class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-violet-600 shadow-sm"
+            >
+              ✦
+            </div>
+
+            <h3 class="text-sm font-bold text-slate-800">
+              Upgrade to Pro
+            </h3>
+
+            <p class="mt-1 text-[11px] leading-5 text-slate-500">
+              Unlock advanced AI career features.
+            </p>
+
+            <button
+              class="mt-3 w-full rounded-xl bg-white px-3 py-2 text-xs font-bold text-violet-600 shadow-sm hover:bg-violet-600 hover:text-white"
+            >
+              Upgrade Now →
+            </button>
+          </div>
+
+          <button
+            class="flex w-full items-center gap-3 rounded-xl bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-red-50 hover:text-red-600"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path d="M10 17l5-5-5-5M15 12H3M21 19V5a2 2 0 0 0-2-2h-6" />
+            </svg>
+
+            Logout
+          </button>
+
+        </div>
+      </aside>
+
+
+      <!-- ===================================================== -->
+      <!-- MAIN -->
+      <!-- ===================================================== -->
+
+      <main class="md:ml-[250px]">
+
+        <!-- HEADER -->
+
+        <header
+          class="sticky top-0 z-30 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl"
+        >
+          <div
+            class="flex h-[72px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
+          >
+
+            <!-- Mobile Logo -->
+
+            <div class="flex items-center gap-2 md:hidden">
+
+              <div
+                class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 text-white"
+              >
+                ✦
+              </div>
+
+              <span class="text-sm font-extrabold">
+                CareerForge
+                <span class="text-violet-600">AI</span>
+              </span>
+
+            </div>
+
+
+            <!-- Search -->
+
+            <div class="hidden max-w-xl flex-1 md:block">
+
+              <div class="relative">
+
+                <svg
+                  class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="m20 20-4-4" />
+                </svg>
+
+                <input
+                  id="globalSearch"
+                  type="text"
+                  placeholder="Search applications..."
+                  class="h-11 w-full rounded-2xl border border-slate-200 bg-slate-50 pl-11 pr-16 text-sm outline-none transition placeholder:text-slate-400 focus:border-violet-300 focus:bg-white focus:ring-4 focus:ring-violet-100"
+                />
+
+                <span
+                  class="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg bg-white px-2 py-1 text-[10px] font-semibold text-slate-400 shadow-sm"
+                >
+                  ⌘K
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <!-- Header right -->
+
+            <div class="flex items-center gap-3">
+
+              <button
+                class="relative flex h-10 w-10 items-center justify-center rounded-xl text-slate-500 hover:bg-slate-100"
+              >
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" />
+                  <path d="M10 21h4" />
+                </svg>
+
+                <span
+                  class="absolute right-1 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-500 px-1 text-[8px] font-bold text-white"
+                >
+                  3
+                </span>
+              </button>
+
+
+              <button
+                class="flex items-center gap-2 rounded-xl p-1.5 hover:bg-slate-50"
+              >
+
+                <div
+                  class="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-blue-500 text-sm font-bold text-white"
+                >
+                  SP
+                </div>
+
+                <div class="hidden text-left lg:block">
+
+                  <div class="text-xs font-bold text-slate-800">
+                    Saimon Pranta
+                  </div>
+
+                  <div class="flex items-center gap-1 text-[10px] text-slate-400">
+                    <span class="text-amber-500">◆</span>
+                    Free Plan
+                  </div>
+
+                </div>
+
+                <svg
+                  class="hidden h-4 w-4 text-slate-400 lg:block"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+
+              </button>
+
+            </div>
+
+          </div>
+        </header>
+
+
+        <!-- ===================================================== -->
+        <!-- CONTENT -->
+        <!-- ===================================================== -->
+
+        <div
+          class="mx-auto max-w-[1500px] space-y-6 px-4 py-6 sm:px-6 lg:px-8 lg:py-8"
+        >
+
+          <!-- PAGE HEADER -->
+
+          <section>
+
+            <div
+              class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between"
+            >
+
+              <div>
+
+                <div class="flex items-center gap-2">
+
+                  <h1
+                    class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl"
+                  >
+                    Applications
+                  </h1>
+
+                  <span
+                    class="rounded-full bg-violet-50 px-2.5 py-1 text-[10px] font-bold text-violet-600"
+                  >
+                    24 total
+                  </span>
+
+                </div>
+
+                <p class="mt-2 max-w-2xl text-sm text-slate-500">
+                  Track every job application, follow your progress, and never
+                  miss an important follow-up.
+                </p>
+
+              </div>
+
+
+              <button
+                onclick="openAddModal()"
+                class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-violet-200 transition hover:-translate-y-0.5"
+              >
+                <span class="text-lg leading-none">+</span>
+                Add Application
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- ===================================================== -->
+          <!-- STATS -->
+          <!-- ===================================================== -->
+
+          <section
+            class="grid grid-cols-2 gap-4 lg:grid-cols-5"
+          >
+
+            <!-- Total -->
+
+            <div
+              class="card-hover rounded-2xl border border-slate-200 bg-white p-5 shadow-card"
+            >
+
+              <div class="flex items-center justify-between">
+
+                <div
+                  class="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-50 text-violet-600"
+                >
+                  <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                  >
+                    <rect x="4" y="3" width="16" height="18" rx="2" />
+                    <path d="M8 8h8M8 12h8M8 16h5" />
+                  </svg>
+                </div>
+
+              </div>
+
+              <div
+                id="statTotal"
+                class="mt-4 text-2xl font-extrabold"
+              >
+                24
+              </div>
+
+              <div class="mt-1 text-xs text-slate-400">
+                Total applications
+              </div>
+
+            </div>
+
+
+            <!-- Applied -->
+
+            <div
+              class="card-hover rounded-2xl border border-slate-200 bg-white p-5 shadow-card"
+            >
+
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600"
+              >
+                ↑
+              </div>
+
+              <div
+                id="statApplied"
+                class="mt-4 text-2xl font-extrabold"
+              >
+                8
+              </div>
+
+              <div class="mt-1 text-xs text-slate-400">
+                Applied
+              </div>
+
+            </div>
+
+
+            <!-- Interviews -->
+
+            <div
+              class="card-hover rounded-2xl border border-slate-200 bg-white p-5 shadow-card"
+            >
+
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-50 text-orange-500"
+              >
+                ◎
+              </div>
+
+              <div
+                id="statInterview"
+                class="mt-4 text-2xl font-extrabold"
+              >
+                4
+              </div>
+
+              <div class="mt-1 text-xs text-slate-400">
+                Interviews
+              </div>
+
+            </div>
+
+
+            <!-- Offers -->
+
+            <div
+              class="card-hover rounded-2xl border border-slate-200 bg-white p-5 shadow-card"
+            >
+
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600"
+              >
+                ✓
+              </div>
+
+              <div
+                id="statOffer"
+                class="mt-4 text-2xl font-extrabold"
+              >
+                2
+              </div>
+
+              <div class="mt-1 text-xs text-slate-400">
+                Offers
+              </div>
+
+            </div>
+
+
+            <!-- Rejected -->
+
+            <div
+              class="card-hover rounded-2xl border border-slate-200 bg-white p-5 shadow-card"
+            >
+
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-xl bg-red-50 text-red-500"
+              >
+                ×
+              </div>
+
+              <div
+                id="statRejected"
+                class="mt-4 text-2xl font-extrabold"
+              >
+                3
+              </div>
+
+              <div class="mt-1 text-xs text-slate-400">
+                Rejected
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- ===================================================== -->
+          <!-- APPLICATION PIPELINE -->
+          <!-- ===================================================== -->
+
+          <section
+            class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card sm:p-6"
+          >
+
+            <div class="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
+
+              <!-- Search -->
+
+              <div class="relative w-full xl:max-w-md">
+
+                <svg
+                  class="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="m20 20-4-4" />
+                </svg>
+
+                <input
+                  id="applicationSearch"
+                  type="text"
+                  placeholder="Search company, position..."
+                  class="h-11 w-full rounded-xl border border-slate-200 bg-slate-50 pl-10 pr-4 text-sm outline-none focus:border-violet-300 focus:bg-white focus:ring-4 focus:ring-violet-100"
+                />
+
+              </div>
+
+
+              <!-- Filters -->
+
+              <div class="flex flex-wrap items-center gap-2">
+
+                <select
+                  id="statusFilter"
+                  class="h-11 rounded-xl border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-600 outline-none focus:border-violet-300"
+                >
+                  <option value="all">All statuses</option>
+                  <option value="Applied">Applied</option>
+                  <option value="Screening">Screening</option>
+                  <option value="Interview">Interview</option>
+                  <option value="Offer">Offer</option>
+                  <option value="Rejected">Rejected</option>
+                  <option value="Withdrawn">Withdrawn</option>
+                </select>
+
+
+                <select
+                  id="typeFilter"
+                  class="h-11 rounded-xl border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-600 outline-none focus:border-violet-300"
+                >
+                  <option value="all">All job types</option>
+                  <option value="Full-time">Full-time</option>
+                  <option value="Contract">Contract</option>
+                  <option value="Part-time">Part-time</option>
+                  <option value="Internship">Internship</option>
+                </select>
+
+
+                <select
+                  id="sortFilter"
+                  class="h-11 rounded-xl border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-600 outline-none focus:border-violet-300"
+                >
+                  <option value="newest">Newest first</option>
+                  <option value="oldest">Oldest first</option>
+                  <option value="company">Company A-Z</option>
+                  <option value="status">Status</option>
+                </select>
+
+              </div>
+
+            </div>
+
+
+            <!-- Pipeline -->
+
+            <div class="mt-6 overflow-x-auto">
+
+              <div class="min-w-[900px]">
+
+                <!-- Table header -->
+
+                <div
+                  class="grid grid-cols-[2.2fr_1.2fr_1fr_1fr_1fr_100px] items-center gap-4 border-b border-slate-100 px-4 pb-3 text-[10px] font-bold uppercase tracking-wider text-slate-400"
+                >
+                  <div>Position</div>
+                  <div>Status</div>
+                  <div>Applied</div>
+                  <div>Next step</div>
+                  <div>Salary</div>
+                  <div></div>
+                </div>
+
+
+                <!-- Applications -->
+
+                <div id="applicationsList"></div>
+
+              </div>
+
+            </div>
+
+
+            <!-- Empty -->
+
+            <div
+              id="emptyState"
+              class="hidden py-16 text-center"
+            >
+
+              <div
+                class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-2xl"
+              >
+                🔎
+              </div>
+
+              <h3 class="mt-4 text-sm font-bold">
+                No applications found
+              </h3>
+
+              <p class="mx-auto mt-1 max-w-sm text-xs leading-5 text-slate-400">
+                Try changing your search or filters, or add a new application.
+              </p>
+
+            </div>
+
+
+            <!-- Pagination -->
+
+            <div
+              class="mt-5 flex flex-col gap-3 border-t border-slate-100 pt-5 sm:flex-row sm:items-center sm:justify-between"
+            >
+
+              <p
+                id="resultsText"
+                class="text-xs text-slate-400"
+              >
+                Showing 1–6 of 24 applications
+              </p>
+
+              <div class="flex items-center gap-1">
+
+                <button
+                  id="prevPage"
+                  onclick="changePage(-1)"
+                  class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-sm text-slate-400 hover:bg-slate-50"
+                >
+                  ←
+                </button>
+
+                <div id="pageNumbers" class="flex gap-1"></div>
+
+                <button
+                  id="nextPage"
+                  onclick="changePage(1)"
+                  class="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-sm text-slate-500 hover:bg-slate-50"
+                >
+                  →
+                </button>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- ===================================================== -->
+          <!-- FOLLOW UP REMINDER -->
+          <!-- ===================================================== -->
+
+          <section
+            class="grid gap-6 lg:grid-cols-[1.4fr_0.6fr]"
+          >
+
+            <!-- Follow ups -->
+
+            <div
+              class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card sm:p-6"
+            >
+
+              <div class="flex items-center justify-between">
+
+                <div>
+
+                  <h2 class="text-base font-bold">
+                    Upcoming follow-ups
+                  </h2>
+
+                  <p class="mt-1 text-xs text-slate-400">
+                    Stay proactive with your applications
+                  </p>
+
+                </div>
+
+                <button
+                  class="rounded-lg bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-600 hover:bg-violet-50 hover:text-violet-600"
+                >
+                  View calendar
+                </button>
+
+              </div>
+
+
+              <div class="mt-5 space-y-3">
+
+                <!-- Follow up -->
+
+                <div
+                  class="flex items-center gap-4 rounded-xl border border-slate-100 bg-slate-50/70 p-4"
+                >
+
+                  <div
+                    class="flex h-11 w-11 shrink-0 flex-col items-center justify-center rounded-xl bg-white shadow-sm"
+                  >
+                    <span class="text-[9px] font-bold uppercase text-red-500">
+                      Aug
+                    </span>
+
+                    <span class="text-sm font-extrabold">
+                      27
+                    </span>
+                  </div>
+
+                  <div class="min-w-0 flex-1">
+
+                    <h3 class="truncate text-sm font-bold">
+                      Senior Full Stack Developer
+                    </h3>
+
+                    <p class="mt-1 text-xs text-slate-400">
+                      Google · Follow up after application
+                    </p>
+
+                  </div>
+
+                  <button
+                    class="hidden rounded-lg bg-white px-3 py-2 text-xs font-semibold text-slate-600 shadow-sm hover:text-violet-600 sm:block"
+                  >
+                    Follow up
+                  </button>
+
+                </div>
+
+
+                <!-- Follow up -->
+
+                <div
+                  class="flex items-center gap-4 rounded-xl border border-slate-100 bg-slate-50/70 p-4"
+                >
+
+                  <div
+                    class="flex h-11 w-11 shrink-0 flex-col items-center justify-center rounded-xl bg-white shadow-sm"
+                  >
+                    <span class="text-[9px] font-bold uppercase text-orange-500">
+                      Aug
+                    </span>
+
+                    <span class="text-sm font-extrabold">
+                      29
+                    </span>
+                  </div>
+
+                  <div class="min-w-0 flex-1">
+
+                    <h3 class="truncate text-sm font-bold">
+                      Senior .NET Developer
+                    </h3>
+
+                    <p class="mt-1 text-xs text-slate-400">
+                      Interhyp Group · Recruiter follow-up
+                    </p>
+
+                  </div>
+
+                  <button
+                    class="hidden rounded-lg bg-white px-3 py-2 text-xs font-semibold text-slate-600 shadow-sm hover:text-violet-600 sm:block"
+                  >
+                    Follow up
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- Application success -->
+
+            <div
+              class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-violet-700 via-indigo-700 to-blue-700 p-6 text-white shadow-lg shadow-violet-200"
+            >
+
+              <div
+                class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-3xl"
+              ></div>
+
+              <div class="relative">
+
+                <div
+                  class="text-[10px] font-bold uppercase tracking-widest text-violet-200"
+                >
+                  Application health
+                </div>
+
+                <div class="mt-5 text-4xl font-extrabold">
+                  16.7%
+                </div>
+
+                <p class="mt-2 text-xs leading-5 text-violet-100">
+                  Your current application-to-interview conversion rate.
+                </p>
+
+                <div class="mt-6 h-2 overflow-hidden rounded-full bg-white/20">
+
+                  <div
+                    class="h-full w-[66%] rounded-full bg-white"
+                  ></div>
+
+                </div>
+
+                <div class="mt-3 flex justify-between text-[10px] text-violet-200">
+
+                  <span>
+                    Industry average
+                  </span>
+
+                  <span>
+                    12.4%
+                  </span>
+
+                </div>
+
+                <button
+                  class="mt-6 w-full rounded-xl bg-white px-4 py-3 text-xs font-bold text-violet-700 hover:-translate-y-0.5"
+                >
+                  Improve Applications →
+                </button>
+
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+
+      </main>
+
+
+      <!-- ===================================================== -->
+      <!-- MOBILE BOTTOM NAV -->
+      <!-- ===================================================== -->
+
+      <nav
+        class="mobile-safe-area fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white/95 px-3 py-2 shadow-[0_-10px_30px_rgba(15,23,42,0.08)] backdrop-blur-xl md:hidden"
+      >
+
+        <div class="mx-auto flex max-w-md items-center justify-around">
+
+          <a
+            href="#"
+            class="mobile-nav-item flex min-w-[55px] flex-col items-center gap-1 py-1 text-[9px] font-semibold text-slate-400"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10Z" />
+            </svg>
+            Home
+          </a>
+
+
+          <a
+            href="#"
+            class="mobile-nav-item flex min-w-[55px] flex-col items-center gap-1 py-1 text-[9px] font-semibold text-slate-400"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+              <path d="M14 3v5h5" />
+            </svg>
+            Resume
+          </a>
+
+
+          <button
+            onclick="openAddModal()"
+            class="-mt-7 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-2xl font-light text-white shadow-xl shadow-violet-300"
+          >
+            +
+          </button>
+
+
+          <a
+            href="#"
+            class="mobile-nav-item flex min-w-[55px] flex-col items-center gap-1 py-1 text-[9px] font-semibold text-slate-400"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <rect x="3" y="7" width="18" height="13" rx="2" />
+              <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+            </svg>
+            Jobs
+          </a>
+
+
+          <a
+            href="#"
+            class="mobile-nav-item active flex min-w-[55px] flex-col items-center gap-1 py-1 text-[9px] font-semibold"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <rect x="4" y="3" width="16" height="18" rx="2" />
+              <path d="M8 8h8M8 12h8M8 16h5" />
+            </svg>
+            Applications
+          </a>
+
+        </div>
+
+      </nav>
+
+
+      <!-- ===================================================== -->
+      <!-- ADD APPLICATION MODAL -->
+      <!-- ===================================================== -->
+
+      <div
+        id="addModal"
+        class="modal-backdrop fixed inset-0 z-[100] hidden items-center justify-center overflow-y-auto p-4"
+      >
+
+        <div
+          class="modal-enter w-full max-w-2xl rounded-3xl bg-white shadow-2xl"
+        >
+
+          <div
+            class="flex items-center justify-between border-b border-slate-100 px-6 py-5"
+          >
+
+            <div>
+
+              <h2 class="text-lg font-extrabold">
+                Add application
+              </h2>
+
+              <p class="mt-1 text-xs text-slate-400">
+                Keep your job search organized.
+              </p>
+
+            </div>
+
+            <button
+              onclick="closeAddModal()"
+              class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-50 text-slate-500 hover:bg-slate-100"
+            >
+              ×
+            </button>
+
+          </div>
+
+
+          <form
+            id="applicationForm"
+            class="space-y-5 p-6"
+          >
+
+            <div class="grid gap-5 sm:grid-cols-2">
+
+              <div class="sm:col-span-2">
+
+                <label class="mb-2 block text-xs font-bold text-slate-700">
+                  Job title
+                </label>
+
+                <input
+                  id="jobTitle"
+                  required
+                  type="text"
+                  placeholder="e.g. Senior Full Stack Developer"
+                  class="h-11 w-full rounded-xl border border-slate-200 px-4 text-sm outline-none focus:border-violet-400 focus:ring-4 focus:ring-violet-100"
+                />
+
+              </div>
+
+
+              <div>
+
+                <label class="mb-2 block text-xs font-bold text-slate-700">
+                  Company
+                </label>
+
+                <input
+                  id="company"
+                  required
+                  type="text"
+                  placeholder="e.g. Google"
+                  class="h-11 w-full rounded-xl border border-slate-200 px-4 text-sm outline-none focus:border-violet-400 focus:ring-4 focus:ring-violet-100"
+                />
+
+              </div>
+
+
+              <div>
+
+                <label class="mb-2 block text-xs font-bold text-slate-700">
+                  Location
+                </label>
+
+                <input
+                  id="location"
+                  type="text"
+                  placeholder="Remote / Berlin, Germany"
+                  class="h-11 w-full rounded-xl border border-slate-200 px-4 text-sm outline-none focus:border-violet-400 focus:ring-4 focus:ring-violet-100"
+                />
+
+              </div>
+
+
+              <div>
+
+                <label class="mb-2 block text-xs font-bold text-slate-700">
+                  Job type
+                </label>
+
+                <select
+                  id="jobType"
+                  class="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none focus:border-violet-400 focus:ring-4 focus:ring-violet-100"
+                >
+                  <option>Full-time</option>
+                  <option>Contract</option>
+                  <option>Part-time</option>
+                  <option>Internship</option>
+                </select>
+
+              </div>
+
+
+              <div>
+
+                <label class="mb-2 block text-xs font-bold text-slate-700">
+                  Status
+                </label>
+
+                <select
+                  id="jobStatus"
+                  class="h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none focus:border-violet-400 focus:ring-4 focus:ring-violet-100"
+                >
+                  <option>Applied</option>
+                  <option>Screening</option>
+                  <option>Interview</option>
+                  <option>Offer</option>
+                  <option>Rejected</option>
+                  <option>Withdrawn</option>
+                </select>
+
+              </div>
+
+
+              <div>
+
+                <label class="mb-2 block text-xs font-bold text-slate-700">
+                  Salary
+                </label>
+
+                <input
+                  id="salary"
+                  type="text"
+                  placeholder="€70k – €90k"
+                  class="h-11 w-full rounded-xl border border-slate-200 px-4 text-sm outline-none focus:border-violet-400 focus:ring-4 focus:ring-violet-100"
+                />
+
+              </div>
+
+
+              <div>
+
+                <label class="mb-2 block text-xs font-bold text-slate-700">
+                  Application date
+                </label>
+
+                <input
+                  id="applicationDate"
+                  required
+                  type="date"
+                  class="h-11 w-full rounded-xl border border-slate-200 px-4 text-sm outline-none focus:border-violet-400 focus:ring-4 focus:ring-violet-100"
+                />
+
+              </div>
+
+
+              <div class="sm:col-span-2">
+
+                <label class="mb-2 block text-xs font-bold text-slate-700">
+                  Job URL
+                </label>
+
+                <input
+                  id="jobUrl"
+                  type="url"
+                  placeholder="https://..."
+                  class="h-11 w-full rounded-xl border border-slate-200 px-4 text-sm outline-none focus:border-violet-400 focus:ring-4 focus:ring-violet-100"
+                />
+
+              </div>
+
+
+              <div class="sm:col-span-2">
+
+                <label class="mb-2 block text-xs font-bold text-slate-700">
+                  Notes
+                </label>
+
+                <textarea
+                  id="notes"
+                  rows="3"
+                  placeholder="Recruiter contact, interview notes, follow-up reminder..."
+                  class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-violet-400 focus:ring-4 focus:ring-violet-100"
+                ></textarea>
+
+              </div>
+
+            </div>
+
+
+            <div
+              class="flex flex-col-reverse gap-3 border-t border-slate-100 pt-5 sm:flex-row sm:justify-end"
+            >
+
+              <button
+                type="button"
+                onclick="closeAddModal()"
+                class="rounded-xl border border-slate-200 px-5 py-3 text-sm font-bold text-slate-600 hover:bg-slate-50"
+              >
+                Cancel
+              </button>
+
+              <button
+                type="submit"
+                class="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-violet-200"
+              >
+                Save Application
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+
+      <!-- ===================================================== -->
+      <!-- DETAILS MODAL -->
+      <!-- ===================================================== -->
+
+      <div
+        id="detailsModal"
+        class="modal-backdrop fixed inset-0 z-[100] hidden items-center justify-center overflow-y-auto p-4"
+      >
+
+        <div
+          class="modal-enter w-full max-w-2xl rounded-3xl bg-white shadow-2xl"
+        >
+
+          <div
+            class="flex items-start justify-between border-b border-slate-100 px-6 py-5"
+          >
+
+            <div class="flex items-center gap-4">
+
+              <div
+                id="detailLogo"
+                class="flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-50 text-lg font-extrabold text-violet-600"
+              >
+                G
+              </div>
+
+              <div>
+
+                <h2
+                  id="detailTitle"
+                  class="text-lg font-extrabold"
+                >
+                  Senior Full Stack Developer
+                </h2>
+
+                <p
+                  id="detailCompany"
+                  class="mt-1 text-xs text-slate-400"
+                >
+                  Google · Remote
+                </p>
+
+              </div>
+
+            </div>
+
+            <button
+              onclick="closeDetailsModal()"
+              class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-50 text-slate-500 hover:bg-slate-100"
+            >
+              ×
+            </button>
+
+          </div>
+
+
+          <div class="space-y-6 p-6">
+
+            <!-- Status -->
+
+            <div
+              class="rounded-2xl bg-slate-50 p-4"
+            >
+
+              <div class="flex items-center justify-between">
+
+                <div>
+
+                  <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    Current status
+                  </div>
+
+                  <div
+                    id="detailStatus"
+                    class="mt-2"
+                  ></div>
+
+                </div>
+
+                <select
+                  id="detailStatusSelect"
+                  onchange="updateDetailStatus(this.value)"
+                  class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold outline-none"
+                >
+                  <option>Applied</option>
+                  <option>Screening</option>
+                  <option>Interview</option>
+                  <option>Offer</option>
+                  <option>Rejected</option>
+                  <option>Withdrawn</option>
+                </select>
+
+              </div>
+
+            </div>
+
+
+            <!-- Information -->
+
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+
+              <div>
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  Applied
+                </div>
+
+                <div
+                  id="detailDate"
+                  class="mt-1 text-sm font-bold"
+                >
+                  —
+                </div>
+              </div>
+
+
+              <div>
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  Job type
+                </div>
+
+                <div
+                  id="detailType"
+                  class="mt-1 text-sm font-bold"
+                >
+                  —
+                </div>
+              </div>
+
+
+              <div>
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  Salary
+                </div>
+
+                <div
+                  id="detailSalary"
+                  class="mt-1 text-sm font-bold"
+                >
+                  —
+                </div>
+              </div>
+
+
+              <div>
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  Next step
+                </div>
+
+                <div
+                  id="detailNext"
+                  class="mt-1 text-sm font-bold"
+                >
+                  —
+                </div>
+              </div>
+
+            </div>
+
+
+            <!-- Notes -->
+
+            <div>
+
+              <div class="text-sm font-bold">
+                Notes
+              </div>
+
+              <div
+                id="detailNotes"
+                class="mt-2 rounded-xl bg-slate-50 p-4 text-xs leading-6 text-slate-500"
+              >
+                No notes added.
+              </div>
+
+            </div>
+
+
+            <!-- Actions -->
+
+            <div
+              class="flex flex-col gap-3 border-t border-slate-100 pt-5 sm:flex-row sm:justify-between"
+            >
+
+              <button
+                onclick="deleteCurrentApplication()"
+                class="rounded-xl px-4 py-3 text-xs font-bold text-red-500 hover:bg-red-50"
+              >
+                Delete application
+              </button>
+
+
+              <div class="flex gap-3">
+
+                <button
+                  id="detailUrlButton"
+                  onclick="openJobUrl()"
+                  class="rounded-xl border border-slate-200 px-4 py-3 text-xs font-bold text-slate-600 hover:border-violet-200 hover:text-violet-600"
+                >
+                  Open Job
+                </button>
+
+                <button
+                  onclick="closeDetailsModal()"
+                  class="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-5 py-3 text-xs font-bold text-white"
+                >
+                  Done
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- JAVASCRIPT -->
+    <!-- ===================================================== -->
+
+    <script>
+
+      /*
+       * Demo application data.
+       *
+       * In production these records should come from:
+       *
+       * GET /api/applications
+       *
+       * POST /api/applications
+       *
+       * PATCH /api/applications/:id
+       *
+       * DELETE /api/applications/:id
+       */
+
+      const defaultApplications = [
+
+        {
+          id: 1,
+          title: "Senior Full Stack Developer",
+          company: "Google",
+          location: "Remote",
+          type: "Full-time",
+          status: "Interview",
+          salary: "$120k – $160k",
+          date: "2026-08-20",
+          next: "Aug 27",
+          notes: "Technical interview scheduled. Prepare system design and React questions.",
+          url: "https://careers.google.com/"
+        },
+
+        {
+          id: 2,
+          title: "Senior .NET Developer",
+          company: "Interhyp Group",
+          location: "Munich, Germany",
+          type: "Full-time",
+          status: "Screening",
+          salary: "€70k – €90k",
+          date: "2026-08-18",
+          next: "Aug 29",
+          notes: "Recruiter screening expected. Highlight ASP.NET and full-stack experience.",
+          url: "#"
+        },
+
+        {
+          id: 3,
+          title: "React Developer",
+          company: "Microsoft",
+          location: "Remote",
+          type: "Full-time",
+          status: "Applied",
+          salary: "$110k – $145k",
+          date: "2026-08-17",
+          next: "Follow up",
+          notes: "Application submitted through company career portal.",
+          url: "#"
+        },
+
+        {
+          id: 4,
+          title: "Senior UI Developer",
+          company: "Shopify",
+          location: "Remote",
+          type: "Full-time",
+          status: "Applied",
+          salary: "$100k – $130k",
+          date: "2026-08-15",
+          next: "Follow up",
+          notes: "Strong match based on React and TypeScript requirements.",
+          url: "#"
+        },
+
+        {
+          id: 5,
+          title: "Frontend Engineer",
+          company: "Amazon",
+          location: "Berlin, Germany",
+          type: "Full-time",
+          status: "Rejected",
+          salary: "$130k – $170k",
+          date: "2026-08-12",
+          next: "—",
+          notes: "Rejected after initial application.",
+          url: "#"
+        },
+
+        {
+          id: 6,
+          title: "Full Stack Engineer",
+          company: "SAP",
+          location: "Walldorf, Germany",
+          type: "Full-time",
+          status: "Offer",
+          salary: "€75k – €95k",
+          date: "2026-08-10",
+          next: "Offer review",
+          notes: "Offer received. Review compensation and relocation package.",
+          url: "#"
+        },
+
+        {
+          id: 7,
+          title: "Software Engineer",
+          company: "Siemens",
+          location: "Berlin, Germany",
+          type: "Full-time",
+          status: "Interview",
+          salary: "€68k – €85k",
+          date: "2026-08-08",
+          next: "Aug 30",
+          notes: "Second interview scheduled.",
+          url: "#"
+        },
+
+        {
+          id: 8,
+          title: "Full Stack Developer",
+          company: "Zalando",
+          location: "Berlin, Germany",
+          type: "Full-time",
+          status: "Applied",
+          salary: "€70k – €90k",
+          date: "2026-08-05",
+          next: "Follow up",
+          notes: "",
+          url: "#"
+        },
+
+        {
+          id: 9,
+          title: "Backend Developer",
+          company: "Delivery Hero",
+          location: "Berlin, Germany",
+          type: "Full-time",
+          status: "Screening",
+          salary: "€65k – €85k",
+          date: "2026-08-03",
+          next: "Recruiter call",
+          notes: "Recruiter contacted via LinkedIn.",
+          url: "#"
+        },
+
+        {
+          id: 10,
+          title: "Software Developer",
+          company: "Bosch",
+          location: "Stuttgart, Germany",
+          type: "Full-time",
+          status: "Rejected",
+          salary: "€65k – €82k",
+          date: "2026-08-01",
+          next: "—",
+          notes: "",
+          url: "#"
+        }
+
+      ];
+
+
+      let applications =
+        JSON.parse(localStorage.getItem("careerforge_applications")) ||
+        defaultApplications;
+
+
+      let currentPage = 1;
+
+      const pageSize = 6;
+
+      let currentApplicationId = null;
+
+
+      /*
+       * Save data locally.
+       */
+
+      function saveApplications() {
+
+        localStorage.setItem(
+          "careerforge_applications",
+          JSON.stringify(applications)
+        );
+
+      }
+
+
+      /*
+       * Format date.
+       */
+
+      function formatDate(date) {
+
+        if (!date) return "—";
+
+        const d = new Date(date + "T00:00:00");
+
+        return d.toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric"
+        });
+
+      }
+
+
+      /*
+       * Status styling.
+       */
+
+      function statusBadge(status) {
+
+        const styles = {
+
+          Applied:
+            "bg-blue-50 text-blue-600",
+
+          Screening:
+            "bg-violet-50 text-violet-600",
+
+          Interview:
+            "bg-orange-50 text-orange-600",
+
+          Offer:
+            "bg-emerald-50 text-emerald-600",
+
+          Rejected:
+            "bg-red-50 text-red-500",
+
+          Withdrawn:
+            "bg-slate-100 text-slate-500"
+
+        };
+
+        return `
+          <span
+            class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-bold ${styles[status] || styles.Applied}"
+          >
+            <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
+            ${status}
+          </span>
+        `;
+
+      }
+
+
+      /*
+       * Company initials.
+       */
+
+      function initials(company) {
+
+        return company
+          .split(" ")
+          .map(word => word[0])
+          .join("")
+          .slice(0, 2)
+          .toUpperCase();
+
+      }
+
+
+      /*
+       * Get filtered applications.
+       */
+
+      function getFilteredApplications() {
+
+        const search =
+          document
+            .getElementById("applicationSearch")
+            .value
+            .toLowerCase()
+            .trim();
+
+        const status =
+          document.getElementById("statusFilter").value;
+
+        const type =
+          document.getElementById("typeFilter").value;
+
+        const sort =
+          document.getElementById("sortFilter").value;
+
+
+        let result = applications.filter(application => {
+
+          const matchesSearch =
+            !search ||
+            application.title.toLowerCase().includes(search) ||
+            application.company.toLowerCase().includes(search) ||
+            application.location.toLowerCase().includes(search);
+
+          const matchesStatus =
+            status === "all" ||
+            application.status === status;
+
+          const matchesType =
+            type === "all" ||
+            application.type === type;
+
+          return (
+            matchesSearch &&
+            matchesStatus &&
+            matchesType
+          );
+
+        });
+
+
+        if (sort === "newest") {
+
+          result.sort(
+            (a, b) =>
+              new Date(b.date) - new Date(a.date)
+          );
+
+        }
+
+        if (sort === "oldest") {
+
+          result.sort(
+            (a, b) =>
+              new Date(a.date) - new Date(b.date)
+          );
+
+        }
+
+        if (sort === "company") {
+
+          result.sort((a, b) =>
+            a.company.localeCompare(b.company)
+          );
+
+        }
+
+        if (sort === "status") {
+
+          result.sort((a, b) =>
+            a.status.localeCompare(b.status)
+          );
+
+        }
+
+
+        return result;
+
+      }
+
+
+      /*
+       * Render applications.
+       */
+
+      function renderApplications() {
+
+        const list =
+          document.getElementById("applicationsList");
+
+        const empty =
+          document.getElementById("emptyState");
+
+        const filtered =
+          getFilteredApplications();
+
+
+        const totalPages =
+          Math.max(
+            1,
+            Math.ceil(filtered.length / pageSize)
+          );
+
+
+        if (currentPage > totalPages) {
+          currentPage = totalPages;
+        }
+
+
+        const start =
+          (currentPage - 1) * pageSize;
+
+        const end =
+          start + pageSize;
+
+        const pageItems =
+          filtered.slice(start, end);
+
+
+        list.innerHTML = "";
+
+
+        if (!pageItems.length) {
+
+          empty.classList.remove("hidden");
+
+        } else {
+
+          empty.classList.add("hidden");
+
+
+          pageItems.forEach(application => {
+
+            const row =
+              document.createElement("div");
+
+            row.className =
+              "grid grid-cols-[2.2fr_1.2fr_1fr_1fr_1fr_100px] items-center gap-4 border-b border-slate-100 px-4 py-4 transition hover:bg-slate-50";
+
+
+            row.innerHTML = `
+
+              <!-- Position -->
+
+              <div class="flex min-w-0 items-center gap-3">
+
+                <div
+                  class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-xs font-extrabold text-violet-600"
+                >
+                  ${initials(application.company)}
+                </div>
+
+                <div class="min-w-0">
+
+                  <button
+                    onclick="openDetails(${application.id})"
+                    class="block max-w-full truncate text-left text-sm font-bold text-slate-800 hover:text-violet-600"
+                  >
+                    ${application.title}
+                  </button>
+
+                  <div class="mt-1 flex items-center gap-1.5 text-[10px] text-slate-400">
+
+                    <span>
+                      ${application.company}
+                    </span>
+
+                    <span>·</span>
+
+                    <span>
+                      ${application.location}
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- Status -->
+
+              <div>
+                ${statusBadge(application.status)}
+              </div>
+
+
+              <!-- Applied -->
+
+              <div class="text-xs font-medium text-slate-500">
+                ${formatDate(application.date)}
+              </div>
+
+
+              <!-- Next -->
+
+              <div class="text-xs font-semibold text-slate-600">
+                ${application.next || "—"}
+              </div>
+
+
+              <!-- Salary -->
+
+              <div class="text-xs font-semibold text-slate-700">
+                ${application.salary || "Not specified"}
+              </div>
+
+
+              <!-- Actions -->
+
+              <div class="flex items-center justify-end gap-1">
+
+                <button
+                  onclick="openDetails(${application.id})"
+                  title="View details"
+                  class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 hover:bg-violet-50 hover:text-violet-600"
+                >
+                  ↗
+                </button>
+
+                <button
+                  onclick="deleteApplication(${application.id})"
+                  title="Delete"
+                  class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-300 hover:bg-red-50 hover:text-red-500"
+                >
+                  ×
+                </button>
+
+              </div>
+
+            `;
+
+
+            list.appendChild(row);
+
+          });
+
+        }
+
+
+        updatePagination(
+          filtered.length,
+          totalPages
+        );
+
+      }
+
+
+      /*
+       * Pagination.
+       */
+
+      function updatePagination(total, totalPages) {
+
+        const pageNumbers =
+          document.getElementById("pageNumbers");
+
+        pageNumbers.innerHTML = "";
+
+
+        for (
+          let page = 1;
+          page <= totalPages;
+          page++
+        ) {
+
+          const button =
+            document.createElement("button");
+
+          button.className =
+            `flex h-9 w-9 items-center justify-center rounded-lg text-xs font-bold ${
+              page === currentPage
+                ? "bg-violet-600 text-white shadow-md shadow-violet-200"
+                : "border border-slate-200 text-slate-500 hover:bg-slate-50"
+            }`;
+
+          button.textContent = page;
+
+          button.onclick = () => {
+
+            currentPage = page;
+
+            renderApplications();
+
+          };
+
+          pageNumbers.appendChild(button);
+
+        }
+
+
+        const start =
+          total === 0
+            ? 0
+            : (currentPage - 1) * pageSize + 1;
+
+        const end =
+          Math.min(
+            currentPage * pageSize,
+            total
+          );
+
+
+        document.getElementById(
+          "resultsText"
+        ).textContent =
+          `Showing ${start}–${end} of ${total} applications`;
+
+
+        document.getElementById(
+          "prevPage"
+        ).disabled =
+          currentPage === 1;
+
+        document.getElementById(
+          "nextPage"
+        ).disabled =
+          currentPage === totalPages;
+
+
+        document.getElementById(
+          "prevPage"
+        ).classList.toggle(
+          "opacity-40",
+          currentPage === 1
+        );
+
+        document.getElementById(
+          "nextPage"
+        ).classList.toggle(
+          "opacity-40",
+          currentPage === totalPages
+        );
+
+      }
+
+
+      function changePage(direction) {
+
+        const filtered =
+          getFilteredApplications();
+
+        const totalPages =
+          Math.max(
+            1,
+            Math.ceil(filtered.length / pageSize)
+          );
+
+        currentPage =
+          Math.min(
+            Math.max(
+              1,
+              currentPage + direction
+            ),
+            totalPages
+          );
+
+        renderApplications();
+
+      }
+
+
+      /*
+       * Statistics.
+       */
+
+      function updateStats() {
+
+        const total =
+          applications.length;
+
+        const applied =
+          applications.filter(
+            a => a.status === "Applied"
+          ).length;
+
+        const interview =
+          applications.filter(
+            a => a.status === "Interview"
+          ).length;
+
+        const offer =
+          applications.filter(
+            a => a.status === "Offer"
+          ).length;
+
+        const rejected =
+          applications.filter(
+            a => a.status === "Rejected"
+          ).length;
+
+
+        document.getElementById(
+          "statTotal"
+        ).textContent = total;
+
+        document.getElementById(
+          "statApplied"
+        ).textContent = applied;
+
+        document.getElementById(
+          "statInterview"
+        ).textContent = interview;
+
+        document.getElementById(
+          "statOffer"
+        ).textContent = offer;
+
+        document.getElementById(
+          "statRejected"
+        ).textContent = rejected;
+
+      }
+
+
+      /*
+       * Add application modal.
+       */
+
+      function openAddModal() {
+
+        document
+          .getElementById("addModal")
+          .classList.remove("hidden");
+
+        document
+          .getElementById("addModal")
+          .classList.add("flex");
+
+
+        const today =
+          new Date()
+            .toISOString()
+            .split("T")[0];
+
+        document.getElementById(
+          "applicationDate"
+        ).value = today;
+
+      }
+
+
+      function closeAddModal() {
+
+        document
+          .getElementById("addModal")
+          .classList.add("hidden");
+
+        document
+          .getElementById("addModal")
+          .classList.remove("flex");
+
+      }
+
+
+      /*
+       * Add application.
+       */
+
+      document
+        .getElementById("applicationForm")
+        .addEventListener("submit", function (event) {
+
+          event.preventDefault();
+
+
+          const application = {
+
+            id: Date.now(),
+
+            title:
+              document.getElementById("jobTitle").value.trim(),
+
+            company:
+              document.getElementById("company").value.trim(),
+
+            location:
+              document.getElementById("location").value.trim() ||
+              "Not specified",
+
+            type:
+              document.getElementById("jobType").value,
+
+            status:
+              document.getElementById("jobStatus").value,
+
+            salary:
+              document.getElementById("salary").value.trim() ||
+              "Not specified",
+
+            date:
+              document.getElementById("applicationDate").value,
+
+            next:
+              "Follow up",
+
+            notes:
+              document.getElementById("notes").value.trim(),
+
+            url:
+              document.getElementById("jobUrl").value.trim()
+
+          };
+
+
+          applications.unshift(application);
+
+          saveApplications();
+
+          updateStats();
+
+          currentPage = 1;
+
+          renderApplications();
+
+          closeAddModal();
+
+          this.reset();
+
+        });
+
+
+      /*
+       * Details modal.
+       */
+
+      function openDetails(id) {
+
+        const application =
+          applications.find(
+            application =>
+              application.id === id
+          );
+
+
+        if (!application) return;
+
+
+        currentApplicationId = id;
+
+
+        document.getElementById(
+          "detailLogo"
+        ).textContent =
+          initials(application.company);
+
+
+        document.getElementById(
+          "detailTitle"
+        ).textContent =
+          application.title;
+
+
+        document.getElementById(
+          "detailCompany"
+        ).textContent =
+          `${application.company} · ${application.location}`;
+
+
+        document.getElementById(
+          "detailStatus"
+        ).innerHTML =
+          statusBadge(application.status);
+
+
+        document.getElementById(
+          "detailStatusSelect"
+        ).value =
+          application.status;
+
+
+        document.getElementById(
+          "detailDate"
+        ).textContent =
+          formatDate(application.date);
+
+
+        document.getElementById(
+          "detailType"
+        ).textContent =
+          application.type;
+
+
+        document.getElementById(
+          "detailSalary"
+        ).textContent =
+          application.salary || "Not specified";
+
+
+        document.getElementById(
+          "detailNext"
+        ).textContent =
+          application.next || "—";
+
+
+        document.getElementById(
+          "detailNotes"
+        ).textContent =
+          application.notes ||
+          "No notes added.";
+
+
+        const jobButton =
+          document.getElementById(
+            "detailUrlButton"
+          );
+
+        jobButton.disabled =
+          !application.url ||
+          application.url === "#";
+
+        jobButton.classList.toggle(
+          "opacity-40",
+          jobButton.disabled
+        );
+
+
+        document
+          .getElementById("detailsModal")
+          .classList.remove("hidden");
+
+        document
+          .getElementById("detailsModal")
+          .classList.add("flex");
+
+      }
+
+
+      function closeDetailsModal() {
+
+        document
+          .getElementById("detailsModal")
+          .classList.add("hidden");
+
+        document
+          .getElementById("detailsModal")
+          .classList.remove("flex");
+
+        currentApplicationId = null;
+
+      }
+
+
+      /*
+       * Update application status.
+       */
+
+      function updateDetailStatus(status) {
+
+        const application =
+          applications.find(
+            application =>
+              application.id === currentApplicationId
+          );
+
+
+        if (!application) return;
+
+
+        application.status = status;
+
+
+        if (status === "Interview") {
+          application.next = "Schedule interview";
+        }
+
+        if (status === "Offer") {
+          application.next = "Review offer";
+        }
+
+        if (
+          status === "Rejected" ||
+          status === "Withdrawn"
+        ) {
+          application.next = "—";
+        }
+
+
+        saveApplications();
+
+        updateStats();
+
+        renderApplications();
+
+        document.getElementById(
+          "detailStatus"
+        ).innerHTML =
+          statusBadge(status);
+
+
+        document.getElementById(
+          "detailNext"
+        ).textContent =
+          application.next;
+
+      }
+
+
+      /*
+       * Open job URL.
+       */
+
+      function openJobUrl() {
+
+        const application =
+          applications.find(
+            application =>
+              application.id === currentApplicationId
+          );
+
+
+        if (
+          application &&
+          application.url &&
+          application.url !== "#"
+        ) {
+
+          window.open(
+            application.url,
+            "_blank",
+            "noopener,noreferrer"
+          );
+
+        }
+
+      }
+
+
+      /*
+       * Delete from details.
+       */
+
+      function deleteCurrentApplication() {
+
+        if (!currentApplicationId) return;
+
+        deleteApplication(
+          currentApplicationId,
+          true
+        );
+
+      }
+
+
+      /*
+       * Delete application.
+       */
+
+      function deleteApplication(
+        id,
+        fromModal = false
+      ) {
+
+        const application =
+          applications.find(
+            application =>
+              application.id === id
+          );
+
+
+        if (!application) return;
+
+
+        const confirmed =
+          confirm(
+            `Delete "${application.title}" at ${application.company}?`
+          );
+
+
+        if (!confirmed) return;
+
+
+        applications =
+          applications.filter(
+            application =>
+              application.id !== id
+          );
+
+
+        saveApplications();
+
+        updateStats();
+
+        renderApplications();
+
+
+        if (fromModal) {
+          closeDetailsModal();
+        }
+
+      }
+
+
+      /*
+       * Filters.
+       */
+
+      [
+        "applicationSearch",
+        "statusFilter",
+        "typeFilter",
+        "sortFilter"
+      ].forEach(id => {
+
+        document
+          .getElementById(id)
+          .addEventListener("input", () => {
+
+            currentPage = 1;
+
+            renderApplications();
+
+          });
+
+      });
+
+
+      /*
+       * Global search sync.
+       */
+
+      document
+        .getElementById("globalSearch")
+        .addEventListener("input", function () {
+
+          document.getElementById(
+            "applicationSearch"
+          ).value = this.value;
+
+          currentPage = 1;
+
+          renderApplications();
+
+        });
+
+
+      /*
+       * Escape closes modals.
+       */
+
+      document.addEventListener(
+        "keydown",
+        event => {
+
+          if (event.key !== "Escape") return;
+
+          closeAddModal();
+
+          closeDetailsModal();
+
+        }
+      );
+
+
+      /*
+       * Click outside modal.
+       */
+
+      document
+        .getElementById("addModal")
+        .addEventListener("click", function (event) {
+
+          if (event.target === this) {
+            closeAddModal();
+          }
+
+        });
+
+
+      document
+        .getElementById("detailsModal")
+        .addEventListener("click", function (event) {
+
+          if (event.target === this) {
+            closeDetailsModal();
+          }
+
+        });
+
+
+      /*
+       * Initial render.
+       */
+
+      updateStats();
+
+      renderApplications();
+
+    </script>
+
+  </body>
+</html>

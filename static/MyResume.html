@@ -1,0 +1,2121 @@
+Resume<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CareerForge AI — My Resume</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+
+            colors: {
+              primary: {
+                50: "#f5f3ff",
+                100: "#ede9fe",
+                200: "#ddd6fe",
+                300: "#c4b5fd",
+                400: "#a78bfa",
+                500: "#8b5cf6",
+                600: "#7c3aed",
+                700: "#6d28d9",
+              },
+            },
+
+            boxShadow: {
+              soft: "0 10px 40px rgba(15, 23, 42, 0.06)",
+              card: "0 8px 30px rgba(15, 23, 42, 0.05)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #ddd6fe transparent;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background:
+          radial-gradient(
+            circle at 10% 0%,
+            rgba(139, 92, 246, 0.06),
+            transparent 25%
+          ),
+          #f8fafc;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.84);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, #7c3aed, #2563eb);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .card-hover {
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          border-color 0.25s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+      }
+
+      .nav-item {
+        transition: all 0.2s ease;
+      }
+
+      .nav-item:hover {
+        background: #f5f3ff;
+        color: #6d28d9;
+      }
+
+      .nav-item.active {
+        color: white;
+        background: linear-gradient(135deg, #7c3aed, #4f46e5);
+        box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
+      }
+
+      .mobile-nav-item.active {
+        color: #7c3aed;
+      }
+
+      .resume-paper {
+        aspect-ratio: 0.707;
+      }
+
+      @media (max-width: 767px) {
+        .mobile-safe-area {
+          padding-bottom: env(safe-area-inset-bottom);
+        }
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen text-slate-900">
+
+    <!-- ========================================================= -->
+    <!-- APP -->
+    <!-- ========================================================= -->
+
+    <div class="min-h-screen">
+
+      <!-- ===================================================== -->
+      <!-- DESKTOP SIDEBAR -->
+      <!-- ===================================================== -->
+
+      <aside
+        class="fixed inset-y-0 left-0 z-40 hidden w-[250px] border-r border-slate-200/80 bg-white/90 backdrop-blur-xl md:flex md:flex-col"
+      >
+
+        <!-- Logo -->
+
+        <div class="flex h-[82px] items-center px-6">
+
+          <a href="#" class="flex items-center gap-3">
+
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 text-white shadow-lg shadow-violet-200"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 3v3m0 12v3m9-9h-3M6 12H3m15.364-6.364-2.121 2.121M7.757 16.243l-2.121 2.121m12.728 0-2.121-2.121M7.757 7.757 5.636 5.636"
+                />
+                <circle cx="12" cy="12" r="4" />
+              </svg>
+            </div>
+
+            <div>
+
+              <div class="text-[17px] font-extrabold tracking-tight">
+                CareerForge
+                <span class="text-violet-600">AI</span>
+              </div>
+
+              <div
+                class="text-[9px] font-medium uppercase tracking-widest text-slate-400"
+              >
+                Your career, forged by AI
+              </div>
+
+            </div>
+
+          </a>
+
+        </div>
+
+
+        <!-- Navigation -->
+
+        <nav class="flex-1 space-y-1 overflow-y-auto px-4 py-5">
+
+          <div
+            class="mb-3 px-3 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400"
+          >
+            Workspace
+          </div>
+
+
+          <!-- Dashboard -->
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10Z"
+              />
+            </svg>
+
+            Dashboard
+
+          </a>
+
+
+          <!-- Resume ACTIVE -->
+
+          <a
+            href="#"
+            class="nav-item active flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
+              />
+
+              <path
+                stroke-linecap="round"
+                d="M14 3v5h5M8 13h8M8 17h6"
+              />
+
+            </svg>
+
+            My Resume
+
+          </a>
+
+
+          <!-- ATS -->
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="8" />
+              <circle cx="12" cy="12" r="4" />
+              <path
+                stroke-linecap="round"
+                d="M12 4v2M20 12h-2M12 18v2M6 12H4"
+              />
+            </svg>
+
+            ATS Checker
+
+          </a>
+
+
+          <!-- Cover Letter -->
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5 4h14v16H5z"
+              />
+
+              <path
+                stroke-linecap="round"
+                d="M8 8h8M8 12h5"
+              />
+
+              <path
+                stroke-linecap="round"
+                d="m15 16 1.5 1.5L20 14"
+              />
+
+            </svg>
+
+            Cover Letter AI
+
+          </a>
+
+
+          <!-- Job Matcher -->
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="9" cy="8" r="3" />
+              <circle cx="17" cy="16" r="3" />
+              <path stroke-linecap="round" d="M11.5 10.5 14.5 13.5" />
+            </svg>
+
+            Job Matcher
+
+          </a>
+
+
+          <!-- AI Interview -->
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <rect x="3" y="5" width="18" height="14" rx="3" />
+
+              <path
+                stroke-linecap="round"
+                d="M8 10h.01M12 10h.01M16 10h.01M8 14h8"
+              />
+
+            </svg>
+
+            AI Interview
+
+          </a>
+
+
+          <!-- Career Roadmap -->
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" d="M4 19c4-7 8-7 12-14" />
+              <circle cx="4" cy="19" r="2" />
+              <circle cx="16" cy="5" r="2" />
+              <path stroke-linecap="round" d="m15 17 2 2 3-4" />
+            </svg>
+
+            Career Roadmap
+
+          </a>
+
+
+          <!-- Skills -->
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m12 3 2.3 5.2L20 9l-4 4 1 5.7-5-2.7-5 2.7 1-5.7-4-4 5.7-.8L12 3Z"
+              />
+            </svg>
+
+            Skill Analyzer
+
+          </a>
+
+
+          <div class="my-5 border-t border-slate-100"></div>
+
+
+          <!-- Saved Jobs -->
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 4h12v17l-6-3-6 3V4Z"
+              />
+            </svg>
+
+            Saved Jobs
+
+          </a>
+
+
+          <!-- Applications -->
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <rect x="4" y="3" width="16" height="18" rx="2" />
+
+              <path
+                stroke-linecap="round"
+                d="M8 8h8M8 12h8M8 16h5"
+              />
+
+            </svg>
+
+            Applications
+
+          </a>
+
+
+          <!-- Profile -->
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="8" r="3" />
+
+              <path
+                stroke-linecap="round"
+                d="M5 20c.7-3.5 3-5 7-5s6.3 1.5 7 5"
+              />
+
+            </svg>
+
+            Profile
+
+          </a>
+
+
+          <!-- Settings -->
+
+          <a
+            href="#"
+            class="nav-item flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="3" />
+
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V20h-2.6v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1-1.8-1.8.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H4v-2.6h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1 1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6V4h2.6v.1a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.1v2.6h-.1a1.7 1.7 0 0 0-1.6 1Z"
+              />
+
+            </svg>
+
+            Settings
+
+          </a>
+
+        </nav>
+
+
+        <!-- Sidebar Bottom -->
+
+        <div class="space-y-3 p-4">
+
+          <div
+            class="overflow-hidden rounded-2xl bg-gradient-to-br from-violet-50 via-indigo-50 to-blue-50 p-4 text-center"
+          >
+
+            <div
+              class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-violet-600 shadow-sm"
+            >
+              ✦
+            </div>
+
+            <h3 class="text-sm font-bold text-slate-800">
+              Upgrade to Pro
+            </h3>
+
+            <p class="mt-1 text-[11px] leading-5 text-slate-500">
+              Unlock advanced AI career features.
+            </p>
+
+            <button
+              class="mt-3 w-full rounded-xl bg-white px-3 py-2 text-xs font-bold text-violet-600 shadow-sm transition hover:bg-violet-600 hover:text-white"
+            >
+              Upgrade Now →
+            </button>
+
+          </div>
+
+
+          <button
+            class="flex w-full items-center gap-3 rounded-xl bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-600 transition hover:bg-red-50 hover:text-red-600"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" d="M10 17l5-5-5-5M15 12H3" />
+              <path stroke-linecap="round" d="M21 19V5a2 2 0 0 0-2-2h-6" />
+            </svg>
+
+            Logout
+
+          </button>
+
+        </div>
+
+      </aside>
+
+
+      <!-- ===================================================== -->
+      <!-- MAIN -->
+      <!-- ===================================================== -->
+
+      <main class="md:ml-[250px]">
+
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <header
+          class="sticky top-0 z-30 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl"
+        >
+
+          <div
+            class="flex h-[72px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
+          >
+
+            <!-- Mobile Logo -->
+
+            <div class="flex items-center gap-2 md:hidden">
+
+              <div
+                class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 text-white"
+              >
+                ✦
+              </div>
+
+              <span class="text-sm font-extrabold">
+                CareerForge
+                <span class="text-violet-600">AI</span>
+              </span>
+
+            </div>
+
+
+            <!-- Desktop Search -->
+
+            <div class="hidden max-w-xl flex-1 md:block">
+
+              <div class="relative">
+
+                <svg
+                  class="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path stroke-linecap="round" d="m20 20-4-4" />
+                </svg>
+
+                <input
+                  type="text"
+                  placeholder="Search resumes..."
+                  class="h-11 w-full rounded-2xl border border-slate-200 bg-slate-50 pl-11 pr-16 text-sm outline-none transition placeholder:text-slate-400 focus:border-violet-300 focus:bg-white focus:ring-4 focus:ring-violet-100"
+                />
+
+                <span
+                  class="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg bg-white px-2 py-1 text-[10px] font-semibold text-slate-400 shadow-sm"
+                >
+                  ⌘K
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <!-- Header Right -->
+
+            <div class="flex items-center gap-3">
+
+              <!-- Notification -->
+
+              <button
+                class="relative flex h-10 w-10 items-center justify-center rounded-xl text-slate-500 transition hover:bg-slate-100"
+              >
+
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
+                  />
+
+                  <path stroke-linecap="round" d="M10 21h4" />
+
+                </svg>
+
+                <span
+                  class="absolute right-1 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-500 px-1 text-[8px] font-bold text-white"
+                >
+                  3
+                </span>
+
+              </button>
+
+
+              <!-- User -->
+
+              <button
+                class="flex items-center gap-2 rounded-xl p-1.5 transition hover:bg-slate-50"
+              >
+
+                <div
+                  class="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-blue-500 text-sm font-bold text-white ring-2 ring-white"
+                >
+                  SP
+                </div>
+
+                <div class="hidden text-left lg:block">
+
+                  <div class="text-xs font-bold text-slate-800">
+                    Saimon Pranta
+                  </div>
+
+                  <div
+                    class="flex items-center gap-1 text-[10px] text-slate-400"
+                  >
+                    <span class="text-amber-500">◆</span>
+                    Free Plan
+                  </div>
+
+                </div>
+
+                <svg
+                  class="hidden h-4 w-4 text-slate-400 lg:block"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m6 9 6 6 6-6"
+                  />
+                </svg>
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </header>
+
+
+        <!-- ================================================= -->
+        <!-- CONTENT -->
+        <!-- ================================================= -->
+
+        <div
+          class="mx-auto max-w-[1500px] space-y-6 px-4 py-6 sm:px-6 lg:px-8 lg:py-8"
+        >
+
+          <!-- ================================================= -->
+          <!-- PAGE HEADER -->
+          <!-- ================================================= -->
+
+          <section>
+
+            <div
+              class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between"
+            >
+
+              <div>
+
+                <div
+                  class="mb-2 inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-violet-600"
+                >
+                  <span>✦</span>
+                  Resume Workspace
+                </div>
+
+                <h1
+                  class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl"
+                >
+                  My
+                  <span class="gradient-text">Resumes</span>
+                </h1>
+
+                <p
+                  class="mt-2 max-w-2xl text-sm leading-6 text-slate-500 sm:text-base"
+                >
+                  Create, manage, and optimize your resumes for your next
+                  career opportunity.
+                </p>
+
+              </div>
+
+
+              <!-- Create Resume -->
+
+              <button
+                class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-violet-200 transition hover:-translate-y-0.5 hover:shadow-xl"
+              >
+
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 5v14M5 12h14"
+                  />
+                </svg>
+
+                Create New Resume
+
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- ================================================= -->
+          <!-- RESUME STATS -->
+          <!-- ================================================= -->
+
+          <section class="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+
+            <!-- Total Resumes -->
+
+            <div
+              class="card-hover rounded-2xl border border-slate-200 bg-white p-4 shadow-card sm:p-5"
+            >
+
+              <div class="flex items-start justify-between gap-3">
+
+                <div
+                  class="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-50 text-violet-600 sm:h-11 sm:w-11"
+                >
+
+                  <svg
+                    class="h-5 w-5 sm:h-6 sm:w-6"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
+                    />
+
+                    <path
+                      stroke-linecap="round"
+                      d="M14 3v5h5M8 13h8M8 17h6"
+                    />
+
+                  </svg>
+
+                </div>
+
+              </div>
+
+              <div class="mt-4 text-[11px] font-medium text-slate-400 sm:text-xs">
+                Total Resumes
+              </div>
+
+              <div class="mt-1 text-2xl font-extrabold sm:text-3xl">
+                3
+              </div>
+
+              <div class="mt-1 text-[10px] text-slate-400 sm:text-xs">
+                Saved resumes
+              </div>
+
+            </div>
+
+
+            <!-- Best ATS -->
+
+            <div
+              class="card-hover rounded-2xl border border-slate-200 bg-white p-4 shadow-card sm:p-5"
+            >
+
+              <div class="flex items-start justify-between">
+
+                <div
+                  class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 sm:h-11 sm:w-11"
+                >
+
+                  <svg
+                    class="h-5 w-5 sm:h-6 sm:w-6"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle cx="12" cy="12" r="8" />
+                    <circle cx="12" cy="12" r="4" />
+                  </svg>
+
+                </div>
+
+                <span
+                  class="rounded-full bg-emerald-50 px-2 py-1 text-[9px] font-bold text-emerald-600 sm:text-[10px]"
+                >
+                  Excellent
+                </span>
+
+              </div>
+
+              <div class="mt-4 text-[11px] font-medium text-slate-400 sm:text-xs">
+                Best ATS Score
+              </div>
+
+              <div class="mt-1 text-2xl font-extrabold sm:text-3xl">
+                92
+              </div>
+
+              <div class="mt-1 text-[10px] text-slate-400 sm:text-xs">
+                Excellent compatibility
+              </div>
+
+            </div>
+
+
+            <!-- Profile -->
+
+            <div
+              class="card-hover rounded-2xl border border-slate-200 bg-white p-4 shadow-card sm:p-5"
+            >
+
+              <div class="flex items-start justify-between">
+
+                <div
+                  class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600 sm:h-11 sm:w-11"
+                >
+
+                  <svg
+                    class="h-5 w-5 sm:h-6 sm:w-6"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle cx="12" cy="8" r="3" />
+
+                    <path
+                      stroke-linecap="round"
+                      d="M5 20c.7-3.5 3-5 7-5s6.3 1.5 7 5"
+                    />
+
+                  </svg>
+
+                </div>
+
+              </div>
+
+              <div class="mt-4 text-[11px] font-medium text-slate-400 sm:text-xs">
+                Profile Completion
+              </div>
+
+              <div class="mt-1 text-2xl font-extrabold sm:text-3xl">
+                86%
+              </div>
+
+              <div class="mt-3 h-1.5 overflow-hidden rounded-full bg-slate-100">
+                <div
+                  class="h-full w-[86%] rounded-full bg-gradient-to-r from-violet-600 to-blue-500"
+                ></div>
+              </div>
+
+            </div>
+
+
+            <!-- Last Updated -->
+
+            <div
+              class="card-hover rounded-2xl border border-slate-200 bg-white p-4 shadow-card sm:p-5"
+            >
+
+              <div class="flex items-start justify-between">
+
+                <div
+                  class="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-50 text-orange-500 sm:h-11 sm:w-11"
+                >
+
+                  <svg
+                    class="h-5 w-5 sm:h-6 sm:w-6"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle cx="12" cy="12" r="8" />
+
+                    <path
+                      stroke-linecap="round"
+                      d="M12 8v4l2.5 2.5"
+                    />
+
+                  </svg>
+
+                </div>
+
+              </div>
+
+              <div class="mt-4 text-[11px] font-medium text-slate-400 sm:text-xs">
+                Last Updated
+              </div>
+
+              <div class="mt-1 text-base font-extrabold sm:text-xl">
+                Today
+              </div>
+
+              <div class="mt-1 text-[10px] text-slate-400 sm:text-xs">
+                10:30 AM
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- ================================================= -->
+          <!-- TOOLBAR -->
+          <!-- ================================================= -->
+
+          <section
+            class="rounded-2xl border border-slate-200 bg-white p-4 shadow-card sm:p-5"
+          >
+
+            <div
+              class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between"
+            >
+
+              <!-- Search -->
+
+              <div class="relative w-full lg:max-w-md">
+
+                <svg
+                  class="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path stroke-linecap="round" d="m20 20-4-4" />
+                </svg>
+
+                <input
+                  type="text"
+                  placeholder="Search your resumes..."
+                  class="h-10 w-full rounded-xl border border-slate-200 bg-slate-50 pl-10 pr-4 text-xs outline-none transition placeholder:text-slate-400 focus:border-violet-300 focus:bg-white focus:ring-4 focus:ring-violet-100 sm:text-sm"
+                />
+
+              </div>
+
+
+              <!-- Filters -->
+
+              <div class="flex items-center gap-2">
+
+                <select
+                  class="h-10 flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3 text-xs font-semibold text-slate-600 outline-none focus:border-violet-300 sm:flex-none sm:text-sm"
+                >
+                  <option>All Resumes</option>
+                  <option>Published</option>
+                  <option>Drafts</option>
+                </select>
+
+
+                <button
+                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-500 transition hover:border-violet-200 hover:bg-violet-50 hover:text-violet-600"
+                >
+
+                  <svg
+                    class="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" d="M4 7h16M7 12h10M10 17h4" />
+                  </svg>
+
+                </button>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- ================================================= -->
+          <!-- PRIMARY RESUME -->
+          <!-- ================================================= -->
+
+          <section>
+
+            <div class="mb-4 flex items-center justify-between">
+
+              <div>
+
+                <h2 class="text-base font-bold">
+                  Your resumes
+                </h2>
+
+                <p class="mt-1 text-xs text-slate-400">
+                  Manage and optimize your saved resumes.
+                </p>
+
+              </div>
+
+              <span
+                class="hidden rounded-full bg-violet-50 px-3 py-1.5 text-[10px] font-bold text-violet-600 sm:inline-flex"
+              >
+                3 resumes
+              </span>
+
+            </div>
+
+
+            <!-- Resume Grid -->
+
+            <div class="grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
+
+
+              <!-- ================================================= -->
+              <!-- RESUME CARD 1 -->
+              <!-- ================================================= -->
+
+              <article
+                class="card-hover overflow-hidden rounded-2xl border border-violet-200 bg-white shadow-card"
+              >
+
+                <!-- Preview -->
+
+                <div
+                  class="relative bg-gradient-to-br from-violet-50 via-white to-blue-50 p-5"
+                >
+
+                  <!-- Active Badge -->
+
+                  <div
+                    class="absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-emerald-500 px-2.5 py-1 text-[9px] font-bold text-white shadow-sm"
+                  >
+                    <span class="h-1.5 w-1.5 rounded-full bg-white"></span>
+                    Primary Resume
+                  </div>
+
+
+                  <!-- More -->
+
+                  <button
+                    class="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-lg bg-white/90 text-slate-500 shadow-sm backdrop-blur hover:text-violet-600"
+                  >
+                    ⋮
+                  </button>
+
+
+                  <!-- Paper -->
+
+                  <div
+                    class="resume-paper mx-auto mt-8 max-w-[210px] overflow-hidden rounded-md bg-white p-4 shadow-xl ring-1 ring-slate-200"
+                  >
+
+                    <div class="border-b border-slate-200 pb-3">
+
+                      <div class="text-[11px] font-extrabold text-slate-900">
+                        Saimon Pranta
+                      </div>
+
+                      <div class="mt-1 text-[6px] font-medium text-violet-600">
+                        FULL STACK DEVELOPER
+                      </div>
+
+                      <div class="mt-1 text-[5px] text-slate-400">
+                        Dhaka, Bangladesh · saimon@example.com
+                      </div>
+
+                    </div>
+
+
+                    <div class="mt-3">
+
+                      <div
+                        class="text-[6px] font-bold uppercase tracking-wider text-slate-700"
+                      >
+                        Summary
+                      </div>
+
+                      <div class="mt-1 space-y-1">
+
+                        <div class="h-1 w-full rounded bg-slate-100"></div>
+
+                        <div class="h-1 w-[94%] rounded bg-slate-100"></div>
+
+                        <div class="h-1 w-[82%] rounded bg-slate-100"></div>
+
+                      </div>
+
+                    </div>
+
+
+                    <div class="mt-3">
+
+                      <div
+                        class="text-[6px] font-bold uppercase tracking-wider text-slate-700"
+                      >
+                        Experience
+                      </div>
+
+                      <div class="mt-2">
+
+                        <div class="h-1 w-[65%] rounded bg-violet-100"></div>
+
+                        <div class="mt-1 h-1 w-full rounded bg-slate-100"></div>
+
+                        <div class="mt-1 h-1 w-[88%] rounded bg-slate-100"></div>
+
+                        <div class="mt-1 h-1 w-[76%] rounded bg-slate-100"></div>
+
+                      </div>
+
+                      <div class="mt-2">
+
+                        <div class="h-1 w-[55%] rounded bg-violet-100"></div>
+
+                        <div class="mt-1 h-1 w-full rounded bg-slate-100"></div>
+
+                        <div class="mt-1 h-1 w-[84%] rounded bg-slate-100"></div>
+
+                      </div>
+
+                    </div>
+
+
+                    <div class="mt-3">
+
+                      <div
+                        class="text-[6px] font-bold uppercase tracking-wider text-slate-700"
+                      >
+                        Skills
+                      </div>
+
+                      <div class="mt-1 flex flex-wrap gap-1">
+
+                        <span class="h-2 w-8 rounded bg-violet-100"></span>
+
+                        <span class="h-2 w-10 rounded bg-violet-100"></span>
+
+                        <span class="h-2 w-7 rounded bg-violet-100"></span>
+
+                        <span class="h-2 w-9 rounded bg-violet-100"></span>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <!-- Details -->
+
+                <div class="p-5">
+
+                  <div class="flex items-start justify-between gap-3">
+
+                    <div class="min-w-0">
+
+                      <h3 class="truncate text-sm font-bold text-slate-900">
+                        Senior Full Stack Developer
+                      </h3>
+
+                      <p class="mt-1 text-[11px] text-slate-400">
+                        Modern ATS Resume · Updated today
+                      </p>
+
+                    </div>
+
+                    <span
+                      class="shrink-0 rounded-full bg-emerald-50 px-2 py-1 text-[9px] font-bold text-emerald-600"
+                    >
+                      Active
+                    </span>
+
+                  </div>
+
+
+                  <!-- ATS -->
+
+                  <div
+                    class="mt-5 rounded-xl bg-slate-50 p-3"
+                  >
+
+                    <div class="flex items-center justify-between">
+
+                      <span class="text-[10px] font-semibold text-slate-500">
+                        ATS Compatibility
+                      </span>
+
+                      <span class="text-sm font-extrabold text-emerald-600">
+                        92%
+                      </span>
+
+                    </div>
+
+                    <div class="mt-2 h-1.5 overflow-hidden rounded-full bg-slate-200">
+
+                      <div
+                        class="h-full w-[92%] rounded-full bg-gradient-to-r from-emerald-500 to-teal-500"
+                      ></div>
+
+                    </div>
+
+                  </div>
+
+
+                  <!-- Actions -->
+
+                  <div class="mt-4 grid grid-cols-2 gap-2">
+
+                    <button
+                      class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-3 py-2.5 text-xs font-bold text-white transition hover:-translate-y-0.5"
+                    >
+
+                      <svg
+                        class="h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+
+                        <path
+                          stroke-linecap="round"
+                          d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"
+                        />
+
+                      </svg>
+
+                      Preview
+
+                    </button>
+
+
+                    <button
+                      class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs font-bold text-slate-700 transition hover:border-violet-200 hover:text-violet-600"
+                    >
+
+                      <svg
+                        class="h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          d="M12 4v11M8 11l4 4 4-4"
+                        />
+
+                        <path
+                          stroke-linecap="round"
+                          d="M5 20h14"
+                        />
+
+                      </svg>
+
+                      Download
+
+                    </button>
+
+                  </div>
+
+
+                  <button
+                    class="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-50 px-3 py-2.5 text-xs font-bold text-slate-600 transition hover:bg-violet-50 hover:text-violet-600"
+                  >
+
+                    <svg
+                      class="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        d="M12 3v18M3 12h18"
+                      />
+
+                    </svg>
+
+                    Edit Resume
+
+                  </button>
+
+                </div>
+
+              </article>
+
+
+              <!-- ================================================= -->
+              <!-- RESUME CARD 2 -->
+              <!-- ================================================= -->
+
+              <article
+                class="card-hover overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card"
+              >
+
+                <div
+                  class="relative bg-gradient-to-br from-blue-50 via-white to-cyan-50 p-5"
+                >
+
+                  <button
+                    class="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-lg bg-white/90 text-slate-500 shadow-sm backdrop-blur hover:text-violet-600"
+                  >
+                    ⋮
+                  </button>
+
+
+                  <div
+                    class="resume-paper mx-auto mt-8 max-w-[210px] overflow-hidden rounded-md bg-white p-4 shadow-xl ring-1 ring-slate-200"
+                  >
+
+                    <div class="border-b border-slate-200 pb-3">
+
+                      <div class="text-[11px] font-extrabold text-slate-900">
+                        Saimon Pranta
+                      </div>
+
+                      <div class="mt-1 text-[6px] font-medium text-blue-600">
+                        SOFTWARE ENGINEER
+                      </div>
+
+                      <div class="mt-1 text-[5px] text-slate-400">
+                        Dhaka, Bangladesh · saimon@example.com
+                      </div>
+
+                    </div>
+
+
+                    <div class="mt-3">
+
+                      <div
+                        class="text-[6px] font-bold uppercase tracking-wider text-slate-700"
+                      >
+                        Professional Summary
+                      </div>
+
+                      <div class="mt-1 space-y-1">
+
+                        <div class="h-1 w-full rounded bg-slate-100"></div>
+
+                        <div class="h-1 w-[92%] rounded bg-slate-100"></div>
+
+                        <div class="h-1 w-[75%] rounded bg-slate-100"></div>
+
+                      </div>
+
+                    </div>
+
+
+                    <div class="mt-3">
+
+                      <div
+                        class="text-[6px] font-bold uppercase tracking-wider text-slate-700"
+                      >
+                        Experience
+                      </div>
+
+                      <div class="mt-2 space-y-1">
+
+                        <div class="h-1 w-[70%] rounded bg-blue-100"></div>
+
+                        <div class="h-1 w-full rounded bg-slate-100"></div>
+
+                        <div class="h-1 w-[86%] rounded bg-slate-100"></div>
+
+                        <div class="h-1 w-[70%] rounded bg-slate-100"></div>
+
+                      </div>
+
+                    </div>
+
+
+                    <div class="mt-3">
+
+                      <div
+                        class="text-[6px] font-bold uppercase tracking-wider text-slate-700"
+                      >
+                        Projects
+                      </div>
+
+                      <div class="mt-2 space-y-1">
+
+                        <div class="h-1 w-[65%] rounded bg-blue-100"></div>
+
+                        <div class="h-1 w-full rounded bg-slate-100"></div>
+
+                        <div class="h-1 w-[82%] rounded bg-slate-100"></div>
+
+                      </div>
+
+                    </div>
+
+
+                    <div class="mt-3">
+
+                      <div
+                        class="text-[6px] font-bold uppercase tracking-wider text-slate-700"
+                      >
+                        Skills
+                      </div>
+
+                      <div class="mt-1 flex flex-wrap gap-1">
+
+                        <span class="h-2 w-8 rounded bg-blue-100"></span>
+
+                        <span class="h-2 w-10 rounded bg-blue-100"></span>
+
+                        <span class="h-2 w-7 rounded bg-blue-100"></span>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <div class="p-5">
+
+                  <div class="flex items-start justify-between gap-3">
+
+                    <div class="min-w-0">
+
+                      <h3 class="truncate text-sm font-bold">
+                        Software Engineer
+                      </h3>
+
+                      <p class="mt-1 text-[11px] text-slate-400">
+                        Tech Resume · Updated 2 days ago
+                      </p>
+
+                    </div>
+
+                    <span
+                      class="shrink-0 rounded-full bg-blue-50 px-2 py-1 text-[9px] font-bold text-blue-600"
+                    >
+                      Draft
+                    </span>
+
+                  </div>
+
+
+                  <div class="mt-5 rounded-xl bg-slate-50 p-3">
+
+                    <div class="flex items-center justify-between">
+
+                      <span class="text-[10px] font-semibold text-slate-500">
+                        ATS Compatibility
+                      </span>
+
+                      <span class="text-sm font-extrabold text-blue-600">
+                        78%
+                      </span>
+
+                    </div>
+
+                    <div class="mt-2 h-1.5 overflow-hidden rounded-full bg-slate-200">
+
+                      <div
+                        class="h-full w-[78%] rounded-full bg-gradient-to-r from-blue-500 to-cyan-500"
+                      ></div>
+
+                    </div>
+
+                  </div>
+
+
+                  <div class="mt-4 grid grid-cols-2 gap-2">
+
+                    <button
+                      class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-3 py-2.5 text-xs font-bold text-white transition hover:-translate-y-0.5"
+                    >
+
+                      <svg
+                        class="h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+
+                        <path
+                          stroke-linecap="round"
+                          d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"
+                        />
+
+                      </svg>
+
+                      Preview
+
+                    </button>
+
+
+                    <button
+                      class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs font-bold text-slate-700 transition hover:border-violet-200 hover:text-violet-600"
+                    >
+
+                      <svg
+                        class="h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          d="M15 6 9 12l6 6"
+                        />
+
+                        <path
+                          stroke-linecap="round"
+                          d="M9 12h11"
+                        />
+
+                      </svg>
+
+                      Edit
+
+                    </button>
+
+                  </div>
+
+
+                  <button
+                    class="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-50 px-3 py-2.5 text-xs font-bold text-slate-600 transition hover:bg-violet-50 hover:text-violet-600"
+                  >
+
+                    ✦
+
+                    Improve with AI
+
+                  </button>
+
+                </div>
+
+              </article>
+
+
+              <!-- ================================================= -->
+              <!-- CREATE NEW CARD -->
+              <!-- ================================================= -->
+
+              <button
+                class="group flex min-h-[500px] flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-200 bg-white p-6 text-center shadow-card transition hover:border-violet-300 hover:bg-violet-50/30 lg:min-h-0"
+              >
+
+                <div
+                  class="flex h-16 w-16 items-center justify-center rounded-2xl bg-violet-50 text-violet-600 transition group-hover:scale-110 group-hover:bg-violet-100"
+                >
+
+                  <svg
+                    class="h-8 w-8"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 5v14M5 12h14"
+                    />
+                  </svg>
+
+                </div>
+
+
+                <h3 class="mt-5 text-base font-bold text-slate-800">
+                  Create a new resume
+                </h3>
+
+                <p
+                  class="mt-2 max-w-xs text-xs leading-5 text-slate-400"
+                >
+                  Start from scratch or let AI build a resume using your
+                  professional profile.
+                </p>
+
+
+                <span
+                  class="mt-5 inline-flex items-center gap-2 rounded-xl bg-violet-50 px-4 py-2.5 text-xs font-bold text-violet-600 transition group-hover:bg-violet-600 group-hover:text-white"
+                >
+                  Create Resume
+
+                  <span>→</span>
+
+                </span>
+
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- ================================================= -->
+          <!-- AI RESUME INSIGHT -->
+          <!-- ================================================= -->
+
+          <section
+            class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-violet-700 via-indigo-700 to-blue-700 p-6 text-white shadow-lg shadow-violet-200 sm:p-7"
+          >
+
+            <div
+              class="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-white/10 blur-3xl"
+            ></div>
+
+            <div
+              class="absolute -bottom-24 left-10 h-52 w-52 rounded-full bg-blue-400/20 blur-3xl"
+            ></div>
+
+
+            <div
+              class="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between"
+            >
+
+              <div class="max-w-2xl">
+
+                <div
+                  class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-violet-200"
+                >
+                  <span class="text-lg">✦</span>
+                  AI Resume Insight
+                </div>
+
+
+                <h2 class="mt-3 text-xl font-extrabold sm:text-2xl">
+                  Your resume is strong — but it can be better.
+                </h2>
+
+
+                <p class="mt-3 text-sm leading-6 text-violet-100">
+                  Your current resume has a strong ATS score. Adding measurable
+                  achievements and a few role-specific keywords could improve
+                  your chances of getting shortlisted.
+                </p>
+
+
+                <div class="mt-4 flex flex-wrap gap-2">
+
+                  <span
+                    class="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-[10px] font-semibold"
+                  >
+                    Add measurable results
+                  </span>
+
+                  <span
+                    class="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-[10px] font-semibold"
+                  >
+                    Improve keywords
+                  </span>
+
+                  <span
+                    class="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-[10px] font-semibold"
+                  >
+                    Optimize summary
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-xs font-bold text-violet-700 shadow-lg transition hover:-translate-y-0.5"
+              >
+
+                Improve Resume with AI
+
+                <svg
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    d="M5 12h14M13 6l6 6-6 6"
+                  />
+                </svg>
+
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- ================================================= -->
+          <!-- RECENT RESUME ACTIVITY -->
+          <!-- ================================================= -->
+
+          <section
+            class="rounded-2xl border border-slate-200 bg-white p-5 shadow-card sm:p-6"
+          >
+
+            <div class="flex items-center justify-between">
+
+              <div>
+
+                <h2 class="text-base font-bold">
+                  Resume activity
+                </h2>
+
+                <p class="mt-1 text-xs text-slate-400">
+                  Recent changes and actions
+                </p>
+
+              </div>
+
+              <button
+                class="rounded-lg bg-slate-50 px-3 py-2 text-[10px] font-semibold text-slate-600 transition hover:bg-violet-50 hover:text-violet-600 sm:text-xs"
+              >
+                View all
+              </button>
+
+            </div>
+
+
+            <div class="mt-6 divide-y divide-slate-100">
+
+              <!-- Activity -->
+
+              <div class="flex gap-3 py-4 first:pt-0">
+
+                <div
+                  class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-sm font-bold text-emerald-600"
+                >
+                  ✓
+                </div>
+
+                <div class="min-w-0 flex-1">
+
+                  <div
+                    class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between"
+                  >
+
+                    <div class="text-xs font-bold text-slate-800 sm:text-sm">
+                      Resume updated
+                    </div>
+
+                    <div class="text-[9px] text-slate-400 sm:text-[10px]">
+                      Today, 10:30 AM
+                    </div>
+
+                  </div>
+
+                  <p class="mt-1 text-[10px] text-slate-400 sm:text-xs">
+                    Senior Full Stack Developer resume was updated.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <!-- Activity -->
+
+              <div class="flex gap-3 py-4">
+
+                <div
+                  class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-sm font-bold text-blue-600"
+                >
+                  ◎
+                </div>
+
+                <div class="min-w-0 flex-1">
+
+                  <div
+                    class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between"
+                  >
+
+                    <div class="text-xs font-bold text-slate-800 sm:text-sm">
+                      ATS analysis completed
+                    </div>
+
+                    <div class="text-[9px] text-slate-400 sm:text-[10px]">
+                      Yesterday, 4:45 PM
+                    </div>
+
+                  </div>
+
+                  <p class="mt-1 text-[10px] text-slate-400 sm:text-xs">
+                    ATS score increased from 86% to 92%.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <!-- Activity -->
+
+              <div class="flex gap-3 py-4">
+
+                <div
+                  class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-sm font-bold text-violet-600"
+                >
+                  ✦
+                </div>
+
+                <div class="min-w-0 flex-1">
+
+                  <div
+                    class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between"
+                  >
+
+                    <div class="text-xs font-bold text-slate-800 sm:text-sm">
+                      AI optimization completed
+                    </div>
+
+                    <div class="text-[9px] text-slate-400 sm:text-[10px]">
+                      2 days ago
+                    </div>
+
+                  </div>
+
+                  <p class="mt-1 text-[10px] text-slate-400 sm:text-xs">
+                    AI improved your professional summary and keywords.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <!-- Activity -->
+
+              <div class="flex gap-3 py-4 last:pb-0">
+
+                <div
+                  class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-sm font-bold text-orange-500"
+                >
+                  ↓
+                </div>
+
+                <div class="min-w-0 flex-1">
+
+                  <div
+                    class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between"
+                  >
+
+                    <div class="text-xs font-bold text-slate-800 sm:text-sm">
+                      Resume downloaded
+                    </div>
+
+                    <div class="text-[9px] text-slate-400 sm:text-[10px]">
+                      3 days ago
+                    </div>
+
+                  </div>
+
+                  <p class="mt-1 text-[10px] text-slate-400 sm:text-xs">
+                    Senior Full Stack Developer resume downloaded as PDF.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+
+      </main>
+
+
+      <!-- ===================================================== -->
+      <!-- MOBILE BOTTOM NAVIGATION -->
+      <!-- ===================================================== -->
+
+      <nav
+        class="mobile-safe-area fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white/95 px-3 py-2 shadow-[0_-10px_30px_rgba(15,23,42,0.08)] backdrop-blur-xl md:hidden"
+      >
+
+        <div class="mx-auto flex max-w-md items-center justify-around">
+
+          <!-- Home -->
+
+          <a
+            href="#"
+            class="mobile-nav-item flex min-w-[55px] flex-col items-center gap-1 py-1 text-[9px] font-semibold text-slate-400"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10Z"
+              />
+            </svg>
+
+            Home
+
+          </a>
+
+
+          <!-- Resume ACTIVE -->
+
+          <a
+            href="#"
+            class="mobile-nav-item active flex min-w-[55px] flex-col items-center gap-1 py-1 text-[9px] font-semibold"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
+              />
+
+              <path d="M14 3v5h5" />
+
+            </svg>
+
+            Resume
+
+          </a>
+
+
+          <!-- Create -->
+
+          <button
+            class="-mt-7 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-2xl font-light text-white shadow-xl shadow-violet-300"
+          >
+            +
+          </button>
+
+
+          <!-- Jobs -->
+
+          <a
+            href="#"
+            class="mobile-nav-item flex min-w-[55px] flex-col items-center gap-1 py-1 text-[9px] font-semibold text-slate-400"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <rect x="3" y="7" width="18" height="13" rx="2" />
+
+              <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+
+            </svg>
+
+            Jobs
+
+          </a>
+
+
+          <!-- Profile -->
+
+          <a
+            href="#"
+            class="mobile-nav-item flex min-w-[55px] flex-col items-center gap-1 py-1 text-[9px] font-semibold text-slate-400"
+          >
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="8" r="3" />
+
+              <path d="M5 20c.7-3.5 3-5 7-5s6.3 1.5 7 5" />
+
+            </svg>
+
+            Profile
+
+          </a>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+  </body>
+</html>

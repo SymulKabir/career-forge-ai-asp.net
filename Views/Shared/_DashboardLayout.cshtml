@@ -1,0 +1,12 @@
+@{
+    Layout = "_Layout";
+}
+<div class="min-h-screen">
+    <partial name="Components/DashboardSideNav/Index" />
+    <main class="md:ml-[250px]">
+        <partial name="Components/DashboardHeader/Index" />
+        <div class="mx-auto max-w-[1500px] space-y-6 px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+            @RenderBody()
+        </div>
+    </main>
+</div>

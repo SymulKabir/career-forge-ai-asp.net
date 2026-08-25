@@ -21,4 +21,9 @@ public class DashboardController : Controller
     {
         return View();
     }
+    [HttpGet("ats-checker")]
+    public IActionResult AtsChecker()
+    {
+        return View();
+    }
 }

@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CareerForge AI — Advanced Resume Editor</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              rubik: ["Rubik", "sans-serif"],
+              mono: ["Fira Code", "monospace"],
+            },
+            colors: {
+              primary: {
+                50: "#f5f3ff",
+                100: "#ede9fe",
+                200: "#ddd6fe",
+                300: "#c4b5fd",
+                400: "#a78bfa",
+                500: "#8b5cf6",
+                600: "#7c3aed",
+                700: "#6d28d9",
+              },
+            },
+            boxShadow: {
+              soft: "0 10px 40px rgba(15, 23, 42, 0.06)",
+              card: "0 8px 30px rgba(15, 23, 42, 0.05)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #ddd6fe transparent;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f8fafc;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .gradient-text {
+        background: linear-gradient(90deg, #7c3aed, #2563eb);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      /* Custom resume preview sizing for A4 ratio look */
+      .resume-sheet {
+        width: 100%;
+        max-width: 800px;
+        min-height: 1120px;
+        background: white;
+        box-shadow: 0 15px 50px rgba(15, 23, 42, 0.08);
+        transition: all 0.3s ease;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen text-slate-900 flex flex-col">
+
+    <!-- ========================================================= -->
+    <!-- TOP NAVBAR (Enhancv & CareerForge Style) -->
+    <!-- ========================================================= -->
+    <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-md">
+      <div class="flex h-16 items-center justify-between px-4 sm:px-6">
+        
+        <!-- Left: Branding & Back to Dashboard -->
+        <div class="flex items-center gap-4">
+          <a href="#" class="flex items-center gap-2.5">
+            <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 text-white font-bold shadow-md shadow-violet-200">
+              ✦
+            </div>
+            <span class="hidden font-extrabold tracking-tight sm:inline-block text-base">
+              CareerForge <span class="text-violet-600">AI</span>
+            </span>
+          </a>
+          <span class="h-5 w-px bg-slate-200"></span>
+          <div class="flex items-center gap-2 text-xs font-semibold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg">
+            <span id="doc-title-display">New Resume (2)</span>
+            <span class="text-violet-600 font-bold">• Editing</span>
+          </div>
+        </div>
+
+        <!-- Center: Quick Action Toolbar (Enhancv Style) -->
+        <div class="hidden md:flex items-center gap-1.5 bg-slate-100/80 p-1 rounded-xl border border-slate-200/60 text-xs font-semibold text-slate-600">
+          <button onclick="switchToolPanel('ai')" class="tool-tab px-3 py-1.5 rounded-lg transition hover:bg-white hover:text-violet-600 flex items-center gap-1.5">
+            ✨ AI Assistant
+          </button>
+          <button onclick="switchToolPanel('fix')" class="tool-tab px-3 py-1.5 rounded-lg transition hover:bg-white hover:text-violet-600 flex items-center gap-1.5">
+            ⚡ Fix Resume <span class="bg-emerald-100 text-emerald-700 text-[10px] px-1 rounded">B</span>
+          </button>
+          <button onclick="switchToolPanel('ats')" class="tool-tab px-3 py-1.5 rounded-lg transition hover:bg-white hover:text-violet-600 flex items-center gap-1.5">
+            🎯 Check & Tailor
+          </button>
+          <button onclick="switchToolPanel('templates')" class="tool-tab px-3 py-1.5 rounded-lg transition hover:bg-white hover:text-violet-600 flex items-center gap-1.5">
+            📑 Templates
+          </button>
+          <button onclick="switchToolPanel('design')" class="tool-tab px-3 py-1.5 rounded-lg bg-white text-violet-600 shadow-sm px-3 py-1.5 rounded-lg flex items-center gap-1.5">
+            🎨 Design & Font
+          </button>
+        </div>
+
+        <!-- Right: Actions (Save, Export, Login/Profile) -->
+        <div class="flex items-center gap-2">
+          <button onclick="alert('Resume saved successfully!')" class="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-bold text-slate-700 transition hover:border-violet-300 hover:text-violet-600">
+            Save Draft
+          </button>
+          <button onclick="window.print()" class="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2 text-xs font-bold text-white shadow-md shadow-violet-200 transition hover:opacity-95">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Export PDF
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- ========================================================= -->
+    <!-- MAIN WORKSPACE CONTAINER -->
+    <!-- ========================================================= -->
+    <div class="flex flex-1 overflow-hidden relative">
+
+      <!-- ======================================================= -->
+      <!-- LEFT SIDEBAR: TOOLBOX PANEL (Design, Templates, AI, etc.) -->
+      <!-- ======================================================= -->
+      <aside id="toolbox-panel" class="w-full sm:w-[360px] bg-white border-r border-slate-200 flex flex-col z-20 shrink-0 h-[calc(100vh-4rem)] overflow-y-auto transition-all">
+        
+        <!-- Panel Header -->
+        <div class="p-5 border-b border-slate-100 flex items-center justify-between sticky top-0 bg-white/95 backdrop-blur z-10">
+          <div>
+            <h2 id="panel-title" class="text-sm font-extrabold text-slate-800">Design & Typography</h2>
+            <p id="panel-subtitle" class="text-xs text-slate-400 mt-0.5">Customize fonts, colors, and layout structure</p>
+          </div>
+          <button onclick="toggleMobilePanel()" class="sm:hidden text-slate-400 hover:text-slate-600 text-sm font-bold">✕ Close</button>
+        </div>
+
+        <!-- Dynamic Panel Content Container -->
+        <div id="panel-content" class="p-5 space-y-6 flex-1">
+          
+          <!-- DEFAULT PANEL: DESIGN & FONT -->
+          <div class="space-y-6 animate-fadeIn" id="content-design">
+            <!-- Margins -->
+            <div>
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Page Margins</label>
+              <div class="mt-2 flex items-center justify-between text-xs font-semibold text-slate-600">
+                <span>Narrow</span>
+                <span id="margin-val" class="text-violet-600">Standard</span>
+                <span>Wide</span>
+              </div>
+              <input type="range" min="1" max="3" value="2" oninput="updateMargin(this.value)" class="w-full mt-2 accent-violet-600 cursor-pointer">
+            </div>
+
+            <!-- Accent Colors -->
+            <div>
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Accent Colors</label>
+              <div class="mt-3 grid grid-cols-6 gap-2">
+                <button onclick="setAccentColor('#2563eb', 'blue')" class="h-8 w-8 rounded-full bg-blue-600 ring-offset-2 focus:ring-2 focus:ring-blue-600 transition hover:scale-105"></button>
+                <button onclick="setAccentColor('#0f172a', 'slate')" class="h-8 w-8 rounded-full bg-slate-900 ring-offset-2 focus:ring-2 focus:ring-slate-900 transition hover:scale-105"></button>
+                <button onclick="setAccentColor('#059669', 'emerald')" class="h-8 w-8 rounded-full bg-emerald-600 ring-offset-2 focus:ring-2 focus:ring-emerald-600 transition hover:scale-105"></button>
+                <button onclick="setAccentColor('#dc2626', 'red')" class="h-8 w-8 rounded-full bg-red-600 ring-offset-2 focus:ring-2 focus:ring-red-600 transition hover:scale-105"></button>
+                <button onclick="setAccentColor('#7c3aed', 'violet')" class="h-8 w-8 rounded-full bg-violet-600 ring-offset-2 focus:ring-2 focus:ring-violet-600 transition hover:scale-105 ring-2 ring-violet-400"></button>
+                <button onclick="setAccentColor('#d97706', 'amber')" class="h-8 w-8 rounded-full bg-amber-600 ring-offset-2 focus:ring-2 focus:ring-amber-600 transition hover:scale-105"></button>
+              </div>
+            </div>
+
+            <!-- Font Family -->
+            <div>
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Font Style</label>
+              <select onchange="setFontFamily(this.value)" class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm font-medium outline-none focus:border-violet-300 focus:bg-white focus:ring-2 focus:ring-violet-100">
+                <option value="font-sans">Inter (Modern Clean)</option>
+                <option value="font-rubik">Rubik (Friendly & Balanced)</option>
+                <option value="font-mono">Fira Code (Tech / Developer)</option>
+              </select>
+            </div>
+
+            <!-- Column Layout Picker -->
+            <div>
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Column Layout</label>
+              <div class="mt-3 grid grid-cols-3 gap-3">
+                <button onclick="setLayout('single')" class="p-3 rounded-xl border-2 border-violet-600 bg-violet-50 text-xs font-bold text-violet-700 text-center transition">Single Column</button>
+                <button onclick="setLayout('double')" class="p-3 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-600 text-center transition hover:border-violet-300">Two Column</button>
+                <button onclick="setLayout('sidebar')" class="p-3 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-600 text-center transition hover:border-violet-300">Left Sidebar</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+
+      <!-- ======================================================= -->
+      <!-- RIGHT PREVIEW AREA: LIVE RESUME CANVAS -->
+      <!-- ======================================================= -->
+      <main class="flex-1 bg-slate-100 overflow-y-auto p-4 sm:p-8 flex flex-col items-center justify-start relative">
+        
+        <!-- Floating Canvas Controls Bar -->
+        <div class="mb-4 flex items-center justify-between w-full max-w-[800px] px-2">
+          <div class="text-xs font-semibold text-slate-500">Live Preview & Editor Canvas</div>
+          <div class="flex items-center gap-2">
+            <button onclick="triggerContentEditable(true)" class="text-xs bg-white border border-slate-200 px-3 py-1.5 rounded-lg shadow-sm font-bold text-violet-600 hover:bg-violet-50 transition">
+              ✏️ Enable Direct Editing
+            </button>
+          </div>
+        </div>
+
+        <!-- THE RESUME DOCUMENT SHEET -->
+        <div id="resume-document" class="resume-sheet rounded-2xl p-8 sm:p-12 font-sans text-slate-800 shadow-xl border border-slate-200/60 relative">
+          
+          <!-- Resume Header / Personal Info -->
+          <div class="border-b border-slate-200 pb-6">
+            <h1 id="res-name" contenteditable="true" class="text-3xl font-extrabold tracking-tight text-slate-900 outline-none focus:bg-violet-50/50 rounded px-1">SYMUL KABIR</h1>
+            <p id="res-title" contenteditable="true" class="text-base font-semibold text-violet-600 mt-1 outline-none focus:bg-violet-50/50 rounded px-1">Full Stack Software Developer</p>
+            
+            <div id="res-contacts" class="mt-3 flex flex-wrap items-center gap-4 text-xs font-medium text-slate-500">
+              <span contenteditable="true" class="outline-none focus:bg-slate-100 rounded px-1">📞 +8801881476432</span>
+              <span contenteditable="true" class="outline-none focus:bg-slate-100 rounded px-1">✉️ saimonpranta@gmail.com</span>
+              <span contenteditable="true" class="outline-none focus:bg-slate-100 rounded px-1">🌐 symulkabir.vercel.app</span>
+              <span contenteditable="true" class="outline-none focus:bg-slate-100 rounded px-1">📍 Khilkhet, Dhaka, Bangladesh</span>
+            </div>
+          </div>
+
+          <!-- Summary Section -->
+          <div class="mt-6">
+            <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400">Professional Summary</h3>
+            <p id="res-summary" contenteditable="true" class="mt-2 text-sm leading-relaxed text-slate-600 outline-none focus:bg-slate-50 rounded p-1">
+              Experienced Full-Stack Web Developer with a passion for building scalable and efficient applications. Proven expertise in both frontend and backend development using modern technologies. Looking for a long-term, challenging role where I can apply my skills in a high-tech environment and continue to grow professionally.
+            </p>
+          </div>
+
+          <!-- Experience Section -->
+          <div class="mt-6">
+            <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400">Experience</h3>
+            
+            <div class="mt-4 space-y-4">
+              <div>
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 contenteditable="true" class="text-sm font-bold text-slate-900 outline-none">Junior CTO & Full Stack Developer</h4>
+                    <p contenteditable="true" class="text-xs font-semibold text-violet-600 outline-none">Micle Company Ltd</p>
+                  </div>
+                  <span contenteditable="true" class="text-xs font-medium text-slate-400 outline-none">07/2023 - Present</span>
+                </div>
+                <ul class="mt-2 list-disc list-inside text-xs leading-relaxed text-slate-600 space-y-1">
+                  <li contenteditable="true" class="outline-none">Lead the development and technical direction of production web applications across frontend, backend, and infrastructure.</li>
+                  <li contenteditable="true" class="outline-none">Develop scalable applications using React.js, Flask, FastAPI, Express.js, and MongoDB.</li>
+                </ul>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h4 contenteditable="true" class="text-sm font-bold text-slate-900 outline-none">MERN Stack Developer</h4>
+                    <p contenteditable="true" class="text-xs font-semibold text-violet-600 outline-none">Ameliasoft Ltd</p>
+                  </div>
+                  <span contenteditable="true" class="text-xs font-medium text-slate-400 outline-none">09/2022 - 05/2023</span>
+                </div>
+                <ul class="mt-2 list-disc list-inside text-xs leading-relaxed text-slate-600 space-y-1">
+                  <li contenteditable="true" class="outline-none">Developed full-stack web applications using the MERN stack, working across React.js, Express.js, and MongoDB.</li>
+                  <li contenteditable="true" class="outline-none">Improved frontend interfaces and application performance using React.js.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills Section -->
+          <div class="mt-6">
+            <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400">Skills & Expertise</h3>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="bg-violet-50 text-violet-700 text-xs font-semibold px-3 py-1 rounded-lg">React.js</span>
+              <span class="bg-violet-50 text-violet-700 text-xs font-semibold px-3 py-1 rounded-lg">Next.js</span>
+              <span class="bg-violet-50 text-violet-700 text-xs font-semibold px-3 py-1 rounded-lg">TypeScript</span>
+              <span class="bg-violet-50 text-violet-700 text-xs font-semibold px-3 py-1 rounded-lg">Node.js</span>
+              <span class="bg-violet-50 text-violet-700 text-xs font-semibold px-3 py-1 rounded-lg">Python / Flask</span>
+              <span class="bg-violet-50 text-violet-700 text-xs font-semibold px-3 py-1 rounded-lg">Docker & Nginx</span>
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+
+    <!-- JavaScript Interactive Logic -->
+    <script>
+      function setAccentColor(colorHex, name) {
+        const resumeDoc = document.getElementById('resume-document');
+        // Update accent styles dynamically
+        const titles = resumeDoc.querySelectorAll('h3, .text-violet-600');
+        titles.forEach(el => {
+          el.style.color = colorHex;
+        });
+      }
+
+      function setFontFamily(fontClass) {
+        const doc = document.getElementById('resume-document');
+        doc.className = `resume-sheet rounded-2xl p-8 sm:p-12 ${fontClass} text-slate-800 shadow-xl border border-slate-200/60 relative`;
+      }
+
+      function updateMargin(val) {
+        const doc = document.getElementById('resume-document');
+        const label = document.getElementById('margin-val');
+        if(val == '1') {
+          doc.style.padding = '24px';
+          label.innerText = 'Narrow';
+        } else if(val == '2') {
+          doc.style.padding = '48px';
+          label.innerText = 'Standard';
+        } else {
+          doc.style.padding = '72px';
+          label.innerText = 'Wide';
+        }
+      }
+
+      function setLayout(type) {
+        alert('Switched layout mode to: ' + type + '. (Custom layout grid applied)');
+      }
+
+      function switchToolPanel(panelType) {
+        const panelTitle = document.getElementById('panel-title');
+        const panelSubtitle = document.getElementById('panel-subtitle');
+        const contentDiv = document.getElementById('panel-content');
+
+        if(panelType === 'ai') {
+          panelTitle.innerText = "AI Career Assistant";
+          panelSubtitle.innerText = "Generate bullet points, cover letters, and summaries";
+          contentDiv.innerHTML = `
+            <div class="space-y-4">
+              <div class="bg-violet-50 p-4 rounded-xl border border-violet-100">
+                <h4 class="text-xs font-bold text-violet-900">✨ AI Bullet Point Generator</h4>
+                <p class="text-xs text-violet-600 mt-1">Let AI write professional impact-driven achievements for your role.</p>
+                <button onclick="alert('AI generated optimized achievements!')" class="mt-3 w-full bg-violet-600 text-white text-xs font-bold py-2.5 rounded-xl shadow-sm hover:bg-violet-700 transition">Generate Bullet Points</button>
+              </div>
+            </div>
+          `;
+        } else if(panelType === 'design') {
+          panelTitle.innerText = "Design & Typography";
+          panelSubtitle.innerText = "Customize fonts, colors, and layout structure";
+          location.reload(); // Quick reset for standard design panel demo
+        } else {
+          panelTitle.innerText = panelType.toUpperCase() + " Workspace";
+          panelSubtitle.innerText = "Active AI tool configuration panel";
+          contentDiv.innerHTML = `<div class="p-4 text-xs text-slate-500 text-center">Tool features loaded successfully for <b>${panelType}</b>.</div>`;
+        }
+      }
+
+      function triggerContentEditable(status) {
+        alert("Direct inline editing is active! You can click directly on any text inside the live preview sheet to edit your resume in real time.");
+      }
+    </script>
+  </body>
+</html>

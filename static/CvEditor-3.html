@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CareerForge AI — Advanced Dynamic Resume Editor</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              rubik: ["Rubik", "sans-serif"],
+              mono: ["Fira Code", "monospace"],
+            },
+            colors: {
+              primary: {
+                50: "#f5f3ff",
+                100: "#ede9fe",
+                200: "#ddd6fe",
+                300: "#c4b5fd",
+                400: "#a78bfa",
+                500: "#8b5cf6",
+                600: "#7c3aed",
+                700: "#6d28d9",
+              },
+            },
+            boxShadow: {
+              soft: "0 10px 40px rgba(15, 23, 42, 0.06)",
+              card: "0 8px 30px rgba(15, 23, 42, 0.05)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #ddd6fe transparent;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f8fafc;
+      }
+      .resume-sheet {
+        width: 100%;
+        max-width: 820px;
+        min-height: 1120px;
+        background: white;
+        box-shadow: 0 15px 50px rgba(15, 23, 42, 0.08);
+        transition: all 0.3s ease;
+      }
+      input:focus, textarea:focus {
+        outline: none;
+        border-color: #8b5cf6;
+        box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen text-slate-900 flex flex-col select-none">
+
+    <!-- ========================================================= -->
+    <!-- TOP NAVBAR -->
+    <!-- ========================================================= -->
+    <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-md">
+      <div class="flex h-16 items-center justify-between px-4 sm:px-6">
+        
+        <!-- Left: Branding -->
+        <div class="flex items-center gap-4">
+          <a href="#" class="flex items-center gap-2.5">
+            <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 text-white font-bold shadow-md shadow-violet-200">
+              ✦
+            </div>
+            <span class="hidden font-extrabold tracking-tight sm:inline-block text-base">
+              CareerForge <span class="text-violet-600">AI</span>
+            </span>
+          </a>
+          <span class="h-5 w-px bg-slate-200"></span>
+          <div class="flex items-center gap-2 text-xs font-semibold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg">
+            <span>Resume Builder</span>
+            <span class="text-emerald-600 font-bold">• Live Sync Active</span>
+          </div>
+        </div>
+
+        <!-- Center: Tool Selector Navigation Tabs -->
+        <div class="hidden md:flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200/60 text-xs font-semibold text-slate-600">
+          <button onclick="switchTab('content')" id="tab-btn-content" class="px-3.5 py-1.5 rounded-lg bg-white text-violet-600 shadow-sm transition">✏️ Content Editor</button>
+          <button onclick="switchTab('design')" id="tab-btn-design" class="px-3.5 py-1.5 rounded-lg transition hover:bg-white hover:text-violet-600">🎨 Design & Fonts</button>
+          <button onclick="switchTab('sections')" id="tab-btn-sections" class="px-3.5 py-1.5 rounded-lg transition hover:bg-white hover:text-violet-600">📑 Section Order</button>
+          <button onclick="switchTab('ai')" id="tab-btn-ai" class="px-3.5 py-1.5 rounded-lg transition hover:bg-white hover:text-violet-600">✨ AI Assistant</button>
+        </div>
+
+        <!-- Right: Actions -->
+        <div class="flex items-center gap-2">
+          <button onclick="saveDraft()" class="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-bold text-slate-700 transition hover:border-violet-300 hover:text-violet-600">
+            Save Draft
+          </button>
+          <button onclick="window.print()" class="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2 text-xs font-bold text-white shadow-md shadow-violet-200 transition hover:opacity-95">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Export PDF
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- ========================================================= -->
+    <!-- MAIN WORKSPACE -->
+    <!-- ========================================================= -->
+    <div class="flex flex-1 overflow-hidden relative">
+
+      <!-- ======================================================= -->
+      <!-- LEFT SIDEBAR: DYNAMIC CONTROL TOOLBOX PANEL -->
+      <!-- ======================================================= -->
+      <aside class="w-full sm:w-[380px] bg-white border-r border-slate-200 flex flex-col z-20 shrink-0 h-[calc(100vh-4rem)] overflow-y-auto">
+        
+        <!-- Tab 1: Content Editor Form Inputs -->
+        <div id="panel-content" class="p-5 space-y-6">
+          <div class="border-b border-slate-100 pb-3">
+            <h2 class="text-sm font-extrabold text-slate-800">Edit Resume Content</h2>
+            <p class="text-xs text-slate-400 mt-0.5">Changes reflect instantly on the live preview canvas.</p>
+          </div>
+
+          <!-- Personal Info Inputs -->
+          <div class="space-y-3">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-violet-600">Personal Details</h3>
+            <div>
+              <label class="text-[11px] font-semibold text-slate-600">Full Name</label>
+              <input type="text" id="input-name" value="SYMUL KABIR" oninput="updateResume()" class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-medium">
+            </div>
+            <div>
+              <label class="text-[11px] font-semibold text-slate-600">Professional Title</label>
+              <input type="text" id="input-title" value="Full Stack Software Developer" oninput="updateResume()" class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-medium">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="text-[11px] font-semibold text-slate-600">Phone</label>
+                <input type="text" id="input-phone" value="+8801881476432" oninput="updateResume()" class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-medium">
+              </div>
+              <div>
+                <label class="text-[11px] font-semibold text-slate-600">Email</label>
+                <input type="text" id="input-email" value="saimonpranta@gmail.com" oninput="updateResume()" class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-medium">
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="text-[11px] font-semibold text-slate-600">Website</label>
+                <input type="text" id="input-website" value="symulkabir.vercel.app" oninput="updateResume()" class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-medium">
+              </div>
+              <div>
+                <label class="text-[11px] font-semibold text-slate-600">Location</label>
+                <input type="text" id="input-location" value="Khilkhet, Dhaka, Bangladesh" oninput="updateResume()" class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-medium">
+              </div>
+            </div>
+          </div>
+
+          <!-- Summary Input -->
+          <div class="space-y-3 pt-3 border-t border-slate-100">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-violet-600">Professional Summary</h3>
+            <textarea id="input-summary" rows="3" oninput="updateResume()" class="w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs font-medium">Experienced Full-Stack Web Developer with a passion for building scalable and efficient applications. Proven expertise in frontend and backend development using modern technologies.</textarea>
+          </div>
+
+          <!-- Experience Input -->
+          <div class="space-y-3 pt-3 border-t border-slate-100">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-violet-600">Work Experience</h3>
+            <div>
+              <label class="text-[11px] font-semibold text-slate-600">Job Role & Company</label>
+              <input type="text" id="input-exp-role" value="Junior CTO & Full Stack Developer — Micle Company Ltd" oninput="updateResume()" class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-medium">
+            </div>
+            <div>
+              <label class="text-[11px] font-semibold text-slate-600">Key Responsibilities (Comma separated)</label>
+              <textarea id="input-exp-desc" rows="3" oninput="updateResume()" class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs font-medium">Lead frontend & backend architecture,Developed apps using React.js and FastAPI,Configured Linux servers and Nginx</textarea>
+            </div>
+          </div>
+
+          <!-- Skills Input -->
+          <div class="space-y-3 pt-3 border-t border-slate-100">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-violet-600">Skills (Comma separated)</h3>
+            <input type="text" id="input-skills" value="React.js, Next.js, TypeScript, Node.js, Python, Docker, PostgreSQL, MongoDB, Git" oninput="updateResume()" class="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-medium">
+          </div>
+        </div>
+
+        <!-- Tab 2: Design & Fonts Panel (Hidden by default) -->
+        <div id="panel-design" class="p-5 space-y-6 hidden">
+          <div class="border-b border-slate-100 pb-3">
+            <h2 class="text-sm font-extrabold text-slate-800">Design & Typography</h2>
+            <p class="text-xs text-slate-400 mt-0.5">Customize styling, fonts, and layout aesthetics.</p>
+          </div>
+
+          <!-- Margins -->
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Page Margins</label>
+            <div class="mt-2 flex items-center justify-between text-xs font-semibold text-slate-600">
+              <span>Compact</span>
+              <span id="margin-label" class="text-violet-600">Standard</span>
+              <span>Spacious</span>
+            </div>
+            <input type="range" min="1" max="3" value="2" oninput="changeMargin(this.value)" class="w-full mt-2 accent-violet-600 cursor-pointer">
+          </div>
+
+          <!-- Accent Color Picker -->
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Accent Color</label>
+            <div class="mt-3 grid grid-cols-6 gap-2">
+              <button onclick="changeAccent('#2563eb')" class="h-8 w-8 rounded-full bg-blue-600 transition hover:scale-105"></button>
+              <button onclick="changeAccent('#0f172a')" class="h-8 w-8 rounded-full bg-slate-900 transition hover:scale-105"></button>
+              <button onclick="changeAccent('#059669')" class="h-8 w-8 rounded-full bg-emerald-600 transition hover:scale-105"></button>
+              <button onclick="changeAccent('#dc2626')" class="h-8 w-8 rounded-full bg-red-600 transition hover:scale-105"></button>
+              <button onclick="changeAccent('#7c3aed')" class="h-8 w-8 rounded-full bg-violet-600 ring-2 ring-violet-400 transition hover:scale-105"></button>
+              <button onclick="changeAccent('#d97706')" class="h-8 w-8 rounded-full bg-amber-600 transition hover:scale-105"></button>
+            </div>
+          </div>
+
+          <!-- Font Style -->
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Font Family</label>
+            <select onchange="changeFont(this.value)" class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs font-medium outline-none focus:border-violet-300">
+              <option value="font-sans">Inter (Modern Clean)</option>
+              <option value="font-rubik">Rubik (Friendly Balanced)</option>
+              <option value="font-mono">Fira Code (Developer Code style)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Tab 3: Section Rearrange Panel (Hidden by default) -->
+        <div id="panel-sections" class="p-5 space-y-4 hidden">
+          <div class="border-b border-slate-100 pb-3">
+            <h2 class="text-sm font-extrabold text-slate-800">Section Order</h2>
+            <p class="text-xs text-slate-400 mt-0.5">Toggle or reorder CV sections dynamically.</p>
+          </div>
+          <div class="space-y-2">
+            <label class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs font-bold text-slate-700">
+              <span>1. Header & Personal Info</span>
+              <input type="checkbox" checked disabled class="accent-violet-600">
+            </label>
+            <label class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 cursor-pointer">
+              <span>2. Professional Summary</span>
+              <input type="checkbox" checked onchange="toggleSection('sec-summary', this.checked)" class="accent-violet-600">
+            </label>
+            <label class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 cursor-pointer">
+              <span>3. Work Experience</span>
+              <input type="checkbox" checked onchange="toggleSection('sec-experience', this.checked)" class="accent-violet-600">
+            </label>
+            <label class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 cursor-pointer">
+              <span>4. Skills & Expertise</span>
+              <input type="checkbox" checked onchange="toggleSection('sec-skills', this.checked)" class="accent-violet-600">
+            </label>
+          </div>
+        </div>
+
+        <!-- Tab 4: AI Assistant Panel (Hidden by default) -->
+        <div id="panel-ai" class="p-5 space-y-4 hidden">
+          <div class="border-b border-slate-100 pb-3">
+            <h2 class="text-sm font-extrabold text-slate-800">AI Career Assistant</h2>
+            <p class="text-xs text-slate-400 mt-0.5">Enhance your resume bullets instantly using AI.</p>
+          </div>
+          <div class="bg-violet-50 p-4 rounded-xl border border-violet-100 space-y-3">
+            <h4 class="text-xs font-bold text-violet-900">✨ Bullet Point Enhancer</h4>
+            <p class="text-xs text-violet-700">Automatically optimize your experience descriptions with high-impact action verbs.</p>
+            <button onclick="aiEnhanceBullets()" class="w-full bg-violet-600 text-white text-xs font-bold py-2.5 rounded-xl shadow-sm hover:bg-violet-700 transition">Enhance with AI ✨</button>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- ======================================================= -->
+      <!-- RIGHT PREVIEW CANVAS -->
+      <!-- ======================================================= -->
+      <main class="flex-1 bg-slate-100 overflow-y-auto p-4 sm:p-8 flex flex-col items-center justify-start">
+        
+        <div class="mb-3 w-full max-w-[820px] flex items-center justify-between px-2 text-xs text-slate-500 font-medium">
+          <span>Interactive Live CV Preview</span>
+          <span class="text-violet-600 font-bold">A4 Format</span>
+        </div>
+
+        <!-- RESUME DOCUMENT SHEET -->
+        <div id="resume-sheet" class="resume-sheet rounded-2xl p-10 sm:p-14 font-sans text-slate-800 shadow-xl border border-slate-200/60 flex flex-col gap-6">
+          
+          <!-- Header -->
+          <div id="preview-header" class="border-b border-slate-200 pb-6">
+            <h1 id="prev-name" class="text-3xl font-extrabold tracking-tight text-slate-900">SYMUL KABIR</h1>
+            <p id="prev-title" class="text-base font-semibold text-violet-600 mt-1">Full Stack Software Developer</p>
+            
+            <div id="prev-contacts" class="mt-3 flex flex-wrap items-center gap-4 text-xs font-medium text-slate-500">
+              <span id="prev-phone">📞 +8801881476432</span>
+              <span id="prev-email">✉️ saimonpranta@gmail.com</span>
+              <span id="prev-website">🌐 symulkabir.vercel.app</span>
+              <span id="prev-location">📍 Khilkhet, Dhaka, Bangladesh</span>
+            </div>
+          </div>
+
+          <!-- Summary Section -->
+          <div id="sec-summary" class="space-y-2">
+            <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 accent-target">Professional Summary</h3>
+            <p id="prev-summary" class="text-sm leading-relaxed text-slate-600">
+              Experienced Full-Stack Web Developer with a passion for building scalable and efficient applications. Proven expertise in frontend and backend development using modern technologies.
+            </p>
+          </div>
+
+          <!-- Experience Section -->
+          <div id="sec-experience" class="space-y-3">
+            <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 accent-target">Experience</h3>
+            <div>
+              <h4 id="prev-exp-role" class="text-sm font-bold text-slate-900">Junior CTO & Full Stack Developer — Micle Company Ltd</h4>
+              <ul id="prev-exp-list" class="mt-1.5 list-disc list-inside text-xs leading-relaxed text-slate-600 space-y-1">
+                <li>Lead frontend & backend architecture</li>
+                <li>Developed apps using React.js and FastAPI</li>
+                <li>Configured Linux servers and Nginx</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Skills Section -->
+          <div id="sec-skills" class="space-y-2">
+            <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 accent-target">Skills & Expertise</h3>
+            <div id="prev-skills-container" class="flex flex-wrap gap-2 pt-1">
+              <span class="bg-violet-50 text-violet-700 text-xs font-semibold px-3 py-1 rounded-lg">React.js</span>
+              <span class="bg-violet-50 text-violet-700 text-xs font-semibold px-3 py-1 rounded-lg">Next.js</span>
+              <span class="bg-violet-50 text-violet-700 text-xs font-semibold px-3 py-1 rounded-lg">TypeScript</span>
+              <span class="bg-violet-50 text-violet-700 text-xs font-semibold px-3 py-1 rounded-lg">Node.js</span>
+              <span class="bg-violet-50 text-violet-700 text-xs font-semibold px-3 py-1 rounded-lg">Python</span>
+              <span class="bg-violet-50 text-violet-700 text-xs font-semibold px-3 py-1 rounded-lg">Docker</span>
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- INTERACTIVE JAVASCRIPT CONTROLS -->
+    <!-- ========================================================= -->
+    <script>
+      // Tab switcher function
+      function switchTab(tabName) {
+        ['content', 'design', 'sections', 'ai'].forEach(t => {
+          document.getElementById('panel-' + t).classList.add('hidden');
+          document.getElementById('tab-btn-' + t)?.classList.remove('bg-white', 'text-violet-600', 'shadow-sm');
+          document.getElementById('tab-btn-' + t)?.classList.add('text-slate-600');
+        });
+        document.getElementById('panel-' + tabName).classList.remove('hidden');
+        const activeBtn = document.getElementById('tab-btn-' + tabName);
+        if(activeBtn) {
+          activeBtn.classList.add('bg-white', 'text-violet-600', 'shadow-sm');
+          activeBtn.classList.remove('text-slate-600');
+        }
+      }
+
+      // Live update resume preview from form inputs
+      function updateResume() {
+        document.getElementById('prev-name').innerText = document.getElementById('input-name').value;
+        document.getElementById('prev-title').innerText = document.getElementById('input-title').value;
+        document.getElementById('prev-phone').innerText = '📞 ' + document.getElementById('input-phone').value;
+        document.getElementById('prev-email').innerText = '✉️ ' + document.getElementById('input-email').value;
+        document.getElementById('prev-website').innerText = '🌐 ' + document.getElementById('input-website').value;
+        document.getElementById('prev-location').innerText = '📍 ' + document.getElementById('input-location').value;
+        document.getElementById('prev-summary').innerText = document.getElementById('input-summary').value;
+        document.getElementById('prev-exp-role').innerText = document.getElementById('input-exp-role').value;
+
+        // Experience bullets parser
+        const descText = document.getElementById('input-exp-desc').value;
+        const bullets = descText.split(',').map(b => b.trim()).filter(b => b.length > 0);
+        const listContainer = document.getElementById('prev-exp-list');
+        listContainer.innerHTML = '';
+        bullets.forEach(bullet => {
+          const li = document.createElement('li');
+          li.innerText = bullet;
+          listContainer.appendChild(li);
+        });
+
+        // Skills pills parser
+        const skillsText = document.getElementById('input-skills').value;
+        const skills = skillsText.split(',').map(s => s.trim()).filter(s => s.length > 0);
+        const skillsContainer = document.getElementById('prev-skills-container');
+        skillsContainer.innerHTML = '';
+        skills.forEach(skill => {
+          const span = document.createElement('span');
+          span.className = 'bg-violet-50 text-violet-700 text-xs font-semibold px-3 py-1 rounded-lg';
+          span.innerText = skill;
+          skillsContainer.appendChild(span);
+        });
+      }
+
+      // Margin adjustment controller
+      function changeMargin(val) {
+        const sheet = document.getElementById('resume-sheet');
+        const label = document.getElementById('margin-label');
+        if(val == '1') {
+          sheet.style.padding = '32px';
+          label.innerText = 'Compact';
+        } else if(val == '2') {
+          sheet.style.padding = '56px';
+          label.innerText = 'Standard';
+        } else {
+          sheet.style.padding = '80px';
+          label.innerText = 'Spacious';
+        }
+      }
+
+      // Accent color theme controller
+      function changeAccent(colorHex) {
+        document.getElementById('prev-title').style.color = colorHex;
+        document.querySelectorAll('.accent-target').forEach(el => {
+          el.style.color = colorHex;
+        });
+      }
+
+      // Font Family controller
+      function changeFont(fontClass) {
+        const sheet = document.getElementById('resume-sheet');
+        sheet.className = `resume-sheet rounded-2xl p-10 sm:p-14 ${fontClass} text-slate-800 shadow-xl border border-slate-200/60 flex flex-col gap-6`;
+      }
+
+      // Section visibility toggle
+      function toggleSection(sectionId, isVisible) {
+        const sec = document.getElementById(sectionId);
+        if(isVisible) {
+          sec.style.display = 'block';
+        } else {
+          sec.style.display = 'none';
+        }
+      }
+
+      // AI Bullet Generator Simulation
+      function aiEnhanceBullets() {
+        document.getElementById('input-exp-desc').value = 
+          "Spearheaded end-to-end full-stack architecture, optimizing application latency by 35%, Engineered scalable microservices with React.js and FastAPI, Automated deployment pipelines on cloud infrastructure";
+        updateResume();
+        alert("✨ AI successfully enhanced your experience bullets with metrics and high-impact action verbs!");
+      }
+
+      function saveDraft() {
+        alert("Resume draft saved successfully to local storage!");
+      }
+    </script>
+  </body>
+</html>

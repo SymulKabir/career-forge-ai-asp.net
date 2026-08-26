@@ -1,0 +1,3196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CareerForge AI — Resume Editor</title>
+
+    <!-- =========================================================
+         TAILWIND
+    ========================================================== -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+
+            colors: {
+              primary: {
+                50: "#f5f3ff",
+                100: "#ede9fe",
+                200: "#ddd6fe",
+                300: "#c4b5fd",
+                400: "#a78bfa",
+                500: "#8b5cf6",
+                600: "#7c3aed",
+                700: "#6d28d9",
+              },
+            },
+
+            boxShadow: {
+              soft: "0 10px 40px rgba(15, 23, 42, 0.06)",
+              card: "0 8px 30px rgba(15, 23, 42, 0.05)",
+              paper: "0 25px 70px rgba(15, 23, 42, 0.16)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- =========================================================
+         FONTS
+    ========================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&family=Libre+Baskerville:wght@400;700&family=Merriweather:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- =========================================================
+         CUSTOM CSS
+    ========================================================== -->
+
+    <style>
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #ddd6fe transparent;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background:
+          radial-gradient(
+            circle at 10% 0%,
+            rgba(139, 92, 246, 0.06),
+            transparent 25%
+          ),
+          #f8fafc;
+        color: #0f172a;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.84);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, #7c3aed, #2563eb);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .nav-item {
+        transition: all 0.2s ease;
+      }
+
+      .nav-item:hover {
+        background: #f5f3ff;
+        color: #6d28d9;
+      }
+
+      .nav-item.active {
+        background: linear-gradient(135deg, #7c3aed, #4f46e5);
+        color: white;
+        box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
+      }
+
+      .editor-tab {
+        transition:
+          background 0.2s ease,
+          color 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .editor-tab.active {
+        background: #f5f3ff;
+        color: #6d28d9;
+        border-color: #ddd6fe;
+      }
+
+      .field {
+        width: 100%;
+        border: 1px solid #e2e8f0;
+        background: #f8fafc;
+        border-radius: 0.75rem;
+        padding: 0.7rem 0.85rem;
+        font-size: 0.8125rem;
+        outline: none;
+        transition:
+          border-color 0.2s ease,
+          background 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .field:focus {
+        border-color: #c4b5fd;
+        background: white;
+        box-shadow: 0 0 0 4px #f5f3ff;
+      }
+
+      .field-label {
+        display: block;
+        margin-bottom: 0.4rem;
+        font-size: 0.6875rem;
+        line-height: 1;
+        font-weight: 700;
+        color: #64748b;
+      }
+
+      .section-card {
+        border: 1px solid #e2e8f0;
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+      }
+
+      .section-card:hover {
+        border-color: #ddd6fe;
+      }
+
+      .resume-stage {
+        background:
+          radial-gradient(
+            circle at 20% 20%,
+            rgba(139, 92, 246, 0.08),
+            transparent 22%
+          ),
+          #eef2f7;
+      }
+
+      .resume-paper {
+        background: white;
+        color: #172033;
+        box-shadow: 0 30px 70px rgba(15, 23, 42, 0.16);
+        transform-origin: top center;
+      }
+
+      .resume-paper.compact {
+        letter-spacing: -0.01em;
+      }
+
+      .resume-paper .editable {
+        outline: none;
+        border-radius: 0.25rem;
+        transition: background 0.15s ease;
+      }
+
+      .resume-paper .editable:hover {
+        background: rgba(124, 58, 237, 0.04);
+      }
+
+      .resume-paper .editable:focus {
+        background: rgba(124, 58, 237, 0.07);
+      }
+
+      .skill-chip {
+        cursor: pointer;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .skill-chip:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+      }
+
+      .mini-template {
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .mini-template:hover {
+        transform: translateY(-2px);
+        border-color: #c4b5fd;
+      }
+
+      .mini-template.active {
+        border-color: #8b5cf6;
+        box-shadow: 0 0 0 3px #f5f3ff;
+      }
+
+      .drawer-overlay {
+        display: none;
+      }
+
+      .mobile-editor {
+        display: none;
+      }
+
+      @media (max-width: 1023px) {
+        .desktop-editor {
+          display: none;
+        }
+
+        .mobile-editor {
+          display: block;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .resume-paper {
+          transform: scale(0.55);
+          transform-origin: top center;
+          width: 794px !important;
+          max-width: none !important;
+          min-height: 1123px;
+        }
+
+        .resume-stage {
+          overflow-x: auto;
+          justify-content: flex-start !important;
+        }
+
+        .mobile-section-scroller {
+          overflow-x: auto;
+          scrollbar-width: none;
+        }
+
+        .mobile-section-scroller::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      @media print {
+        body {
+          background: white !important;
+        }
+
+        body * {
+          visibility: hidden !important;
+        }
+
+        #resumePaper,
+        #resumePaper * {
+          visibility: visible !important;
+        }
+
+        #resumePaper {
+          position: absolute !important;
+          left: 0 !important;
+          top: 0 !important;
+          width: 794px !important;
+          min-height: 1123px !important;
+          box-shadow: none !important;
+          transform: none !important;
+          margin: 0 !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen">
+
+    <!-- =========================================================
+         APP
+    ========================================================== -->
+
+    <div class="min-h-screen">
+
+      <!-- =======================================================
+           TOP BAR
+      ======================================================== -->
+
+      <header
+        class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl"
+      >
+        <div class="flex h-[68px] items-center justify-between gap-4 px-4 sm:px-6">
+
+          <!-- Left -->
+          <div class="flex min-w-0 items-center gap-3">
+
+            <a
+              href="#"
+              class="hidden shrink-0 items-center gap-2 md:flex"
+            >
+              <div
+                class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 text-white shadow-lg shadow-violet-200"
+              >
+                ✦
+              </div>
+
+              <div class="hidden xl:block">
+                <div class="text-[15px] font-extrabold tracking-tight">
+                  CareerForge
+                  <span class="text-violet-600">AI</span>
+                </div>
+
+                <div class="text-[8px] uppercase tracking-widest text-slate-400">
+                  Resume Studio
+                </div>
+              </div>
+            </a>
+
+            <div class="h-8 w-px bg-slate-200"></div>
+
+            <div class="min-w-0">
+              <div class="flex items-center gap-2">
+                <h1
+                  class="truncate text-sm font-bold text-slate-800 sm:text-base"
+                >
+                  Senior Full Stack Developer
+                </h1>
+
+                <span
+                  class="hidden rounded-full bg-emerald-50 px-2 py-1 text-[9px] font-bold text-emerald-600 sm:inline-flex"
+                >
+                  SAVED
+                </span>
+              </div>
+
+              <div class="mt-0.5 flex items-center gap-2 text-[10px] text-slate-400">
+                <span>Last edited just now</span>
+                <span>•</span>
+                <span id="saveStatus">All changes saved</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Center -->
+          <div class="hidden items-center gap-1 rounded-xl bg-slate-100 p-1 lg:flex">
+
+            <button
+              id="desktopPreviewBtn"
+              class="rounded-lg bg-white px-3 py-2 text-[11px] font-bold text-slate-700 shadow-sm"
+            >
+              <span>Preview</span>
+            </button>
+
+            <button
+              id="desktopEditBtn"
+              class="rounded-lg px-3 py-2 text-[11px] font-bold text-slate-500"
+            >
+              <span>Edit</span>
+            </button>
+
+          </div>
+
+          <!-- Right -->
+          <div class="flex shrink-0 items-center gap-2">
+
+            <button
+              id="undoBtn"
+              class="hidden h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-500 transition hover:border-violet-200 hover:text-violet-600 sm:flex"
+              title="Undo"
+            >
+              ↶
+            </button>
+
+            <button
+              id="redoBtn"
+              class="hidden h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-500 transition hover:border-violet-200 hover:text-violet-600 sm:flex"
+              title="Redo"
+            >
+              ↷
+            </button>
+
+            <button
+              id="downloadBtn"
+              class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-3 py-2.5 text-[11px] font-bold text-white shadow-lg shadow-violet-200 transition hover:-translate-y-0.5 sm:px-4"
+            >
+              <svg
+                class="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" d="M12 3v12" />
+                <path stroke-linecap="round" d="m7 10 5 5 5-5" />
+                <path stroke-linecap="round" d="M5 21h14" />
+              </svg>
+
+              <span class="hidden sm:inline">Export PDF</span>
+              <span class="sm:hidden">Export</span>
+            </button>
+
+            <button
+              class="hidden h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-blue-500 text-xs font-bold text-white md:flex"
+            >
+              SP
+            </button>
+
+          </div>
+        </div>
+      </header>
+
+      <!-- =======================================================
+           DESKTOP EDITOR
+      ======================================================== -->
+
+      <main class="desktop-editor">
+
+        <div class="grid min-h-[calc(100vh-68px)] grid-cols-[280px_minmax(0,1fr)_300px]">
+
+          <!-- ===================================================
+               LEFT EDITOR PANEL
+          ==================================================== -->
+
+          <aside
+            class="border-r border-slate-200 bg-white"
+          >
+            <div class="h-[calc(100vh-68px)] overflow-y-auto">
+
+              <!-- Editor tabs -->
+              <div class="sticky top-0 z-20 border-b border-slate-100 bg-white px-4 py-4">
+
+                <div class="grid grid-cols-2 gap-2">
+
+                  <button
+                    data-panel="content"
+                    class="editor-tab active rounded-xl border border-violet-200 px-3 py-2.5 text-[11px] font-bold"
+                  >
+                    Content
+                  </button>
+
+                  <button
+                    data-panel="design"
+                    class="editor-tab rounded-xl border border-transparent px-3 py-2.5 text-[11px] font-bold text-slate-500"
+                  >
+                    Design
+                  </button>
+
+                </div>
+
+              </div>
+
+              <!-- ========================= CONTENT PANEL ================= -->
+
+              <div id="contentPanel" class="space-y-5 p-4">
+
+                <!-- Resume sections -->
+                <section>
+
+                  <div class="mb-3 flex items-center justify-between">
+                    <div>
+                      <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
+                        Resume sections
+                      </div>
+
+                      <div class="mt-1 text-[11px] text-slate-400">
+                        Edit your content
+                      </div>
+                    </div>
+
+                    <button
+                      id="addSectionBtn"
+                      class="rounded-lg bg-violet-50 px-2.5 py-1.5 text-[10px] font-bold text-violet-600 hover:bg-violet-100"
+                    >
+                      + Add
+                    </button>
+                  </div>
+
+                  <div class="space-y-2" id="sectionList">
+
+                    <!-- Personal -->
+                    <button
+                      data-target="personal"
+                      class="section-selector flex w-full items-center gap-3 rounded-xl border border-violet-200 bg-violet-50 px-3 py-3 text-left"
+                    >
+                      <span
+                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-white text-violet-600 shadow-sm"
+                      >
+                        👤
+                      </span>
+
+                      <span class="min-w-0 flex-1">
+                        <span class="block text-xs font-bold text-slate-800">
+                          Personal Info
+                        </span>
+
+                        <span class="block text-[10px] text-slate-400">
+                          Name & contact
+                        </span>
+                      </span>
+
+                      <span class="cursor-move text-slate-300">
+                        ⋮⋮
+                      </span>
+                    </button>
+
+                    <!-- Summary -->
+                    <button
+                      data-target="summary"
+                      class="section-selector flex w-full items-center gap-3 rounded-xl border border-transparent px-3 py-3 text-left hover:bg-slate-50"
+                    >
+                      <span
+                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-slate-500"
+                      >
+                        ✦
+                      </span>
+
+                      <span class="min-w-0 flex-1">
+                        <span class="block text-xs font-bold text-slate-800">
+                          Professional Summary
+                        </span>
+
+                        <span class="block text-[10px] text-slate-400">
+                          Profile introduction
+                        </span>
+                      </span>
+
+                      <span class="cursor-move text-slate-300">
+                        ⋮⋮
+                      </span>
+                    </button>
+
+                    <!-- Experience -->
+                    <button
+                      data-target="experience"
+                      class="section-selector flex w-full items-center gap-3 rounded-xl border border-transparent px-3 py-3 text-left hover:bg-slate-50"
+                    >
+                      <span
+                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-blue-600"
+                      >
+                        💼
+                      </span>
+
+                      <span class="min-w-0 flex-1">
+                        <span class="block text-xs font-bold text-slate-800">
+                          Experience
+                        </span>
+
+                        <span class="block text-[10px] text-slate-400">
+                          2 positions
+                        </span>
+                      </span>
+
+                      <span class="cursor-move text-slate-300">
+                        ⋮⋮
+                      </span>
+                    </button>
+
+                    <!-- Education -->
+                    <button
+                      data-target="education"
+                      class="section-selector flex w-full items-center gap-3 rounded-xl border border-transparent px-3 py-3 text-left hover:bg-slate-50"
+                    >
+                      <span
+                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600"
+                      >
+                        🎓
+                      </span>
+
+                      <span class="min-w-0 flex-1">
+                        <span class="block text-xs font-bold text-slate-800">
+                          Education
+                        </span>
+
+                        <span class="block text-[10px] text-slate-400">
+                          2 qualifications
+                        </span>
+                      </span>
+
+                      <span class="cursor-move text-slate-300">
+                        ⋮⋮
+                      </span>
+                    </button>
+
+                    <!-- Skills -->
+                    <button
+                      data-target="skills"
+                      class="section-selector flex w-full items-center gap-3 rounded-xl border border-transparent px-3 py-3 text-left hover:bg-slate-50"
+                    >
+                      <span
+                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-50 text-orange-600"
+                      >
+                        ✨
+                      </span>
+
+                      <span class="min-w-0 flex-1">
+                        <span class="block text-xs font-bold text-slate-800">
+                          Skills
+                        </span>
+
+                        <span class="block text-[10px] text-slate-400">
+                          10 skills
+                        </span>
+                      </span>
+
+                      <span class="cursor-move text-slate-300">
+                        ⋮⋮
+                      </span>
+                    </button>
+
+                    <!-- Projects -->
+                    <button
+                      data-target="projects"
+                      class="section-selector flex w-full items-center gap-3 rounded-xl border border-transparent px-3 py-3 text-left hover:bg-slate-50"
+                    >
+                      <span
+                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600"
+                      >
+                        ◈
+                      </span>
+
+                      <span class="min-w-0 flex-1">
+                        <span class="block text-xs font-bold text-slate-800">
+                          Projects
+                        </span>
+
+                        <span class="block text-[10px] text-slate-400">
+                          3 projects
+                        </span>
+                      </span>
+
+                      <span class="cursor-move text-slate-300">
+                        ⋮⋮
+                      </span>
+                    </button>
+
+                    <!-- Certifications -->
+                    <button
+                      data-target="certifications"
+                      class="section-selector flex w-full items-center gap-3 rounded-xl border border-transparent px-3 py-3 text-left hover:bg-slate-50"
+                    >
+                      <span
+                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-pink-50 text-pink-600"
+                      >
+                        🏅
+                      </span>
+
+                      <span class="min-w-0 flex-1">
+                        <span class="block text-xs font-bold text-slate-800">
+                          Certifications
+                        </span>
+
+                        <span class="block text-[10px] text-slate-400">
+                          2 certificates
+                        </span>
+                      </span>
+
+                      <span class="cursor-move text-slate-300">
+                        ⋮⋮
+                      </span>
+                    </button>
+
+                  </div>
+                </section>
+
+                <!-- ATS tip -->
+                <div
+                  class="rounded-2xl border border-violet-100 bg-gradient-to-br from-violet-50 via-white to-blue-50 p-4"
+                >
+
+                  <div class="flex items-start gap-3">
+
+                    <div
+                      class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-violet-600 shadow-sm"
+                    >
+                      ✦
+                    </div>
+
+                    <div>
+                      <div class="text-xs font-bold text-slate-800">
+                        AI writing assistant
+                      </div>
+
+                      <p class="mt-1 text-[10px] leading-5 text-slate-500">
+                        Select any section and use AI to improve clarity,
+                        impact, and ATS relevance.
+                      </p>
+
+                      <button
+                        class="mt-3 rounded-lg bg-violet-600 px-3 py-2 text-[10px] font-bold text-white"
+                      >
+                        Improve with AI →
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- ========================= DESIGN PANEL ================= -->
+
+              <div id="designPanel" class="hidden space-y-5 p-4">
+
+                <!-- Templates -->
+                <section>
+
+                  <div class="mb-3">
+                    <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
+                      Template
+                    </div>
+
+                    <div class="mt-1 text-[11px] text-slate-400">
+                      Choose your layout
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-3">
+
+                    <button
+                      class="mini-template active rounded-xl border bg-white p-2 text-left"
+                      data-template="modern"
+                    >
+                      <div class="h-28 rounded-lg border border-slate-200 bg-white p-3">
+                        <div class="h-2 w-1/2 rounded bg-slate-800"></div>
+                        <div class="mt-2 h-1 w-1/3 rounded bg-slate-300"></div>
+                        <div class="mt-4 h-1.5 w-full rounded bg-violet-200"></div>
+                        <div class="mt-2 h-1 w-[90%] rounded bg-slate-200"></div>
+                        <div class="mt-2 h-1 w-[82%] rounded bg-slate-200"></div>
+                      </div>
+
+                      <div class="mt-2 text-[10px] font-bold">
+                        Modern
+                      </div>
+                    </button>
+
+                    <button
+                      class="mini-template rounded-xl border border-slate-200 bg-white p-2 text-left"
+                      data-template="classic"
+                    >
+                      <div class="h-28 rounded-lg border border-slate-200 bg-white p-3">
+                        <div class="text-center">
+                          <div class="mx-auto h-2 w-1/2 rounded bg-slate-800"></div>
+                          <div class="mx-auto mt-2 h-1 w-1/3 rounded bg-slate-300"></div>
+                        </div>
+
+                        <div class="mt-4 h-px bg-slate-300"></div>
+
+                        <div class="mt-4 h-1.5 w-1/3 rounded bg-slate-800"></div>
+                        <div class="mt-2 h-1 w-full rounded bg-slate-200"></div>
+                        <div class="mt-2 h-1 w-[85%] rounded bg-slate-200"></div>
+                      </div>
+
+                      <div class="mt-2 text-[10px] font-bold">
+                        Classic
+                      </div>
+                    </button>
+
+                    <button
+                      class="mini-template rounded-xl border border-slate-200 bg-white p-2 text-left"
+                      data-template="executive"
+                    >
+                      <div class="h-28 rounded-lg border border-slate-200 bg-white p-3">
+                        <div class="grid grid-cols-[35px_1fr] gap-2">
+                          <div class="rounded bg-slate-900"></div>
+
+                          <div>
+                            <div class="h-2 w-3/4 rounded bg-slate-800"></div>
+                            <div class="mt-2 h-1 w-1/2 rounded bg-slate-300"></div>
+                            <div class="mt-4 h-1.5 w-1/2 rounded bg-violet-300"></div>
+                            <div class="mt-2 h-1 w-full rounded bg-slate-200"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="mt-2 text-[10px] font-bold">
+                        Executive
+                      </div>
+                    </button>
+
+                    <button
+                      class="mini-template rounded-xl border border-slate-200 bg-white p-2 text-left"
+                      data-template="minimal"
+                    >
+                      <div class="h-28 rounded-lg border border-slate-200 bg-white p-3">
+                        <div class="h-2 w-2/3 rounded bg-slate-800"></div>
+                        <div class="mt-2 h-1 w-1/3 rounded bg-slate-300"></div>
+                        <div class="mt-5 h-px bg-slate-200"></div>
+                        <div class="mt-4 h-1.5 w-1/4 rounded bg-slate-800"></div>
+                        <div class="mt-2 h-1 w-full rounded bg-slate-200"></div>
+                        <div class="mt-2 h-1 w-[92%] rounded bg-slate-200"></div>
+                      </div>
+
+                      <div class="mt-2 text-[10px] font-bold">
+                        Minimal
+                      </div>
+                    </button>
+
+                  </div>
+                </section>
+
+                <!-- Accent -->
+                <section>
+
+                  <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
+                    Accent color
+                  </div>
+
+                  <div class="mt-3 flex flex-wrap gap-2">
+
+                    <button
+                      data-accent="#7c3aed"
+                      class="accent-btn h-8 w-8 rounded-full border-4 border-white bg-violet-600 shadow-[0_0_0_2px_#ddd6fe]"
+                    ></button>
+
+                    <button
+                      data-accent="#2563eb"
+                      class="accent-btn h-8 w-8 rounded-full border-4 border-white bg-blue-600"
+                    ></button>
+
+                    <button
+                      data-accent="#0891b2"
+                      class="accent-btn h-8 w-8 rounded-full border-4 border-white bg-cyan-600"
+                    ></button>
+
+                    <button
+                      data-accent="#059669"
+                      class="accent-btn h-8 w-8 rounded-full border-4 border-white bg-emerald-600"
+                    ></button>
+
+                    <button
+                      data-accent="#dc2626"
+                      class="accent-btn h-8 w-8 rounded-full border-4 border-white bg-red-600"
+                    ></button>
+
+                    <button
+                      data-accent="#c2410c"
+                      class="accent-btn h-8 w-8 rounded-full border-4 border-white bg-orange-600"
+                    ></button>
+
+                  </div>
+
+                </section>
+
+                <!-- Typography -->
+                <section class="space-y-4">
+
+                  <div>
+
+                    <label class="field-label">
+                      Font family
+                    </label>
+
+                    <select
+                      id="fontFamily"
+                      class="field"
+                    >
+                      <option value="Inter">Inter</option>
+                      <option value="DM Sans">DM Sans</option>
+                      <option value="Merriweather">Merriweather</option>
+                      <option value="Libre Baskerville">
+                        Libre Baskerville
+                      </option>
+                    </select>
+
+                  </div>
+
+                  <div>
+
+                    <div class="flex items-center justify-between">
+                      <label class="field-label !mb-0">
+                        Font size
+                      </label>
+
+                      <span
+                        id="fontSizeValue"
+                        class="text-[10px] font-bold text-violet-600"
+                      >
+                        100%
+                      </span>
+                    </div>
+
+                    <input
+                      id="fontSizeRange"
+                      type="range"
+                      min="88"
+                      max="112"
+                      value="100"
+                      class="mt-3 w-full accent-violet-600"
+                    />
+
+                  </div>
+
+                  <div>
+
+                    <div class="flex items-center justify-between">
+                      <label class="field-label !mb-0">
+                        Spacing
+                      </label>
+
+                      <span
+                        id="spacingValue"
+                        class="text-[10px] font-bold text-violet-600"
+                      >
+                        100%
+                      </span>
+                    </div>
+
+                    <input
+                      id="spacingRange"
+                      type="range"
+                      min="80"
+                      max="120"
+                      value="100"
+                      class="mt-3 w-full accent-violet-600"
+                    />
+
+                  </div>
+
+                </section>
+
+                <!-- Format -->
+                <section>
+
+                  <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
+                    Document
+                  </div>
+
+                  <div class="mt-3 space-y-3">
+
+                    <label class="flex cursor-pointer items-center justify-between rounded-xl border border-slate-200 p-3">
+                      <div>
+                        <div class="text-xs font-bold">
+                          A4
+                        </div>
+
+                        <div class="text-[10px] text-slate-400">
+                          International standard
+                        </div>
+                      </div>
+
+                      <input
+                        type="radio"
+                        name="pageSize"
+                        checked
+                        class="h-4 w-4 accent-violet-600"
+                      />
+                    </label>
+
+                    <label class="flex cursor-pointer items-center justify-between rounded-xl border border-slate-200 p-3">
+                      <div>
+                        <div class="text-xs font-bold">
+                          Letter
+                        </div>
+
+                        <div class="text-[10px] text-slate-400">
+                          US standard
+                        </div>
+                      </div>
+
+                      <input
+                        type="radio"
+                        name="pageSize"
+                        class="h-4 w-4 accent-violet-600"
+                      />
+                    </label>
+
+                  </div>
+
+                </section>
+
+                <!-- ATS -->
+                <section
+                  class="rounded-2xl border border-emerald-100 bg-emerald-50 p-4"
+                >
+
+                  <div class="flex items-start gap-3">
+
+                    <div
+                      class="flex h-8 w-8 items-center justify-center rounded-lg bg-white text-emerald-600 shadow-sm"
+                    >
+                      ✓
+                    </div>
+
+                    <div class="flex-1">
+
+                      <div class="flex items-center justify-between gap-3">
+                        <div class="text-xs font-bold text-emerald-800">
+                          ATS-friendly mode
+                        </div>
+
+                        <button
+                          id="atsToggle"
+                          class="relative h-6 w-11 rounded-full bg-emerald-500 transition"
+                        >
+                          <span
+                            class="absolute left-6 top-1 h-4 w-4 rounded-full bg-white shadow-sm"
+                          ></span>
+                        </button>
+                      </div>
+
+                      <p class="mt-1 text-[10px] leading-5 text-emerald-700">
+                        Avoid complex layouts that may confuse resume parsing
+                        systems.
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                </section>
+
+              </div>
+
+            </div>
+          </aside>
+
+
+          <!-- ===================================================
+               CENTER PREVIEW
+          ==================================================== -->
+
+          <section class="relative min-w-0">
+
+            <div class="flex h-[calc(100vh-68px)] flex-col">
+
+              <!-- Preview toolbar -->
+              <div
+                class="flex h-14 shrink-0 items-center justify-between border-b border-slate-200 bg-white px-4"
+              >
+
+                <div class="flex items-center gap-2">
+
+                  <button
+                    id="zoomOut"
+                    class="h-8 w-8 rounded-lg bg-slate-100 text-sm font-bold text-slate-500 hover:bg-violet-50 hover:text-violet-600"
+                  >
+                    −
+                  </button>
+
+                  <span
+                    id="zoomValue"
+                    class="w-12 text-center text-[10px] font-bold text-slate-500"
+                  >
+                    75%
+                  </span>
+
+                  <button
+                    id="zoomIn"
+                    class="h-8 w-8 rounded-lg bg-slate-100 text-sm font-bold text-slate-500 hover:bg-violet-50 hover:text-violet-600"
+                  >
+                    +
+                  </button>
+
+                  <button
+                    id="zoomFit"
+                    class="ml-1 rounded-lg bg-slate-100 px-2.5 py-2 text-[10px] font-bold text-slate-500 hover:bg-violet-50 hover:text-violet-600"
+                  >
+                    Fit
+                  </button>
+
+                </div>
+
+                <div class="flex items-center gap-2">
+
+                  <span
+                    class="hidden text-[10px] text-slate-400 xl:inline"
+                  >
+                    Click text in preview to edit
+                  </span>
+
+                  <button
+                    id="fullscreenBtn"
+                    class="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-slate-500 hover:bg-violet-50 hover:text-violet-600"
+                  >
+                    ⛶
+                  </button>
+
+                </div>
+
+              </div>
+
+              <!-- Resume stage -->
+              <div
+                id="resumeStage"
+                class="resume-stage flex-1 overflow-auto p-6 sm:p-10"
+              >
+
+                <div
+                  id="resumePaper"
+                  class="resume-paper relative w-[794px] min-h-[1123px] shrink-0 origin-top"
+                  style="transform: scale(0.75);"
+                >
+
+                  <!-- ==============================================
+                       RESUME
+                  =============================================== -->
+
+                  <div
+                    id="resumeContent"
+                    class="p-[64px]"
+                  >
+
+                    <!-- Header -->
+                    <header
+                      id="resumeHeader"
+                      class="border-b-2 border-slate-900 pb-6"
+                    >
+
+                      <div class="flex items-start justify-between gap-8">
+
+                        <div>
+
+                          <h1
+                            id="previewName"
+                            class="editable text-[30px] font-extrabold tracking-tight text-slate-900"
+                            contenteditable="true"
+                          >
+                            Saimon Pranta
+                          </h1>
+
+                          <p
+                            id="previewTitle"
+                            class="editable mt-1 text-[14px] font-semibold text-violet-600"
+                            contenteditable="true"
+                          >
+                            Senior Full Stack Developer
+                          </p>
+
+                        </div>
+
+                        <div class="text-right text-[9px] leading-5 text-slate-500">
+
+                          <div
+                            id="previewEmail"
+                            class="editable"
+                            contenteditable="true"
+                          >
+                            saimonpranta@gmail.com
+                          </div>
+
+                          <div
+                            id="previewPhone"
+                            class="editable"
+                            contenteditable="true"
+                          >
+                            +880 1881 476432
+                          </div>
+
+                          <div
+                            id="previewLocation"
+                            class="editable"
+                            contenteditable="true"
+                          >
+                            Dhaka, Bangladesh
+                          </div>
+
+                          <div
+                            id="previewPortfolio"
+                            class="editable text-violet-600"
+                            contenteditable="true"
+                          >
+                            symulkabir.vercel.app
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </header>
+
+
+                    <!-- Summary -->
+                    <section
+                      data-resume-section="summary"
+                      class="resume-section pt-6"
+                    >
+
+                      <h2
+                        class="section-heading text-[10px] font-extrabold uppercase tracking-[0.2em] text-violet-600"
+                      >
+                        Professional Summary
+                      </h2>
+
+                      <p
+                        id="previewSummary"
+                        class="editable mt-3 text-[10px] leading-6 text-slate-600"
+                        contenteditable="true"
+                      >
+                        Experienced Full Stack Developer with more than 5
+                        years of professional experience building scalable,
+                        user-focused web applications. Strong across modern
+                        frontend and backend technologies, cloud platforms,
+                        APIs, databases, containers, and DevOps workflows.
+                      </p>
+
+                    </section>
+
+
+                    <!-- Experience -->
+                    <section
+                      data-resume-section="experience"
+                      class="resume-section pt-6"
+                    >
+
+                      <div class="flex items-center justify-between">
+                        <h2
+                          class="section-heading text-[10px] font-extrabold uppercase tracking-[0.2em] text-violet-600"
+                        >
+                          Experience
+                        </h2>
+
+                      </div>
+
+                      <div id="previewExperienceList" class="mt-4 space-y-5">
+
+                        <!-- Experience 1 -->
+                        <article>
+
+                          <div class="flex items-start justify-between gap-5">
+
+                            <div>
+                              <h3
+                                class="editable text-[11px] font-bold"
+                                contenteditable="true"
+                              >
+                                Head of Technology
+                              </h3>
+
+                              <div
+                                class="editable mt-0.5 text-[9px] font-semibold text-slate-500"
+                                contenteditable="true"
+                              >
+                                Micple Company Limited
+                              </div>
+                            </div>
+
+                            <div
+                              class="editable whitespace-nowrap text-[8px] text-slate-400"
+                              contenteditable="true"
+                            >
+                              2023 — Present
+                            </div>
+
+                          </div>
+
+                          <p
+                            class="editable mt-2 text-[9px] leading-5 text-slate-600"
+                            contenteditable="true"
+                          >
+                            Leading technology initiatives, application
+                            architecture, engineering processes, cloud
+                            infrastructure, and scalable web platform
+                            development.
+                          </p>
+
+                        </article>
+
+
+                        <!-- Experience 2 -->
+                        <article>
+
+                          <div class="flex items-start justify-between gap-5">
+
+                            <div>
+                              <h3
+                                class="editable text-[11px] font-bold"
+                                contenteditable="true"
+                              >
+                                Full Stack Web Developer
+                              </h3>
+
+                              <div
+                                class="editable mt-0.5 text-[9px] font-semibold text-slate-500"
+                                contenteditable="true"
+                              >
+                                Professional Experience
+                              </div>
+                            </div>
+
+                            <div
+                              class="editable whitespace-nowrap text-[8px] text-slate-400"
+                              contenteditable="true"
+                            >
+                              2020 — 2023
+                            </div>
+
+                          </div>
+
+                          <p
+                            class="editable mt-2 text-[9px] leading-5 text-slate-600"
+                            contenteditable="true"
+                          >
+                            Developed production web applications using
+                            React, Next.js, Node.js, Laravel, SQL/NoSQL
+                            databases, Docker, and cloud infrastructure.
+                          </p>
+
+                        </article>
+
+                      </div>
+
+                    </section>
+
+
+                    <!-- Education -->
+                    <section
+                      data-resume-section="education"
+                      class="resume-section pt-6"
+                    >
+
+                      <h2
+                        class="section-heading text-[10px] font-extrabold uppercase tracking-[0.2em] text-violet-600"
+                      >
+                        Education
+                      </h2>
+
+                      <div class="mt-4 space-y-4">
+
+                        <article>
+
+                          <div class="flex items-start justify-between gap-5">
+
+                            <div>
+                              <h3
+                                class="editable text-[11px] font-bold"
+                                contenteditable="true"
+                              >
+                                Post Graduate Diploma in Information Technology
+                              </h3>
+
+                              <div
+                                class="editable mt-0.5 text-[9px] font-semibold text-slate-500"
+                                contenteditable="true"
+                              >
+                                University of Dhaka
+                              </div>
+                            </div>
+
+                            <div
+                              class="editable whitespace-nowrap text-[8px] text-slate-400"
+                              contenteditable="true"
+                            >
+                              2025 — 2026
+                            </div>
+
+                          </div>
+
+                        </article>
+
+                        <article>
+
+                          <div class="flex items-start justify-between gap-5">
+
+                            <div>
+                              <h3
+                                class="editable text-[11px] font-bold"
+                                contenteditable="true"
+                              >
+                                Bachelor of Business Administration
+                              </h3>
+
+                              <div
+                                class="editable mt-0.5 text-[9px] font-semibold text-slate-500"
+                                contenteditable="true"
+                              >
+                                Nizampur Government College
+                              </div>
+                            </div>
+
+                            <div
+                              class="editable whitespace-nowrap text-[8px] text-slate-400"
+                              contenteditable="true"
+                            >
+                              2018 — 2023
+                            </div>
+
+                          </div>
+
+                        </article>
+
+                      </div>
+
+                    </section>
+
+
+                    <!-- Skills -->
+                    <section
+                      data-resume-section="skills"
+                      class="resume-section pt-6"
+                    >
+
+                      <h2
+                        class="section-heading text-[10px] font-extrabold uppercase tracking-[0.2em] text-violet-600"
+                      >
+                        Skills
+                      </h2>
+
+                      <div
+                        id="previewSkills"
+                        class="mt-3 flex flex-wrap gap-2"
+                      >
+
+                        <span
+                          class="rounded bg-violet-50 px-2 py-1 text-[8px] font-semibold text-violet-700"
+                        >
+                          React.js
+                        </span>
+
+                        <span
+                          class="rounded bg-violet-50 px-2 py-1 text-[8px] font-semibold text-violet-700"
+                        >
+                          Next.js
+                        </span>
+
+                        <span
+                          class="rounded bg-violet-50 px-2 py-1 text-[8px] font-semibold text-violet-700"
+                        >
+                          TypeScript
+                        </span>
+
+                        <span
+                          class="rounded bg-violet-50 px-2 py-1 text-[8px] font-semibold text-violet-700"
+                        >
+                          Node.js
+                        </span>
+
+                        <span
+                          class="rounded bg-violet-50 px-2 py-1 text-[8px] font-semibold text-violet-700"
+                        >
+                          Docker
+                        </span>
+
+                        <span
+                          class="rounded bg-violet-50 px-2 py-1 text-[8px] font-semibold text-violet-700"
+                        >
+                          Kubernetes
+                        </span>
+
+                        <span
+                          class="rounded bg-violet-50 px-2 py-1 text-[8px] font-semibold text-violet-700"
+                        >
+                          AWS
+                        </span>
+
+                      </div>
+
+                    </section>
+
+
+                    <!-- Projects -->
+                    <section
+                      data-resume-section="projects"
+                      class="resume-section pt-6"
+                    >
+
+                      <h2
+                        class="section-heading text-[10px] font-extrabold uppercase tracking-[0.2em] text-violet-600"
+                      >
+                        Projects
+                      </h2>
+
+                      <div class="mt-4 space-y-4">
+
+                        <article>
+
+                          <h3
+                            class="editable text-[11px] font-bold"
+                            contenteditable="true"
+                          >
+                            Book Hive — AI-Powered Smart Library
+                          </h3>
+
+                          <p
+                            class="editable mt-1 text-[9px] leading-5 text-slate-600"
+                            contenteditable="true"
+                          >
+                            Full-stack library management platform with AI
+                            recommendations, semantic search, voice/image
+                            search, facial authentication, and payment
+                            integration.
+                          </p>
+
+                        </article>
+
+                        <article>
+
+                          <h3
+                            class="editable text-[11px] font-bold"
+                            contenteditable="true"
+                          >
+                            Fishlo — E-Commerce Platform
+                          </h3>
+
+                          <p
+                            class="editable mt-1 text-[9px] leading-5 text-slate-600"
+                            contenteditable="true"
+                          >
+                            Modern e-commerce platform built with Next.js,
+                            TypeScript, Tailwind CSS, MySQL, Prisma and
+                            Docker.
+                          </p>
+
+                        </article>
+
+                      </div>
+
+                    </section>
+
+
+                    <!-- Certifications -->
+                    <section
+                      data-resume-section="certifications"
+                      class="resume-section pt-6"
+                    >
+
+                      <h2
+                        class="section-heading text-[10px] font-extrabold uppercase tracking-[0.2em] text-violet-600"
+                      >
+                        Certifications
+                      </h2>
+
+                      <div class="mt-3 grid grid-cols-2 gap-3">
+
+                        <div>
+                          <div
+                            class="editable text-[9px] font-bold"
+                            contenteditable="true"
+                          >
+                            AWS Cloud Practitioner
+                          </div>
+
+                          <div
+                            class="editable text-[8px] text-slate-500"
+                            contenteditable="true"
+                          >
+                            Amazon Web Services
+                          </div>
+                        </div>
+
+                        <div>
+                          <div
+                            class="editable text-[9px] font-bold"
+                            contenteditable="true"
+                          >
+                            Kubernetes Fundamentals
+                          </div>
+
+                          <div
+                            class="editable text-[8px] text-slate-500"
+                            contenteditable="true"
+                          >
+                            CNCF
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </section>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+
+          <!-- ===================================================
+               RIGHT PANEL
+          ==================================================== -->
+
+          <aside class="border-l border-slate-200 bg-white">
+
+            <div class="h-[calc(100vh-68px)] overflow-y-auto p-4">
+
+              <!-- ATS SCORE -->
+              <section
+                class="rounded-2xl border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-cyan-50 p-5"
+              >
+
+                <div class="flex items-center justify-between">
+
+                  <div>
+                    <div
+                      class="text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-600"
+                    >
+                      Resume score
+                    </div>
+
+                    <div class="mt-1 text-sm font-bold text-slate-800">
+                      ATS readiness
+                    </div>
+                  </div>
+
+                  <span class="text-xs font-bold text-emerald-600">
+                    Excellent
+                  </span>
+
+                </div>
+
+                <div class="mt-5 flex items-center gap-4">
+
+                  <div class="relative h-20 w-20 shrink-0">
+
+                    <svg
+                      class="h-20 w-20 -rotate-90"
+                      viewBox="0 0 100 100"
+                    >
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="42"
+                        stroke="#e2e8f0"
+                        stroke-width="8"
+                        fill="none"
+                      />
+
+                      <circle
+                        id="atsCircle"
+                        cx="50"
+                        cy="50"
+                        r="42"
+                        stroke="#10b981"
+                        stroke-width="8"
+                        stroke-linecap="round"
+                        fill="none"
+                        stroke-dasharray="264"
+                        stroke-dashoffset="32"
+                      />
+                    </svg>
+
+                    <div
+                      class="absolute inset-0 flex items-center justify-center text-xl font-extrabold"
+                    >
+                      88
+                    </div>
+
+                  </div>
+
+                  <div>
+
+                    <div class="text-xs font-bold text-slate-800">
+                      Strong match
+                    </div>
+
+                    <p class="mt-1 text-[10px] leading-5 text-slate-400">
+                      Your resume follows common ATS structure and contains
+                      relevant keywords.
+                    </p>
+
+                  </div>
+
+                </div>
+
+                <div class="mt-5 space-y-3">
+
+                  <div>
+
+                    <div class="mb-1.5 flex justify-between text-[10px]">
+                      <span class="text-slate-500">Keywords</span>
+                      <span class="font-bold text-slate-700">91%</span>
+                    </div>
+
+                    <div class="h-1.5 rounded-full bg-white">
+                      <div class="h-full w-[91%] rounded-full bg-violet-500"></div>
+                    </div>
+
+                  </div>
+
+                  <div>
+
+                    <div class="mb-1.5 flex justify-between text-[10px]">
+                      <span class="text-slate-500">Formatting</span>
+                      <span class="font-bold text-slate-700">96%</span>
+                    </div>
+
+                    <div class="h-1.5 rounded-full bg-white">
+                      <div class="h-full w-[96%] rounded-full bg-blue-500"></div>
+                    </div>
+
+                  </div>
+
+                  <div>
+
+                    <div class="mb-1.5 flex justify-between text-[10px]">
+                      <span class="text-slate-500">Content</span>
+                      <span class="font-bold text-slate-700">86%</span>
+                    </div>
+
+                    <div class="h-1.5 rounded-full bg-white">
+                      <div class="h-full w-[86%] rounded-full bg-cyan-500"></div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <button
+                  class="mt-5 w-full rounded-xl bg-white px-4 py-2.5 text-[10px] font-bold text-emerald-600 shadow-sm hover:bg-emerald-600 hover:text-white"
+                >
+                  View ATS Analysis →
+                </button>
+
+              </section>
+
+
+              <!-- AI SUGGESTIONS -->
+              <section class="mt-5">
+
+                <div class="mb-3 flex items-center justify-between">
+
+                  <div>
+                    <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
+                      AI suggestions
+                    </div>
+
+                    <div class="mt-1 text-[11px] text-slate-400">
+                      Improve your resume
+                    </div>
+                  </div>
+
+                  <span
+                    class="rounded-full bg-violet-50 px-2 py-1 text-[9px] font-bold text-violet-600"
+                  >
+                    3
+                  </span>
+
+                </div>
+
+                <div class="space-y-3">
+
+                  <div
+                    class="rounded-xl border border-slate-200 bg-white p-3"
+                  >
+                    <div class="flex gap-3">
+
+                      <span
+                        class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-violet-50 text-violet-600"
+                      >
+                        ✦
+                      </span>
+
+                      <div>
+
+                        <div class="text-[10px] font-bold text-slate-800">
+                          Strengthen your summary
+                        </div>
+
+                        <p class="mt-1 text-[10px] leading-4 text-slate-400">
+                          Mention measurable impact and the technologies
+                          you use most.
+                        </p>
+
+                        <button
+                          class="mt-2 text-[10px] font-bold text-violet-600"
+                        >
+                          Apply suggestion →
+                        </button>
+
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div
+                    class="rounded-xl border border-slate-200 bg-white p-3"
+                  >
+                    <div class="flex gap-3">
+
+                      <span
+                        class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-cyan-50 text-cyan-600"
+                      >
+                        ◉
+                      </span>
+
+                      <div>
+
+                        <div class="text-[10px] font-bold text-slate-800">
+                          Add measurable results
+                        </div>
+
+                        <p class="mt-1 text-[10px] leading-4 text-slate-400">
+                          Recruiters respond better to percentages,
+                          performance gains, and business outcomes.
+                        </p>
+
+                        <button
+                          class="mt-2 text-[10px] font-bold text-cyan-600"
+                        >
+                          Improve experience →
+                        </button>
+
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div
+                    class="rounded-xl border border-slate-200 bg-white p-3"
+                  >
+                    <div class="flex gap-3">
+
+                      <span
+                        class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-orange-50 text-orange-600"
+                      >
+                        !
+                      </span>
+
+                      <div>
+
+                        <div class="text-[10px] font-bold text-slate-800">
+                          Missing keywords
+                        </div>
+
+                        <p class="mt-1 text-[10px] leading-4 text-slate-400">
+                          Your target role may benefit from adding ASP.NET
+                          Core and PostgreSQL.
+                        </p>
+
+                        <button
+                          class="mt-2 text-[10px] font-bold text-orange-600"
+                        >
+                          Add skills →
+                        </button>
+
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+
+              </section>
+
+
+              <!-- QUICK ACTIONS -->
+              <section class="mt-5">
+
+                <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
+                  Quick actions
+                </div>
+
+                <div class="mt-3 grid grid-cols-2 gap-2">
+
+                  <button
+                    id="duplicateBtn"
+                    class="rounded-xl border border-slate-200 bg-white px-3 py-3 text-left hover:border-violet-200 hover:bg-violet-50"
+                  >
+                    <div class="text-sm">⧉</div>
+                    <div class="mt-2 text-[10px] font-bold text-slate-700">
+                      Duplicate
+                    </div>
+                  </button>
+
+                  <button
+                    id="clearBtn"
+                    class="rounded-xl border border-slate-200 bg-white px-3 py-3 text-left hover:border-red-200 hover:bg-red-50"
+                  >
+                    <div class="text-sm">⌫</div>
+                    <div class="mt-2 text-[10px] font-bold text-slate-700">
+                      Reset draft
+                    </div>
+                  </button>
+
+                  <button
+                    id="shareBtn"
+                    class="rounded-xl border border-slate-200 bg-white px-3 py-3 text-left hover:border-blue-200 hover:bg-blue-50"
+                  >
+                    <div class="text-sm">↗</div>
+                    <div class="mt-2 text-[10px] font-bold text-slate-700">
+                      Share
+                    </div>
+                  </button>
+
+                  <button
+                    id="printBtn"
+                    class="rounded-xl border border-slate-200 bg-white px-3 py-3 text-left hover:border-emerald-200 hover:bg-emerald-50"
+                  >
+                    <div class="text-sm">⎙</div>
+                    <div class="mt-2 text-[10px] font-bold text-slate-700">
+                      Print
+                    </div>
+                  </button>
+
+                </div>
+
+              </section>
+
+
+              <!-- SAVE -->
+              <div
+                class="mt-5 rounded-2xl border border-violet-100 bg-violet-50/70 p-4"
+              >
+
+                <div class="flex items-start gap-3">
+
+                  <div
+                    class="flex h-8 w-8 items-center justify-center rounded-lg bg-white text-violet-600 shadow-sm"
+                  >
+                    ✓
+                  </div>
+
+                  <div>
+
+                    <div class="text-[11px] font-bold text-violet-800">
+                      Autosave enabled
+                    </div>
+
+                    <p class="mt-1 text-[10px] leading-4 text-violet-600">
+                      Your edits are automatically saved while you work.
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </aside>
+
+        </div>
+      </main>
+
+
+      <!-- =======================================================
+           MOBILE EDITOR
+      ======================================================== -->
+
+      <main class="mobile-editor">
+
+        <div class="min-h-[calc(100vh-68px)]">
+
+          <!-- Mobile tabs -->
+
+          <div
+            class="sticky top-[68px] z-40 border-b border-slate-200 bg-white/95 backdrop-blur-xl"
+          >
+
+            <div
+              class="mobile-section-scroller flex gap-2 px-4 py-3"
+            >
+
+              <button
+                class="mobile-panel-btn active shrink-0 rounded-xl bg-violet-50 px-4 py-2 text-[10px] font-bold text-violet-600"
+                data-mobile-panel="content"
+              >
+                Content
+              </button>
+
+              <button
+                class="mobile-panel-btn shrink-0 rounded-xl bg-slate-100 px-4 py-2 text-[10px] font-bold text-slate-500"
+                data-mobile-panel="design"
+              >
+                Design
+              </button>
+
+              <button
+                class="mobile-panel-btn shrink-0 rounded-xl bg-slate-100 px-4 py-2 text-[10px] font-bold text-slate-500"
+                data-mobile-panel="preview"
+              >
+                Preview
+              </button>
+
+              <button
+                class="mobile-panel-btn shrink-0 rounded-xl bg-slate-100 px-4 py-2 text-[10px] font-bold text-slate-500"
+                data-mobile-panel="ats"
+              >
+                ATS
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- Mobile Content -->
+          <div
+            id="mobileContentPanel"
+            class="space-y-4 p-4"
+          >
+
+            <div
+              class="rounded-2xl border border-violet-100 bg-gradient-to-br from-violet-50 via-white to-blue-50 p-4"
+            >
+
+              <div class="flex items-center justify-between">
+
+                <div>
+                  <div class="text-xs font-bold text-slate-800">
+                    Resume content
+                  </div>
+
+                  <div class="mt-1 text-[10px] text-slate-400">
+                    Select a section to edit
+                  </div>
+                </div>
+
+                <span
+                  class="rounded-full bg-white px-2 py-1 text-[9px] font-bold text-violet-600 shadow-sm"
+                >
+                  88 ATS
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <!-- Personal fields -->
+
+            <section class="section-card p-4">
+
+              <div class="flex items-center justify-between">
+
+                <div>
+                  <div class="text-sm font-bold">
+                    Personal information
+                  </div>
+
+                  <div class="mt-1 text-[10px] text-slate-400">
+                    Contact details shown on the resume
+                  </div>
+                </div>
+
+                <span class="text-violet-600">
+                  ✓
+                </span>
+
+              </div>
+
+              <div class="mt-5 space-y-4">
+
+                <div>
+                  <label class="field-label">Full name</label>
+                  <input class="field" value="Saimon Pranta" />
+                </div>
+
+                <div>
+                  <label class="field-label">Professional title</label>
+                  <input class="field" value="Senior Full Stack Developer" />
+                </div>
+
+                <div>
+                  <label class="field-label">Email</label>
+                  <input class="field" value="saimonpranta@gmail.com" />
+                </div>
+
+                <div>
+                  <label class="field-label">Phone</label>
+                  <input class="field" value="+880 1881 476432" />
+                </div>
+
+                <div>
+                  <label class="field-label">Location</label>
+                  <input class="field" value="Dhaka, Bangladesh" />
+                </div>
+
+                <div>
+                  <label class="field-label">Portfolio</label>
+                  <input class="field" value="symulkabir.vercel.app" />
+                </div>
+
+              </div>
+
+            </section>
+
+
+            <!-- Summary -->
+
+            <section class="section-card p-4">
+
+              <div class="flex items-center justify-between">
+
+                <div>
+                  <div class="text-sm font-bold">
+                    Professional summary
+                  </div>
+
+                  <div class="mt-1 text-[10px] text-slate-400">
+                    Recommended: 3–5 lines
+                  </div>
+                </div>
+
+                <span class="text-[10px] font-bold text-emerald-600">
+                  Good
+                </span>
+
+              </div>
+
+              <textarea
+                rows="7"
+                class="field mt-4 resize-none leading-6"
+              >Experienced Full Stack Developer with more than 5 years of professional experience building scalable, user-focused web applications. Strong across modern frontend and backend technologies, cloud platforms, APIs, databases, containers, and DevOps workflows.</textarea>
+
+              <div class="mt-2 text-right text-[10px] text-slate-400">
+                247 / 500
+              </div>
+
+              <button
+                class="mt-3 w-full rounded-xl bg-violet-50 px-4 py-2.5 text-[10px] font-bold text-violet-600"
+              >
+                ✦ Improve with AI
+              </button>
+
+            </section>
+
+
+            <!-- Experience -->
+
+            <section class="section-card p-4">
+
+              <div class="flex items-center justify-between">
+
+                <div>
+                  <div class="text-sm font-bold">
+                    Experience
+                  </div>
+
+                  <div class="mt-1 text-[10px] text-slate-400">
+                    Add your strongest experience first
+                  </div>
+                </div>
+
+                <button class="text-[10px] font-bold text-violet-600">
+                  + Add
+                </button>
+
+              </div>
+
+              <div class="mt-4 space-y-4">
+
+                <div
+                  class="rounded-xl border border-slate-200 bg-slate-50 p-3"
+                >
+
+                  <div class="flex items-center justify-between">
+
+                    <div class="text-xs font-bold">
+                      Head of Technology
+                    </div>
+
+                    <button class="text-slate-400">
+                      •••
+                    </button>
+
+                  </div>
+
+                  <div class="mt-1 text-[10px] text-slate-400">
+                    Micple Company Limited · 2023 — Present
+                  </div>
+
+                  <textarea
+                    rows="4"
+                    class="field mt-3 resize-none bg-white text-[11px]"
+                  >Leading technology initiatives, application architecture, engineering processes, cloud infrastructure, and scalable web platform development.</textarea>
+
+                </div>
+
+
+                <div
+                  class="rounded-xl border border-slate-200 bg-slate-50 p-3"
+                >
+
+                  <div class="flex items-center justify-between">
+
+                    <div class="text-xs font-bold">
+                      Full Stack Web Developer
+                    </div>
+
+                    <button class="text-slate-400">
+                      •••
+                    </button>
+
+                  </div>
+
+                  <div class="mt-1 text-[10px] text-slate-400">
+                    Professional Experience · 2020 — 2023
+                  </div>
+
+                  <textarea
+                    rows="4"
+                    class="field mt-3 resize-none bg-white text-[11px]"
+                  >Developed production web applications using React, Next.js, Node.js, Laravel, SQL/NoSQL databases, Docker, and cloud infrastructure.</textarea>
+
+                </div>
+
+              </div>
+
+            </section>
+
+
+            <!-- Skills -->
+
+            <section class="section-card p-4">
+
+              <div class="flex items-center justify-between">
+
+                <div>
+                  <div class="text-sm font-bold">
+                    Skills
+                  </div>
+
+                  <div class="mt-1 text-[10px] text-slate-400">
+                    Add skills recruiters commonly search for
+                  </div>
+                </div>
+
+                <button
+                  id="mobileAddSkill"
+                  class="text-[10px] font-bold text-violet-600"
+                >
+                  + Add
+                </button>
+
+              </div>
+
+              <div
+                id="mobileSkills"
+                class="mt-4 flex flex-wrap gap-2"
+              >
+
+                <span class="skill-chip rounded-full bg-violet-50 px-3 py-1.5 text-[10px] font-semibold text-violet-700">
+                  React.js ×
+                </span>
+
+                <span class="skill-chip rounded-full bg-violet-50 px-3 py-1.5 text-[10px] font-semibold text-violet-700">
+                  Next.js ×
+                </span>
+
+                <span class="skill-chip rounded-full bg-violet-50 px-3 py-1.5 text-[10px] font-semibold text-violet-700">
+                  TypeScript ×
+                </span>
+
+                <span class="skill-chip rounded-full bg-violet-50 px-3 py-1.5 text-[10px] font-semibold text-violet-700">
+                  Node.js ×
+                </span>
+
+                <span class="skill-chip rounded-full bg-violet-50 px-3 py-1.5 text-[10px] font-semibold text-violet-700">
+                  Docker ×
+                </span>
+
+                <span class="skill-chip rounded-full bg-violet-50 px-3 py-1.5 text-[10px] font-semibold text-violet-700">
+                  Kubernetes ×
+                </span>
+
+              </div>
+
+            </section>
+
+          </div>
+
+
+          <!-- Mobile Design -->
+
+          <div
+            id="mobileDesignPanel"
+            class="hidden space-y-4 p-4"
+          >
+
+            <section class="section-card p-4">
+
+              <div class="text-sm font-bold">
+                Resume template
+              </div>
+
+              <div class="mt-4 grid grid-cols-2 gap-3">
+
+                <button class="mini-template active rounded-xl border p-2">
+                  <div class="h-32 rounded-lg border bg-white p-3">
+                    <div class="h-2 w-1/2 rounded bg-slate-800"></div>
+                    <div class="mt-2 h-1 w-1/3 rounded bg-slate-300"></div>
+                    <div class="mt-4 h-1.5 w-full rounded bg-violet-200"></div>
+                    <div class="mt-2 h-1 w-[90%] rounded bg-slate-200"></div>
+                    <div class="mt-2 h-1 w-[80%] rounded bg-slate-200"></div>
+                  </div>
+
+                  <div class="mt-2 text-[10px] font-bold">
+                    Modern
+                  </div>
+                </button>
+
+                <button class="mini-template rounded-xl border p-2">
+                  <div class="h-32 rounded-lg border bg-white p-3">
+                    <div class="mx-auto h-2 w-1/2 rounded bg-slate-800"></div>
+                    <div class="mx-auto mt-2 h-1 w-1/3 rounded bg-slate-300"></div>
+                    <div class="mt-5 h-px bg-slate-300"></div>
+                    <div class="mt-4 h-1.5 w-1/3 rounded bg-slate-800"></div>
+                    <div class="mt-2 h-1 w-full rounded bg-slate-200"></div>
+                  </div>
+
+                  <div class="mt-2 text-[10px] font-bold">
+                    Classic
+                  </div>
+                </button>
+
+              </div>
+
+            </section>
+
+
+            <section class="section-card p-4">
+
+              <div class="text-sm font-bold">
+                Appearance
+              </div>
+
+              <div class="mt-5 space-y-5">
+
+                <div>
+
+                  <label class="field-label">
+                    Font
+                  </label>
+
+                  <select class="field">
+                    <option>Inter</option>
+                    <option>DM Sans</option>
+                    <option>Merriweather</option>
+                  </select>
+
+                </div>
+
+                <div>
+
+                  <label class="field-label">
+                    Font size
+                  </label>
+
+                  <input
+                    type="range"
+                    min="88"
+                    max="112"
+                    value="100"
+                    class="w-full accent-violet-600"
+                  />
+
+                </div>
+
+                <div>
+
+                  <label class="field-label">
+                    Spacing
+                  </label>
+
+                  <input
+                    type="range"
+                    min="80"
+                    max="120"
+                    value="100"
+                    class="w-full accent-violet-600"
+                  />
+
+                </div>
+
+              </div>
+
+            </section>
+
+            <section class="section-card p-4">
+
+              <div class="text-sm font-bold">
+                Accent color
+              </div>
+
+              <div class="mt-4 flex flex-wrap gap-3">
+
+                <button class="h-9 w-9 rounded-full bg-violet-600"></button>
+                <button class="h-9 w-9 rounded-full bg-blue-600"></button>
+                <button class="h-9 w-9 rounded-full bg-cyan-600"></button>
+                <button class="h-9 w-9 rounded-full bg-emerald-600"></button>
+                <button class="h-9 w-9 rounded-full bg-red-600"></button>
+
+              </div>
+
+            </section>
+
+          </div>
+
+
+          <!-- Mobile Preview -->
+
+          <div
+            id="mobilePreviewPanel"
+            class="hidden resume-stage min-h-[calc(100vh-120px)] items-start justify-center overflow-auto p-4"
+          >
+
+            <div
+              class="resume-paper w-[794px] min-h-[1123px] shrink-0 origin-top"
+              style="transform: scale(0.55)"
+            >
+              <div class="p-[64px]">
+
+                <div class="border-b-2 border-slate-900 pb-6">
+
+                  <h1 class="text-[30px] font-extrabold">
+                    Saimon Pranta
+                  </h1>
+
+                  <p class="mt-1 text-[14px] font-semibold text-violet-600">
+                    Senior Full Stack Developer
+                  </p>
+
+                </div>
+
+                <div class="pt-6">
+
+                  <h2 class="text-[10px] font-extrabold uppercase tracking-[0.2em] text-violet-600">
+                    Professional Summary
+                  </h2>
+
+                  <p class="mt-3 text-[10px] leading-6 text-slate-600">
+                    Experienced Full Stack Developer with more than 5 years
+                    of professional experience building scalable,
+                    user-focused web applications.
+                  </p>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- Mobile ATS -->
+
+          <div
+            id="mobileAtsPanel"
+            class="hidden space-y-4 p-4"
+          >
+
+            <section
+              class="rounded-2xl border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-cyan-50 p-5"
+            >
+
+              <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-600">
+                Resume score
+              </div>
+
+              <div class="mt-2 text-4xl font-extrabold text-slate-900">
+                88
+                <span class="text-sm text-slate-400">
+                  /100
+                </span>
+              </div>
+
+              <div class="mt-2 text-xs font-semibold text-emerald-600">
+                Excellent ATS readiness
+              </div>
+
+            </section>
+
+            <section class="section-card p-4">
+
+              <div class="text-sm font-bold">
+                AI recommendations
+              </div>
+
+              <div class="mt-4 space-y-3">
+
+                <div class="rounded-xl bg-violet-50 p-3">
+                  <div class="text-xs font-bold text-violet-700">
+                    Improve your summary
+                  </div>
+
+                  <p class="mt-1 text-[10px] leading-5 text-violet-600">
+                    Include stronger measurable outcomes and role-specific
+                    keywords.
+                  </p>
+                </div>
+
+                <div class="rounded-xl bg-orange-50 p-3">
+                  <div class="text-xs font-bold text-orange-700">
+                    Add missing keywords
+                  </div>
+
+                  <p class="mt-1 text-[10px] leading-5 text-orange-600">
+                    Consider ASP.NET Core and PostgreSQL for your target
+                    software roles.
+                  </p>
+                </div>
+
+              </div>
+
+            </section>
+
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+      /* =========================================================
+         STATE
+      ========================================================== */
+
+      const state = {
+        zoom: 75,
+        accent: "#7c3aed",
+        fontFamily: "Inter",
+        fontSize: 100,
+        spacing: 100,
+        template: "modern",
+        ats: true,
+      };
+
+      const resumePaper = document.getElementById("resumePaper");
+      const resumeContent = document.getElementById("resumeContent");
+
+      /* =========================================================
+         SAVE STATUS
+      ========================================================== */
+
+      let saveTimeout;
+
+      function showSaved() {
+        const saveStatus = document.getElementById("saveStatus");
+
+        saveStatus.textContent = "Saving...";
+
+        clearTimeout(saveTimeout);
+
+        saveTimeout = setTimeout(() => {
+          saveStatus.textContent = "All changes saved";
+        }, 600);
+      }
+
+      document.querySelectorAll(".editable").forEach((element) => {
+        element.addEventListener("input", showSaved);
+      });
+
+      /* =========================================================
+         TABS
+      ========================================================== */
+
+      const contentPanel = document.getElementById("contentPanel");
+      const designPanel = document.getElementById("designPanel");
+
+      document.querySelectorAll("[data-panel]").forEach((button) => {
+        button.addEventListener("click", () => {
+          document
+            .querySelectorAll("[data-panel]")
+            .forEach((item) => item.classList.remove("active"));
+
+          button.classList.add("active");
+
+          const panel = button.dataset.panel;
+
+          if (panel === "content") {
+            contentPanel.classList.remove("hidden");
+            designPanel.classList.add("hidden");
+          } else {
+            contentPanel.classList.add("hidden");
+            designPanel.classList.remove("hidden");
+          }
+        });
+      });
+
+      /* =========================================================
+         SECTION SELECTOR
+      ========================================================== */
+
+      document.querySelectorAll(".section-selector").forEach((button) => {
+        button.addEventListener("click", () => {
+          document
+            .querySelectorAll(".section-selector")
+            .forEach((item) => {
+              item.classList.remove(
+                "bg-violet-50",
+                "border-violet-200"
+              );
+
+              item.classList.add("border-transparent");
+            });
+
+          button.classList.add("bg-violet-50", "border-violet-200");
+
+          const target = button.dataset.target;
+
+          const section = document.querySelector(
+            `[data-resume-section="${target}"]`
+          );
+
+          if (section) {
+            section.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+          }
+        });
+      });
+
+      /* =========================================================
+         ZOOM
+      ========================================================== */
+
+      function applyZoom() {
+        resumePaper.style.transform = `scale(${state.zoom / 100})`;
+
+        document.getElementById("zoomValue").textContent =
+          `${state.zoom}%`;
+      }
+
+      document.getElementById("zoomIn").addEventListener("click", () => {
+        state.zoom = Math.min(state.zoom + 5, 110);
+        applyZoom();
+      });
+
+      document.getElementById("zoomOut").addEventListener("click", () => {
+        state.zoom = Math.max(state.zoom - 5, 50);
+        applyZoom();
+      });
+
+      document.getElementById("zoomFit").addEventListener("click", () => {
+        state.zoom = 75;
+        applyZoom();
+      });
+
+      applyZoom();
+
+      /* =========================================================
+         FULLSCREEN
+      ========================================================== */
+
+      document
+        .getElementById("fullscreenBtn")
+        .addEventListener("click", async () => {
+          const stage = document.getElementById("resumeStage");
+
+          if (!document.fullscreenElement) {
+            await stage.requestFullscreen();
+          } else {
+            await document.exitFullscreen();
+          }
+        });
+
+      /* =========================================================
+         PRINT / EXPORT
+      ========================================================== */
+
+      document
+        .getElementById("downloadBtn")
+        .addEventListener("click", () => {
+          window.print();
+        });
+
+      document
+        .getElementById("printBtn")
+        .addEventListener("click", () => {
+          window.print();
+        });
+
+      /* =========================================================
+         ACCENT COLOR
+      ========================================================== */
+
+      function applyAccent(color) {
+        state.accent = color;
+
+        document.documentElement.style.setProperty(
+          "--resume-accent",
+          color
+        );
+
+        document
+          .querySelectorAll(".section-heading")
+          .forEach((element) => {
+            element.style.color = color;
+          });
+
+        document.getElementById("previewTitle").style.color = color;
+
+        document
+          .querySelectorAll(".accent-btn")
+          .forEach((button) => {
+            button.style.boxShadow = "none";
+          });
+
+        const selected = document.querySelector(
+          `[data-accent="${color}"]`
+        );
+
+        if (selected) {
+          selected.style.boxShadow =
+            `0 0 0 2px ${color}, 0 0 0 4px white`;
+        }
+
+        showSaved();
+      }
+
+      document.querySelectorAll(".accent-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          applyAccent(button.dataset.accent);
+        });
+      });
+
+      /* =========================================================
+         FONT FAMILY
+      ========================================================== */
+
+      document
+        .getElementById("fontFamily")
+        .addEventListener("change", (event) => {
+          state.fontFamily = event.target.value;
+
+          resumePaper.style.fontFamily = `'${state.fontFamily}', sans-serif`;
+
+          showSaved();
+        });
+
+      /* =========================================================
+         FONT SIZE
+      ========================================================== */
+
+      document
+        .getElementById("fontSizeRange")
+        .addEventListener("input", (event) => {
+          state.fontSize = Number(event.target.value);
+
+          document.getElementById(
+            "fontSizeValue"
+          ).textContent = `${state.fontSize}%`;
+
+          resumePaper.style.fontSize =
+            `${state.fontSize / 100}em`;
+
+          showSaved();
+        });
+
+      /* =========================================================
+         SPACING
+      ========================================================== */
+
+      document
+        .getElementById("spacingRange")
+        .addEventListener("input", (event) => {
+          state.spacing = Number(event.target.value);
+
+          document.getElementById(
+            "spacingValue"
+          ).textContent = `${state.spacing}%`;
+
+          document
+            .querySelectorAll(".resume-section")
+            .forEach((section) => {
+              section.style.paddingTop =
+                `${(24 * state.spacing) / 100}px`;
+            });
+
+          showSaved();
+        });
+
+      /* =========================================================
+         TEMPLATE
+      ========================================================== */
+
+      document.querySelectorAll(".mini-template").forEach((button) => {
+        button.addEventListener("click", () => {
+          document
+            .querySelectorAll(".mini-template")
+            .forEach((item) =>
+              item.classList.remove("active")
+            );
+
+          button.classList.add("active");
+
+          state.template = button.dataset.template;
+
+          applyTemplate(state.template);
+
+          showSaved();
+        });
+      });
+
+      function applyTemplate(template) {
+        const header = document.getElementById("resumeHeader");
+
+        if (template === "classic") {
+          header.classList.remove(
+            "border-b-2",
+            "border-slate-900"
+          );
+
+          header.classList.add("border-b", "border-slate-300");
+
+          document.getElementById("previewName").classList.add(
+            "text-center"
+          );
+
+          document.getElementById("previewTitle").classList.add(
+            "text-center"
+          );
+        } else if (template === "minimal") {
+          header.classList.remove(
+            "border-b-2",
+            "border-slate-900",
+            "border-b",
+            "border-slate-300"
+          );
+
+          document.getElementById("previewName").classList.remove(
+            "text-center"
+          );
+
+          document.getElementById("previewTitle").classList.remove(
+            "text-center"
+          );
+        } else if (template === "executive") {
+          header.classList.remove(
+            "border-b-2",
+            "border-slate-900"
+          );
+
+          header.classList.add("border-b-4", "border-slate-900");
+
+          document.getElementById("previewName").classList.remove(
+            "text-center"
+          );
+
+          document.getElementById("previewTitle").classList.remove(
+            "text-center"
+          );
+        } else {
+          header.classList.remove(
+            "border-b",
+            "border-slate-300",
+            "border-b-4",
+            "border-slate-900"
+          );
+
+          header.classList.add(
+            "border-b-2",
+            "border-slate-900"
+          );
+
+          document.getElementById("previewName").classList.remove(
+            "text-center"
+          );
+
+          document.getElementById("previewTitle").classList.remove(
+            "text-center"
+          );
+        }
+      }
+
+      /* =========================================================
+         ATS TOGGLE
+      ========================================================== */
+
+      document
+        .getElementById("atsToggle")
+        .addEventListener("click", () => {
+          state.ats = !state.ats;
+
+          const toggle = document.getElementById("atsToggle");
+
+          if (state.ats) {
+            toggle.classList.remove("bg-slate-300");
+            toggle.classList.add("bg-emerald-500");
+
+            toggle.querySelector("span").style.left = "24px";
+          } else {
+            toggle.classList.remove("bg-emerald-500");
+            toggle.classList.add("bg-slate-300");
+
+            toggle.querySelector("span").style.left = "4px";
+          }
+
+          showSaved();
+        });
+
+      /* =========================================================
+         DESKTOP EDIT / PREVIEW
+      ========================================================== */
+
+      const desktopPreviewBtn =
+        document.getElementById("desktopPreviewBtn");
+
+      const desktopEditBtn =
+        document.getElementById("desktopEditBtn");
+
+      desktopPreviewBtn.addEventListener("click", () => {
+        desktopPreviewBtn.className =
+          "rounded-lg bg-white px-3 py-2 text-[11px] font-bold text-slate-700 shadow-sm";
+
+        desktopEditBtn.className =
+          "rounded-lg px-3 py-2 text-[11px] font-bold text-slate-500";
+      });
+
+      desktopEditBtn.addEventListener("click", () => {
+        desktopEditBtn.className =
+          "rounded-lg bg-white px-3 py-2 text-[11px] font-bold text-slate-700 shadow-sm";
+
+        desktopPreviewBtn.className =
+          "rounded-lg px-3 py-2 text-[11px] font-bold text-slate-500";
+      });
+
+      /* =========================================================
+         MOBILE PANELS
+      ========================================================== */
+
+      const mobilePanels = {
+        content: document.getElementById("mobileContentPanel"),
+        design: document.getElementById("mobileDesignPanel"),
+        preview: document.getElementById("mobilePreviewPanel"),
+        ats: document.getElementById("mobileAtsPanel"),
+      };
+
+      document.querySelectorAll(".mobile-panel-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          document
+            .querySelectorAll(".mobile-panel-btn")
+            .forEach((item) => {
+              item.classList.remove(
+                "bg-violet-50",
+                "text-violet-600"
+              );
+
+              item.classList.add(
+                "bg-slate-100",
+                "text-slate-500"
+              );
+            });
+
+          button.classList.remove(
+            "bg-slate-100",
+            "text-slate-500"
+          );
+
+          button.classList.add(
+            "bg-violet-50",
+            "text-violet-600"
+          );
+
+          Object.values(mobilePanels).forEach((panel) => {
+            panel.classList.add("hidden");
+          });
+
+          const panel =
+            mobilePanels[button.dataset.mobilePanel];
+
+          if (panel) {
+            panel.classList.remove("hidden");
+
+            if (button.dataset.mobilePanel === "preview") {
+              panel.classList.add("flex");
+            }
+          }
+        });
+      });
+
+      /* =========================================================
+         MOBILE ADD SKILL
+      ========================================================== */
+
+      document
+        .getElementById("mobileAddSkill")
+        .addEventListener("click", () => {
+          const skill = prompt("Enter skill:");
+
+          if (!skill || !skill.trim()) return;
+
+          const span = document.createElement("span");
+
+          span.className =
+            "skill-chip rounded-full bg-violet-50 px-3 py-1.5 text-[10px] font-semibold text-violet-700";
+
+          span.textContent = `${skill.trim()} ×`;
+
+          span.addEventListener("click", () => {
+            span.remove();
+          });
+
+          document
+            .getElementById("mobileSkills")
+            .appendChild(span);
+
+          syncSkillsToPreview();
+
+          showSaved();
+        });
+
+      /* =========================================================
+         SYNC MOBILE SKILLS
+      ========================================================== */
+
+      function syncSkillsToPreview() {
+        const previewSkills =
+          document.getElementById("previewSkills");
+
+        previewSkills.innerHTML = "";
+
+        document
+          .querySelectorAll("#mobileSkills .skill-chip")
+          .forEach((skill) => {
+            const text = skill.textContent
+              .replace("×", "")
+              .trim();
+
+            const span = document.createElement("span");
+
+            span.className =
+              "rounded bg-violet-50 px-2 py-1 text-[8px] font-semibold text-violet-700";
+
+            span.textContent = text;
+
+            previewSkills.appendChild(span);
+          });
+      }
+
+      /* =========================================================
+         DUPLICATE
+      ========================================================== */
+
+      document
+        .getElementById("duplicateBtn")
+        .addEventListener("click", () => {
+          const title = document.querySelector(
+            "header h1"
+          );
+
+          if (!title) return;
+
+          const current =
+            title.textContent.trim();
+
+          title.textContent =
+            `${current} — Copy`;
+
+          showSaved();
+        });
+
+      /* =========================================================
+         RESET
+      ========================================================== */
+
+      document
+        .getElementById("clearBtn")
+        .addEventListener("click", () => {
+          const confirmed = confirm(
+            "Reset this resume draft?"
+          );
+
+          if (!confirmed) return;
+
+          document.getElementById(
+            "previewSummary"
+          ).textContent =
+            "Experienced Full Stack Developer with more than 5 years of professional experience building scalable, user-focused web applications.";
+
+          showSaved();
+        });
+
+      /* =========================================================
+         SHARE
+      ========================================================== */
+
+      document
+        .getElementById("shareBtn")
+        .addEventListener("click", async () => {
+          const url = window.location.href;
+
+          try {
+            await navigator.clipboard.writeText(url);
+
+            alert("Resume editor link copied.");
+          } catch {
+            alert("Copy the page URL from your browser.");
+          }
+        });
+
+      /* =========================================================
+         INLINE EDIT SYNC
+      ========================================================== */
+
+      document
+        .getElementById("previewName")
+        .addEventListener("input", (event) => {
+          const value = event.target.innerText.trim();
+
+          document
+            .querySelectorAll(
+              '#mobileContentPanel input[value="Saimon Pranta"]'
+            )
+            .forEach((input) => {
+              input.value = value;
+            });
+
+          showSaved();
+        });
+
+      document
+        .getElementById("previewTitle")
+        .addEventListener("input", showSaved);
+
+      /* =========================================================
+         KEYBOARD SHORTCUTS
+      ========================================================== */
+
+      document.addEventListener("keydown", (event) => {
+        if ((event.ctrlKey || event.metaKey) && event.key === "s") {
+          event.preventDefault();
+
+          showSaved();
+        }
+
+        if ((event.ctrlKey || event.metaKey) && event.key === "p") {
+          event.preventDefault();
+
+          window.print();
+        }
+      });
+
+      /* =========================================================
+         AUTO SAVE DEMO
+      ========================================================== */
+
+      setInterval(() => {
+        const editableElements =
+          document.querySelectorAll(".editable");
+
+        if (editableElements.length) {
+          localStorage.setItem(
+            "careerforge-resume-draft",
+            document.getElementById(
+              "resumeContent"
+            ).innerHTML
+          );
+        }
+      }, 3000);
+
+      /* =========================================================
+         RESTORE DRAFT
+      ========================================================== */
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const saved =
+          localStorage.getItem(
+            "careerforge-resume-draft"
+          );
+
+        if (saved) {
+          document.getElementById(
+            "resumeContent"
+          ).innerHTML = saved;
+
+          document
+            .querySelectorAll(".editable")
+            .forEach((element) => {
+              element.addEventListener(
+                "input",
+                showSaved
+              );
+            });
+        }
+      });
+    </script>
+  </body>
+</html>

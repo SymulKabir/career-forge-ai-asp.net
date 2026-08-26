@@ -5,7 +5,7 @@
     var mode = ViewData["LogoMode"]?.ToString() ?? "full";
 }
 
-<div class="flex items-center gap-2.5 h-full">
+<a class="flex items-center gap-2.5 h-full" asp-controller="Home" asp-action="Index">
 
     <!-- LOGO ICON -->
     <div class="
@@ -16,15 +16,9 @@
         text-white
         shadow-lg shadow-violet-500/20
         @logoSize
-    ">
+        ">
 
-        <svg
-            class="@iconSize"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-        >
+        <svg class="@iconSize" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 3v18" />
             <path d="M5 8h14" />
             <path d="M7 8l-4 7h8L7 8Z" />
@@ -41,7 +35,7 @@
             tracking-tight
             text-slate-900
             @logoFontSize
-        ">
+            ">
             Career<span class="text-violet-600"> Forge </span>
 
             <span class="text-[10px] text-cyan-600 align-top ml-0.5">
@@ -50,4 +44,4 @@
         </span>
     }
 
-</div>
+</a>

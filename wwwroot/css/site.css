@@ -260,28 +260,43 @@ body {
            SCROLLBAR
         ====================================================== */
 
-::-webkit-scrollbar {
-  width: 8px;
-}
+* {
+  /* Chrome, Edge, Safari, Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
+  /* Firefox */
+  scrollbar-width: none;
 
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(#7c3aed, #06b6d4);
+  /* IE / old Edge */
+  -ms-overflow-style: none;
+}
+.show-scrollbar {
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #7c3aed #f1f5f9;
 
-  border-radius: 999px;
-}
-/* Hide scrollbar but keep scrolling */
-.scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
+  /* Chrome, Edge, Safari, Opera */
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  &::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(#7c3aed, #06b6d4);
+    border-radius: 999px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(#6d28d9, #0891b2);
+  }
 }
+ 
 
 /* =====================================================
            SELECTION

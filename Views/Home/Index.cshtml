@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "CareerForge AI — Build a Resume That Gets Noticed";
 }
-<script src="~/js/pages/home.js" defer asp-append-version="true"></script> 
+<script src="~/js/views/home.js" defer asp-append-version="true"></script>
 
 <main>
     <section class="relative min-h-screen overflow-hidden pt-36 pb-24 hero-grid">
@@ -17,7 +17,8 @@
             <!-- ANNOUNCEMENT -->
 
             <div class="flex justify-center mb-8">
-                <div class="white-glass rounded-full px-4 py-2 flex items-center gap-2 text-xs sm:text-sm text-slate-600">
+                <div
+                    class="white-glass rounded-full px-4 py-2 flex items-center gap-2 text-xs sm:text-sm text-slate-600">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
 
                     AI-powered career platform
@@ -47,13 +48,14 @@
                 <!-- CTA -->
 
                 <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-                    <button class="primary-button group px-7 py-4 rounded-2xl text-white font-semibold">
+                    <a asp-controller="Resume" asp-action="Index" asp-route-resumeId="new"
+                       class="primary-button group px-7 py-4 rounded-2xl text-white font-semibold">
                         Create My Resume
 
                         <span class="inline-block ml-2 group-hover:translate-x-1 transition">
                             →
                         </span>
-                    </button>
+                    </a>
 
                     <button
                         class="px-7 py-4 rounded-2xl bg-white border border-slate-200 font-semibold text-slate-700 hover:border-violet-300 hover:text-violet-600 transition">

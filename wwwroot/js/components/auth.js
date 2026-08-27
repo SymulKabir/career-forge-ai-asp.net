@@ -82,24 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // DEBUG
   // =====================================================
 
-  console.log("[AUTH] Auth JS loaded.");
-
-  console.log("[AUTH] Register elements:", {
-    authName,
-    registerEmail,
-    authPassword,
-    registerConfirmPassword,
-    toggleRegisterPassword,
-    toggleRegisterConfirmPassword,
-    registerSubmit,
-  });
-
-  console.log("[AUTH] Login elements:", {
-    signInEmail,
-    signInPassword,
-    toggleSignInPassword,
-    signInSubmit,
-  });
+  
 
   // =====================================================
   // MODE
@@ -693,7 +676,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // -------------------------------------------------
 
       if (result.success) {
-        console.log("[AUTH] Registration successful:", result.message);
 
         // Show success toast
         showToast(result.message || "Signup successful!", "success");
@@ -786,7 +768,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // -------------------------------------------------
 
       if (result.success) {
-        console.log("[AUTH] Login successful:", result.message);
 
         // Show success toast
         showToast(result.message || "Welcome back!", "success");
@@ -915,7 +896,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    console.log("[AUTH] Server validation errors:", errors);
 
     Object.entries(errors).forEach(([field, messages]) => {
       if (!messages) {

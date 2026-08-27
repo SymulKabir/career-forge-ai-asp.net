@@ -1,0 +1,26 @@
+#resumeToolbar::-webkit-scrollbar {
+  display: none;
+}
+
+#resumeToolbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Prevent text selection while dragging */
+
+#resumeToolbar.dragging {
+  cursor: grabbing !important;
+  user-select: none;
+}
+#resumeToolbar button.toolbar-btn-active {
+  background-color: rgb(245 243 255); /* violet-50 */
+  color: rgb(124 58 237); /* violet-600 */
+  border: 1px solid rgb(221 214 254); /* violet-200 */
+  box-shadow: 0 1px 2px rgb(124 58 237 / 0.08);
+}
+
+#resumeToolbar button.toolbar-btn-active > span:first-child {
+  background-color: rgb(237 233 254); /* violet-100 */
+  color: rgb(124 58 237); /* violet-600 */
+}

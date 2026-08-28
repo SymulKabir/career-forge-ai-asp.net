@@ -255,14 +255,19 @@ const resetAllUi = ({ toolBox, rearrangeModal }) => {
     rearrangeModal.classList.add("hidden");
   }
 }
-const toolBarToggle = (toolBox) => {
+const toolBarToggle = ({ toolBox, childId }) => {
 
   if (toolBox) {
     toolBox.classList.toggle("left-[0px]");
+    const childElement = document.getElementById(childId)
+    if (childElement) {
+      childElement.classList.toggle("hidden");
+
+    }
   }
 }
 const rearrangeModalToggle = (rearrangeModal) => {
-console.log("hello form rearrangeModalToggle")
+  console.log("hello form rearrangeModalToggle")
   if (rearrangeModal) {
     rearrangeModal.classList.toggle("hidden");
   }
@@ -283,6 +288,7 @@ const setupResumeToolbar = () => {
     btn.addEventListener("click", (event) => {
       event.preventDefault();
       const actionGroup = btn.getAttribute("action-group");
+      const childId = btn.getAttribute("child-id");
       console.log("actionGroup ->", actionGroup)
       // Remove active from all buttons
       toolbar
@@ -296,7 +302,7 @@ const setupResumeToolbar = () => {
       btn.classList.add("toolbar-btn-active");
       resetAllUi({ toolBox, rearrangeModal })
       if (actionGroup === "ToolBox") {
-        toolBarToggle(toolBox)
+        toolBarToggle({ toolBox, childId })
       } else if (actionGroup === "Rearrange") {
         rearrangeModalToggle(rearrangeModal)
       }

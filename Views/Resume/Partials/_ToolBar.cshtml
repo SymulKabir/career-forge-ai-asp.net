@@ -60,7 +60,9 @@
                     <button type="button" 
                     title="@item["Title"]" 
                     aria-label="@item["Title"]"
-                    action-group="@item["actionGroup"]" 
+                    action-group="@item["ActionGroup"]"
+                  child-id="@item["ChildId"]"
+   
                     class="group flex shrink-0 select-none
                         items-center gap-1 rounded-lg
                         px-2 py-1.5 text-[9px]
@@ -71,7 +73,10 @@
                         sm:px-2.5 sm:py-2
                         sm:text-[10px]
                         lg:px-3
-                        @item["ButtonClass"]">
+                        @item["ButtonClass"]
+    "
+                        
+                        >
 
                         <!-- ICON -->
 

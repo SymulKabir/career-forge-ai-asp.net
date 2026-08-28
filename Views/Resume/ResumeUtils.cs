@@ -20,7 +20,8 @@ namespace CareerForgeAI.Resume
                 ["Title"] = "AI Assistant",
                 ["IconClass"] = "bg-white/15",
                 ["ButtonClass"] = "text-slate-600 hover:bg-slate-50 hover:text-violet-600",
-                ["actionGroup"] = "ToolBox",
+                ["ActionGroup"] = "ToolBox",
+                ["ChildId"] = "aiAssistant",
                 ["Badge"] = "",
                 ["Icon"] = """
                     <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5"
@@ -41,7 +42,8 @@ namespace CareerForgeAI.Resume
                 ["Title"] = "Fix Resume",
                 ["IconClass"] = "bg-emerald-50 text-emerald-600",
                 ["ButtonClass"] = "text-slate-600 hover:bg-slate-50 hover:text-violet-600",
-                ["actionGroup"] = "ToolBox",
+                ["ActionGroup"] = "ToolBox",
+                ["ChildId"] = "fixResumePanel",
                 ["Badge"] = "B-",
                 ["Icon"] = """
                     <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5"
@@ -61,7 +63,8 @@ namespace CareerForgeAI.Resume
                 ["Title"] = "Check & Tailor",
                 ["IconClass"] = "bg-blue-50 text-blue-600",
                 ["ButtonClass"] = "text-slate-600 hover:bg-slate-50 hover:text-violet-600",
-                ["actionGroup"] = "ToolBox",
+                ["ActionGroup"] = "CheckAndTailor",
+                ["ChildId"] = "checkTailorPanel",
                 ["Badge"] = "",
                 ["Icon"] = """
                     <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5"
@@ -81,7 +84,8 @@ namespace CareerForgeAI.Resume
                 ["Title"] = "Rearrange",
                 ["IconClass"] = "bg-orange-50 text-orange-500",
                 ["ButtonClass"] = "text-slate-600 hover:bg-slate-50 hover:text-violet-600",
-                ["actionGroup"] = "Rearrange",
+                ["ActionGroup"] = "Rearrange",
+                ["ChildId"] = "",
                 ["Badge"] = "",
                 ["Icon"] = """
                     <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5"
@@ -100,7 +104,8 @@ namespace CareerForgeAI.Resume
                 ["Title"] = "Templates",
                 ["IconClass"] = "bg-pink-50 text-pink-500",
                 ["ButtonClass"] = "text-slate-600 hover:bg-slate-50 hover:text-violet-600",
-                ["actionGroup"] = "ToolBox",
+                ["ActionGroup"] = "ToolBox",
+                ["ChildId"] = "templatesView",
                 ["Badge"] = "",
                 ["Icon"] = """
                     <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5"
@@ -119,7 +124,8 @@ namespace CareerForgeAI.Resume
                 ["Title"] = "Design & Font",
                 ["IconClass"] = "bg-indigo-50 text-indigo-600",
                 ["ButtonClass"] = "text-slate-600 hover:bg-slate-50 hover:text-violet-600",
-                ["actionGroup"] = "ToolBox",
+                ["ActionGroup"] = "ToolBox",
+                ["ChildId"] = "designFontPanel",
                 ["Badge"] = "",
                 ["Icon"] = """
                     <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5"

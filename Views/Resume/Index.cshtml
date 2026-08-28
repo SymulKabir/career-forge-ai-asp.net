@@ -1,122 +1,32 @@
 @using Microsoft.VisualBasic
 @using CareerForgeAI.Resume
- 
+
 <partial name="./Partials/_ToolBar" />
+<div class="editor-shell 
+  relative 
+  min-h-0 
+  overflow-hidden 
+  h-[calc(100vh_-_65px-_@ResumeUtils.HeaderHeight)] 
+  flex justify-center">
+  <section id="toolBox" class="absolute 
+    left-[-@ResumeUtils.EditorShell.LeftSectionWidth]  
+    top-[0px] 
+    w-[@ResumeUtils.EditorShell.LeftSectionWidth] 
+    h-[inherit]
+    overflow-y-auto  
+    border-r 
+    border-slate-200 
+    bg-white 
+    p-4 
+    sm:p-5  
+    transition-all 
+    duration-300 
+    ease-in-out 
+    z-20">
+    @* <partial name="./Partials/ToolBox/_Design&Font" /> *@
+    @* <partial name="./Partials/ToolBox/_AiAssistant" /> *@
+    <partial name="./Partials/ToolBox/_Templates" />
 
-<div
-  class="editor-shell relative min-h-0 overflow-hidden h-[calc(100vh-@ResumeUtils.HeaderHeight)] flex justify-center">
-
-  <section id="toolBox"
-           class="absolute left-[-@ResumeUtils.EditorShell.LeftSectionWidth]  top-[0px] w-[@ResumeUtils.EditorShell.LeftSectionWidth] min-h-0 overflow-y-auto  border-r border-slate-200 bg-white p-4 sm:p-5  transition-all duration-300 ease-in-out z-20">
-    <div>
-      <div class="mb-5 flex items-center justify-between">
-        <div>
-          <h2 class="text-sm font-extrabold">Build your resume</h2>
-
-          <p class="mt-1 text-[11px] text-slate-400">
-            Everything updates live.
-          </p>
-        </div>
-
-        <button id="aiImprove" type="button"
-                class="rounded-xl bg-violet-50 px-3 py-2 text-[10px] font-bold text-violet-600 transition hover:bg-violet-100">
-          ✦ AI Improve
-        </button>
-      </div>
-
-      <!-- Section list -->
-      <div id="sectionList" class="space-y-2">
-        <button data-section="personal"
-                class="section-btn active w-full rounded-xl border border-violet-200 bg-violet-50 p-3 text-left transition hover:border-violet-300">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-violet-700">
-              01 · Personal info
-            </span>
-
-            <span>⌄</span>
-          </div>
-
-          <span class="mt-1 block text-[10px] text-slate-400">
-            Name, role, contact & profile
-          </span>
-        </button>
-
-        <button data-section="summary"
-                class="section-btn w-full rounded-xl border border-slate-200 bg-white p-3 text-left transition hover:border-violet-200 hover:bg-violet-50/50">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold">
-              02 · Professional summary
-            </span>
-
-            <span>+</span>
-          </div>
-        </button>
-
-        <button data-section="experience"
-                class="section-btn w-full rounded-xl border border-slate-200 bg-white p-3 text-left transition hover:border-violet-200 hover:bg-violet-50/50">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold">
-              03 · Experience
-            </span>
-
-            <span>+</span>
-          </div>
-        </button>
-
-        <button data-section="education"
-                class="section-btn w-full rounded-xl border border-slate-200 bg-white p-3 text-left transition hover:border-violet-200 hover:bg-violet-50/50">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold">
-              04 · Education
-            </span>
-
-            <span>+</span>
-          </div>
-        </button>
-
-        <button data-section="skills"
-                class="section-btn w-full rounded-xl border border-slate-200 bg-white p-3 text-left transition hover:border-violet-200 hover:bg-violet-50/50">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold">
-              05 · Skills
-            </span>
-
-            <span>+</span>
-          </div>
-        </button>
-
-        <button data-section="projects"
-                class="section-btn w-full rounded-xl border border-slate-200 bg-white p-3 text-left transition hover:border-violet-200 hover:bg-violet-50/50">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold">
-              06 · Projects
-            </span>
-
-            <span>+</span>
-          </div>
-        </button>
-
-        <button data-section="certifications"
-                class="section-btn w-full rounded-xl border border-slate-200 bg-white p-3 text-left transition hover:border-violet-200 hover:bg-violet-50/50">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold">
-              07 · Certifications
-            </span>
-
-            <span>+</span>
-          </div>
-        </button>
-      </div>
-
-      <!-- Dynamic forms -->
-      <div id="forms" class="mt-5"></div>
-
-      <!-- Add custom section -->
-      <button id="addSection" type="button"
-              class="mt-4 w-full rounded-xl border border-dashed border-violet-300 bg-violet-50/50 py-3 text-xs font-bold text-violet-600 transition hover:bg-violet-50">
-        ＋ Add custom section
-      </button>
-    </div>
   </section>
 
 

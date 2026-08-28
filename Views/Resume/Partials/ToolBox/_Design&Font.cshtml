@@ -1,0 +1,1044 @@
+<div id="designFontPanel" class="space-y-4 pb-6">
+
+    <!-- ========================================================= -->
+    <!-- 1. DESIGN & FONT -->
+    <!-- ========================================================= -->
+
+    <div class="rounded-2xl border border-slate-200 bg-white shadow-sm">
+
+        <!-- Header -->
+        <div class="border-b border-slate-100 p-4">
+
+            <div class="flex items-start justify-between gap-3">
+
+                <div>
+                    <h3 class="text-xs font-extrabold tracking-tight text-slate-800">
+                        Design & Font
+                    </h3>
+
+                    <p class="mt-1 text-[10px] leading-4 text-slate-400">
+                        Fine-tune spacing, typography and visual balance.
+                    </p>
+                </div>
+
+                <span class="rounded-lg bg-violet-50 px-2 py-1 text-[9px] font-bold text-violet-600">
+                    PRO
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Design Presets -->
+
+        <div class="p-4">
+
+            <div class="mb-3 flex items-center justify-between">
+
+                <span class="text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                    Quick Style
+                </span>
+
+                <button
+                    type="button"
+                    class="text-[9px] font-bold text-violet-600 hover:text-violet-700"
+                >
+                    Reset
+                </button>
+
+            </div>
+
+
+            <div class="grid grid-cols-3 gap-2">
+
+                <!-- Minimal -->
+
+                <button
+                    type="button"
+                    class="group rounded-xl border-2 border-violet-500 bg-violet-50 p-2 text-left"
+                >
+
+                    <div class="mb-2 h-12 rounded-lg border border-slate-200 bg-white p-2">
+
+                        <div class="h-1.5 w-12 rounded bg-slate-800"></div>
+
+                        <div class="mt-2 h-1 w-full rounded bg-slate-200"></div>
+
+                        <div class="mt-1 h-1 w-4/5 rounded bg-slate-200"></div>
+
+                        <div class="mt-2 h-1 w-8 rounded bg-violet-500"></div>
+
+                    </div>
+
+                    <span class="block text-[9px] font-extrabold text-violet-600">
+                        Minimal
+                    </span>
+
+                </button>
+
+
+                <!-- Professional -->
+
+                <button
+                    type="button"
+                    class="group rounded-xl border border-slate-200 bg-white p-2 text-left transition hover:border-violet-300"
+                >
+
+                    <div class="mb-2 h-12 rounded-lg border border-slate-200 bg-white p-2">
+
+                        <div class="flex gap-1">
+
+                            <div class="h-2 w-8 rounded bg-slate-800"></div>
+
+                            <div class="h-2 w-12 rounded bg-violet-500"></div>
+
+                        </div>
+
+                        <div class="mt-2 h-1 w-full rounded bg-slate-200"></div>
+
+                        <div class="mt-1 h-1 w-3/4 rounded bg-slate-200"></div>
+
+                        <div class="mt-2 h-1 w-full rounded bg-slate-300"></div>
+
+                    </div>
+
+                    <span class="block text-[9px] font-extrabold text-slate-600">
+                        Professional
+                    </span>
+
+                </button>
+
+
+                <!-- Creative -->
+
+                <button
+                    type="button"
+                    class="group rounded-xl border border-slate-200 bg-white p-2 text-left transition hover:border-violet-300"
+                >
+
+                    <div class="relative mb-2 h-12 overflow-hidden rounded-lg border border-slate-200 bg-white p-2">
+
+                        <div class="absolute left-0 top-0 h-full w-4 bg-violet-600"></div>
+
+                        <div class="ml-5 h-2 w-12 rounded bg-slate-800"></div>
+
+                        <div class="ml-5 mt-2 h-1 w-16 rounded bg-slate-200"></div>
+
+                        <div class="ml-5 mt-1 h-1 w-12 rounded bg-slate-200"></div>
+
+                    </div>
+
+                    <span class="block text-[9px] font-extrabold text-slate-600">
+                        Creative
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Page Margins -->
+
+        <div class="border-t border-slate-100 p-4">
+
+            <div class="flex items-center justify-between">
+
+                <div>
+                    <div class="text-[10px] font-bold text-slate-700">
+                        Page Margins
+                    </div>
+
+                    <div class="mt-0.5 text-[9px] text-slate-400">
+                        Control page whitespace
+                    </div>
+                </div>
+
+                <span
+                    id="marginLabel"
+                    class="min-w-[30px] rounded-lg bg-slate-100 px-2 py-1 text-center text-[9px] font-bold text-slate-600"
+                >
+                    1
+                </span>
+
+            </div>
+
+
+            <div class="mt-3 flex items-center gap-3">
+
+                <span class="text-[9px] text-slate-400">
+                    Compact
+                </span>
+
+                <input
+                    id="pageMargins"
+                    type="range"
+                    min="0"
+                    max="5"
+                    value="1"
+                    step="1"
+                    class="w-full accent-violet-600"
+                />
+
+                <span class="text-[9px] text-slate-400">
+                    Wide
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Section Spacing -->
+
+        <div class="border-t border-slate-100 p-4">
+
+            <div class="flex items-center justify-between">
+
+                <div>
+                    <div class="text-[10px] font-bold text-slate-700">
+                        Section Spacing
+                    </div>
+
+                    <div class="mt-0.5 text-[9px] text-slate-400">
+                        Space between resume sections
+                    </div>
+                </div>
+
+                <span
+                    id="sectionSpacingLabel"
+                    class="min-w-[30px] rounded-lg bg-violet-50 px-2 py-1 text-center text-[9px] font-bold text-violet-600"
+                >
+                    2
+                </span>
+
+            </div>
+
+
+            <div class="mt-3 flex items-center gap-3">
+
+                <span class="text-[9px] text-slate-400">
+                    Tight
+                </span>
+
+                <input
+                    id="sectionSpacing"
+                    type="range"
+                    min="0"
+                    max="6"
+                    value="2"
+                    step="1"
+                    class="w-full accent-violet-600"
+                />
+
+                <span class="text-[9px] text-slate-400">
+                    Relaxed
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Radius -->
+
+        <div class="border-t border-slate-100 p-4">
+
+            <div class="flex items-center justify-between">
+
+                <div>
+                    <div class="text-[10px] font-bold text-slate-700">
+                        Corner Style
+                    </div>
+
+                    <div class="mt-0.5 text-[9px] text-slate-400">
+                        Control visual softness
+                    </div>
+                </div>
+
+                <span
+                    id="radiusLabel"
+                    class="rounded-lg bg-slate-100 px-2 py-1 text-[9px] font-bold text-slate-500"
+                >
+                    Soft
+                </span>
+
+            </div>
+
+
+            <div class="mt-3 grid grid-cols-4 gap-2">
+
+                <button
+                    type="button"
+                    class="rounded-lg border border-slate-200 px-2 py-2 text-[9px] font-bold text-slate-500 hover:border-violet-300"
+                >
+                    Sharp
+                </button>
+
+                <button
+                    type="button"
+                    class="rounded-lg border-2 border-violet-500 bg-violet-50 px-2 py-2 text-[9px] font-bold text-violet-600"
+                >
+                    Soft
+                </button>
+
+                <button
+                    type="button"
+                    class="rounded-lg border border-slate-200 px-2 py-2 text-[9px] font-bold text-slate-500 hover:border-violet-300"
+                >
+                    Round
+                </button>
+
+                <button
+                    type="button"
+                    class="rounded-lg border border-slate-200 px-2 py-2 text-[9px] font-bold text-slate-500 hover:border-violet-300"
+                >
+                    Pill
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================================= -->
+    <!-- 2. COLORS -->
+    <!-- ========================================================= -->
+
+    <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+
+        <div class="mb-4 flex items-start justify-between">
+
+            <div>
+                <h3 class="text-xs font-extrabold text-slate-800">
+                    Colors
+                </h3>
+
+                <p class="mt-1 text-[10px] text-slate-400">
+                    Build a consistent visual identity.
+                </p>
+            </div>
+
+            <span class="h-5 w-5 rounded-full bg-violet-600 ring-4 ring-violet-50"></span>
+
+        </div>
+
+
+        <!-- Preset Colors -->
+
+        <div class="grid grid-cols-7 gap-2">
+
+            <button
+                type="button"
+                data-color="#7c3aed"
+                class="h-8 w-8 rounded-full bg-violet-600 ring-2 ring-violet-500 ring-offset-2 transition hover:scale-110"
+                title="Violet"
+            ></button>
+
+            <button
+                type="button"
+                data-color="#2563eb"
+                class="h-8 w-8 rounded-full bg-blue-600 transition hover:scale-110"
+                title="Blue"
+            ></button>
+
+            <button
+                type="button"
+                data-color="#0891b2"
+                class="h-8 w-8 rounded-full bg-cyan-600 transition hover:scale-110"
+                title="Cyan"
+            ></button>
+
+            <button
+                type="button"
+                data-color="#059669"
+                class="h-8 w-8 rounded-full bg-emerald-600 transition hover:scale-110"
+                title="Emerald"
+            ></button>
+
+            <button
+                type="button"
+                data-color="#dc2626"
+                class="h-8 w-8 rounded-full bg-red-600 transition hover:scale-110"
+                title="Red"
+            ></button>
+
+            <button
+                type="button"
+                data-color="#ea580c"
+                class="h-8 w-8 rounded-full bg-orange-600 transition hover:scale-110"
+                title="Orange"
+            ></button>
+
+            <button
+                type="button"
+                data-color="#0f172a"
+                class="h-8 w-8 rounded-full bg-slate-900 transition hover:scale-110"
+                title="Slate"
+            ></button>
+
+        </div>
+
+
+        <!-- Custom -->
+
+        <div class="mt-4 flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3">
+
+            <input
+                id="customColor"
+                type="color"
+                value="#7c3aed"
+                class="h-9 w-9 cursor-pointer overflow-hidden rounded-lg border-0 bg-transparent"
+            />
+
+            <div class="flex-1">
+
+                <div class="text-[10px] font-bold text-slate-700">
+                    Use custom color
+                </div>
+
+                <div class="mt-0.5 text-[9px] text-slate-400">
+                    Create your own brand color
+                </div>
+
+            </div>
+
+            <span
+                id="customColorValue"
+                class="rounded-lg bg-white px-2 py-1 text-[9px] font-mono font-bold text-slate-500 shadow-sm"
+            >
+                #7C3AED
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================================= -->
+    <!-- 3. FONT STYLE -->
+    <!-- ========================================================= -->
+
+    <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+
+        <div class="mb-4">
+
+            <h3 class="text-xs font-extrabold text-slate-800">
+                Font Style
+            </h3>
+
+            <p class="mt-1 text-[10px] text-slate-400">
+                Create a readable and professional hierarchy.
+            </p>
+
+        </div>
+
+
+        <!-- Font Family -->
+
+        <label class="block">
+
+            <span class="mb-2 block text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                Font Family
+            </span>
+
+            <select
+                id="fontSelect"
+                class="h-10 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 text-xs font-medium text-slate-700 outline-none transition focus:border-violet-300 focus:bg-white focus:ring-4 focus:ring-violet-50"
+            >
+
+                <option value="Rubik">Rubik</option>
+                <option value="Inter">Inter</option>
+                <option value="DM Sans">DM Sans</option>
+                <option value="Roboto">Roboto</option>
+                <option value="Poppins">Poppins</option>
+                <option value="Montserrat">Montserrat</option>
+                <option value="Roboto Slab">Roboto Slab</option>
+                <option value="Merriweather">Merriweather</option>
+                <option value="Georgia">Georgia</option>
+
+            </select>
+
+        </label>
+
+
+        <!-- Font Preview -->
+
+        <div class="mt-3 rounded-xl bg-slate-50 p-3">
+
+            <div class="text-[18px] font-bold text-slate-800">
+                Alex Morgan
+            </div>
+
+            <div class="mt-1 text-[10px] font-medium text-violet-600">
+                Senior Software Engineer
+            </div>
+
+            <div class="mt-2 text-[9px] leading-4 text-slate-500">
+                Product-minded engineer building scalable web applications,
+                APIs and AI-powered products.
+            </div>
+
+        </div>
+
+
+        <!-- Font Size -->
+
+        <div class="mt-4">
+
+            <div class="flex items-center justify-between">
+
+                <span class="text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                    Font Size
+                </span>
+
+                <span
+                    id="fontSizeLabel"
+                    class="rounded-lg bg-violet-50 px-2 py-1 text-[9px] font-bold text-violet-600"
+                >
+                    Small
+                </span>
+
+            </div>
+
+
+            <div class="mt-2 grid grid-cols-3 gap-2">
+
+                <button
+                    type="button"
+                    class="rounded-xl border-2 border-violet-500 bg-violet-50 px-3 py-2.5 text-[9px] font-extrabold text-violet-600"
+                >
+                    SMALL
+                </button>
+
+                <button
+                    type="button"
+                    class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-[9px] font-extrabold text-slate-500 hover:border-violet-300"
+                >
+                    MEDIUM
+                </button>
+
+                <button
+                    type="button"
+                    class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-[9px] font-extrabold text-slate-500 hover:border-violet-300"
+                >
+                    LARGE
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Line Height -->
+
+        <div class="mt-4">
+
+            <div class="flex items-center justify-between">
+
+                <span class="text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                    Line Height
+                </span>
+
+                <span class="rounded-lg bg-slate-100 px-2 py-1 text-[9px] font-bold text-slate-500">
+                    1.0
+                </span>
+
+            </div>
+
+            <input
+                type="range"
+                min="0.8"
+                max="2"
+                step="0.1"
+                value="1"
+                class="mt-3 w-full accent-violet-600"
+            />
+
+        </div>
+
+
+        <!-- Letter Spacing -->
+
+        <div class="mt-4">
+
+            <div class="flex items-center justify-between">
+
+                <span class="text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                    Letter Spacing
+                </span>
+
+                <span class="rounded-lg bg-slate-100 px-2 py-1 text-[9px] font-bold text-slate-500">
+                    Normal
+                </span>
+
+            </div>
+
+            <input
+                type="range"
+                min="-1"
+                max="3"
+                step="0.5"
+                value="0"
+                class="mt-3 w-full accent-violet-600"
+            />
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================================= -->
+    <!-- 4. COLUMN LAYOUT -->
+    <!-- ========================================================= -->
+
+    <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+
+        <div class="mb-4">
+
+            <h3 class="text-xs font-extrabold text-slate-800">
+                Column Layout
+            </h3>
+
+            <p class="mt-1 text-[10px] text-slate-400">
+                Choose the structure that fits your content.
+            </p>
+
+        </div>
+
+
+        <div class="grid grid-cols-4 gap-2">
+
+
+            <!-- 1 -->
+
+            <button
+                type="button"
+                data-columns="1"
+                class="rounded-xl border-2 border-violet-500 bg-violet-50 p-2"
+            >
+
+                <div class="h-16 rounded-lg bg-white p-2">
+
+                    <div class="h-full rounded bg-violet-100"></div>
+
+                </div>
+
+                <div class="mt-2 text-[9px] font-extrabold text-violet-600">
+                    1
+                </div>
+
+            </button>
+
+
+            <!-- 2 -->
+
+            <button
+                type="button"
+                data-columns="2"
+                class="rounded-xl border border-slate-200 bg-white p-2 hover:border-violet-300"
+            >
+
+                <div class="flex h-16 gap-1 rounded-lg bg-white">
+
+                    <div class="w-1/3 rounded bg-slate-200"></div>
+
+                    <div class="flex-1 rounded bg-slate-100"></div>
+
+                </div>
+
+                <div class="mt-2 text-[9px] font-extrabold text-slate-500">
+                    2
+                </div>
+
+            </button>
+
+
+            <!-- 3 -->
+
+            <button
+                type="button"
+                data-columns="3"
+                class="rounded-xl border border-slate-200 bg-white p-2 hover:border-violet-300"
+            >
+
+                <div class="grid h-16 grid-cols-[25%_50%_25%] gap-1 rounded-lg bg-white">
+
+                    <div class="rounded bg-slate-200"></div>
+
+                    <div class="rounded bg-slate-100"></div>
+
+                    <div class="rounded bg-slate-200"></div>
+
+                </div>
+
+                <div class="mt-2 text-[9px] font-extrabold text-slate-500">
+                    3
+                </div>
+
+            </button>
+
+
+            <!-- 4 -->
+
+            <button
+                type="button"
+                data-columns="4"
+                class="rounded-xl border border-slate-200 bg-white p-2 hover:border-violet-300"
+            >
+
+                <div class="grid h-16 grid-cols-4 gap-1 rounded-lg bg-white">
+
+                    <div class="rounded bg-slate-200"></div>
+                    <div class="rounded bg-slate-100"></div>
+                    <div class="rounded bg-slate-200"></div>
+                    <div class="rounded bg-slate-100"></div>
+
+                </div>
+
+                <div class="mt-2 text-[9px] font-extrabold text-slate-500">
+                    4
+                </div>
+
+            </button>
+
+        </div>
+
+
+        <!-- Column Gap -->
+
+        <div class="mt-4 rounded-xl bg-slate-50 p-3">
+
+            <div class="flex items-center justify-between">
+
+                <span class="text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                    Column Gap
+                </span>
+
+                <span class="text-[9px] font-bold text-slate-500">
+                    24px
+                </span>
+
+            </div>
+
+            <input
+                type="range"
+                min="8"
+                max="48"
+                value="24"
+                class="mt-2 w-full accent-violet-600"
+            />
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================================= -->
+    <!-- 5. BACKGROUNDS -->
+    <!-- ========================================================= -->
+
+    <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+
+        <div class="mb-4">
+
+            <h3 class="text-xs font-extrabold text-slate-800">
+                Backgrounds
+            </h3>
+
+            <p class="mt-1 text-[10px] text-slate-400">
+                Add subtle visual depth without hurting readability.
+            </p>
+
+        </div>
+
+
+        <div class="grid grid-cols-3 gap-2">
+
+
+            <!-- None -->
+
+            <button
+                type="button"
+                class="rounded-xl border-2 border-violet-500 bg-violet-50 p-1.5"
+            >
+
+                <div class="h-20 rounded-lg border border-slate-200 bg-white"></div>
+
+                <span class="mt-1.5 block text-[9px] font-bold text-violet-600">
+                    None
+                </span>
+
+            </button>
+
+
+            <!-- Soft -->
+
+            <button
+                type="button"
+                class="rounded-xl border border-slate-200 bg-white p-1.5 hover:border-violet-300"
+            >
+
+                <div class="h-20 rounded-lg bg-gradient-to-br from-violet-50 via-white to-slate-100"></div>
+
+                <span class="mt-1.5 block text-[9px] font-bold text-slate-500">
+                    Soft
+                </span>
+
+            </button>
+
+
+            <!-- Image -->
+
+            <button
+                type="button"
+                class="overflow-hidden rounded-xl border border-slate-200 bg-white p-1.5 hover:border-violet-300"
+            >
+
+                <img
+                    src="https://app.enhancv.com/images/lgbtqIcon-3066830cf2e82b8397b4.png"
+                    alt="Background"
+                    class="h-20 w-full rounded-lg object-cover"
+                />
+
+                <span class="mt-1.5 block text-[9px] font-bold text-slate-500">
+                    Image
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="mt-3 flex w-full items-center justify-center gap-2 rounded-xl border border-dashed border-slate-300 py-2.5 text-[9px] font-bold text-slate-500 hover:border-violet-300 hover:bg-violet-50 hover:text-violet-600"
+        >
+            <span class="text-sm">＋</span>
+            Add background
+        </button>
+
+    </div>
+
+
+
+    <!-- ========================================================= -->
+    <!-- 6. SIGNATURE -->
+    <!-- ========================================================= -->
+
+    <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+
+        <div class="flex items-start justify-between">
+
+            <div>
+
+                <h3 class="text-xs font-extrabold text-slate-800">
+                    Signature
+                </h3>
+
+                <p class="mt-1 text-[10px] text-slate-400">
+                    Add a handwritten or digital signature.
+                </p>
+
+            </div>
+
+            <span class="rounded-lg bg-slate-100 px-2 py-1 text-[9px] font-bold text-slate-400">
+                Optional
+            </span>
+
+        </div>
+
+
+        <!-- Signature Preview -->
+
+        <div class="mt-4 flex h-20 items-center justify-center rounded-xl border border-dashed border-slate-200 bg-slate-50">
+
+            <div class="text-center">
+
+                <div class="font-serif text-xl italic text-slate-400">
+                    Your Signature
+                </div>
+
+                <div class="mt-1 text-[8px] text-slate-400">
+                    Preview
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-violet-600 py-2.5 text-[10px] font-bold text-white shadow-sm transition hover:bg-violet-700"
+        >
+            <span class="text-base">＋</span>
+            Add New
+        </button>
+
+
+        <!-- Alignment -->
+
+        <div class="mt-3 grid grid-cols-3 gap-2">
+
+            <button
+                type="button"
+                class="rounded-lg border border-slate-200 py-2 text-[9px] font-bold text-slate-500 hover:border-violet-300"
+            >
+                Left
+            </button>
+
+            <button
+                type="button"
+                class="rounded-lg border-2 border-violet-500 bg-violet-50 py-2 text-[9px] font-bold text-violet-600"
+            >
+                Center
+            </button>
+
+            <button
+                type="button"
+                class="rounded-lg border border-slate-200 py-2 text-[9px] font-bold text-slate-500 hover:border-violet-300"
+            >
+                Right
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================================= -->
+    <!-- 7. BRANDING -->
+    <!-- ========================================================= -->
+
+    <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+
+        <div class="flex items-start justify-between">
+
+            <div>
+
+                <h3 class="text-xs font-extrabold text-slate-800">
+                    Branding
+                </h3>
+
+                <p class="mt-1 text-[10px] text-slate-400">
+                    Add your personal brand to your resume.
+                </p>
+
+            </div>
+
+
+            <!-- Toggle -->
+
+            <button
+                id="brandingToggle"
+                type="button"
+                class="relative h-5 w-9 rounded-full bg-violet-600 transition"
+            >
+
+                <span class="absolute right-0.5 top-0.5 h-4 w-4 rounded-full bg-white shadow-sm">
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- Branding Content -->
+
+        <div class="mt-4 space-y-3">
+
+            <!-- Brand Name -->
+
+            <label class="block">
+
+                <span class="mb-1.5 block text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                    Brand Name
+                </span>
+
+                <input
+                    type="text"
+                    value="Alex Morgan"
+                    placeholder="Your name or brand"
+                    class="h-9 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 text-[10px] outline-none focus:border-violet-300 focus:bg-white focus:ring-4 focus:ring-violet-50"
+                />
+
+            </label>
+
+
+            <!-- Website -->
+
+            <label class="block">
+
+                <span class="mb-1.5 block text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                    Website / Portfolio
+                </span>
+
+                <input
+                    type="text"
+                    placeholder="yourwebsite.com"
+                    class="h-9 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 text-[10px] outline-none focus:border-violet-300 focus:bg-white focus:ring-4 focus:ring-violet-50"
+                />
+
+            </label>
+
+
+            <!-- Branding Options -->
+
+            <div class="rounded-xl bg-slate-50 p-3">
+
+                <div class="flex items-center justify-between">
+
+                    <span class="text-[10px] font-semibold text-slate-600">
+                        Show branding in footer
+                    </span>
+
+                    <span class="rounded-md bg-emerald-50 px-1.5 py-1 text-[8px] font-bold text-emerald-600">
+                        ON
+                    </span>
+
+                </div>
+
+                <p class="mt-1 text-[9px] leading-4 text-slate-400">
+                    Your website or brand will appear subtly at the bottom of the resume.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- SAVE / RESET -->
+    <!-- ========================================================= -->
+
+    <div class="flex items-center gap-2">
+
+        <button
+            type="button"
+            class="flex-1 rounded-xl border border-slate-200 bg-white py-2.5 text-[10px] font-bold text-slate-600 shadow-sm transition hover:bg-slate-50"
+        >
+            Reset Design
+        </button>
+
+        <button
+            type="button"
+            class="flex-1 rounded-xl bg-slate-900 py-2.5 text-[10px] font-bold text-white shadow-sm transition hover:bg-slate-800"
+        >
+            Save Style
+        </button>
+
+    </div>
+
+</div> 

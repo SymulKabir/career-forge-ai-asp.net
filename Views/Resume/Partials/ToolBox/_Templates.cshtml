@@ -1,0 +1,911 @@
+<!-- ========================================================= -->
+
+<!-- TEMPLATES VIEW -->
+
+<!-- ========================================================= -->
+
+<div id="templatesView" class="flex h-full min-h-0 flex-col bg-white">
+
+  <!-- ========================================================= -->
+
+  <!-- HEADER -->
+
+  <!-- ========================================================= -->
+
+  <div class="shrink-0 border-b border-slate-200 px-4 py-4 sm:px-5">
+
+
+<div class="flex items-start justify-between gap-3">
+
+  <div>
+    <div class="flex items-center gap-2">
+
+      <h2 class="text-sm font-extrabold tracking-tight text-slate-900">
+        Resume Templates
+      </h2>
+
+      <span class="rounded-full bg-violet-50 px-2 py-0.5
+                   text-[8px] font-bold text-violet-600">
+        24 Templates
+      </span>
+
+    </div>
+
+    <p class="mt-1 text-[10px] leading-4 text-slate-400">
+      Choose a professional layout for your resume.
+    </p>
+  </div>
+
+  <!-- View button -->
+
+  <button
+    id="favoriteTemplates"
+    type="button"
+    title="Favorite templates"
+    class="flex h-8 w-8 items-center justify-center rounded-lg
+           border border-slate-200 text-slate-400
+           transition hover:border-violet-200
+           hover:bg-violet-50 hover:text-violet-600">
+
+    ♡
+
+  </button>
+
+</div>
+
+
+<!-- ======================================================= -->
+<!-- SEARCH -->
+<!-- ======================================================= -->
+
+<div
+  class="mt-4 flex items-center gap-2 rounded-xl border border-slate-200
+         bg-slate-50 px-3 transition
+         focus-within:border-violet-300
+         focus-within:bg-white
+         focus-within:ring-4
+         focus-within:ring-violet-50">
+
+  <span class="text-xs text-slate-400">
+    ⌕
+  </span>
+
+  <input
+    id="templateSearch"
+    type="text"
+    placeholder="Search templates..."
+    class="h-9 min-w-0 flex-1 bg-transparent text-[10px]
+           font-medium text-slate-700 outline-none
+           placeholder:text-slate-400"
+  />
+
+  <button
+    id="templateFilterButton"
+    type="button"
+    class="flex h-7 items-center gap-1 rounded-lg px-2
+           text-[9px] font-bold text-slate-500
+           transition hover:bg-white hover:text-violet-600">
+
+    Filters
+
+    <span class="text-[8px]">
+      ▾
+    </span>
+
+  </button>
+
+</div>
+
+
+  </div>
+
+  <!-- ========================================================= -->
+
+  <!-- FILTERS -->
+
+  <!-- ========================================================= -->
+
+  <div class="shrink-0 border-b border-slate-100 px-4 py-3 sm:px-5">
+
+
+<div class="flex gap-1.5 overflow-x-auto pb-0.5">
+
+  <button
+    class="template-filter active whitespace-nowrap rounded-full
+           bg-violet-600 px-3 py-1.5 text-[9px] font-bold text-white">
+
+    All
+
+  </button>
+
+  <button
+    class="template-filter whitespace-nowrap rounded-full
+           border border-slate-200 bg-white px-3 py-1.5
+           text-[9px] font-semibold text-slate-500
+           transition hover:border-violet-200 hover:text-violet-600">
+
+    Professional
+
+  </button>
+
+  <button
+    class="template-filter whitespace-nowrap rounded-full
+           border border-slate-200 bg-white px-3 py-1.5
+           text-[9px] font-semibold text-slate-500
+           transition hover:border-violet-200 hover:text-violet-600">
+
+    ATS Friendly
+
+  </button>
+
+  <button
+    class="template-filter whitespace-nowrap rounded-full
+           border border-slate-200 bg-white px-3 py-1.5
+           text-[9px] font-semibold text-slate-500
+           transition hover:border-violet-200 hover:text-violet-600">
+
+    Creative
+
+  </button>
+
+</div>
+
+
+  </div>
+
+  <!-- ========================================================= -->
+
+  <!-- TEMPLATE LIST -->
+
+  <!-- ========================================================= -->
+
+  <div
+    id="templateList"
+    class="min-h-0 flex-1 overflow-y-auto overscroll-contain
+           bg-slate-50/50 px-4 py-4 sm:px-5">
+
+
+<div class="space-y-4">
+
+
+  <!-- ===================================================== -->
+  <!-- TEMPLATE 01 — NEW -->
+  <!-- ===================================================== -->
+
+  <div
+    class="template-card group relative overflow-hidden rounded-2xl
+           border-2 border-violet-500 bg-white
+           shadow-sm transition hover:shadow-md"
+    data-template="executive-pro"
+    data-region="europe"
+    data-style="professional"
+    data-ats="true"
+    data-new="true">
+
+    <!-- Selected -->
+
+    <div
+      class="absolute right-2 top-2 z-10 flex h-6 w-6
+             items-center justify-center rounded-full
+             bg-violet-600 text-white shadow-sm">
+
+      ✓
+
+    </div>
+
+
+    <!-- NEW badge -->
+
+    <div class="absolute left-2 top-2 z-10">
+
+      <span
+        class="rounded-md bg-emerald-500 px-2 py-1
+               text-[8px] font-extrabold uppercase
+               tracking-wide text-white shadow-sm">
+
+        New
+
+      </span>
+
+    </div>
+
+
+    <!-- Preview -->
+
+    <div class="relative bg-slate-100 p-4">
+
+      <div
+        class="mx-auto aspect-[0.707] w-[72%] overflow-hidden
+               bg-white shadow-md">
+
+        <!-- Fake CV -->
+
+        <div class="grid h-full grid-cols-[30%_70%]">
+
+          <div class="bg-slate-900 p-3">
+
+            <div class="mx-auto h-8 w-8 rounded-full bg-slate-700"></div>
+
+            <div class="mt-3 h-1.5 w-full rounded bg-slate-600"></div>
+            <div class="mt-1.5 h-1 w-4/5 rounded bg-slate-700"></div>
+
+            <div class="mt-5 h-1 w-full rounded bg-slate-700"></div>
+            <div class="mt-2 h-1 w-4/5 rounded bg-slate-700"></div>
+            <div class="mt-2 h-1 w-full rounded bg-slate-700"></div>
+
+            <div class="mt-5 h-1 w-3/4 rounded bg-violet-400"></div>
+
+          </div>
+
+          <div class="p-4">
+
+            <div class="h-3 w-24 rounded bg-slate-900"></div>
+            <div class="mt-2 h-1.5 w-16 rounded bg-violet-500"></div>
+
+            <div class="mt-5 h-1.5 w-full rounded bg-slate-200"></div>
+            <div class="mt-2 h-1.5 w-11/12 rounded bg-slate-200"></div>
+            <div class="mt-2 h-1.5 w-4/5 rounded bg-slate-200"></div>
+
+            <div class="mt-5 h-1.5 w-20 rounded bg-slate-900"></div>
+
+            <div class="mt-2 h-1.5 w-full rounded bg-slate-200"></div>
+            <div class="mt-2 h-1.5 w-10/12 rounded bg-slate-200"></div>
+            <div class="mt-2 h-1.5 w-9/12 rounded bg-slate-200"></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Preview overlay -->
+
+      <div
+        class="absolute inset-0 flex items-center justify-center
+               bg-slate-900/0 transition group-hover:bg-slate-900/10">
+
+        <button
+          class="template-preview-btn rounded-xl bg-white px-4 py-2
+                 text-[9px] font-bold text-slate-700 opacity-0
+                 shadow-lg transition group-hover:opacity-100">
+
+          Preview
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- Information -->
+
+    <div class="p-3.5">
+
+      <div class="flex items-start justify-between gap-2">
+
+        <div>
+
+          <h3 class="text-[11px] font-extrabold text-slate-900">
+            Executive Pro
+          </h3>
+
+          <p class="mt-0.5 text-[9px] text-slate-400">
+            Clean executive layout
+          </p>
+
+        </div>
+
+        <button
+          class="template-favorite text-sm text-slate-300
+                 transition hover:text-rose-500">
+
+          ♡
+
+        </button>
+
+      </div>
+
+
+      <!-- Tags -->
+
+      <div class="mt-3 flex flex-wrap gap-1.5">
+
+        <!-- Region -->
+
+        <span
+          class="rounded-md bg-blue-50 px-2 py-1
+                 text-[8px] font-bold text-blue-600">
+
+          🇪🇺 Europe
+
+        </span>
+
+        <!-- ATS -->
+
+        <span
+          class="rounded-md bg-emerald-50 px-2 py-1
+                 text-[8px] font-bold text-emerald-600">
+
+          ATS Friendly
+
+        </span>
+
+        <!-- Style -->
+
+        <span
+          class="rounded-md bg-slate-100 px-2 py-1
+                 text-[8px] font-bold text-slate-500">
+
+          Professional
+
+        </span>
+
+      </div>
+
+
+      <!-- Apply -->
+
+      <button
+        class="apply-template mt-3 w-full rounded-xl
+               bg-violet-600 py-2.5 text-[9px] font-bold text-white
+               shadow-sm shadow-violet-200 transition
+               hover:bg-violet-700">
+
+        Use this template
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- TEMPLATE 02 — GLOBAL -->
+  <!-- ===================================================== -->
+
+  <div
+    class="template-card group overflow-hidden rounded-2xl
+           border border-slate-200 bg-white shadow-sm
+           transition hover:border-violet-200 hover:shadow-md"
+    data-template="minimal"
+    data-region="global"
+    data-style="professional"
+    data-ats="true"
+    data-new="false">
+
+    <div class="relative bg-slate-100 p-4">
+
+      <div
+        class="mx-auto aspect-[0.707] w-[72%] bg-white
+               p-5 shadow-md">
+
+        <div class="h-3 w-28 rounded bg-slate-900"></div>
+        <div class="mt-2 h-1.5 w-20 rounded bg-cyan-500"></div>
+
+        <div class="mt-6 h-1.5 w-full rounded bg-slate-200"></div>
+        <div class="mt-2 h-1.5 w-11/12 rounded bg-slate-200"></div>
+        <div class="mt-2 h-1.5 w-9/12 rounded bg-slate-200"></div>
+
+        <div class="mt-6 h-1.5 w-20 rounded bg-slate-900"></div>
+
+        <div class="mt-3 h-1.5 w-full rounded bg-slate-200"></div>
+        <div class="mt-2 h-1.5 w-10/12 rounded bg-slate-200"></div>
+
+        <div class="mt-6 h-1.5 w-24 rounded bg-slate-900"></div>
+
+        <div class="mt-3 h-1.5 w-full rounded bg-slate-200"></div>
+        <div class="mt-2 h-1.5 w-8/12 rounded bg-slate-200"></div>
+
+      </div>
+
+      <div
+        class="absolute inset-0 flex items-center justify-center
+               bg-slate-900/0 transition group-hover:bg-slate-900/10">
+
+        <button
+          class="rounded-xl bg-white px-4 py-2 text-[9px]
+                 font-bold text-slate-700 opacity-0 shadow-lg
+                 transition group-hover:opacity-100">
+
+          Preview
+
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="p-3.5">
+
+      <div class="flex items-start justify-between">
+
+        <div>
+
+          <h3 class="text-[11px] font-extrabold text-slate-900">
+            Minimal
+          </h3>
+
+          <p class="mt-0.5 text-[9px] text-slate-400">
+            Simple and highly readable
+          </p>
+
+        </div>
+
+        <button
+          class="template-favorite text-sm text-slate-300
+                 hover:text-rose-500">
+
+          ♡
+
+        </button>
+
+      </div>
+
+      <div class="mt-3 flex flex-wrap gap-1.5">
+
+        <span
+          class="rounded-md bg-violet-50 px-2 py-1
+                 text-[8px] font-bold text-violet-600">
+
+          🌍 Global
+
+        </span>
+
+        <span
+          class="rounded-md bg-emerald-50 px-2 py-1
+                 text-[8px] font-bold text-emerald-600">
+
+          ATS Friendly
+
+        </span>
+
+        <span
+          class="rounded-md bg-slate-100 px-2 py-1
+                 text-[8px] font-bold text-slate-500">
+
+          1 Page
+
+        </span>
+
+      </div>
+
+      <button
+        class="apply-template mt-3 w-full rounded-xl
+               border border-slate-200 bg-white py-2.5
+               text-[9px] font-bold text-slate-700
+               transition hover:border-violet-300
+               hover:bg-violet-50 hover:text-violet-600">
+
+        Use this template
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- TEMPLATE 03 — US -->
+  <!-- ===================================================== -->
+
+  <div
+    class="template-card group overflow-hidden rounded-2xl
+           border border-slate-200 bg-white shadow-sm
+           transition hover:border-violet-200 hover:shadow-md"
+    data-template="american"
+    data-region="us"
+    data-style="professional"
+    data-ats="true"
+    data-new="false">
+
+    <div class="relative bg-slate-100 p-4">
+
+      <div
+        class="mx-auto aspect-[0.707] w-[72%] bg-white
+               p-5 shadow-md">
+
+        <div class="text-center">
+
+          <div class="mx-auto h-3 w-28 rounded bg-slate-900"></div>
+
+          <div class="mx-auto mt-2 h-1.5 w-20 rounded bg-blue-600"></div>
+
+        </div>
+
+        <div class="mt-6 h-1.5 w-full rounded bg-slate-300"></div>
+
+        <div class="mt-3 h-1.5 w-full rounded bg-slate-200"></div>
+        <div class="mt-2 h-1.5 w-11/12 rounded bg-slate-200"></div>
+        <div class="mt-2 h-1.5 w-8/12 rounded bg-slate-200"></div>
+
+        <div class="mt-6 h-1.5 w-20 rounded bg-slate-900"></div>
+
+        <div class="mt-3 h-1.5 w-full rounded bg-slate-200"></div>
+        <div class="mt-2 h-1.5 w-10/12 rounded bg-slate-200"></div>
+        <div class="mt-2 h-1.5 w-9/12 rounded bg-slate-200"></div>
+
+      </div>
+
+    </div>
+
+    <div class="p-3.5">
+
+      <div class="flex items-start justify-between">
+
+        <div>
+
+          <h3 class="text-[11px] font-extrabold text-slate-900">
+            American Standard
+          </h3>
+
+          <p class="mt-0.5 text-[9px] text-slate-400">
+            Traditional US resume format
+          </p>
+
+        </div>
+
+        <button
+          class="template-favorite text-sm text-slate-300
+                 hover:text-rose-500">
+
+          ♡
+
+        </button>
+
+      </div>
+
+      <div class="mt-3 flex flex-wrap gap-1.5">
+
+        <span
+          class="rounded-md bg-red-50 px-2 py-1
+                 text-[8px] font-bold text-red-600">
+
+          🇺🇸 US
+
+        </span>
+
+        <span
+          class="rounded-md bg-emerald-50 px-2 py-1
+                 text-[8px] font-bold text-emerald-600">
+
+          ATS Friendly
+
+        </span>
+
+        <span
+          class="rounded-md bg-slate-100 px-2 py-1
+                 text-[8px] font-bold text-slate-500">
+
+          Traditional
+
+        </span>
+
+      </div>
+
+      <button
+        class="apply-template mt-3 w-full rounded-xl
+               border border-slate-200 bg-white py-2.5
+               text-[9px] font-bold text-slate-700
+               transition hover:border-violet-300
+               hover:bg-violet-50 hover:text-violet-600">
+
+        Use this template
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- TEMPLATE 04 — NEW CREATIVE -->
+  <!-- ===================================================== -->
+
+  <div
+    class="template-card group overflow-hidden rounded-2xl
+           border border-slate-200 bg-white shadow-sm
+           transition hover:border-violet-200 hover:shadow-md"
+    data-template="creative-edge"
+    data-region="global"
+    data-style="creative"
+    data-ats="false"
+    data-new="true">
+
+    <div class="relative bg-slate-100 p-4">
+
+      <span
+        class="absolute left-2 top-2 z-10 rounded-md
+               bg-emerald-500 px-2 py-1 text-[8px]
+               font-extrabold uppercase tracking-wide text-white">
+
+        New
+
+      </span>
+
+      <div
+        class="mx-auto aspect-[0.707] w-[72%] overflow-hidden
+               bg-white shadow-md">
+
+        <div class="h-12 bg-gradient-to-r from-violet-600 to-indigo-500"></div>
+
+        <div class="p-4">
+
+          <div class="h-3 w-24 rounded bg-slate-900"></div>
+          <div class="mt-2 h-1.5 w-16 rounded bg-violet-500"></div>
+
+          <div class="mt-5 grid grid-cols-2 gap-3">
+
+            <div>
+              <div class="h-1.5 w-full rounded bg-slate-200"></div>
+              <div class="mt-2 h-1.5 w-10/12 rounded bg-slate-200"></div>
+              <div class="mt-2 h-1.5 w-8/12 rounded bg-slate-200"></div>
+            </div>
+
+            <div>
+              <div class="h-1.5 w-full rounded bg-slate-200"></div>
+              <div class="mt-2 h-1.5 w-10/12 rounded bg-slate-200"></div>
+              <div class="mt-2 h-1.5 w-8/12 rounded bg-slate-200"></div>
+            </div>
+
+          </div>
+
+          <div class="mt-5 h-1.5 w-20 rounded bg-slate-900"></div>
+
+          <div class="mt-3 h-1.5 w-full rounded bg-slate-200"></div>
+          <div class="mt-2 h-1.5 w-11/12 rounded bg-slate-200"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="p-3.5">
+
+      <div class="flex items-start justify-between">
+
+        <div>
+
+          <h3 class="text-[11px] font-extrabold text-slate-900">
+            Creative Edge
+          </h3>
+
+          <p class="mt-0.5 text-[9px] text-slate-400">
+            Modern design for creative roles
+          </p>
+
+        </div>
+
+        <button
+          class="template-favorite text-sm text-slate-300
+                 hover:text-rose-500">
+
+          ♡
+
+        </button>
+
+      </div>
+
+      <div class="mt-3 flex flex-wrap gap-1.5">
+
+        <span
+          class="rounded-md bg-violet-50 px-2 py-1
+                 text-[8px] font-bold text-violet-600">
+
+          🌍 Global
+
+        </span>
+
+        <span
+          class="rounded-md bg-fuchsia-50 px-2 py-1
+                 text-[8px] font-bold text-fuchsia-600">
+
+          Creative
+
+        </span>
+
+        <span
+          class="rounded-md bg-amber-50 px-2 py-1
+                 text-[8px] font-bold text-amber-600">
+
+          Design
+
+        </span>
+
+      </div>
+
+      <button
+        class="apply-template mt-3 w-full rounded-xl
+               border border-slate-200 bg-white py-2.5
+               text-[9px] font-bold text-slate-700
+               transition hover:border-violet-300
+               hover:bg-violet-50 hover:text-violet-600">
+
+        Use this template
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- TEMPLATE 05 — EUROPE -->
+  <!-- ===================================================== -->
+
+  <div
+    class="template-card group overflow-hidden rounded-2xl
+           border border-slate-200 bg-white shadow-sm
+           transition hover:border-violet-200 hover:shadow-md"
+    data-template="euro-modern"
+    data-region="europe"
+    data-style="professional"
+    data-ats="true"
+    data-new="false">
+
+    <div class="relative bg-slate-100 p-4">
+
+      <div
+        class="mx-auto aspect-[0.707] w-[72%] bg-white
+               p-4 shadow-md">
+
+        <div class="flex gap-3">
+
+          <div class="h-10 w-10 rounded-full bg-slate-200"></div>
+
+          <div class="flex-1">
+
+            <div class="h-3 w-24 rounded bg-slate-900"></div>
+            <div class="mt-2 h-1.5 w-16 rounded bg-emerald-500"></div>
+
+          </div>
+
+        </div>
+
+        <div class="mt-5 h-px w-full bg-slate-200"></div>
+
+        <div class="mt-4 h-1.5 w-20 rounded bg-slate-900"></div>
+
+        <div class="mt-3 h-1.5 w-full rounded bg-slate-200"></div>
+        <div class="mt-2 h-1.5 w-11/12 rounded bg-slate-200"></div>
+        <div class="mt-2 h-1.5 w-9/12 rounded bg-slate-200"></div>
+
+        <div class="mt-5 h-1.5 w-20 rounded bg-slate-900"></div>
+
+        <div class="mt-3 h-1.5 w-full rounded bg-slate-200"></div>
+        <div class="mt-2 h-1.5 w-10/12 rounded bg-slate-200"></div>
+
+      </div>
+
+    </div>
+
+    <div class="p-3.5">
+
+      <div class="flex items-start justify-between">
+
+        <div>
+
+          <h3 class="text-[11px] font-extrabold text-slate-900">
+            Euro Modern
+          </h3>
+
+          <p class="mt-0.5 text-[9px] text-slate-400">
+            European-style professional CV
+          </p>
+
+        </div>
+
+        <button
+          class="template-favorite text-sm text-slate-300
+                 hover:text-rose-500">
+
+          ♡
+
+        </button>
+
+      </div>
+
+      <div class="mt-3 flex flex-wrap gap-1.5">
+
+        <span
+          class="rounded-md bg-blue-50 px-2 py-1
+                 text-[8px] font-bold text-blue-600">
+
+          🇪🇺 Europe
+
+        </span>
+
+        <span
+          class="rounded-md bg-emerald-50 px-2 py-1
+                 text-[8px] font-bold text-emerald-600">
+
+          ATS Friendly
+
+        </span>
+
+        <span
+          class="rounded-md bg-slate-100 px-2 py-1
+                 text-[8px] font-bold text-slate-500">
+
+          Professional
+
+        </span>
+
+      </div>
+
+      <button
+        class="apply-template mt-3 w-full rounded-xl
+               border border-slate-200 bg-white py-2.5
+               text-[9px] font-bold text-slate-700
+               transition hover:border-violet-300
+               hover:bg-violet-50 hover:text-violet-600">
+
+        Use this template
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+  </div>
+
+  <!-- ========================================================= -->
+
+  <!-- FOOTER -->
+
+  <!-- ========================================================= -->
+
+  <div class="shrink-0 border-t border-slate-200 bg-white px-4 py-3 sm:px-5">
+
+
+<button
+  id="templateRecommendation"
+  type="button"
+  class="flex w-full items-center justify-between rounded-xl
+         bg-gradient-to-r from-violet-50 to-indigo-50
+         px-3 py-2.5 text-left transition hover:from-violet-100
+         hover:to-indigo-100">
+
+  <div class="flex items-center gap-2.5">
+
+    <div class="flex h-7 w-7 items-center justify-center
+                rounded-lg bg-white text-violet-600 shadow-sm">
+
+      ✦
+
+    </div>
+
+    <div>
+
+      <p class="text-[9px] font-extrabold text-slate-800">
+        Not sure which template?
+      </p>
+
+      <p class="mt-0.5 text-[8px] text-slate-400">
+        Let AI recommend the best one for your career.
+      </p>
+
+    </div>
+
+  </div>
+
+  <span class="text-xs font-bold text-violet-600">
+    →
+  </span>
+
+</button>
+
+
+  </div>
+
+</div>

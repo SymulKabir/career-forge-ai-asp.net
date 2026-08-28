@@ -6,11 +6,12 @@ namespace CareerForgeAI.Resume
     public static class ResumeUtils
     {
         public const string HeaderHeight = "65px";
+        public const string HeaderHeight2 = "605px";
         public const string ToolBarHeight = "45px";
 
         public static class EditorShell
         {
-            public const string LeftSectionWidth = "300px";
+            public const string LeftSectionWidth = "350px";
             public const string MiddleSectionWidth = "900px";
         }
         public static readonly List<Dictionary<string, string>> ToolItems = new()

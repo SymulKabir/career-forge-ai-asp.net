@@ -246,21 +246,44 @@ const initToolBarScroll = () => {
   window.addEventListener("load", updateToolbar);
 };
 
+const resetAllUi = ({ toolBox, rearrangeModal }) => {
+  console.log("hello from resetAllUi")
+  if (toolBox) {
+    toolBox.classList.remove("left-[0px]");
+  }
+  if (rearrangeModal) {
+    rearrangeModal.classList.add("hidden");
+  }
+}
+const toolBarToggle = (toolBox) => {
+
+  if (toolBox) {
+    toolBox.classList.toggle("left-[0px]");
+  }
+}
+const rearrangeModalToggle = (rearrangeModal) => {
+console.log("hello form rearrangeModalToggle")
+  if (rearrangeModal) {
+    rearrangeModal.classList.toggle("hidden");
+  }
+}
 const setupResumeToolbar = () => {
   const toolbar = document.querySelector("#resumeToolbar");
   const toolBox = document.querySelector("#toolBox");
+  const rearrangeModal = document.querySelector("#rearrangeModal");
 
   if (!toolbar) return;
 
   const toolBarItems = toolbar.querySelectorAll("button");
 
   toolBarItems.forEach((btn) => {
-    console.log("btn -->>",btn)
+    console.log("btn -->>", btn)
+
 
     btn.addEventListener("click", (event) => {
       event.preventDefault();
-
-
+      const actionGroup = btn.getAttribute("action-group");
+      console.log("actionGroup ->", actionGroup)
       // Remove active from all buttons
       toolbar
         .querySelectorAll("button.toolbar-btn-active")
@@ -268,17 +291,16 @@ const setupResumeToolbar = () => {
 
           activeBtn.classList.remove("toolbar-btn-active");
         });
- 
 
       // Make clicked button active
       btn.classList.add("toolbar-btn-active");
+      resetAllUi({ toolBox, rearrangeModal })
+      if (actionGroup === "ToolBox") {
+        toolBarToggle(toolBox)
+      } else if (actionGroup === "Rearrange") {
+        rearrangeModalToggle(rearrangeModal)
+      }
 
- 
-      if (toolBox) {
-        toolBox.classList.toggle("left-[0px]");
-      } 
-
-      console.log("Active:", btn.title);
     });
   });
 };

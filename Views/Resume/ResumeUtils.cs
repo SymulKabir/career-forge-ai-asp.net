@@ -1,6 +1,5 @@
-// HeaderHeight
-// ToolBarHeight
-// EditorShell
+using CareerForgeAI.Resume.Models;
+
 namespace CareerForgeAI.Resume
 {
     public static class ResumeUtils
@@ -21,7 +20,7 @@ namespace CareerForgeAI.Resume
                 ["Title"] = "AI Assistant",
                 ["IconClass"] = "bg-white/15",
                 ["ButtonClass"] = "text-slate-600 hover:bg-slate-50 hover:text-violet-600",
-                // ["ButtonClass"] = "bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold shadow-sm hover:-translate-y-0.5 hover:shadow-md",
+                ["actionGroup"] = "ToolBox",
                 ["Badge"] = "",
                 ["Icon"] = """
                     <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5"
@@ -42,6 +41,7 @@ namespace CareerForgeAI.Resume
                 ["Title"] = "Fix Resume",
                 ["IconClass"] = "bg-emerald-50 text-emerald-600",
                 ["ButtonClass"] = "text-slate-600 hover:bg-slate-50 hover:text-violet-600",
+                ["actionGroup"] = "ToolBox",
                 ["Badge"] = "B-",
                 ["Icon"] = """
                     <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5"
@@ -61,6 +61,7 @@ namespace CareerForgeAI.Resume
                 ["Title"] = "Check & Tailor",
                 ["IconClass"] = "bg-blue-50 text-blue-600",
                 ["ButtonClass"] = "text-slate-600 hover:bg-slate-50 hover:text-violet-600",
+                ["actionGroup"] = "ToolBox",
                 ["Badge"] = "",
                 ["Icon"] = """
                     <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5"
@@ -80,6 +81,7 @@ namespace CareerForgeAI.Resume
                 ["Title"] = "Rearrange",
                 ["IconClass"] = "bg-orange-50 text-orange-500",
                 ["ButtonClass"] = "text-slate-600 hover:bg-slate-50 hover:text-violet-600",
+                ["actionGroup"] = "Rearrange",
                 ["Badge"] = "",
                 ["Icon"] = """
                     <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5"
@@ -98,6 +100,7 @@ namespace CareerForgeAI.Resume
                 ["Title"] = "Templates",
                 ["IconClass"] = "bg-pink-50 text-pink-500",
                 ["ButtonClass"] = "text-slate-600 hover:bg-slate-50 hover:text-violet-600",
+                ["actionGroup"] = "ToolBox",
                 ["Badge"] = "",
                 ["Icon"] = """
                     <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5"
@@ -116,6 +119,7 @@ namespace CareerForgeAI.Resume
                 ["Title"] = "Design & Font",
                 ["IconClass"] = "bg-indigo-50 text-indigo-600",
                 ["ButtonClass"] = "text-slate-600 hover:bg-slate-50 hover:text-violet-600",
+                ["actionGroup"] = "ToolBox",
                 ["Badge"] = "",
                 ["Icon"] = """
                     <svg class="h-3 w-3 sm:h-3.5 sm:w-3.5"
@@ -133,5 +137,150 @@ namespace CareerForgeAI.Resume
                 """
             }
         };
+        public static List<ResumeLayoutItem> DefaultResumeLayout => new()
+        {
+            // =========================
+            // PAGE 1
+            // =========================
+
+            new()
+            {
+                Id = "header",
+                Title = "Header",
+                Section = "personal",
+                Page = 1,
+                Column = "full",
+                Order = 0,
+                Locked = true
+            },
+
+            new()
+            {
+                Id = "summary",
+                Title = "Summary",
+                Section = "summary",
+                Page = 1,
+                Column = "left",
+                Order = 0
+            },
+
+            new()
+            {
+                Id = "experience",
+                Title = "Experience",
+                Section = "experience",
+                Page = 1,
+                Column = "left",
+                Order = 1
+            },
+
+            new()
+            {
+                Id = "projects",
+                Title = "Projects",
+                Section = "projects",
+                Page = 1,
+                Column = "left",
+                Order = 2
+            },
+
+            new()
+            {
+                Id = "skills",
+                Title = "Skills",
+                Section = "skills",
+                Page = 1,
+                Column = "right",
+                Order = 0
+            },
+
+            new()
+            {
+                Id = "achievements",
+                Title = "Key Achievements",
+                Section = "achievements",
+                Page = 1,
+                Column = "right",
+                Order = 1,
+                ShortTitle = "Key Achievements"
+            },
+
+            // =========================
+            // PAGE 2
+            // =========================
+
+            new()
+            {
+                Id = "projects-2",
+                Title = "Projects",
+                Section = "projects",
+                Page = 2,
+                Column = "left",
+                Order = 0
+            },
+
+            new()
+            {
+                Id = "achievements-2",
+                Title = "Key Achievements",
+                Section = "achievements",
+                Page = 2,
+                Column = "right",
+                Order = 0,
+                ShortTitle = "Key Achievements"
+            },
+
+            new()
+            {
+                Id = "education",
+                Title = "Education",
+                Section = "education",
+                Page = 2,
+                Column = "right",
+                Order = 1
+            },
+
+            new()
+            {
+                Id = "training",
+                Title = "Training / Courses",
+                Section = "training",
+                Page = 2,
+                Column = "right",
+                Order = 2,
+                ShortTitle = "Training / Courses"
+            },
+
+            new()
+            {
+                Id = "languages",
+                Title = "Languages",
+                Section = "languages",
+                Page = 2,
+                Column = "right",
+                Order = 3
+            },
+
+            new()
+            {
+                Id = "strengths",
+                Title = "Strengths",
+                Section = "strengths",
+                Page = 2,
+                Column = "right",
+                Order = 4
+            },
+
+            new()
+            {
+                Id = "online",
+                Title = "Find Me Online",
+                Section = "online",
+                Page = 2,
+                Column = "right",
+                Order = 5
+            }
+        };
+
     }
 }

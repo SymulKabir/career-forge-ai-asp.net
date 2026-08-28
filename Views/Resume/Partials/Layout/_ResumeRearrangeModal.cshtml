@@ -1,0 +1,256 @@
+@using CareerForgeAI.Resume
+@using CareerForgeAI.Resume.Models
+
+@{
+    var layoutItems = ResumeUtils.DefaultResumeLayout;
+}
+
+<!-- ======================================================= -->
+<!-- REARRANGE MODAL                                         -->
+<!-- ======================================================= -->
+
+<div
+    id="rearrangeModal"
+    class="absolute top-0 inset-0 z-[100] flex hidden items-center justify-center bg-slate-950/55 backdrop-blur-sm "
+>
+    <div
+        class="relative flex h-max max-h-[calc(100%_-_20px)]  md:w-[800px] w-[calc(100%_-_40px)] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl sm:rounded-3xl flex"
+    >
+
+        <!-- ================================================= -->
+        <!-- HEADER                                            -->
+        <!-- ================================================= -->
+
+        <div
+            class="flex shrink-0 items-center justify-between border-b border-slate-200 px-4 py-4 sm:px-6 sm:py-5"
+        >
+            <div class="min-w-0">
+                <h2
+                    class="truncate text-base font-extrabold text-slate-900 sm:text-xl"
+                >
+                    Rearrange your resume
+                </h2>
+
+                <p
+                    class="mt-1 text-[10px] leading-4 text-slate-400 sm:text-xs"
+                >
+                    Drag and drop sections to change their order and layout.
+                </p>
+            </div>
+
+            <button
+                id="closeRearrangeModal"
+                type="button"
+                aria-label="Close"
+                class="ml-3 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
+            >
+                <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        d="M6 6l12 12M18 6 6 18"
+                    />
+                </svg>
+            </button>
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- BODY                                              -->
+        <!-- ================================================= -->
+
+        <div
+            id="rearrangeContent"
+            class="min-h-0 flex-1 overflow-y-auto bg-slate-50/70 px-3 py-5 sm:px-6 sm:py-6 bg-[red]"
+        >
+
+            <div
+                id="resumeLayoutPages"
+                class="mx-auto flex max-w-3xl flex-col gap-8"
+            >
+
+                @foreach (
+                    var pageGroup in layoutItems
+                        .GroupBy(x => x.Page)
+                        .OrderBy(x => x.Key)
+                )
+                {
+                    var pageNumber = pageGroup.Key;
+
+                    var fullItems = pageGroup
+                        .Where(x => x.Column == "full")
+                        .OrderBy(x => x.Order)
+                        .ToList();
+
+                    var leftItems = pageGroup
+                        .Where(x => x.Column == "left")
+                        .OrderBy(x => x.Order)
+                        .ToList();
+
+                    var rightItems = pageGroup
+                        .Where(x => x.Column == "right")
+                        .OrderBy(x => x.Order)
+                        .ToList();
+
+                    <div
+                        class="layout-page"
+                        data-page="@pageNumber"
+                    >
+
+                        <!-- PAGE TITLE -->
+
+                        <div class="mb-2 text-center">
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-[.15em] text-slate-400"
+                            >
+                                Page @pageNumber
+                            </span>
+                        </div>
+
+
+                        <!-- A4 PREVIEW -->
+
+                        <div
+                            class="relative mx-auto w-full max-w-[430px] rounded-xl border border-slate-200 bg-white p-2 shadow-[0_8px_30px_rgba(15,23,42,0.08)] sm:p-3"
+                        >
+
+                            <!-- ================================================= -->
+                            <!-- FULL WIDTH                                      -->
+                            <!-- ================================================= -->
+
+                            <div
+                                class="layout-column layout-full mb-1.5 min-h-[30px]"
+                                data-page="@pageNumber"
+                                data-column="full"
+                            >
+
+                                @foreach (var item in fullItems)
+                                {
+                                    @await Html.PartialAsync(
+                                        "Partials/Layout/_ResumeLayoutCard",
+                                        item
+                                    )
+                                }
+
+                            </div>
+
+
+                            <!-- ================================================= -->
+                            <!-- TWO COLUMNS                                      -->
+                            <!-- ================================================= -->
+
+                            <div
+                                class="grid grid-cols-[1fr_1fr] items-start gap-1.5"
+                            >
+
+                                <!-- ================================================= -->
+                                <!-- LEFT                                            -->
+                                <!-- ================================================= -->
+
+                                <div
+                                    class="layout-column min-h-[180px]"
+                                    data-page="@pageNumber"
+                                    data-column="left"
+                                >
+
+                                    @foreach (var item in leftItems)
+                                    {
+                                        @await Html.PartialAsync(
+                                            "Partials/Layout/_ResumeLayoutCard",
+                                            item
+                                        )
+                                    }
+
+                                </div>
+
+
+                                <!-- ================================================= -->
+                                <!-- RIGHT                                           -->
+                                <!-- ================================================= -->
+
+                                <div
+                                    class="layout-column min-h-[180px]"
+                                    data-page="@pageNumber"
+                                    data-column="right"
+                                >
+
+                                    @foreach (var item in rightItems)
+                                    {
+                                        @await Html.PartialAsync(
+                                            "Partials/Layout/_ResumeLayoutCard",
+                                            item
+                                        )
+                                    }
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- FOOTER                                            -->
+        <!-- ================================================= -->
+
+        <div
+            class="flex shrink-0 flex-col-reverse gap-2 border-t border-slate-200 bg-white px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6"
+        >
+
+            <div class="text-center sm:text-left">
+                <span
+                    id="layoutStatus"
+                    class="text-[10px] font-medium text-slate-400"
+                >
+                    Drag sections to rearrange your resume.
+                </span>
+            </div>
+
+            <div class="flex items-center justify-center gap-2">
+
+                <button
+                    id="cancelRearrange"
+                    type="button"
+                    class="rounded-xl border border-slate-200 px-4 py-2.5 text-[10px] font-bold text-slate-600 transition hover:bg-slate-50"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    id="saveRearrange"
+                    type="button"
+                    class="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-5 py-2.5 text-[10px] font-bold text-white shadow-md shadow-violet-200 transition hover:-translate-y-0.5 hover:shadow-lg"
+                >
+                    Save layout
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ======================================================= -->
+<!-- FINAL LAYOUT JSON                                       -->
+<!-- ======================================================= -->
+
+<input
+    type="hidden"
+    id="resumeLayoutJson"
+    name="ResumeLayoutJson"
+    value=""
+/>

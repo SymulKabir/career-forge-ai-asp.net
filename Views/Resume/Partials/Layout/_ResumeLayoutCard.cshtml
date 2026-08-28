@@ -1,0 +1,440 @@
+@model CareerForgeAI.Resume.Models.ResumeLayoutItem
+<style>
+    .layout-card {
+        transition:
+            transform 150ms ease,
+            box-shadow 150ms ease,
+            background-color 150ms ease,
+            border-color 150ms ease;
+    }
+
+    .layout-card:hover {
+        transform: translateY(-1px);
+    }
+
+    .layout-card:active {
+        transform: scale(.98);
+    }
+
+    .layout-column {
+        transition:
+            background-color 150ms ease,
+            box-shadow 150ms ease;
+    }
+
+    .layout-column:empty {
+        min-height: 80px;
+        border: 1px dashed #cbd5e1;
+        border-radius: 8px;
+    }
+
+    .layout-column:empty::after {
+        content: "Drop section here";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 80px;
+        color: #94a3b8;
+        font-size: 9px;
+        font-weight: 600;
+    }
+
+  
+</style>
+<div
+    class="layout-card group relative mb-1.5 flex min-h-[48px] cursor-grab select-none items-center rounded-md border border-transparent bg-slate-100 px-2 py-2 text-center transition-all duration-150 hover:border-violet-200 hover:bg-violet-50 active:cursor-grabbing sm:min-h-[52px]"
+    data-id="@Model.Id"
+    data-section="@Model.Section"
+    data-title="@Model.Title"
+    draggable="@(!Model.Locked)"
+
+>
+    
+    <!-- Drag handle -->
+
+    <div
+        class="absolute left-1.5 top-1.5 flex flex-col gap-[2px] opacity-50"
+    >
+        <span class="h-[2px] w-[2px] rounded-full bg-slate-500"></span>
+        <span class="h-[2px] w-[2px] rounded-full bg-slate-500"></span>
+        <span class="h-[2px] w-[2px] rounded-full bg-slate-500"></span>
+    </div>
+
+
+    <!-- Content -->
+
+    <div class="w-full px-2">
+
+        <div
+            class="truncate text-[9px] font-semibold text-slate-700 sm:text-[10px]"
+        >
+            @(Model.ShortTitle ?? Model.Title)
+        </div>
+
+        @if (Model.Locked)
+        {
+            <div
+                class="mt-0.5 text-[7px] font-medium text-slate-400"
+            >
+                Locked
+            </div>
+        }
+
+    </div>
+
+
+    <!-- Lock -->
+
+    @if (Model.Locked)
+    {
+        <div
+            class="absolute right-1.5 top-1.5 text-slate-400"
+            title="This section cannot be moved"
+        >
+            <svg
+                class="h-3 w-3"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    d="M17 8h-1V6a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V6Zm5 11H9v-5h6v5Z"
+                />
+            </svg>
+        </div>
+    }
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const modal = document.getElementById("rearrangeModal");
+    const closeBtn = document.getElementById("closeRearrangeModal");
+    const cancelBtn = document.getElementById("cancelRearrange");
+    const saveBtn = document.getElementById("saveRearrange");
+    const layoutJson = document.getElementById("resumeLayoutJson");
+    const status = document.getElementById("layoutStatus");
+
+    let draggedCard = null;
+    let originalLayout = null;
+
+
+    // =====================================================
+    // OPEN MODAL
+    // =====================================================
+
+    window.openRearrangeModal = function () {
+
+        if (!modal) return;
+
+        originalLayout = getLayout();
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+
+        document.body.classList.add("overflow-hidden");
+    };
+
+
+    // =====================================================
+    // CLOSE MODAL
+    // =====================================================
+
+    function closeModal() {
+
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+
+        document.body.classList.remove("overflow-hidden");
+    }
+
+
+    closeBtn?.addEventListener("click", closeModal);
+    cancelBtn?.addEventListener("click", closeModal);
+
+
+    // =====================================================
+    // DRAG START
+    // =====================================================
+
+    document.addEventListener("dragstart", (event) => {
+
+        const card = event.target.closest(".layout-card");
+
+        if (!card) return;
+
+        if (card.getAttribute("draggable") !== "true") {
+            event.preventDefault();
+            return;
+        }
+
+        draggedCard = card;
+
+        card.classList.add(
+            "opacity-40",
+            "scale-[0.98]"
+        );
+
+        event.dataTransfer.effectAllowed = "move";
+
+        event.dataTransfer.setData(
+            "text/plain",
+            card.dataset.id
+        );
+    });
+
+
+    // =====================================================
+    // DRAG END
+    // =====================================================
+
+    document.addEventListener("dragend", (event) => {
+
+        const card = event.target.closest(".layout-card");
+
+        if (!card) return;
+
+        card.classList.remove(
+            "opacity-40",
+            "scale-[0.98]"
+        );
+
+        draggedCard = null;
+
+        clearDropStates();
+    });
+
+
+    // =====================================================
+    // DRAG OVER COLUMN
+    // =====================================================
+
+    document.addEventListener("dragover", (event) => {
+
+        const column = event.target.closest(".layout-column");
+
+        if (!column || !draggedCard) return;
+
+        event.preventDefault();
+
+        event.dataTransfer.dropEffect = "move";
+
+        column.classList.add(
+            "bg-violet-50/60",
+            "rounded-lg"
+        );
+    });
+
+
+    // =====================================================
+    // DRAG LEAVE
+    // =====================================================
+
+    document.addEventListener("dragleave", (event) => {
+
+        const column = event.target.closest(".layout-column");
+
+        if (!column) return;
+
+        if (!column.contains(event.relatedTarget)) {
+
+            column.classList.remove(
+                "bg-violet-50/60"
+            );
+        }
+    });
+
+
+    // =====================================================
+    // DROP
+    // =====================================================
+
+    document.addEventListener("drop", (event) => {
+
+        const column = event.target.closest(".layout-column");
+
+        if (!column || !draggedCard) return;
+
+        event.preventDefault();
+
+        const targetCard = event.target.closest(".layout-card");
+
+        // Prevent dropping onto itself
+        if (targetCard === draggedCard) {
+            clearDropStates();
+            return;
+        }
+
+
+        // ================================================
+        // SAME COLUMN / OTHER COLUMN
+        // ================================================
+
+        if (targetCard && targetCard.parentElement === column) {
+
+            const rect = targetCard.getBoundingClientRect();
+
+            const insertBefore =
+                event.clientY < rect.top + rect.height / 2;
+
+            if (insertBefore) {
+
+                column.insertBefore(
+                    draggedCard,
+                    targetCard
+                );
+
+            } else {
+
+                column.insertBefore(
+                    draggedCard,
+                    targetCard.nextSibling
+                );
+            }
+
+        } else {
+
+            // Drop at end of column
+
+            column.appendChild(draggedCard);
+        }
+
+
+        clearDropStates();
+
+        updateStatus("Layout changed. Click Save layout to apply.");
+
+        updateLayoutJson();
+    });
+
+
+    // =====================================================
+    // CLEAR DROP STATES
+    // =====================================================
+
+    function clearDropStates() {
+
+        document
+            .querySelectorAll(".layout-column")
+            .forEach(column => {
+
+                column.classList.remove(
+                    "bg-violet-50/60",
+                    "rounded-lg"
+                );
+            });
+    }
+
+
+    // =====================================================
+    // GET CURRENT LAYOUT
+    // =====================================================
+
+    function getLayout() {
+
+        const layout = [];
+
+        document
+            .querySelectorAll(".layout-page")
+            .forEach(page => {
+
+                const pageNumber =
+                    Number(page.dataset.page);
+
+                page
+                    .querySelectorAll(".layout-column")
+                    .forEach(column => {
+
+                        const columnName =
+                            column.dataset.column;
+
+                        column
+                            .querySelectorAll(".layout-card")
+                            .forEach((card, index) => {
+
+                                layout.push({
+                                    id: card.dataset.id,
+                                    section: card.dataset.section,
+                                    title: card.dataset.title,
+                                    page: pageNumber,
+                                    column: columnName,
+                                    order: index
+                                });
+
+                            });
+                    });
+            });
+
+        return layout;
+    }
+
+
+    // =====================================================
+    // UPDATE JSON
+    // =====================================================
+
+    function updateLayoutJson() {
+
+        const layout = getLayout();
+
+        layoutJson.value =
+            JSON.stringify(layout);
+    }
+
+
+    // =====================================================
+    // STATUS
+    // =====================================================
+
+    function updateStatus(message) {
+
+        if (status) {
+            status.textContent = message;
+        }
+    }
+
+
+    // =====================================================
+    // SAVE
+    // =====================================================
+
+    saveBtn?.addEventListener("click", async () => {
+
+        const layout = getLayout();
+
+        layoutJson.value =
+            JSON.stringify(layout);
+
+        console.log(
+            "FINAL RESUME LAYOUT:",
+            layout
+        );
+
+        /*
+         * Send this to ASP.NET when ready:
+         *
+         * await fetch('/Resume/SaveLayout', {
+         *     method: 'POST',
+         *     headers: {
+         *         'Content-Type': 'application/json'
+         *     },
+         *     body: JSON.stringify(layout)
+         * });
+         */
+
+        updateStatus("Layout saved.");
+
+        setTimeout(() => {
+            closeModal();
+        }, 400);
+    });
+
+
+    // =====================================================
+    // EXPOSE GET LAYOUT
+    // =====================================================
+
+    window.getResumeLayout = getLayout;
+
+});
+</script>

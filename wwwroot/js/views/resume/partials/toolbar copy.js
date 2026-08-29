@@ -248,38 +248,17 @@ const initToolBarScroll = () => {
   window.addEventListener("load", updateToolbar);
 };
 
-const makeActiveToolButton = () => {
-  const toolbar = document.querySelector("#resumeToolbar");
-};
-
-const setupResumeToolbar = () => {
-  const toolbar = document.querySelector("#resumeToolbar");
-  if (!toolbar) return;
-
-  const toolBarItems = toolbar.querySelectorAll("button");
-
-  toolBarItems.forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-      event.preventDefault();
-      const btnLabel = btn.getAttribute("aria-label");
-      const isActive = btn.classList.contains("toolbar-btn-active");
-      if (isActive) {
-        ResumeState.setActiveTool(null);
-      } else {
-        ResumeState.setActiveTool(btnLabel);
-      }
-    });
-  });
-};
-const resetAllUi = () => {
-  const closeToolBox = document.getElementById("closeToolBox");
-  const toolbar = document.querySelector("#resumeToolbar");
-  const toolBox = document.querySelector("#toolBox");
-  const rearrangeModal = document.querySelector("#rearrangeModal");
+const resetAllUi = ({ closeToolBox, toolBox, rearrangeModal, toolbar }) => {
   if (closeToolBox) {
     closeToolBox.classList.remove("right-[-35px]");
   }
-
+  if (toolbar) {
+    toolbar
+      .querySelectorAll("button.toolbar-btn-active")
+      .forEach((activeBtn) => {
+        activeBtn.classList.remove("toolbar-btn-active");
+      });
+  }
   if (toolBox) {
     const childDivs = toolBox.querySelectorAll(":scope > div > div");
 
@@ -292,21 +271,7 @@ const resetAllUi = () => {
     rearrangeModal.classList.add("hidden");
   }
 };
-const makeButtonActive = (currentActiveTool) => {
-  const toolbar = document.querySelector("#resumeToolbar");
-  const toolBarItems = toolbar?.querySelectorAll("button");
-  toolBarItems.forEach((btn) => {
-    const btnLabel = btn.getAttribute("aria-label");
-    if (btnLabel === currentActiveTool) {
-      btn.classList.add("toolbar-btn-active");
-    } else {
-      btn.classList.remove("toolbar-btn-active");
-    }
-  });
-};
 const toolBoxToggle = ({ toolBox, childId }) => {
-  const closeToolBox = document.getElementById("closeToolBox");
-
   if (toolBox) {
     toolBox.classList.toggle("left-[0px]");
     const childElement = document.getElementById(childId);
@@ -314,48 +279,61 @@ const toolBoxToggle = ({ toolBox, childId }) => {
       childElement.classList.toggle("hidden");
     }
   }
-  setTimeout(() => {
-    if (closeToolBox) {
-      closeToolBox.classList.add("right-[-35px]");
-    }
-  }, 300);
 };
 const rearrangeModalToggle = (rearrangeModal) => {
   if (rearrangeModal) {
     rearrangeModal.classList.toggle("hidden");
   }
 };
-const makeToolActive = (currentActiveTool) => {
+const setupResumeToolbar = () => {
+  const closeToolBox = document.getElementById("closeToolBox");
   const toolbar = document.querySelector("#resumeToolbar");
   const toolBox = document.querySelector("#toolBox");
   const rearrangeModal = document.querySelector("#rearrangeModal");
-  const activeBtn = toolbar?.querySelector(
-    `[aria-label="${currentActiveTool}"]`,
-  );
-  const actionGroup = activeBtn.getAttribute("action-group");
-  const childId = activeBtn.getAttribute("child-id");
 
-  setTimeout(() => {
-    if (actionGroup === "ToolBox") {
-      toolBoxToggle({ toolBox, childId });
-    } else if (actionGroup === "Rearrange") {
-      rearrangeModalToggle(rearrangeModal);
-    }
-  }, 400);
+  if (!toolbar) return;
+
+  const toolBarItems = toolbar.querySelectorAll("button");
+
+  toolBarItems.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const actionGroup = btn.getAttribute("action-group");
+      const childId = btn.getAttribute("child-id");
+
+      resetAllUi({ toolBox, rearrangeModal, closeToolBox, toolbar });
+      btn.classList.add("toolbar-btn-active");
+      console.log("Before:", ResumeState.activeTool);
+
+      ResumeState.setActiveTool(childId);
+
+      console.log("After:", ResumeState.activeTool);
+      setTimeout(() => {
+        if (actionGroup === "ToolBox") {
+          closeToolBox.classList.add("right-[-35px]");
+
+          toolBoxToggle({ toolBox, childId });
+        } else if (actionGroup === "Rearrange") {
+          rearrangeModalToggle(rearrangeModal);
+        }
+      }, 300);
+    });
+  });
 };
 
 const setupResumeState = () => {
   ResumeState.subscribe((state, previousState) => {
     console.log("🔥 SUBSCRIBER FIRED");
-    const currentActiveTool = state.activeTool;
-    console.log("currentActiveTool -->", currentActiveTool);
-    makeButtonActive(currentActiveTool);
-    resetAllUi();
-    if (!currentActiveTool) return;
-    makeToolActive(currentActiveTool);
-    console.log("");
+
+    if (state.activeTool === previousState.activeTool) {
+      return;
+    }
+
+    console.log("Active tool changed");
   });
 };
+
 const init = () => {
   setupResumeState();
   initToolBarScroll();

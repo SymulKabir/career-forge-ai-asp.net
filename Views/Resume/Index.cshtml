@@ -1,7 +1,7 @@
 @using Microsoft.VisualBasic
 @using CareerForgeAI.Resume
 @{
-    var layoutItems = ResumeUtils.DefaultResumeLayout;
+  var layoutItems = ResumeUtils.DefaultResumeLayout;
 }
 
 
@@ -12,13 +12,14 @@
   min-h-0 
   overflow-hidden 
   h-[calc(100vh_-_65px-_@ResumeUtils.HeaderHeight)] 
-  flex justify-center">
+  flex justify-center
+  ">
   <section id="toolBox" class="absolute 
     left-[-@ResumeUtils.EditorShell.LeftSectionWidth]  
     top-[0px] 
     w-[@ResumeUtils.EditorShell.LeftSectionWidth] 
     h-[inherit]
-    overflow-y-auto  
+    overflow-x-visible
     border-r 
     border-slate-200 
     bg-white 
@@ -26,13 +27,19 @@
     sm:p-5  
     transition-all 
     duration-300 
-    ease-in-out 
-    z-20">
-    @* <partial name="./Partials/ToolBox/_Design&Font" /> *@
-    @* <partial name="./Partials/ToolBox/_AiAssistant" /> *@
-    @* <partial name="./Partials/ToolBox/_Templates" /> *@
-     @* <partial name="./Partials/ToolBox/_FixResume" /> *@
-     <partial name="./Partials/ToolBox/_CheckAndTailor" />
+    ease-in-out
+    z-[2]
+    ">
+    <!-- Close button -->
+    <partial name="./Partials/ToolBox/_CloseButton" />
+
+    <div class="h-full overflow-y-auto">
+      <partial name="./Partials/ToolBox/_AiAssistant" />
+      <partial name="./Partials/ToolBox/_FixResume" />
+      <partial name="./Partials/ToolBox/_CheckAndTailor" />
+      <partial name="./Partials/ToolBox/_Templates" />
+      <partial name="./Partials/ToolBox/_Design&Font" />
+    </div>
 
   </section>
   <partial name="./Partials/Layout/_ResumeRearrangeModal" />
@@ -40,9 +47,9 @@
 
  
   <section id="previewPanel"
-           class="canvas w-[@ResumeUtils.EditorShell.MiddleSectionWidth] min-h-0 overflow-auto overscroll-contain bg-slate-100/80 p-4 sm:p-7 lg:p-10">
+           class="canvas w-[@ResumeUtils.EditorShell.MiddleSectionWidth] min-h-0 overflow-auto overscroll-contain bg-slate-100/80 p-4 sm:p-7 lg:p-10 z-[1]">
     <!-- Preview toolbar -->
-    <div class="sticky top-0 z-20 mx-auto mb-5 flex max-w-[794px] items-center justify-between gap-3 pb-1">
+    <div class="sticky top-0 mx-auto mb-5 flex max-w-[794px] items-center justify-between gap-3 pb-1">
       <!-- A4 indicator -->
       <div
         class="rounded-full border border-slate-200/80 bg-white/90 px-3 py-1.5 text-[10px] font-bold text-slate-500 shadow-sm backdrop-blur">

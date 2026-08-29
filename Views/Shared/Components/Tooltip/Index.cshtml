@@ -1,0 +1,22 @@
+@{
+    var tooltipText = ViewData["TooltipText"]?.ToString() ?? "Tooltip";
+    var tooltipPosition = ViewData["TooltipPosition"]?.ToString() ?? "top";
+}
+
+<span class="pointer-events-none absolute z-50 whitespace-nowrap
+    rounded-lg bg-slate-900 px-2.5 py-1.5
+    text-[10px] font-semibold text-white
+    opacity-0 shadow-lg
+    transition-all duration-200 ease-out
+    group-hover:opacity-100
+    @(
+      tooltipPosition switch
+      {
+          "right" => "left-[calc(100%+8px)] top-1/2 -translate-y-1/2",
+          "bottom" => "left-1/2 top-[calc(100%+8px)] -translate-x-1/2",
+          "left" => "right-[calc(100%+8px)] top-1/2 -translate-y-1/2",
+          _ => "left-1/2 bottom-[calc(100%+8px)] -translate-x-1/2"
+      }
+      )">
+    @tooltipText
+</span>

@@ -63,7 +63,7 @@ namespace CareerForgeAI.Resume
                 ["Title"] = "Check & Tailor",
                 ["IconClass"] = "bg-blue-50 text-blue-600",
                 ["ButtonClass"] = "text-slate-600 hover:bg-slate-50 hover:text-violet-600",
-                ["ActionGroup"] = "CheckAndTailor",
+                ["ActionGroup"] = "ToolBox",
                 ["ChildId"] = "checkTailorPanel",
                 ["Badge"] = "",
                 ["Icon"] = """

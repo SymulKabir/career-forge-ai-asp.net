@@ -1,5 +1,4 @@
 import ResumeState from "../../state.js";
-
 const initCloseButton = () => {
   const closeToolBox = document.getElementById("closeToolBox");
   closeToolBox.addEventListener("click", () => {

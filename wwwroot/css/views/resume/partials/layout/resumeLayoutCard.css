@@ -1,0 +1,38 @@
+    .layout-card {
+        transition:
+            transform 150ms ease,
+            box-shadow 150ms ease,
+            background-color 150ms ease,
+            border-color 150ms ease;
+    }
+
+    .layout-card:hover {
+        transform: translateY(-1px);
+    }
+
+    .layout-card:active {
+        transform: scale(.98);
+    }
+
+    .layout-column {
+        transition:
+            background-color 150ms ease,
+            box-shadow 150ms ease;
+    }
+
+    .layout-column:empty {
+        min-height: 80px;
+        border: 1px dashed #cbd5e1;
+        border-radius: 8px;
+    }
+
+    .layout-column:empty::after {
+        content: "Drop section here";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 80px;
+        color: #94a3b8;
+        font-size: 9px;
+        font-weight: 600;
+    }

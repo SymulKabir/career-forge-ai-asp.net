@@ -13,7 +13,7 @@ const initToolBarScroll = () => {
            UPDATE SCROLL STATE
         ========================================================= */
 
-  function updateToolbar() {
+  const  updateToolbar = () =>  {
     const maxScroll = Math.max(0, toolbar.scrollWidth - toolbar.clientWidth);
 
     const currentScroll = toolbar.scrollLeft;

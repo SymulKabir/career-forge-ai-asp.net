@@ -1,5 +1,6 @@
 using CareerForgeAI.Data;
 using Microsoft.EntityFrameworkCore;
+using CareerForgeAI.Routing;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +10,25 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     )
 );
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 // Add services to the container.
-builder.Services.AddControllersWithViews();
-
+// builder.Services.AddControllersWithViews();
+builder.Services
+    .AddControllersWithViews(options =>
+    {
+        options.Conventions.Add(
+            new ApiRoutePrefixConvention("api/v1")
+        );
+    });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,7 +41,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
-
+app.UseCors();
 app.UseAuthorization();
 
 app.MapStaticAssets();

@@ -1525,10 +1525,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function saveToStorage() {
 
-        localStorage.setItem(
-            "careerforge-resume",
-            JSON.stringify(state)
-        );
+        // localStorage.setItem(
+        //     "careerforge-resume",
+        //     JSON.stringify(state)
+        // );
     }
 
 

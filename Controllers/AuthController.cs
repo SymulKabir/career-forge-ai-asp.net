@@ -8,7 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CareerForgeAI.Controllers;
 
-public class AuthController : Controller
+[ApiController]
+[Route("auth")]
+public class AuthController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
     private readonly PasswordHasher<User> _passwordHasher;
@@ -20,39 +22,38 @@ public class AuthController : Controller
     }
 
     // =====================================================
-    // REGISTER
+    // TEST API
+    // GET /api/v1/auth/test
     // =====================================================
 
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Register(RegisterViewModel model)
+    [HttpGet("test")]
+    public IActionResult Test()
     {
-        if (!ModelState.IsValid)
+        return Ok(new
         {
-            var errors = ModelState
-                .Where(x => x.Value?.Errors.Count > 0)
-                .ToDictionary(
-                    x => x.Key,
-                    x => x.Value!.Errors
-                        .Select(e => e.ErrorMessage)
-                        .ToArray()
-                );
+            success = true,
+            message = "CareerForgeAI API is working!"
+        });
+    }
 
-            return BadRequest(new
-            {
-                success = false,
-                errors
-            });
-        }
+    // =====================================================
+    // REGISTER
+    // POST /api/v1/auth/register
+    // =====================================================
 
+    [HttpPost("register")]
+    public async Task<IActionResult> Register(
+        [FromBody] RegisterViewModel model)
+    {
+        Console.WriteLine("Api Call now");
         var email = model.Email.Trim().ToLowerInvariant();
 
         var existingUser = await _context.Users
-            .FirstOrDefaultAsync(u => u.Email == email);
+            .AnyAsync(u => u.Email == email);
 
-        if (existingUser != null)
+        if (existingUser)
         {
-            return BadRequest(new
+            return Conflict(new
             {
                 success = false,
                 errors = new Dictionary<string, string[]>
@@ -90,54 +91,21 @@ public class AuthController : Controller
 
     // =====================================================
     // LOGIN
+    // POST /api/v1/auth/login
     // =====================================================
 
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Login(LoginViewModel model)
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(
+        [FromBody] LoginViewModel model)
     {
-        // -----------------------------------------
-        // MODEL VALIDATION
-        // -----------------------------------------
-
-        if (!ModelState.IsValid)
-        {
-            var errors = ModelState
-                .Where(x => x.Value?.Errors.Count > 0)
-                .ToDictionary(
-                    x => x.Key,
-                    x => x.Value!.Errors
-                        .Select(e => e.ErrorMessage)
-                        .ToArray()
-                );
-
-            return BadRequest(new
-            {
-                success = false,
-                errors
-            });
-        }
-
-        // -----------------------------------------
-        // NORMALIZE EMAIL
-        // -----------------------------------------
-
         var email = model.Email.Trim().ToLowerInvariant();
-
-        // -----------------------------------------
-        // FIND USER
-        // -----------------------------------------
 
         var user = await _context.Users
             .FirstOrDefaultAsync(u => u.Email == email);
 
-        // -----------------------------------------
-        // USER NOT FOUND
-        // -----------------------------------------
-
         if (user == null)
         {
-            return BadRequest(new
+            return Unauthorized(new
             {
                 success = false,
                 errors = new Dictionary<string, string[]>
@@ -150,10 +118,6 @@ public class AuthController : Controller
             });
         }
 
-        // -----------------------------------------
-        // VERIFY PASSWORD
-        // -----------------------------------------
-
         var passwordResult = _passwordHasher.VerifyHashedPassword(
             user,
             user.PasswordHash,
@@ -162,7 +126,7 @@ public class AuthController : Controller
 
         if (passwordResult == PasswordVerificationResult.Failed)
         {
-            return BadRequest(new
+            return Unauthorized(new
             {
                 success = false,
                 errors = new Dictionary<string, string[]>
@@ -174,10 +138,6 @@ public class AuthController : Controller
                 }
             });
         }
-
-        // -----------------------------------------
-        // LOGIN SUCCESS
-        // -----------------------------------------
 
         return Ok(new
         {

@@ -1,4 +1,5 @@
 window.ResumeEditorData = {
+    // careerforge-resume
     meta: {
         id: null,
         template: "modern",
